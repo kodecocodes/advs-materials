@@ -37,8 +37,8 @@ struct ContentView: View {
     NavigationView {
       List {
         Section(header: Text("A: Memory")) {
-          NavigationLink(destination: Text("Link")) {
-            Text("A-1: Optimize Usage").padding()
+          NavigationLink(destination: MemoryOptimization()) {
+            Text("A-1: Optimization").padding()
           }
           NavigationLink(destination: Text("Link")) {
             Text("A-2: Leaks").padding()
@@ -49,7 +49,7 @@ struct ContentView: View {
             Text("B-1: Time Profiler").padding()
           }
           NavigationLink(destination: Text("Link")) {
-            Text("B-2: Collection Scrolling").padding()
+            Text("B-2: List Scrolling").padding()
           }
         }
         Section(header: Text("C: CoreData")) {
