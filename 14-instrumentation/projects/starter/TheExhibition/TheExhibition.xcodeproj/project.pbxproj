@@ -13,6 +13,9 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		F5AFEE0324C5E9DE00BAF54A /* CollectionScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AFEE0224C5E9DE00BAF54A /* CollectionScrollingViewController.swift */; };
+		F5AFEE0524C5EAA400BAF54A /* CollectionScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AFEE0424C5EAA400BAF54A /* CollectionScrollingView.swift */; };
+		F5AFEE0724C5EBF600BAF54A /* CollectionScrolling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5AFEE0624C5EBF600BAF54A /* CollectionScrolling.storyboard */; };
 		F5CB43E424C5CDD800E796C5 /* MemoryOptimization.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CB43E324C5CDD800E796C5 /* MemoryOptimization.swift */; };
 		F5CB43FF24C5D05600E796C5 /* LargeImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CB43FE24C5D05600E796C5 /* LargeImages.xcassets */; };
 /* End PBXBuildFile section */
@@ -26,6 +29,9 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F5AFEE0224C5E9DE00BAF54A /* CollectionScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionScrollingViewController.swift; sourceTree = "<group>"; };
+		F5AFEE0424C5EAA400BAF54A /* CollectionScrollingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionScrollingView.swift; sourceTree = "<group>"; };
+		F5AFEE0624C5EBF600BAF54A /* CollectionScrolling.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CollectionScrolling.storyboard; sourceTree = "<group>"; };
 		F5CB43E324C5CDD800E796C5 /* MemoryOptimization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryOptimization.swift; sourceTree = "<group>"; };
 		F5CB43FE24C5D05600E796C5 /* LargeImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LargeImages.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,7 +71,7 @@
 				F5CB43DC24C5C4E300E796C5 /* MemoryOptimization */,
 				F5CB43DD24C5C4FD00E796C5 /* MemoryLeaks */,
 				F5CB43DE24C5C50B00E796C5 /* TimeProfiler */,
-				F5CB43DF24C5C51800E796C5 /* ListScrolling */,
+				F5CB43DF24C5C51800E796C5 /* CollectionScrolling */,
 				F5CB43E124C5C54800E796C5 /* CoreDataOptimization */,
 				F5CB43E224C5C55300E796C5 /* StaticAnalyzer */,
 				18D775C022AD944300AE281E /* AppDelegate.swift */,
@@ -110,11 +116,14 @@
 			path = TimeProfiler;
 			sourceTree = "<group>";
 		};
-		F5CB43DF24C5C51800E796C5 /* ListScrolling */ = {
+		F5CB43DF24C5C51800E796C5 /* CollectionScrolling */ = {
 			isa = PBXGroup;
 			children = (
+				F5AFEE0224C5E9DE00BAF54A /* CollectionScrollingViewController.swift */,
+				F5AFEE0424C5EAA400BAF54A /* CollectionScrollingView.swift */,
+				F5AFEE0624C5EBF600BAF54A /* CollectionScrolling.storyboard */,
 			);
-			path = ListScrolling;
+			path = CollectionScrolling;
 			sourceTree = "<group>";
 		};
 		F5CB43E124C5C54800E796C5 /* CoreDataOptimization */ = {
@@ -191,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
+				F5AFEE0724C5EBF600BAF54A /* CollectionScrolling.storyboard in Resources */,
 				F5CB43FF24C5D05600E796C5 /* LargeImages.xcassets in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
@@ -225,8 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D775C122AD944300AE281E /* AppDelegate.swift in Sources */,
+				F5AFEE0324C5E9DE00BAF54A /* CollectionScrollingViewController.swift in Sources */,
 				18D775C322AD944300AE281E /* SceneDelegate.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
+				F5AFEE0524C5EAA400BAF54A /* CollectionScrollingView.swift in Sources */,
 				F5CB43E424C5CDD800E796C5 /* MemoryOptimization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
