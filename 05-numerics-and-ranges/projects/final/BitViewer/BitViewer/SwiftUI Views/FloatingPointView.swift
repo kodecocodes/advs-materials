@@ -32,14 +32,18 @@
 
 import SwiftUI
 
-private extension FloatingPoint {
+private extension BinaryFloatingPoint {
+  var bias: Int {
+    Int(pow(2.0, Double(Self.exponentBitCount - 1))) - 1
+  }
+
   var formattedExponent: String {
     if self.isZero {
       return "Int.min"
     } else if self.isInfinite || self.isNaN {
       return "Int.max"
     } else {
-      return String(self.exponent)
+      return "\(exponentBitPattern)-\(bias) = \(self.exponent)"
     }
   }
 
@@ -59,10 +63,6 @@ struct FloatingPointView<FloatType: BinaryFloatingPoint & BitPatternConvertable 
 
   let font: Font = .system(size: 25, weight: .bold, design: .monospaced)
 
-  var spacer: some View {
-    Color.clear.frame(height: 10)
-  }
-
   func bindingToBitPattern() -> Binding<FloatType.BitPattern> {
     Binding(get: { value.bitPattern }, set: { value = FloatType(bitPattern: $0) })
   }
@@ -71,27 +71,28 @@ struct FloatingPointView<FloatType: BinaryFloatingPoint & BitPatternConvertable 
     BitSemantic.provider(for: FloatType.self)
   }
 
+  var fullPrecision: String {
+    String(format: "%.30g", value.asDouble())
+  }
+
+  var bias: String {
+    "\(pow(2, FloatType.exponentBitCount - 1) - 1)"
+  }
+
   var body: some View {
     VStack(alignment: .leading) {
-      HStack(alignment: .top, spacing: 40) {
+      HStack(alignment: .top) {
         BitLegend(kind: .floatingPoint)
-        VStack(alignment: .leading, spacing: 10) {
-          Text("      Radix: \(String(FloatType.radix))")
-          Text("   Exponent: \(value.formattedExponent)")
-          Text("Significand: \(String(describing: value.significand))")
-        }.font(font)
       }
       Toggle(isOn: $preferences.displayBitsStacked) {
         Text("Display bits as stacks of bytes")
       }.toggleStyle(CheckboxToggleStyle())
 
       BitsView(value: bindingToBitPattern(), bitSemanticProvider: bitSemanticProvider())
-
-      spacer
-
+        .padding(.bottom, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
       Text("Attributes").font(font)
       ScrollView(.horizontal) {
-        LazyHGrid(rows: [GridItem(.fixed(35))], spacing: 6) {
+        LazyHGrid(rows: [GridItem(.fixed(30))], spacing: 6) {
           AttributeLabelView(isOn: value.isZero, labelText: "isZero", color: .black)
           AttributeLabelView(isOn: value.isNaN, labelText: "isNan", color: .black)
           AttributeLabelView(isOn: value.isSignalingNaN, labelText: "isSignalingNaN", color: .red)
@@ -103,13 +104,18 @@ struct FloatingPointView<FloatType: BinaryFloatingPoint & BitPatternConvertable 
         }
       }
       VStack(alignment: .leading, spacing: 10) {
-        Text("Describing: \(String(describing: value))")
-        Text("Underlying: \(String(format: "%.30g", value.asDouble()))")
-        Text("       Hex: 0x\(String(value.bitPattern, radix: 16).uppercased())")
-        Text(" Evaluated: \(value.evaluatedComponents)")
+        Text(" Describing: \(String(describing: value))")
+        Text("       Full: \(fullPrecision)")
+        Text("        Hex: 0x\(String(value.bitPattern, radix: 16).uppercased())")
+        Text("       Bias: \(bias)")
+        Text("   Exponent: \(value.formattedExponent)")
+        Text("      Radix: \(String(FloatType.radix))")
+        Text("Significand: \(String(describing: value.significand))")
+        Text("  Evaluated: \(value.evaluatedComponents)")
       }.font(font).padding([.leading])
     }
     .padding()
+    .padding(.bottom, 100)
     .navigationTitle(String(describing: FloatType.self))
   }
 }
