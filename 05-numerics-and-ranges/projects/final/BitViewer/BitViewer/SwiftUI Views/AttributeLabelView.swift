@@ -36,15 +36,29 @@ struct AttributeLabelView: View {
   let isOn: Bool
   let labelText: String
   let color: Color
-  let deselectColor = Color.gray.opacity(0.3)
-  let deselectBackground = Color.gray.opacity(0.01)
 
   var body: some View {
     Text(labelText)
       .padding(6)
-      .background(isOn ? color.opacity(0.1) : deselectBackground)
-      .foregroundColor(isOn ? color : deselectColor)
-      .border(isOn ? color : deselectColor, width: 1)
-      .cornerRadius(3)
+      .background(
+        ZStack {
+          RoundedRectangle(cornerRadius: cornerRadius).fill(backgroundColor)
+          RoundedRectangle(cornerRadius: cornerRadius).stroke(foregroundColor, lineWidth: 1)
+        })
+      .foregroundColor(foregroundColor)
+  }
+
+  // MARK: - View constants
+
+  let cornerRadius: CGFloat = 5
+  let deselectColor = Color.gray.opacity(0.3)
+  let deselectBackground = Color.gray.opacity(0.01)
+  var backgroundColor: Color { isOn ? color.opacity(0.1) : deselectBackground }
+  var foregroundColor: Color { isOn ? color : deselectColor }
+}
+
+struct AttributeLabelView_Previews: PreviewProvider {
+  static var previews: some View {
+    AttributeLabelView(isOn: true, labelText: "Normalized", color: .red)
   }
 }
