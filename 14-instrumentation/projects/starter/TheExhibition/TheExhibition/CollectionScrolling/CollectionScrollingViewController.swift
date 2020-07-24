@@ -33,4 +33,30 @@
 import UIKit
 
 class CollectionScrollingViewController: UIViewController {
+  let totalCells = 10000
+  @IBOutlet weak var collectionView: UICollectionView!
+}
+
+extension CollectionScrollingViewController: UICollectionViewDelegate {
+}
+
+extension CollectionScrollingViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return totalCells
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    var time = clock()
+
+    guard let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: "NumberCollectionViewCell",
+      for: indexPath
+    ) as? NumberCollectionViewCell else {
+      return UICollectionViewCell()
+    }
+    cell.number = TrackedNumbersGenerator.generate()
+    time = clock() - time
+    cell.time = "\(Double(time) * 1000 / Double(CLOCKS_PER_SEC))"
+    return cell
+  }
 }

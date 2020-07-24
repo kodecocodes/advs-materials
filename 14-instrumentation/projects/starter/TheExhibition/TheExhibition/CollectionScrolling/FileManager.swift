@@ -30,46 +30,10 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-struct ContentView: View {
-  var body: some View {
-    NavigationView {
-      List {
-        Section(header: Text("A: Memory")) {
-          NavigationLink(destination: MemoryOptimization()) {
-            Text("A-1: Optimization").padding()
-          }
-          NavigationLink(destination: Text("Link")) {
-            Text("A-2: Leaks").padding()
-          }
-        }
-        Section(header: Text("B: Performace")) {
-          NavigationLink(
-            destination: CollectionScrollingView()
-          ) {
-            Text("B-1: Collection Scrolling").padding()
-          }
-        }
-        Section(header: Text("C: CoreData")) {
-          NavigationLink(
-            destination: CoreDataOptimizationView()
-          ) {
-            Text("C-1: CoreData Optimization").padding()
-          }
-        }
-        Section(header: Text("D: Static Analyzer")) {
-          NavigationLink(destination: Text("Link")) {
-            Text("D-1: ").padding()
-          }
-        }
-      }.navigationTitle("The Exhibition")
-    }
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
+public extension FileManager {
+  static var documentsDirectoryURL: URL {
+    `default`.urls(for: .documentDirectory, in: .userDomainMask)[0]
   }
 }
