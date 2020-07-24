@@ -39,13 +39,7 @@
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5807B3424CB1F9A007283B2 /* Countries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Countries.xcdatamodel; sourceTree = "<group>"; };
-		F5807B3624CB21DA007283B2 /* continents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = continents.json; sourceTree = "<group>"; };
-		F5807B3724CB21DA007283B2 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
-		F5807B3A24CB22F5007283B2 /* languages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
 		F5807B5F24CB4316007283B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		F5807B6224CB4534007283B2 /* PreloadHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadHandler.swift; sourceTree = "<group>"; };
-		F5807B6424CB4765007283B2 /* PreCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreCountries.swift; sourceTree = "<group>"; };
-		F5807B6724CB47EE007283B2 /* PreLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLanguages.swift; sourceTree = "<group>"; };
 		F5807B6924CB4E2A007283B2 /* CoreDataOptimizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataOptimizationView.swift; sourceTree = "<group>"; };
 		F5807B6B24CB9A93007283B2 /* Countries.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Countries.sqlite-wal"; sourceTree = "<group>"; };
 		F5807B6C24CB9A93007283B2 /* Countries.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Countries.sqlite; sourceTree = "<group>"; };
@@ -123,22 +117,8 @@
 				F5807B6C24CB9A93007283B2 /* Countries.sqlite */,
 				F5807B6D24CB9A93007283B2 /* Countries.sqlite-shm */,
 				F5807B6B24CB9A93007283B2 /* Countries.sqlite-wal */,
-				F5807B3624CB21DA007283B2 /* continents.json */,
-				F5807B3724CB21DA007283B2 /* countries.json */,
-				F5807B3A24CB22F5007283B2 /* languages.json */,
-				F5807B6224CB4534007283B2 /* PreloadHandler.swift */,
-				F5807B6624CB47DB007283B2 /* Preload Models */,
 			);
 			path = Preloading;
-			sourceTree = "<group>";
-		};
-		F5807B6624CB47DB007283B2 /* Preload Models */ = {
-			isa = PBXGroup;
-			children = (
-				F5807B6424CB4765007283B2 /* PreCountries.swift */,
-				F5807B6724CB47EE007283B2 /* PreLanguages.swift */,
-			);
-			path = "Preload Models";
 			sourceTree = "<group>";
 		};
 		F5CB43DC24C5C4E300E796C5 /* MemoryOptimization */ = {
