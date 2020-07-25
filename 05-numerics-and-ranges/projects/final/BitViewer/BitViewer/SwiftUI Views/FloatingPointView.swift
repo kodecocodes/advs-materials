@@ -57,7 +57,9 @@ private extension BinaryFloatingPoint {
   }
 }
 
-struct FloatingPointView<FloatType: BinaryFloatingPoint & BitPatternConvertable & DoubleConvertable>: View {
+typealias FloatingPointViewConstraints = BinaryFloatingPoint & BitPatternConvertable & DoubleConvertable
+
+struct FloatingPointView<FloatType: FloatingPointViewConstraints>: View {
   @Binding var value: FloatType
   @EnvironmentObject var preferences: Preferences
 

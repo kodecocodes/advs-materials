@@ -37,19 +37,11 @@ struct IntegerView<IntType: FixedWidthInteger>: View {
   @Binding var value: IntType
   @EnvironmentObject var preferences: Preferences
 
-  var spacer: some View {
-    Color.clear.frame(height: 10)
-  }
-
-  var horizontalBar: some View {
-    Color.gray.frame(height: 1)
-  }
-
   var body: some View {
     VStack(alignment: .leading) {
       if IntType.isSigned {
         BitLegend(kind: .signedInteger)
-        spacer
+          .padding(.bottom, 10)
       }
       if IntType.bitWidth > 8 {
         Toggle(isOn: $preferences.displayBitsStacked) {
@@ -57,10 +49,10 @@ struct IntegerView<IntType: FixedWidthInteger>: View {
         }.toggleStyle(CheckboxToggleStyle())
       }
       BitsView(value: $value, bitSemanticProvider: BitSemantic.provider(for: IntType.self))
-      spacer
+        .padding(.bottom, 10)
       Group {
         IntegerValueExpansionView(value: value, kind: .powersOfTwo)
-        horizontalBar
+        Color.gray.frame(height: 1)
         IntegerValueExpansionView(value: value, kind: .evaluated)
       }.font(.system(size: 30, weight: .bold, design: .monospaced)).padding([.leading])
     }

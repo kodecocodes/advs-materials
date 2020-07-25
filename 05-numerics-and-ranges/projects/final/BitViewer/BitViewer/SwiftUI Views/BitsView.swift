@@ -51,6 +51,16 @@ extension BitSemantic {
       return Color.green.opacity(0.15)
     }
   }
+  var semanticLabel: String {
+    switch self {
+    case .sign:
+      return "±"
+    case .exponent:
+      return "^"
+    case .significand:
+      return "·"
+    }
+  }
 }
 
 struct BitsView<IntType: FixedWidthInteger>: View {
@@ -68,6 +78,10 @@ struct BitsView<IntType: FixedWidthInteger>: View {
     bitSemanticProvider(index)?.color ?? Color.black.opacity(0.05)
   }
 
+  private func semanticLabel(at index: Int) -> String {
+    bitSemanticProvider(index)?.semanticLabel ?? ""
+  }
+
   private func bitView(_ bit: FixedWidthIntegerBit) -> some View {
     VStack {
       Text(bit.string)
@@ -75,7 +89,14 @@ struct BitsView<IntType: FixedWidthInteger>: View {
         .font(.system(size: bitSizePoints * 0.5, weight: .regular, design: .monospaced))
         .foregroundColor(foregroundColor)
         .border(foregroundColor, width: 1)
-        .background(color(at: bit.id))
+        .background(
+          ZStack {
+            Text(semanticLabel(at: bit.id))
+              .font(.system(size: bitSizePoints * 0.25, weight: .regular, design: .monospaced))
+              .position(x: bitSizePoints * 0.15, y: bitSizePoints * 0.15)
+            color(at: bit.id)
+          }
+        )
         .onTapGesture {
           value.wrappedValue.toggleBit(at: bit.id)
         }
