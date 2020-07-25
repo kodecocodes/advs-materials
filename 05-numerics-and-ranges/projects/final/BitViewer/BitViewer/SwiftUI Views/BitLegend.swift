@@ -32,34 +32,49 @@
 
 import SwiftUI
 
-struct BitLegend: View {
-  enum Kind {
-    case signedInteger, floatingPoint
+extension BitSemantic {
+  var longName: String {
+    switch self {
+    case .sign:
+      return "Sign Bit"
+    case .exponent:
+      return "Exponent Bits"
+    case .significand:
+      return "Significand Bits"
+    }
   }
-  let kind: Kind
-  let font: Font = .system(size: 25, weight: .bold, design: .monospaced)
+}
 
-  var items: [(Color, String)] {
+struct BitLegend: View {
+  enum Kind { case signedInteger, floatingPoint }
+  let kind: Kind
+
+  var items: [BitSemantic] {
     switch kind {
     case .signedInteger:
-      return [(BitSemantic.sign.color, "Sign Bit")]
+      return [BitSemantic.sign]
     case .floatingPoint:
-      return [
-        (BitSemantic.sign.color, "Sign Bit"),
-        (BitSemantic.exponent.color, "Exponent Bits"),
-        (BitSemantic.significand.color, "Significand Bits")
-      ]
+      return BitSemantic.allCases
     }
   }
 
   var body: some View {
-    VStack(alignment: .leading) {
-      ForEach(items, id: \.1) { item in
+    VStack(alignment: .leading, spacing: spacing) {
+      ForEach(items, id: \.self) { item in
         HStack {
-          item.0.frame(width: 30, height: 30).border(Color.black)
-          Text(item.1).font(font)
+          Text(item.semanticLabel)
+            .frame(width: squareSize, height: squareSize)
+            .border(borderColor)
+            .background(item.color)
+          Text(item.longName).font(font)
         }
       }
     }
   }
+
+  // MARK: - View constants
+  let spacing: CGFloat = 10
+  let font: Font = .system(size: 25, weight: .bold, design: .monospaced)
+  let squareSize: CGFloat = 30
+  let borderColor = Color.black
 }
