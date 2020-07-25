@@ -33,9 +33,15 @@
 import SwiftUI
 
 struct AttributeLabelView: View {
-  let isOn: Bool
   let labelText: String
+  let isOn: Bool
   let color: Color
+
+  init(_ labelText: String, isOn: Bool, color: Color = .black) {
+    self.labelText = labelText
+    self.isOn = isOn
+    self.color = color
+  }
 
   var body: some View {
     Text(labelText)
@@ -59,6 +65,6 @@ struct AttributeLabelView: View {
 
 struct AttributeLabelView_Previews: PreviewProvider {
   static var previews: some View {
-    AttributeLabelView(isOn: true, labelText: "Normalized", color: .red)
+    AttributeLabelView("Normalized", isOn: true, color: .red)
   }
 }

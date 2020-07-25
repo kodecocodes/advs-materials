@@ -80,27 +80,28 @@ struct FloatingPointView<FloatType: BinaryFloatingPoint & BitPatternConvertable 
   }
 
   var body: some View {
-    VStack(alignment: .leading) {
+    VStack(alignment: .leading, spacing: 20) {
       HStack(alignment: .top) {
         BitLegend(kind: .floatingPoint)
       }
+
       Toggle(isOn: $preferences.displayBitsStacked) {
         Text("Display bits as stacks of bytes")
       }.toggleStyle(CheckboxToggleStyle())
 
       BitsView(value: bindingToBitPattern(), bitSemanticProvider: bitSemanticProvider())
-        .padding(.bottom, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+
       Text("Attributes").font(font)
-      ScrollView(.horizontal) {
-        LazyHGrid(rows: [GridItem(.fixed(30))], spacing: 6) {
-          AttributeLabelView(isOn: value.isZero, labelText: "isZero", color: .black)
-          AttributeLabelView(isOn: value.isNaN, labelText: "isNan", color: .black)
-          AttributeLabelView(isOn: value.isSignalingNaN, labelText: "isSignalingNaN", color: .red)
-          AttributeLabelView(isOn: value.isInfinite, labelText: "isInfinite", color: .black)
-          AttributeLabelView(isOn: value.isFinite, labelText: "isFinite", color: .black)
-          AttributeLabelView(isOn: value.isCanonical, labelText: "isCanonical", color: .black)
-          AttributeLabelView(isOn: value.isNormal, labelText: "isNormal", color: .black)
-          AttributeLabelView(isOn: value.isSubnormal, labelText: "isSubnormal", color: .black)
+      ScrollView(.horizontal, showsIndicators: false) {
+        HStack(spacing: 6) {
+          AttributeLabelView("isZero", isOn: value.isZero)
+          AttributeLabelView("isNan", isOn: value.isNaN)
+          AttributeLabelView("isSignalingNaN", isOn: value.isSignalingNaN)
+          AttributeLabelView("isInfinite", isOn: value.isInfinite)
+          AttributeLabelView("isFinite", isOn: value.isFinite)
+          AttributeLabelView("isCanonical", isOn: value.isCanonical)
+          AttributeLabelView("isNormal", isOn: value.isNormal)
+          AttributeLabelView("isSubnormal", isOn: value.isSubnormal)
         }
       }
       VStack(alignment: .leading, spacing: 10) {
@@ -115,7 +116,6 @@ struct FloatingPointView<FloatType: BinaryFloatingPoint & BitPatternConvertable 
       }.font(font).padding([.leading])
     }
     .padding()
-    .padding(.bottom, 100)
     .navigationTitle(String(describing: FloatType.self))
   }
 }

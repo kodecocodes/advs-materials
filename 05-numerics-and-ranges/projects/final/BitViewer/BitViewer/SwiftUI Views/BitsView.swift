@@ -126,7 +126,7 @@ struct BitsView<IntType: FixedWidthInteger>: View {
           }
         }
       }
-    }
+    }.padding(.top, 10)
   }
 
   var body: some View {
