@@ -58,11 +58,6 @@ struct ContentView: View {
             Text("C-1: CoreData Optimization").padding()
           }
         }
-        Section(header: Text("D: Static Analyzer")) {
-          NavigationLink(destination: Text("Link")) {
-            Text("D-1: ").padding()
-          }
-        }
       }.navigationTitle("The Exhibition")
     }
   }

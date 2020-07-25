@@ -91,7 +91,6 @@
 				F5CB43DE24C5C50B00E796C5 /* TimeProfiler */,
 				F5CB43DF24C5C51800E796C5 /* CollectionScrolling */,
 				F5CB43E124C5C54800E796C5 /* CoreDataOptimization */,
-				F5CB43E224C5C55300E796C5 /* StaticAnalyzer */,
 				18D775C022AD944300AE281E /* AppDelegate.swift */,
 				18D775C222AD944300AE281E /* SceneDelegate.swift */,
 				18D775C422AD944300AE281E /* ContentView.swift */,
@@ -166,13 +165,6 @@
 				F5807B6924CB4E2A007283B2 /* CoreDataOptimizationView.swift */,
 			);
 			path = CoreDataOptimization;
-			sourceTree = "<group>";
-		};
-		F5CB43E224C5C55300E796C5 /* StaticAnalyzer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = StaticAnalyzer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
