@@ -34,11 +34,21 @@ import SwiftUI
 
 struct CountryView: View {
   var country: Countries?
-    var body: some View {
+  var body: some View {
+    VStack {
       HStack {
         Text(country?.name ?? "name")
+        Spacer()
+        Text(country?.continent?.name ?? "continent")
+      }
+      HStack {
+        ForEach(country?.languagesArray ?? []) { language in
+          LanguageView(language: language)
+        }
+        Spacer()
       }
     }
+  }
 }
 
 struct CountryView_Previews: PreviewProvider {

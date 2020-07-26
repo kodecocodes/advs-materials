@@ -113,7 +113,14 @@ class CoreDataManager {
   }
 }
 
-extension Countries: Identifiable {}
+extension Countries: Identifiable {
+  var languagesArray: [Languages] {
+    guard let array = languages?.allObjects as? [Languages] else {
+      return []
+    }
+    return array
+  }
+}
 
 extension Languages: Identifiable {}
 

@@ -42,12 +42,12 @@ struct CoreDataOptimizationView: View {
   ) var allCountries: FetchedResults<Countries>
 
   var body: some View {
-//    List {
-//      ForEach(allCountries) { country in
-//        CountryView(country: country)
-//      }
-//    }
-    Text("test")
+    List {
+      ForEach(allCountries) { country in
+        CountryView(country: country)
+      }
+    }
+//    Text("test")
   }
 }
 

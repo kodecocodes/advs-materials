@@ -1,15 +1,15 @@
 /// Copyright (c) 2020 Razeware LLC
-///
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-///
+/// 
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -32,41 +32,15 @@
 
 import SwiftUI
 
-struct ContentView: View {
-  let context = CoreDataManager.shared.context
-  var body: some View {
-    NavigationView {
-      List {
-        Section(header: Text("A: Memory")) {
-          NavigationLink(destination: MemoryOptimization()) {
-            Text("A-1: Optimization").padding()
-          }
-          NavigationLink(destination: Text("Link")) {
-            Text("A-2: Leaks").padding()
-          }
-        }
-        Section(header: Text("B: Performace")) {
-          NavigationLink(
-            destination: CollectionScrollingView()
-          ) {
-            Text("B-1: Collection Scrolling").padding()
-          }
-        }
-        Section(header: Text("C: CoreData")) {
-          NavigationLink(
-            destination:
-              CoreDataOptimizationView().environment(\.managedObjectContext, CoreDataManager.shared.context)
-          ) {
-            Text("C-1: CoreData Optimization").padding()
-          }
-        }
-      }.navigationTitle("The Exhibition")
+struct LanguageView: View {
+  var language: Languages?
+    var body: some View {
+      Text(language?.name ?? "language")
     }
-  }
 }
 
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-  }
+struct LanguageView_Previews: PreviewProvider {
+    static var previews: some View {
+        LanguageView()
+    }
 }
