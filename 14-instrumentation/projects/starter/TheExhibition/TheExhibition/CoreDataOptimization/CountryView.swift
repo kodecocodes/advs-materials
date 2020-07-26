@@ -32,27 +32,17 @@
 
 import SwiftUI
 
-struct CoreDataOptimizationView: View {
-//  var preloadHandler = PreloadHandler()
-  @Environment(\.managedObjectContext) var context
-
-  @FetchRequest(
-    entity: Countries.entity(),
-    sortDescriptors: [NSSortDescriptor(keyPath: \Countries.name, ascending: true)]
-  ) var allCountries: FetchedResults<Countries>
-
-  var body: some View {
-//    List {
-//      ForEach(allCountries) { country in
-//        CountryView(country: country)
-//      }
-//    }
-    Text("test")
-  }
+struct CountryView: View {
+  var country: Countries?
+    var body: some View {
+      HStack {
+        Text(country?.name ?? "name")
+      }
+    }
 }
 
-struct CoreDataOptimizationView_Previews: PreviewProvider {
+struct CountryView_Previews: PreviewProvider {
   static var previews: some View {
-    CoreDataOptimizationView()
+    CountryView()
   }
 }

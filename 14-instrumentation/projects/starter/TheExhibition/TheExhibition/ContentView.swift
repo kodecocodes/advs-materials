@@ -53,7 +53,7 @@ struct ContentView: View {
         }
         Section(header: Text("C: CoreData")) {
           NavigationLink(
-            destination: CoreDataOptimizationView()
+            destination: CoreDataOptimizationView().environment(\.managedObjectContext, CoreDataManager.shared.context)
           ) {
             Text("C-1: CoreData Optimization").padding()
           }

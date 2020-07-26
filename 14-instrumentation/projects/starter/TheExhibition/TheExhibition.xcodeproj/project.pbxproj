@@ -13,6 +13,7 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		F564A45D24CD6F170060A12A /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564A45C24CD6F170060A12A /* CountryView.swift */; };
 		F5807B3524CB1F9A007283B2 /* Countries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5807B3324CB1F9A007283B2 /* Countries.xcdatamodeld */; };
 		F5807B6024CB4316007283B2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5807B5F24CB4316007283B2 /* CoreDataManager.swift */; };
 		F5807B6A24CB4E2A007283B2 /* CoreDataOptimizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5807B6924CB4E2A007283B2 /* CoreDataOptimizationView.swift */; };
@@ -38,6 +39,7 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F564A45C24CD6F170060A12A /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		F5807B3424CB1F9A007283B2 /* Countries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Countries.xcdatamodel; sourceTree = "<group>"; };
 		F5807B5F24CB4316007283B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F5807B6924CB4E2A007283B2 /* CoreDataOptimizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataOptimizationView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				F5807B3324CB1F9A007283B2 /* Countries.xcdatamodeld */,
 				F5807B5F24CB4316007283B2 /* CoreDataManager.swift */,
 				F5807B6924CB4E2A007283B2 /* CoreDataOptimizationView.swift */,
+				F564A45C24CD6F170060A12A /* CountryView.swift */,
 			);
 			path = CoreDataOptimization;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				F5D16D5324CB0AC400ECF91D /* TrackedNumbersGenerator.swift in Sources */,
 				F5D16D5024CB01EC00ECF91D /* FileManager.swift in Sources */,
 				F5807B6024CB4316007283B2 /* CoreDataManager.swift in Sources */,
+				F564A45D24CD6F170060A12A /* CountryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -112,3 +112,9 @@ class CoreDataManager {
     return results.isEmpty
   }
 }
+
+extension Countries: Identifiable {}
+
+extension Languages: Identifiable {}
+
+extension Continents: Identifiable {}
