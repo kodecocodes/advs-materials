@@ -92,7 +92,7 @@ struct BitsView<IntType: FixedWidthInteger>: View {
         .background(
           ZStack {
             Text(semanticLabel(at: bit.id))
-              .font(.system(size: bitSizePoints * 0.25, weight: .regular, design: .monospaced))
+              .font(.system(size: bitSizePoints * 0.45, weight: .regular, design: .monospaced))
               .position(x: bitSizePoints * 0.15, y: bitSizePoints * 0.15)
             color(at: bit.id)
           }

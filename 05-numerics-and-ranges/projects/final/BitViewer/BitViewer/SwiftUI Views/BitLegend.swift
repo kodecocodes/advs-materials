@@ -32,7 +32,7 @@
 
 import SwiftUI
 
-extension BitSemantic {
+private extension BitSemantic {
   var longName: String {
     switch self {
     case .sign:
