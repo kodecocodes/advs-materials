@@ -31,14 +31,23 @@
 /// THE SOFTWARE.
 
 import Foundation
+import UIKit
 
-class SlowArray {
-  func printArray() {
-    let doubleArray = Array(repeating: 1.123, count: 100).map { $0 * Double.random(in: 0 ..< 1000) }
-    let intArray = Array(repeating: 1, count: 100).map { $0 * Int.random(in: 0 ..< 1000) }
-    let doubleMultiply = zip(doubleArray, intArray).map { $0 * Double($1) }
-    let sum = doubleMultiply.sorted().map { $0 * 123 }.reduce(0, +)
-    print(doubleMultiply)
-    print(sum)
+// swiftlint:disable line_length
+class SlowMath {
+  func calculatePoint() -> CGPoint {
+    CGPoint(
+      x: (UIApplication.shared.windows.first?.frame.size.width ?? 300 / 3) + CGFloat.random(in: 0...1000) / CGFloat(100),
+      y: (UIApplication.shared.windows.first?.frame.size.height ?? 300 / 3) + CGFloat.random(in: 0...1000) / CGFloat(100)
+    )
+  }
+
+  func calculateEquation() -> Double {
+    (Bool.random() ?
+      (pow(pow(Double.random(in: 100...1000), 2.0), 6.0) / 5.5 + Double.random(in: 100...1000)) * 25 / 3 + Double.random(in: 100...1000)
+      :
+      (pow(pow(Double.random(in: 1...100), 2.0), 6.0) / 5.5 + Double.random(in: 1...100)) * 25 / 3 + Double.random(in: 1...100))
+      + Double(UIApplication.shared.windows.first?.frame.size.width ?? CGFloat(400) / 2 * 500 * CGFloat.random(in: 100...1000))
   }
 }
+// swiftlint:enable line_length
