@@ -1,0 +1,201 @@
+[
+    {
+        "name": "Archangel of Thune",
+        "manaCost": "{3}{W}{W}",
+        "type": "Creature — Angel",
+        "types": [
+            "Creature"
+        ],
+        "subtypes": [
+            "Angel"
+        ],
+        "rarity": "Mythic Rare",
+        "set": "IMA",
+        "setName": "Iconic Masters",
+        "text": "Flying\nLifelink (Damage dealt by this creature also causes you to gain that much life.)\nWhenever you gain life, put a +1/+1 counter on each creature you control.",
+        "flavor": "Even the wicked have nightmares.",
+        "number": "8",
+        "power": "3",
+        "toughness": "4",
+        "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=438574&type=card",
+        "rulings": [
+            {
+                "date": "2017-11-17",
+                "text": "Archangel of Thune’s last ability triggers just once for each life-gaining event, whether it’s 1 life from Auriok Champion or 6 life from Tavern Swindler."
+            },
+            {
+                "date": "2017-11-17",
+                "text": "If a creature you control is dealt lethal damage at the same time that you gain life, it won’t receive a counter from Archangel of Thune’s last ability in time to save it."
+            },
+            {
+                "date": "2017-11-17",
+                "text": "Each creature with lifelink dealing combat damage causes a separate life-gaining event. For example, if two creatures you control with lifelink deal combat damage at the same time, Archangel of Thune’s last ability will trigger twice. However, if a single creature you control with lifelink deals combat damage to multiple creatures, players, and/or planeswalkers at the same time (perhaps because it has trample or was blocked by more than one creature), the ability will trigger only once."
+            },
+            {
+                "date": "2017-11-17",
+                "text": "In a Two-Headed Giant game, life gained by your teammate won’t cause the ability to trigger, even though it causes your team’s life total to increase."
+            }
+        ],
+        "id": "0f798e79-7406-55e7-ba39-1bb1c0abf917"
+    },
+    {
+        "name": "Thoughtseize",
+        "manaCost": "{B}",
+        "type": "Sorcery",
+        "types": [
+            "Sorcery"
+        ],
+        "subtypes": [],
+        "rarity": "Rare",
+        "set": "IMA",
+        "setName": "Iconic Masters",
+        "text": "Target player reveals their hand. You choose a nonland card from it. That player discards that card. You lose 2 life.",
+        "flavor": "\"Any dream is a robust harvest. Still, I prefer the timeworn dreams, heavy with import, that haunt the obsessive mind.\"",
+        "number": "110",
+        "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=438676&type=card",
+        "rulings": [
+            {
+                "date": "2013-09-15",
+                "text": "The loss of life is part of the spell’s effect. It’s not an additional cost. If Thoughtseize doesn’t resolve, you won’t lose life."
+            },
+            {
+                "date": "2014-02-01",
+                "text": "If you target yourself with this spell, you must reveal your entire hand to the other players just as any other player would."
+            }
+        ],
+        "id": "04e3fc94-0ef1-55dc-9427-72fbf0b5bfc1"
+    },
+    {
+        "name": "Batterskull",
+        "manaCost": "{5}",
+        "type": "Artifact — Equipment",
+        "types": [
+            "Artifact"
+        ],
+        "subtypes": [
+            "Equipment"
+        ],
+        "rarity": "Mythic Rare",
+        "set": "NPH",
+        "setName": "New Phyrexia",
+        "text": "Living weapon (When this Equipment enters the battlefield, create a 0/0 black Germ creature token, then attach this to it.)\nEquipped creature gets +4/+4 and has vigilance and lifelink.\n{3}: Return Batterskull to its owner's hand.\nEquip {5}",
+        "number": "130",
+        "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=233055&type=card",
+        "rulings": [
+            {
+                "date": "2011-06-01",
+                "text": "The ability to return Batterskull to its owner’s hand can only be activated if Batterskull is on the battlefield. If Batterskull is no longer on the battlefield when the ability resolves, it will have no effect."
+            }
+        ],
+        "id": "936385d4-1ecf-50d3-a484-157d882d6211"
+    },
+    {
+        "name": "Force of Will",
+        "manaCost": "{3}{U}{U}",
+        "type": "Instant",
+        "types": [
+            "Instant"
+        ],
+        "subtypes": [],
+        "rarity": "Uncommon",
+        "set": "ALL",
+        "setName": "Alliances",
+        "text": "You may pay 1 life and exile a blue card from your hand rather than pay this spell's mana cost.\nCounter target spell.",
+        "number": "28",
+        "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=3107&type=card",
+        "rulings": [
+            {
+                "date": "2016-06-08",
+                "text": "If another effect causes Force of Will to cost more, you must pay that additional cost even if you pay its alternative cost."
+            }
+        ],
+        "id": "78d7b41d-45a2-5994-9a57-111f2b3f4f87"
+    },
+    {
+        "name": "Krenko, Mob Boss",
+        "manaCost": "{2}{R}{R}",
+        "type": "Legendary Creature — Goblin Warrior",
+        "types": [
+            "Creature"
+        ],
+        "subtypes": [
+            "Goblin",
+            "Warrior"
+        ],
+        "rarity": "Rare",
+        "set": "DDN",
+        "setName": "Duel Decks: Speed vs. Cunning",
+        "text": "{T}: Create X 1/1 red Goblin creature tokens, where X is the number of Goblins you control.",
+        "flavor": "\"He displays a perverse charisma fueled by avarice. Highly dangerous. Recommend civil sanctions.\" —Agmand Sarv, Azorius hussar",
+        "number": "15",
+        "power": "3",
+        "toughness": "3",
+        "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=386339&type=card",
+        "rulings": [
+            {
+                "date": "2012-07-01",
+                "text": "The ability counts each Goblin you control, including Krenko itself, not just the tokens it creates."
+            }
+        ],
+        "id": "f942e6c5-f222-56e1-82de-109b0408d1a1"
+    },
+    {
+        "name": "Rishkar's Expertise",
+        "manaCost": "{4}{G}{G}",
+        "type": "Sorcery",
+        "types": [
+            "Sorcery"
+        ],
+        "subtypes": [],
+        "rarity": "Rare",
+        "set": "AER",
+        "setName": "Aether Revolt",
+        "text": "Draw cards equal to the greatest power among creatures you control.\nYou may cast a card with converted mana cost 5 or less from your hand without paying its mana cost.",
+        "flavor": "\"Control the Great Conduit? You might as well try to divert a river with your hands.\"",
+        "number": "123",
+        "imageUrl": "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=423790&type=card",
+        "rulings": [
+            {
+                "date": "2017-02-09",
+                "text": "If you control no creatures with power greater than 0 as Rishkar’s Expertise resolves, you draw no cards, but you may cast a card with converted mana cost 5 or less from your hand without paying its mana cost."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "You may cast one of the cards drawn by Rishkar’s Expertise’s first effect while performing its second effect."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "A card’s converted mana cost is determined solely by the mana symbols printed in its upper right corner. The converted mana cost is the total amount of mana in that cost, regardless of color. For example, a card with mana cost {1}{U}{U} has converted mana cost 3. Ignore any alternative costs, additional costs, cost increases, or cost reductions that could apply to it. A card with no mana cost has a converted mana cost of 0."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "If the card has {X} in its mana cost, you must choose 0 as the value of X when casting it without paying its mana cost."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "The greatest power among creatures you control is determined as Rishkar’s Expertise resolves."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "If you cast a card “without paying its mana cost,” you can’t choose to cast it for any alternative costs, such as emerge costs. You can, however, pay additional costs. If the card has any mandatory additional costs, such as that of Cathartic Reunion, you must pay those to cast the card."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "While you’re casting your free spell, the Expertise spell is still on the stack. It will be put into its owner’s graveyard after the free spell is cast. The free spell can’t target the Expertise card in your graveyard. It can target the Expertise spell on the stack, but the Expertise spell will become an illegal target before the free spell resolves."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "Any triggered abilities that trigger while performing the Expertise spell’s first effect won’t be put onto the stack until after you’re done casting your free spell. They’re put onto the stack at the same time as any abilities that triggered while casting that spell regardless of the order in which those abilities triggered."
+            },
+            {
+                "date": "2017-02-09",
+                "text": "Effects that allow you to “cast” a card don’t allow you to play a land card."
+            },
+            {
+                "date": "2017-04-18",
+                "text": "The converted mana cost of a split card is determined by the combined mana cost of its two halves. If an expertise spell allows you to cast a split card, you may cast either half or, if that split card has fuse, both halves."
+            }
+        ],
+        "id": "f94cf5b2-dbe3-5b20-b1be-786299d079ff"
+    }
+]
