@@ -34,13 +34,13 @@ import SwiftUI
 
 struct LanguageView: View {
   var language: Languages?
-    var body: some View {
-      Text(language?.name ?? "language")
-    }
+  var body: some View {
+    Text(language?.name ?? "language")
+  }
 }
 
 struct LanguageView_Previews: PreviewProvider {
-    static var previews: some View {
-        LanguageView()
-    }
+  static var previews: some View {
+    LanguageView()
+  }
 }

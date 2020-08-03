@@ -13,6 +13,11 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		F531FB4424D8C25300F6981B /* MemoryLeaksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531FB4324D8C25300F6981B /* MemoryLeaksView.swift */; };
+		F531FB4624D8C26900F6981B /* MemoryLeaksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531FB4524D8C26900F6981B /* MemoryLeaksViewController.swift */; };
+		F531FB4824D8C27C00F6981B /* MemoryLeaks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F531FB4724D8C27C00F6981B /* MemoryLeaks.storyboard */; };
+		F531FB4A24D8D29B00F6981B /* WriterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531FB4924D8D29B00F6981B /* WriterProtocol.swift */; };
+		F531FB4C24D8D2F000F6981B /* InformationWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F531FB4B24D8D2F000F6981B /* InformationWriter.swift */; };
 		F564A45D24CD6F170060A12A /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564A45C24CD6F170060A12A /* CountryView.swift */; };
 		F564A46C24CD8E890060A12A /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F564A46B24CD8E890060A12A /* LanguageView.swift */; };
 		F5807B3524CB1F9A007283B2 /* Countries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F5807B3324CB1F9A007283B2 /* Countries.xcdatamodeld */; };
@@ -40,6 +45,11 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F531FB4324D8C25300F6981B /* MemoryLeaksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeaksView.swift; sourceTree = "<group>"; };
+		F531FB4524D8C26900F6981B /* MemoryLeaksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeaksViewController.swift; sourceTree = "<group>"; };
+		F531FB4724D8C27C00F6981B /* MemoryLeaks.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoryLeaks.storyboard; sourceTree = "<group>"; };
+		F531FB4924D8D29B00F6981B /* WriterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterProtocol.swift; sourceTree = "<group>"; };
+		F531FB4B24D8D2F000F6981B /* InformationWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationWriter.swift; sourceTree = "<group>"; };
 		F564A45C24CD6F170060A12A /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		F564A46B24CD8E890060A12A /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		F5807B3424CB1F9A007283B2 /* Countries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Countries.xcdatamodel; sourceTree = "<group>"; };
@@ -136,6 +146,11 @@
 		F5CB43DD24C5C4FD00E796C5 /* MemoryLeaks */ = {
 			isa = PBXGroup;
 			children = (
+				F531FB4324D8C25300F6981B /* MemoryLeaksView.swift */,
+				F531FB4524D8C26900F6981B /* MemoryLeaksViewController.swift */,
+				F531FB4724D8C27C00F6981B /* MemoryLeaks.storyboard */,
+				F531FB4924D8D29B00F6981B /* WriterProtocol.swift */,
+				F531FB4B24D8D2F000F6981B /* InformationWriter.swift */,
 			);
 			path = MemoryLeaks;
 			sourceTree = "<group>";
@@ -234,6 +249,7 @@
 			files = (
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				F5AFEE0724C5EBF600BAF54A /* CollectionScrolling.storyboard in Resources */,
+				F531FB4824D8C27C00F6981B /* MemoryLeaks.storyboard in Resources */,
 				F5807B7024CB9A93007283B2 /* Countries.sqlite-shm in Resources */,
 				F5CB43FF24C5D05600E796C5 /* LargeImages.xcassets in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
@@ -272,7 +288,11 @@
 			files = (
 				F5807B3524CB1F9A007283B2 /* Countries.xcdatamodeld in Sources */,
 				18D775C122AD944300AE281E /* AppDelegate.swift in Sources */,
+				F531FB4624D8C26900F6981B /* MemoryLeaksViewController.swift in Sources */,
+				F531FB4A24D8D29B00F6981B /* WriterProtocol.swift in Sources */,
 				F5D16D5224CB060300ECF91D /* NumberCollectionViewCell.swift in Sources */,
+				F531FB4C24D8D2F000F6981B /* InformationWriter.swift in Sources */,
+				F531FB4424D8C25300F6981B /* MemoryLeaksView.swift in Sources */,
 				F5AFEE0324C5E9DE00BAF54A /* CollectionScrollingViewController.swift in Sources */,
 				18D775C322AD944300AE281E /* SceneDelegate.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,

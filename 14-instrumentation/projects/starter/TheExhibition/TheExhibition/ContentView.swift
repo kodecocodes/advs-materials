@@ -38,10 +38,14 @@ struct ContentView: View {
     NavigationView {
       List {
         Section(header: Text("A: Memory")) {
-          NavigationLink(destination: MemoryOptimization()) {
+          NavigationLink(
+            destination: MemoryOptimization()
+          ) {
             Text("A-1: Optimization").padding()
           }
-          NavigationLink(destination: Text("Link")) {
+          NavigationLink(
+            destination: MemoryLeaksView()
+          ) {
             Text("A-2: Leaks").padding()
           }
         }

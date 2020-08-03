@@ -30,27 +30,23 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import UIKit
 
-struct CollectionScrollingView: UIViewControllerRepresentable {
-  typealias UIViewControllerType = CollectionScrollingViewController
-
-  func makeUIViewController(context: Context) -> CollectionScrollingViewController {
-    let storyboard = UIStoryboard(name: "CollectionScrolling", bundle: nil)
-
-    guard let listScrollingVC = storyboard.instantiateInitialViewController() as? CollectionScrollingViewController
-    else {
-      return CollectionScrollingViewController()
-    }
-    return listScrollingVC
+class MemoryLeaksViewController: UIViewController {
+  @IBOutlet weak var infoLabel: UILabel!
+  var infoWriter: InformationWriter?
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    infoWriter = InformationWriter(writer: self)
   }
 
-  func updateUIViewController(_ uiViewController: CollectionScrollingViewController, context: Context) {
+  @IBAction func buttonPressed(_ sender: UIButton) {
+    infoWriter?.doSomething()
   }
 }
 
-struct CollectionScrollingView_Previews: PreviewProvider {
-  static var previews: some View {
-    CollectionScrollingView()
+extension MemoryLeaksViewController: WriterProtocol {
+  func writeText(_ text: String) {
+    infoLabel.text = text
   }
 }

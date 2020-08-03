@@ -30,27 +30,22 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-struct CollectionScrollingView: UIViewControllerRepresentable {
-  typealias UIViewControllerType = CollectionScrollingViewController
+class InformationWriter {
+  var writeOperation: (String) -> Void
+  var repeatCount = 0
 
-  func makeUIViewController(context: Context) -> CollectionScrollingViewController {
-    let storyboard = UIStoryboard(name: "CollectionScrolling", bundle: nil)
-
-    guard let listScrollingVC = storyboard.instantiateInitialViewController() as? CollectionScrollingViewController
-    else {
-      return CollectionScrollingViewController()
+  init(writer: WriterProtocol) {
+    writeOperation = { info in
+      writer.writeText("Information = \(info)")
     }
-    return listScrollingVC
   }
 
-  func updateUIViewController(_ uiViewController: CollectionScrollingViewController, context: Context) {
-  }
-}
-
-struct CollectionScrollingView_Previews: PreviewProvider {
-  static var previews: some View {
-    CollectionScrollingView()
+  func doSomething() {
+    DispatchQueue.main.async {
+      self.repeatCount += 1
+      self.writeOperation("\(self.repeatCount)")
+    }
   }
 }

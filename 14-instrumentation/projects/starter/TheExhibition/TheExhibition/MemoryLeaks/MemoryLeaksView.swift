@@ -32,25 +32,25 @@
 
 import SwiftUI
 
-struct CollectionScrollingView: UIViewControllerRepresentable {
-  typealias UIViewControllerType = CollectionScrollingViewController
+struct MemoryLeaksView: UIViewControllerRepresentable {
+  typealias UIViewControllerType = MemoryLeaksViewController
 
-  func makeUIViewController(context: Context) -> CollectionScrollingViewController {
-    let storyboard = UIStoryboard(name: "CollectionScrolling", bundle: nil)
+  func makeUIViewController(context: Context) -> MemoryLeaksViewController {
+    let storyboard = UIStoryboard(name: "MemoryLeaks", bundle: nil)
 
-    guard let listScrollingVC = storyboard.instantiateInitialViewController() as? CollectionScrollingViewController
+    guard let listScrollingVC = storyboard.instantiateInitialViewController() as? MemoryLeaksViewController
     else {
-      return CollectionScrollingViewController()
+      return MemoryLeaksViewController()
     }
     return listScrollingVC
   }
 
-  func updateUIViewController(_ uiViewController: CollectionScrollingViewController, context: Context) {
+  func updateUIViewController(_ uiViewController: MemoryLeaksViewController, context: Context) {
   }
 }
 
-struct CollectionScrollingView_Previews: PreviewProvider {
+struct MemoryLeaksView_Previews: PreviewProvider {
   static var previews: some View {
-    CollectionScrollingView()
+    MemoryLeaksView()
   }
 }

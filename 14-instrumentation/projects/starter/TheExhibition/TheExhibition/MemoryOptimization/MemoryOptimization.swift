@@ -33,7 +33,7 @@
 import SwiftUI
 
 struct MemoryOptimization: View {
-  var totalImages = 12
+  var totalImages = 8
 
   var body: some View {
     List(1 ..< totalImages + 1) { item in
