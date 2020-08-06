@@ -49,37 +49,37 @@ struct SlowStruct {
 
   func withPhone(_ value: String) -> SlowStruct {
     var copy = self
-    copy.name = value
+    copy.phone = value
     return copy
   }
 
   func withEmail(_ value: String) -> SlowStruct {
     var copy = self
-    copy.name = value
+    copy.email = value
     return copy
   }
 
   func withCountry(_ value: String) -> SlowStruct {
     var copy = self
-    copy.name = value
+    copy.country = value
     return copy
   }
 
   func withCity(_ value: String) -> SlowStruct {
     var copy = self
-    copy.name = value
+    copy.city = value
     return copy
   }
 
   func withAddress(_ value: String) -> SlowStruct {
     var copy = self
-    copy.name = value
+    copy.address = value
     return copy
   }
 
   func withJob(_ value: String) -> SlowStruct {
     var copy = self
-    copy.name = value
+    copy.job = value
     return copy
   }
 
