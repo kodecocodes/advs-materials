@@ -104,6 +104,14 @@ class CoreDataManager {
     return results.first
   }
 
+  func allCountries() -> [Countries] {
+    let request: NSFetchRequest<Countries> = Countries.fetchRequest()
+    guard let results = try? context.fetch(request) else {
+      return []
+    }
+    return results
+  }
+
   func isEmpty() -> Bool {
     let request: NSFetchRequest<Languages> = Languages.fetchRequest()
     guard let results = try? context.fetch(request) else {
@@ -113,7 +121,7 @@ class CoreDataManager {
   }
 }
 
-extension Countries: Identifiable {
+extension Countries {
   var languagesArray: [Languages] {
     guard let array = languages?.allObjects as? [Languages] else {
       return []
@@ -121,7 +129,3 @@ extension Countries: Identifiable {
     return array
   }
 }
-
-extension Languages: Identifiable {}
-
-extension Continents: Identifiable {}

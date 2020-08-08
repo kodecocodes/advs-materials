@@ -30,29 +30,33 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import UIKit
 
-struct CountryView: View {
-  var country: Countries?
-  var body: some View {
-    VStack {
-      HStack {
-        Text(country?.name ?? "name")
-        Spacer()
-        Text(country?.continent?.name ?? "continent")
-      }
-      HStack {
-        ForEach(country?.languagesArray ?? []) { language in
-          LanguageView(language: language)
-        }
-        Spacer()
-      }
-    }
-  }
+class TimeProfilerViewController: UIViewController {
+  let totalCells = 10000
+  @IBOutlet weak var collectionView: UICollectionView!
 }
 
-struct CountryView_Previews: PreviewProvider {
-  static var previews: some View {
-    CountryView()
+extension TimeProfilerViewController: UICollectionViewDelegate {
+}
+
+extension TimeProfilerViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return totalCells
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    var time = clock()
+
+    guard let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: "NumberCollectionViewCell",
+      for: indexPath
+    ) as? NumberCollectionViewCell else {
+      return UICollectionViewCell()
+    }
+    cell.number = TrackedNumbersGenerator.generate()
+    time = clock() - time
+    cell.time = "\(Double(time) * 1000 / Double(CLOCKS_PER_SEC))"
+    return cell
   }
 }

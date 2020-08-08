@@ -30,27 +30,8 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import UIKit
 
-struct CollectionScrollingView: UIViewControllerRepresentable {
-  typealias UIViewControllerType = CollectionScrollingViewController
-
-  func makeUIViewController(context: Context) -> CollectionScrollingViewController {
-    let storyboard = UIStoryboard(name: "CollectionScrolling", bundle: nil)
-
-    guard let listScrollingVC = storyboard.instantiateInitialViewController() as? CollectionScrollingViewController
-    else {
-      return CollectionScrollingViewController()
-    }
-    return listScrollingVC
-  }
-
-  func updateUIViewController(_ uiViewController: CollectionScrollingViewController, context: Context) {
-  }
-}
-
-struct CollectionScrollingView_Previews: PreviewProvider {
-  static var previews: some View {
-    CollectionScrollingView()
-  }
+class PhotoCell: UICollectionViewCell {
+  @IBOutlet weak var imageView: UIImageView!
 }

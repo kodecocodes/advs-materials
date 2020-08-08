@@ -30,27 +30,30 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import UIKit
 
-struct MemoryOptimization: View {
-  var totalImages = 8
+let showLanguages = false
 
-  var body: some View {
-    List(1 ..< totalImages + 1) { item in
-      HStack {
-        Spacer()
-        Image("Image\(item)")
-          .resizable()
-          .aspectRatio(contentMode: .fit)
-          .frame(width: 100, height: 100, alignment: .center)
-        Spacer()
-      }
-    }.navigationTitle("Memory Optimization")
+class CoreDataOptimizationViewController: UITableViewController {
+  var countriesList: [Countries] = []
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    countriesList = CoreDataManager.shared.allCountries()
   }
 }
 
-struct MemoryOptimization_Previews: PreviewProvider {
-  static var previews: some View {
-    MemoryOptimization(totalImages: 1)
+// MARK: - Table view data source
+extension CoreDataOptimizationViewController {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return countriesList.count
+  }
+
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell else {
+      return UITableViewCell()
+    }
+    cell.country = countriesList[indexPath.row]
+    return cell
   }
 }
