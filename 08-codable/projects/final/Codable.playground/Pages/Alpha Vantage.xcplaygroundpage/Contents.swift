@@ -3,26 +3,33 @@
 import Foundation
 import PlaygroundSupport
 
-let data = API.getData(for: .alphaVantage)
-let decoder = JSONDecoder()
 let dateFormatter: DateFormatter = {
   let df = DateFormatter()
   df.dateFormat = "yyyy-MM-dd HH:mm:ss"
   return df
 }()
-decoder.dateDecodingStrategy = .formatted(dateFormatter)
-decoder.userInfo = [.updateMinutesInterval: 5]
 
-do {
-  let stock = try decoder.decode(Stock.self, from: data)
+func getStock(minutesInterval: Int) -> Result<Stock, Error> {
+  let data = API.getData(for: .alphaVantage)
+  let decoder = JSONDecoder()
+
+  decoder.dateDecodingStrategy = .formatted(dateFormatter)
+  decoder.userInfo = [.updateMinutesInterval: minutesInterval]
+
+  return Result(catching: { try decoder.decode(Stock.self, from: data) })
+}
+
+let result = getStock(minutesInterval: 5)
+switch result {
+case .success(let stock):
   print("\(stock.symbol), \(stock.refreshedAt): \(stock.info) with \(stock.updates.count) updates")
   for update in stock.updates {
     _ = update.open
 
     print("   >> \(update.date), O/C: \(update.open)/\(update.close), L/H: \(update.low)/\(update.high), V: \(update.volume)")
   }
-} catch {
-  print("Something went wrong: \(error)")
+case .failure(let error):
+  print("Decoding faled: \(error)")
 }
 
 extension CodingUserInfoKey {
