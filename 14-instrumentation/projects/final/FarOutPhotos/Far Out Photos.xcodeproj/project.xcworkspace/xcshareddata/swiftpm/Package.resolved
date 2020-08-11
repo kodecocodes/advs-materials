@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ImagePublisher",
+        "repositoryURL": "https://github.com/kean/ImagePublisher",
+        "state": {
+          "branch": null,
+          "revision": "b74c0c3b36c5f77023891f996be818fafc77f264",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "Nuke",
+        "repositoryURL": "https://github.com/kean/Nuke.git",
+        "state": {
+          "branch": null,
+          "revision": "e901272a7cc5a28734d4f196d543edcf7efd8f4c",
+          "version": "9.0.0"
+        }
+      },
+      {
+        "package": "TimelaneCombine",
+        "repositoryURL": "https://github.com/icanzilb/TimelaneCombine",
+        "state": {
+          "branch": null,
+          "revision": "d97f27b600de3b5a2ad20f610d67c6eeac380300",
+          "version": "1.0.10"
+        }
+      },
+      {
+        "package": "TimelaneCore",
+        "repositoryURL": "https://github.com/icanzilb/TimelaneCore",
+        "state": {
+          "branch": null,
+          "revision": "35437d370a6127d14f728065b3d4e3e9cf65e6a0",
+          "version": "1.0.12"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

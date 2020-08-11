@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9F227A75215AC7DD00C83B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F227A74215AC7DD00C83B03 /* AppDelegate.swift */; };
+		9F227A77215AC7DD00C83B03 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F227A76215AC7DD00C83B03 /* PhotoGalleryViewController.swift */; };
+		9F227A7A215AC7DD00C83B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F227A78215AC7DD00C83B03 /* Main.storyboard */; };
+		9F227A7C215AC7E000C83B03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F227A7B215AC7E000C83B03 /* Assets.xcassets */; };
+		9F227A7F215AC7E000C83B03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F227A7D215AC7E000C83B03 /* LaunchScreen.storyboard */; };
+		9F227A87215AC81000C83B03 /* NASAPhotos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F227A86215AC81000C83B03 /* NASAPhotos.plist */; };
+		9FDC071C215AD1C100330A8D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC071B215AD1C100330A8D /* PhotoCell.swift */; };
+		9FDC0720215BFD7100330A8D /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC071F215BFD7100330A8D /* PhotoViewController.swift */; };
+		F50A7956247F1D7300169C0A /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F50A7955247F1D7300169C0A /* Nuke */; };
+		F579011F24E29CF000455133 /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = F579011E24E29CF000455133 /* TimelaneCombine */; };
+		F5BF1FE2248136BC00E798A9 /* ImagePublisher in Frameworks */ = {isa = PBXBuildFile; productRef = F5BF1FE1248136BC00E798A9 /* ImagePublisher */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9F227A71215AC7DD00C83B03 /* Far Out Photos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Far Out Photos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F227A74215AC7DD00C83B03 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
+		9F227A76215AC7DD00C83B03 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
+		9F227A79215AC7DD00C83B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9F227A7B215AC7E000C83B03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9F227A7E215AC7E000C83B03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9F227A80215AC7E000C83B03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9F227A86215AC81000C83B03 /* NASAPhotos.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = NASAPhotos.plist; sourceTree = "<group>"; };
+		9FDC071B215AD1C100330A8D /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		9FDC071F215BFD7100330A8D /* PhotoViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9F227A6E215AC7DD00C83B03 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F50A7956247F1D7300169C0A /* Nuke in Frameworks */,
+				F579011F24E29CF000455133 /* TimelaneCombine in Frameworks */,
+				F5BF1FE2248136BC00E798A9 /* ImagePublisher in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F227A68215AC7DD00C83B03 = {
+			isa = PBXGroup;
+			children = (
+				9F227A73215AC7DD00C83B03 /* Far Out Photos */,
+				9F227A72215AC7DD00C83B03 /* Products */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		9F227A72215AC7DD00C83B03 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9F227A71215AC7DD00C83B03 /* Far Out Photos.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9F227A73215AC7DD00C83B03 /* Far Out Photos */ = {
+			isa = PBXGroup;
+			children = (
+				9F227A74215AC7DD00C83B03 /* AppDelegate.swift */,
+				9FDC071B215AD1C100330A8D /* PhotoCell.swift */,
+				9F227A76215AC7DD00C83B03 /* PhotoGalleryViewController.swift */,
+				9FDC071F215BFD7100330A8D /* PhotoViewController.swift */,
+				9F227A78215AC7DD00C83B03 /* Main.storyboard */,
+				9F227A7B215AC7E000C83B03 /* Assets.xcassets */,
+				9F227A7D215AC7E000C83B03 /* LaunchScreen.storyboard */,
+				9F227A80215AC7E000C83B03 /* Info.plist */,
+				9F227A86215AC81000C83B03 /* NASAPhotos.plist */,
+			);
+			path = "Far Out Photos";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9F227A70215AC7DD00C83B03 /* Far Out Photos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F227A83215AC7E000C83B03 /* Build configuration list for PBXNativeTarget "Far Out Photos" */;
+			buildPhases = (
+				9F227A6D215AC7DD00C83B03 /* Sources */,
+				9F227A6E215AC7DD00C83B03 /* Frameworks */,
+				9F227A6F215AC7DD00C83B03 /* Resources */,
+				F5C9A42E2488125F00616F60 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Far Out Photos";
+			packageProductDependencies = (
+				F50A7955247F1D7300169C0A /* Nuke */,
+				F5BF1FE1248136BC00E798A9 /* ImagePublisher */,
+				F579011E24E29CF000455133 /* TimelaneCombine */,
+			);
+			productName = "Far Out Photos";
+			productReference = 9F227A71215AC7DD00C83B03 /* Far Out Photos.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F227A69215AC7DD00C83B03 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Ray Wenderlich";
+				TargetAttributes = {
+					9F227A70215AC7DD00C83B03 = {
+						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1150;
+					};
+				};
+			};
+			buildConfigurationList = 9F227A6C215AC7DD00C83B03 /* Build configuration list for PBXProject "Far Out Photos" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9F227A68215AC7DD00C83B03;
+			packageReferences = (
+				F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */,
+				F5BF1FE0248136BC00E798A9 /* XCRemoteSwiftPackageReference "ImagePublisher" */,
+				F579011D24E29CF000455133 /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
+			);
+			productRefGroup = 9F227A72215AC7DD00C83B03 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9F227A70215AC7DD00C83B03 /* Far Out Photos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9F227A6F215AC7DD00C83B03 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F227A7F215AC7E000C83B03 /* LaunchScreen.storyboard in Resources */,
+				9F227A7C215AC7E000C83B03 /* Assets.xcassets in Resources */,
+				9F227A87215AC81000C83B03 /* NASAPhotos.plist in Resources */,
+				9F227A7A215AC7DD00C83B03 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F5C9A42E2488125F00616F60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9F227A6D215AC7DD00C83B03 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F227A77215AC7DD00C83B03 /* PhotoGalleryViewController.swift in Sources */,
+				9FDC0720215BFD7100330A8D /* PhotoViewController.swift in Sources */,
+				9FDC071C215AD1C100330A8D /* PhotoCell.swift in Sources */,
+				9F227A75215AC7DD00C83B03 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9F227A78215AC7DD00C83B03 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F227A79215AC7DD00C83B03 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9F227A7D215AC7E000C83B03 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9F227A7E215AC7E000C83B03 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9F227A81215AC7E000C83B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9F227A82215AC7E000C83B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9F227A84215AC7E000C83B03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Far Out Photos/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Far-Out-Photos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9F227A85215AC7E000C83B03 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Far Out Photos/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Far-Out-Photos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9F227A6C215AC7DD00C83B03 /* Build configuration list for PBXProject "Far Out Photos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F227A81215AC7E000C83B03 /* Debug */,
+				9F227A82215AC7E000C83B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F227A83215AC7E000C83B03 /* Build configuration list for PBXNativeTarget "Far Out Photos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F227A84215AC7E000C83B03 /* Debug */,
+				9F227A85215AC7E000C83B03 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		F579011D24E29CF000455133 /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.10;
+			};
+		};
+		F5BF1FE0248136BC00E798A9 /* XCRemoteSwiftPackageReference "ImagePublisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/ImagePublisher";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F50A7955247F1D7300169C0A /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		F579011E24E29CF000455133 /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F579011D24E29CF000455133 /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
+		};
+		F5BF1FE1248136BC00E798A9 /* ImagePublisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5BF1FE0248136BC00E798A9 /* XCRemoteSwiftPackageReference "ImagePublisher" */;
+			productName = ImagePublisher;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9F227A69215AC7DD00C83B03 /* Project object */;
+}
