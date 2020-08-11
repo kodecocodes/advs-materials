@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Uzb-QQ-OyE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Leaks-->
+        <scene sceneID="DjA-76-mUE">
+            <objects>
+                <viewController storyboardIdentifier="MemoryLeaksViewController" title="Leaks" id="Uzb-QQ-OyE" customClass="MemoryLeaksViewController" customModule="TheExhibition" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JXA-ld-ZM2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hax-yl-nfJ">
+                                <rect key="frame" x="205" y="438" width="4.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6j-nW-bkm">
+                                <rect key="frame" x="158" y="478.5" width="98" height="30"/>
+                                <state key="normal" title="Do Something"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Uzb-QQ-OyE" eventType="touchUpInside" id="C6O-BV-egx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qho-2b-3Bp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hax-yl-nfJ" firstAttribute="centerX" secondItem="JXA-ld-ZM2" secondAttribute="centerX" id="PGG-qC-jES"/>
+                            <constraint firstItem="U6j-nW-bkm" firstAttribute="centerX" secondItem="JXA-ld-ZM2" secondAttribute="centerX" id="aJp-u3-5tK"/>
+                            <constraint firstItem="hax-yl-nfJ" firstAttribute="centerY" secondItem="JXA-ld-ZM2" secondAttribute="centerY" id="fAm-H4-hlA"/>
+                            <constraint firstItem="U6j-nW-bkm" firstAttribute="top" secondItem="hax-yl-nfJ" secondAttribute="bottom" constant="20" id="trZ-Gz-vmz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="hax-yl-nfJ" id="cld-Do-PgM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDK-ef-sq3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="119" y="45"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
