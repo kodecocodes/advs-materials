@@ -46,7 +46,7 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    var time = clock()
+    let startTime = mach_absolute_time()
 
     guard let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: "NumberCollectionViewCell",
@@ -55,8 +55,15 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
     cell.number = TrackedNumbersGenerator.generate()
-    time = clock() - time
-    cell.time = "\(Double(time) * 1000 / Double(CLOCKS_PER_SEC))"
+
+    var baseInfo = mach_timebase_info_data_t(numer: 0, denom: 0)
+    if mach_timebase_info(&baseInfo) == KERN_SUCCESS {
+      let finishTime = mach_absolute_time()
+
+      let nano = (finishTime - startTime) * UInt64(baseInfo.numer / baseInfo.denom)
+      cell.time = "\(Int(nano / 1000))μ"
+    }
+
     return cell
   }
 }

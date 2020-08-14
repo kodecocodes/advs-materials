@@ -181,7 +181,7 @@ extension PhotoGalleryViewController {
 
 extension PhotoGalleryViewController: ImagePipelineObserving {
   func pipeline(_ pipeline: ImagePipeline, imageTask: ImageTask, didReceiveEvent event: ImageTaskEvent) {
-      let imageName = imageTask.request.urlRequest.url?.lastPathComponent ?? ""
+    let imageName = imageTask.request.urlRequest.url?.lastPathComponent ?? ""
 
     switch event {
     case .started:

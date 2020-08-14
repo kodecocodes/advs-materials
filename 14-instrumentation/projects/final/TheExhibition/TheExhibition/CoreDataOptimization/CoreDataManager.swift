@@ -106,6 +106,9 @@ class CoreDataManager {
 
   func allCountries() -> [Countries] {
     let request: NSFetchRequest<Countries> = Countries.fetchRequest()
+
+    request.relationshipKeyPathsForPrefetching = ["languages", "continent"]
+
     guard let results = try? context.fetch(request) else {
       return []
     }
@@ -118,6 +121,10 @@ class CoreDataManager {
       return true
     }
     return results.isEmpty
+  }
+
+  func clearMemory() {
+    context.refreshAllObjects()
   }
 }
 

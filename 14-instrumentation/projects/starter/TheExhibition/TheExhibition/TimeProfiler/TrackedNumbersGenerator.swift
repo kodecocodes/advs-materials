@@ -34,7 +34,7 @@ import Foundation
 
 class TrackedNumbersGenerator {
   let maxValue = 10000
-  let alwaysSave = true
+  let alwaysSave = false
 
   private static var shared = TrackedNumbersGenerator()
 
@@ -68,6 +68,10 @@ class TrackedNumbersGenerator {
     } catch let error {
       print(error)
     }
+  }
+
+  class func saveTrackedNumbers() {
+    shared.saveTrackedNumbers()
   }
 
   private func saveTrackedNumbers() {

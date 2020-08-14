@@ -32,7 +32,7 @@
 
 import UIKit
 
-let showLanguages = false
+let showLanguages = true
 
 class CoreDataOptimizationViewController: UITableViewController {
   var countriesList: [Countries] = []
@@ -40,6 +40,10 @@ class CoreDataOptimizationViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     countriesList = CoreDataManager.shared.allCountries()
+
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      CoreDataManager.shared.clearMemory()
+    }
   }
 }
 

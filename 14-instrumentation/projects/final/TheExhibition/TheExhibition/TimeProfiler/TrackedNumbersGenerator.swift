@@ -70,6 +70,10 @@ class TrackedNumbersGenerator {
     }
   }
 
+  class func saveTrackedNumbers() {
+    shared.saveTrackedNumbers()
+  }
+
   private func saveTrackedNumbers() {
     let encoder = PropertyListEncoder()
     do {
