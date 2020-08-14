@@ -84,6 +84,7 @@ class PhotoGalleryViewController: UICollectionViewController {
       $0.dataCache = dataCache
     }
     ImagePipeline.shared = pipeline
+    pipeline.observer = self
   }
 }
 
@@ -167,17 +168,24 @@ extension PhotoGalleryViewController {
 }
 
 extension PhotoGalleryViewController: ImagePipelineObserving {
-  func pipeline(_ pipeline: ImagePipeline, imageTask: ImageTask, didReceiveEvent event: ImageTaskEvent) {
+  func pipeline(
+    _ pipeline: ImagePipeline,
+    imageTask: ImageTask,
+    didReceiveEvent event: ImageTaskEvent
+  ) {
     let imageName = imageTask.request.urlRequest.url?.lastPathComponent ?? ""
 
     switch event {
     case .started:
       print("started " + imageName)
     case .cancelled:
-      print("cancelled" + imageName)
+      print("cancelled " + imageName)
     case .completed(result: _):
-      print("completed" + imageName)
-    case .progressUpdated(completedUnitCount: let completed, totalUnitCount: let total):
+      print("completed " + imageName)
+    case .progressUpdated(
+          completedUnitCount: let completed,
+          totalUnitCount: let total
+    ):
       let percent = completed * 100 / total
       print("progress for \(imageName): \(percent)")
     default:

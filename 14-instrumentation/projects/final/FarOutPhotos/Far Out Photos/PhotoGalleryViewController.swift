@@ -113,17 +113,7 @@ extension PhotoGalleryViewController {
       url: photoURLs[indexPath.row],
       processors: [])
 
-//    galleryLanes[request] = Timelane.Subscription(name: "Gallery \(indexPath.row)")
-
-//    galleryLane.begin()
-    Nuke.loadImage(with: request, into: cell.imageView) { result in
-//      switch (result) {
-//      case .failure(_):
-//        galleryLane.end(state: .error("error downloading image"))
-//      case .success(_):
-//        galleryLane.end(state: .completed)
-//      }
-    }
+    Nuke.loadImage(with: request, into: cell.imageView)
 
     return cell
   }
@@ -180,7 +170,11 @@ extension PhotoGalleryViewController {
 }
 
 extension PhotoGalleryViewController: ImagePipelineObserving {
-  func pipeline(_ pipeline: ImagePipeline, imageTask: ImageTask, didReceiveEvent event: ImageTaskEvent) {
+  func pipeline(
+    _ pipeline: ImagePipeline,
+    imageTask: ImageTask,
+    didReceiveEvent event: ImageTaskEvent
+  ) {
     let imageName = imageTask.request.urlRequest.url?.lastPathComponent ?? ""
 
     switch event {
@@ -193,13 +187,16 @@ extension PhotoGalleryViewController: ImagePipelineObserving {
       let lane = galleryLanes[imageTask]
       lane?.end(state: .cancelled)
       galleryLanes[imageTask] = nil
-      print("cancelled" + imageName)
+      print("cancelled " + imageName)
     case .completed(result: _):
       let lane = galleryLanes[imageTask]
       lane?.end(state: .completed)
       galleryLanes[imageTask] = nil
-      print("completed" + imageName)
-    case .progressUpdated(completedUnitCount: let completed, totalUnitCount: let total):
+      print("completed " + imageName)
+    case .progressUpdated(
+          completedUnitCount: let completed,
+          totalUnitCount: let total
+    ):
       let lane = galleryLanes[imageTask]
       let percent = completed * 100 / total
       lane?.event(value: .value("progress: \(percent)"))
