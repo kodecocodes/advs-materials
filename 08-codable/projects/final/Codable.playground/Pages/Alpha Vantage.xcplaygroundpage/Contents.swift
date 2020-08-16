@@ -12,65 +12,45 @@ let dateFormatter: DateFormatter = {
 func getStock(interval: API.AlphaVantageInterval) throws -> Stock {
   let data = API.getData(for: .alphaVantage(interval: interval))
   let decoder = JSONDecoder()
-
+  decoder.userInfo = [.timeInterval: interval.rawValue]
   decoder.dateDecodingStrategy = .formatted(dateFormatter)
-  decoder.userInfo = [.updateMinutesInterval: interval.rawValue]
 
   return try decoder.decode(Stock.self, from: data)
-}
-
-do {
-  let stock = try getStock(interval: .oneMinute)
-
-  print("\(stock.symbol), \(stock.refreshedAt): \(stock.info) with \(stock.updates.count) updates")
-  for update in stock.updates {
-    _ = update.open
-
-    print("   >> \(update.date), O/C: \(update.open)/\(update.close), L/H: \(update.low)/\(update.high), V: \(update.volume)")
-  }
-} catch {
-  print("Something went wrong: \(error)")
-}
-
-extension CodingUserInfoKey {
-    /// A user info key to note the minutes refresh inteerval
-    static let updateMinutesInterval = CodingUserInfoKey(rawValue: "updateTimeInterval")!
 }
 
 struct Stock: Decodable {
   let info: String
   let symbol: String
-  let updates: [Update]
   let refreshedAt: Date
-
-  enum Error: Swift.Error {
-    case missingRefreshInterval
-  }
+  let updates: [Update]
 
   init(from decoder: Decoder) throws {
-    guard let refreshInterval = decoder.userInfo[.updateMinutesInterval] as? Int else {
-        throw Error.missingRefreshInterval
+    guard let timeInterval = decoder.userInfo[.timeInterval] as? Int else {
+      throw DecodingError.dataCorrupted(.init(codingPath: [],
+                                        debugDescription: "Missing time interval"))
     }
 
-    // Raw string keys, since they're dynamic
     let metaKey = AnyCodingKey(stringValue: "Meta Data")!
-    let timesKey = AnyCodingKey(stringValue: "Time Series (\(refreshInterval)min)")!
+    let timesKey = AnyCodingKey(stringValue: "Time Series (\(timeInterval)min)")!
 
-    // Parse meta data
     let container = try decoder.container(keyedBy: AnyCodingKey.self)
-    let metaContainer = try container.nestedContainer(keyedBy: MetaKeys.self, forKey: metaKey)
+    let metaContainer = try container.nestedContainer(keyedBy: MetaKeys.self,
+                                                      forKey: metaKey)
+
     self.info = try metaContainer.decode(String.self, forKey: .info)
     self.symbol = try metaContainer.decode(String.self, forKey: .symbol)
     self.refreshedAt = try metaContainer.decode(Date.self, forKey: .refreshedAt)
 
     // Time Series keys are dynamic as well, we have to figure out
     // the dictionary keys first, so we start with a simply dictionary decoding
-    let timesDictionary = try container.decode([String: [String: String]].self, forKey: timesKey)
+    let timesDictionary = try container.decode([String: [String: String]].self,
+                                               forKey: timesKey)
     let timeKeys = timesDictionary.keys.compactMap(AnyCodingKey.init(stringValue:))
 
-    // Once we have all the dynamic keys, we create raw `CodingKey`s from them
-    // to decode the individual `Update`s
-    let timeContainer = try container.nestedContainer(keyedBy: AnyCodingKey.self, forKey: timesKey)
+    // Once we have all the dynamic keys, we create raw `CodingKey`s from
+    // them to decode the individual `Update`s
+    let timeContainer = try container.nestedContainer(keyedBy: AnyCodingKey.self,
+                                                      forKey: timesKey)
 
     self.updates = try timeKeys.reduce(into: [Update]()) { updates, currentKey in
       var update = try timeContainer.decode(Update.self, forKey: currentKey)
@@ -86,14 +66,26 @@ struct Stock: Decodable {
   }
 }
 
+do {
+  let stock = try getStock(interval: .fifteenMinutes)
+  print("\(stock.symbol), \(stock.refreshedAt): \(stock.info) with \(stock.updates.count) updates")
+  for update in stock.updates {
+    _ = update.open
+
+    print("   >> \(update.date), O/C: \(update.open)/\(update.close), L/H: \(update.low)/\(update.high), V: \(update.volume)")
+  }
+} catch {
+  print("Something went wrong: \(error)")
+}
+
 extension Stock {
   struct Update: Decodable, CustomStringConvertible {
-    var date = Date.distantPast
     let open: Float
     let high: Float
     let low: Float
     let close: Float
     let volume: Float
+    var date = Date.distantPast
 
     enum CodingKeys: String, CodingKey {
       case open = "1. open"
@@ -117,6 +109,11 @@ extension Stock {
       "\(date)|o:\(open),h:\(high),l:\(low),c:\(close),v:\(volume)"
     }
   }
+}
+
+extension CodingUserInfoKey {
+    /// A user info key to note the minutes refresh inteerval
+    static let timeInterval = CodingUserInfoKey(rawValue: "timeInterval")!
 }
 
 //: [Next](@next)
