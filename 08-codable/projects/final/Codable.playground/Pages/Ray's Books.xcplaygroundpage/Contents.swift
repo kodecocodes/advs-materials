@@ -4,30 +4,11 @@ import UIKit
 import PlaygroundSupport
 
 // Snake case
-example(of: "Snake case") {
-  let data = API.getData(for: .rwBooks)
-
-  let decoder = JSONDecoder()
-  decoder.dataDecodingStrategy = .base64
-  decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-  do {
-    let books = try decoder.decode([Book].self, from: data)
-    for book in books {
-      print("\(book.name) (\(book.id)) by \(book.authors.joined(separator: ", ")). Get it at: \(book.storeUrl)")
-      _ = book.image
-    }
-  } catch {
-    print("Something went wrong: \(error)")
-  }
-}
-
-example(of: "Kebab case") {
+example(of: "Books") {
   let data = API.getData(for: .rwBooksKebab)
-
   let decoder = JSONDecoder()
-  decoder.dataDecodingStrategy = .base64
   decoder.keyDecodingStrategy = .convertFromKebabCase
+  decoder.dataDecodingStrategy = .base64
 
   do {
     let books = try decoder.decode([Book].self, from: data)
@@ -43,8 +24,8 @@ example(of: "Kebab case") {
 struct Book: Decodable {
   let id: String
   let name: String
-  let storeUrl: URL
   let authors: [String]
+  let storeUrl: URL
   let imageBlob: Data
   var image: UIImage? { UIImage(data: imageBlob) }
 }
