@@ -13,4 +13,12 @@ func getStock(interval: API.AlphaVantageInterval) throws -> Stock {
 struct Stock: Decodable {
 
 }
+
+do {
+  let stock = try getStock(interval: .fifteenMinutes)
+  print(stock)
+} catch {
+  print("Something went wrong: \(error)")
+}
+
 //: [Next](@next)
