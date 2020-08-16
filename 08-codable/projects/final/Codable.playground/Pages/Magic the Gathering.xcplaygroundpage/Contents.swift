@@ -10,16 +10,12 @@ do {
   for card in cards {
     print(
       "🃏 \(card.name) #\(card.number) is a \(card.rarity) \(card.type)",
-      "and needs \(card.mana) mana (cost is \(card.mana.cost)).",
+      "and needs \(card.manaCost).",
       "It's part of \(card.set.name) (\(card.set.id)).",
       card.attributes.map { "It's attributed as \($0.power)/\($0.toughness)." } ?? ""
     )
-    
-    // Uncomment to show rulings
-    // print("Rulings: \(card.rulings.joined(separator: ", "))")
 
-    // Uncomment to synchronously load images
-    // card.image.map { UIImage(data: try! Data(contentsOf: $0)) }
+    print("Rulings: \(card.rulings.joined(separator: ", "))")
   }
 } catch {
   print("Something went wrong: \(error)")
@@ -28,39 +24,35 @@ do {
 struct Card: Decodable {
   let id: String
   let name: String
-  let mana: Mana
   let type: String
-  let types: [Kind]
-  let rarity: Rarity
   let text: String
-  let flavor: String?
   let number: String
-  let image: URL?
-  let rulings: [String]
+  let flavor: String?
+  let imageUrl: URL?
+  let manaCost: Mana
+  let rarity: Rarity
   let set: Set
   let attributes: Attributes?
+  let rulings: [String]
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.id = try container.decode(String.self, forKey: .id)
     self.name = try container.decode(String.self, forKey: .name)
-    self.mana = try container.decodeIfPresent(Mana.self, forKey: .manaCost) ?? Mana(colors: [])
+    self.manaCost = try container.decode(Mana.self, forKey: .manaCost)
     self.type = try container.decode(String.self, forKey: .type)
-    self.types = try container.decode([Kind].self, forKey: .types)
     self.rarity = try container.decode(Rarity.self, forKey: .rarity)
     self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
     self.flavor = try container.decodeIfPresent(String.self, forKey: .flavor)
     self.number = try container.decode(String.self, forKey: .number)
-    self.image = try container.decodeIfPresent(URL.self, forKey: .imageUrl)
+    self.imageUrl = try container.decodeIfPresent(URL.self, forKey: .imageUrl)
 
-    // Rulings
-    let rulingDict = try container.decode([[String: String]].self, forKey: .rulings)
-    self.rulings = rulingDict.compactMap { $0["text"] }
-
+    // 1
     // Set
     self.set = Set(id: try container.decode(String.self, forKey: .set),
                    name: try container.decode(String.self, forKey: .setName))
 
+    // 2
     // Attributes
     if let power = try container.decodeIfPresent(String.self, forKey: .power),
        let toughness = try container.decodeIfPresent(String.self, forKey: .toughness) {
@@ -68,81 +60,51 @@ struct Card: Decodable {
     } else {
       self.attributes = nil
     }
+
+    // Rulings
+    let rulingDict = try container.decode([[String: String]].self, forKey: .rulings) // 1
+    self.rulings = rulingDict.compactMap { $0["text"] } // 2
   }
 
   enum CodingKeys: String, CodingKey {
-    case id, name, manaCost, type, types, rarity, text, flavor, number, rulings, releaseDate, imageUrl, set, setName, power, toughness
+    case id, name, manaCost, type, rarity, text, flavor, number, rulings, imageUrl, set, setName, power, toughness
   }
 }
 
 extension Card {
+  /// Card's Mana
   struct Mana: Decodable, CustomStringConvertible {
-    init(colors: [Color]) {
-      self.colors = colors
-    }
-
+    // 1
     let colors: [Color]
-    var cost: Int {
-      colors.reduce(into: 0) { cost, color in
-        if case .colorless(let count) = color {
-          cost += count
-        } else {
-          cost += 1
-        }
-      }
-    }
 
+    // 2
     var description: String { colors.map(\.symbol).joined() }
 
     init(from decoder: Decoder) throws {
       let container = try decoder.singleValueContainer()
-
       let cost = try container.decode(String.self)
-      self.colors = try cost
-        .components(separatedBy: "}")
-        .compactMap { rawCost in
-          let symbol = String(rawCost.dropFirst())
-          guard !symbol.isEmpty else { return nil }
 
-          guard let color = Color(manaCost: symbol) else {
+      self.colors = try cost
+        .components(separatedBy: "}") // 1
+        .compactMap { rawCost in
+          let symbol = String(rawCost.dropFirst()) // 2
+          guard !symbol.isEmpty else { return nil } // 3
+
+          // 4
+          guard let color = Color(symbol: symbol) else {
             throw DecodingError.dataCorruptedError(in: container,
-                                                   debugDescription: "Unknown mana symbol \(symbol), \(rawCost), \(cost)")
+                                                    debugDescription: "Unknown mana symbol \(symbol), \(rawCost), \(cost)")
           }
 
+          // 5
           return color
         }
     }
   }
 }
 
-extension Card {
-  struct Attributes {
-    let power: String
-    let toughness: String
-  }
-}
-
-extension Card {
-  struct Set {
-    let id: String
-    let name: String
-  }
-}
-
-extension Card {
-  enum Rarity: String, CustomStringConvertible, Decodable {
-    case common = "Common"
-    case uncommon = "Uncommon"
-    case rare = "Rare"
-    case mythicRare = "Mythic Rare"
-    case special = "Special"
-    case land = "Basic Land"
-
-    var description: String { rawValue }
-  }
-}
-
 extension Card.Mana {
+  /// Card's Mana Color
   enum Color {
     case colorless(Int)
     case extra
@@ -164,13 +126,13 @@ extension Card.Mana {
       }
     }
 
-    init?(manaCost: String) {
-      if let value = Int(manaCost) {
+    init?(symbol: String) {
+      if let value = Int(symbol) {
         self = .colorless(value)
         return
       }
 
-      switch manaCost.lowercased() {
+      switch symbol.lowercased() {
       case "w":
         self = .white
       case "u":
@@ -184,7 +146,7 @@ extension Card.Mana {
       case "x":
         self = .extra
       default:
-        print("UNKNOWN \(manaCost)")
+        print("UNKNOWN \(symbol)")
         return nil
       }
     }
@@ -192,34 +154,29 @@ extension Card.Mana {
 }
 
 extension Card {
-  enum Kind: String, Decodable {
-    case artifact
-    case autobot
-    case character
-    case conspiracy
-    case creature
-    case elemental
-    case enchantment
-    case hero
-    case instant
-    case land
-    case phenomenon
-    case plane
-    case planeswalker
-    case scheme
-    case sorcery
-    case specter
-    case summon
-    case tribal
-    case vanguard
-    case wold
-    case unknown
+  enum Rarity: String, CustomStringConvertible, Decodable {
+    case common = "Common"
+    case uncommon = "Uncommon"
+    case rare = "Rare"
+    case mythicRare = "Mythic Rare"
+    case special = "Special"
+    case land = "Basic Land"
 
-    init(from decoder: Decoder) throws {
-      let container = try decoder.singleValueContainer()
-      let rawValue = try container.decode(String.self)
-      self = Kind(rawValue: rawValue.lowercased()) ?? .unknown
-    }
+    var description: String { rawValue }
+  }
+}
+
+extension Card {
+  struct Attributes {
+    let power: String
+    let toughness: String
+  }
+}
+
+extension Card {
+  struct Set {
+    let id: String
+    let name: String
   }
 }
 
