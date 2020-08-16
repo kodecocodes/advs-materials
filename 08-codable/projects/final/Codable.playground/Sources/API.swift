@@ -15,7 +15,7 @@ public extension API {
 public extension API {
   enum Kind {
     case magicTheGathering
-    case alphaVantage
+    case alphaVantage(interval: AlphaVantageInterval)
     case rwBooks
     case rwBooksKebab
 
@@ -24,14 +24,23 @@ public extension API {
       case .magicTheGathering:
         // Fetched from https://api.magicthegathering.io/v1/cards
         return "magic.json"
-      case .alphaVantage:
+      case .alphaVantage(let interval):
         // Fetched from https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=JPM&interval=1min
-        return "av.json"
+        return "av_\(interval.rawValue)min.json"
       case .rwBooks:
         return "books.json"
       case .rwBooksKebab:
         return "booksKebab.json"
       }
     }
+  }
+}
+
+public extension API {
+  enum AlphaVantageInterval: Int {
+    case oneMinute = 1
+    case fiveMinutes = 5
+    case fifteenMinutes = 15
+    case thirtyMinutes = 30
   }
 }

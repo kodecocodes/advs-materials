@@ -9,49 +9,32 @@ let dateFormatter: DateFormatter = {
   return df
 }()
 
-func getStock(minutesInterval: Int) -> Result<Stock, Error> {
-  let data = API.getData(for: .alphaVantage)
+func getStock(interval: API.AlphaVantageInterval) throws -> Stock {
+  let data = API.getData(for: .alphaVantage(interval: interval))
   let decoder = JSONDecoder()
 
   decoder.dateDecodingStrategy = .formatted(dateFormatter)
-  decoder.userInfo = [.updateMinutesInterval: minutesInterval]
+  decoder.userInfo = [.updateMinutesInterval: interval.rawValue]
 
-  return Result(catching: { try decoder.decode(Stock.self, from: data) })
+  return try decoder.decode(Stock.self, from: data)
 }
 
-let result = getStock(minutesInterval: 5)
-switch result {
-case .success(let stock):
+do {
+  let stock = try getStock(interval: .oneMinute)
+
   print("\(stock.symbol), \(stock.refreshedAt): \(stock.info) with \(stock.updates.count) updates")
   for update in stock.updates {
     _ = update.open
 
     print("   >> \(update.date), O/C: \(update.open)/\(update.close), L/H: \(update.low)/\(update.high), V: \(update.volume)")
   }
-case .failure(let error):
-  print("Decoding faled: \(error)")
+} catch {
+  print("Something went wrong: \(error)")
 }
 
 extension CodingUserInfoKey {
     /// A user info key to note the minutes refresh inteerval
     static let updateMinutesInterval = CodingUserInfoKey(rawValue: "updateTimeInterval")!
-}
-
-/// Represents a raw Coding Key, to be used when
-/// `Codable` keys are dynamic and aren't known in advanced
-struct AnyCodingKey: CodingKey {
-  let stringValue: String
-  let intValue: Int?
-
-  init?(stringValue: String) {
-    self.stringValue = stringValue
-    self.intValue = nil
-  }
-
-  init?(intValue: Int) {
-    self.intValue = intValue
-    self.stringValue = "\(intValue)"
-  }
 }
 
 struct Stock: Decodable {
