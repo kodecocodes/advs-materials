@@ -63,29 +63,29 @@ struct MandelbrotView: View {
       PolyLineShape(
         modelToDisplay: modelToDisplay,
         points: mandelbrotPoints(for: Float64.self))
-      .stroke(.float64)
+        .stroke(.float64)
 
       #if arch(x86_64)
       PolyLineShape(
         modelToDisplay: modelToDisplay,
         points: mandelbrotPoints(for: Float80.self))
-      .stroke(.float80)
+        .stroke(.float80)
       #endif
 
       PolyLineShape(
         modelToDisplay: modelToDisplay,
         points: mandelbrotPoints(for: Float32.self))
-      .stroke(.float32)
+        .stroke(.float32)
 
       PolyLineShape(
         modelToDisplay: modelToDisplay,
         points: mandelbrotPoints(for: Float16.self))
-      .stroke(.float16)
+        .stroke(.float16)
 
       DragHandle(
         modelToDisplay: modelToDisplay,
         location: $model.testPoint)
-      .foregroundColor(Color.red.opacity(0.5))
+        .foregroundColor(Color.red.opacity(0.5))
     }
   }
 

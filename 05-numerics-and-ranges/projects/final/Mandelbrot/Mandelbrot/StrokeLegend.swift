@@ -36,13 +36,13 @@ extension Shape {
   func stroke(_ floatSize: FloatSize) -> some View {
     switch floatSize {
     case .float16:
-      return stroke(Color.blue, style: .init(lineWidth: 1, dash: [5, 5]))
+      return stroke(Color.blue, style: .init(lineWidth: 1))
     case .float32:
-      return stroke(Color.green, style: .init(lineWidth: 1, dash: [10, 5]))
+      return stroke(Color.green, style: .init(lineWidth: 3))
     case .float64, .simd8Float64:
-      return stroke(Color.red, style: .init(lineWidth: 6))
+      return stroke(Color.red, style: .init(lineWidth: 7))
     case .float80:
-      return stroke(Color.orange, style: .init(lineWidth: 2))
+      return stroke(Color.orange, style: .init(lineWidth: 9))
     }
   }
 }

@@ -54,7 +54,7 @@ enum FloatSize: String {
 
   static var imageSizes: [Self] {
     #if arch(x86_64)
-    return [.float16, .float32, .float64, .float80, .simd8_float64]
+    return [.float16, .float32, .float64, .float80, .simd8Float64]
     #else
     return [.float16, .float32, .float64, .simd8Float64]
     #endif
