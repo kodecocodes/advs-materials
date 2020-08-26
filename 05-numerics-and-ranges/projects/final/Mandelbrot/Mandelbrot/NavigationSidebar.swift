@@ -35,7 +35,7 @@ import SwiftUI
 struct NavigationSidebar: View {
   @ObservedObject var model: MandelbrotViewModel
 
-  var maxIterations: some View {
+  private var maxIterations: some View {
     Group {
       Text("Maximum Iterations")
       HStack {
