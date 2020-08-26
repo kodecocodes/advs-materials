@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
+		5D044ABE24F6DEAC00AB4908 /* PanZoomScaleTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */; };
 		5DCDC80224F6416000A1B2B5 /* StrokeLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */; };
 		5DCDC80324F6416000A1B2B5 /* MandelbrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */; };
 		5DCDC80424F6416000A1B2B5 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */; };
@@ -30,6 +31,7 @@
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomScaleTracker.swift; sourceTree = "<group>"; };
 		5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeLegend.swift; sourceTree = "<group>"; };
 		5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MandelbrotApp.swift; sourceTree = "<group>"; };
 		5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				5DCDC7FF24F6416000A1B2B5 /* MandelbrotView.swift */,
 				5DCDC7FC24F6416000A1B2B5 /* MandelbrotViewModel.swift */,
 				5DCDC80024F6416000A1B2B5 /* NavigationSidebar.swift */,
+				5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */,
 				5DCDC7FD24F6416000A1B2B5 /* PixelPalette.swift */,
 				5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
@@ -209,6 +212,7 @@
 				5DCDC80924F6416000A1B2B5 /* CGPoint+Operators.swift in Sources */,
 				5DCDC80C24F6416000A1B2B5 /* MandelbrotImagePublisher.swift in Sources */,
 				5DCDC80224F6416000A1B2B5 /* StrokeLegend.swift in Sources */,
+				5D044ABE24F6DEAC00AB4908 /* PanZoomScaleTracker.swift in Sources */,
 				5DCDC80524F6416000A1B2B5 /* MandelbrotMath.swift in Sources */,
 				5DCDC80724F6416000A1B2B5 /* MandelbrotViewModel.swift in Sources */,
 				5DCDC80624F6416000A1B2B5 /* GraphingView.swift in Sources */,
