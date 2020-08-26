@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "swift-numerics",
+        "repositoryURL": "http://github.com/apple/swift-numerics",
+        "state": {
+          "branch": "swift-5.3",
+          "revision": "4771ef24d20325fe4ab16d093efa050519c2e73b",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
