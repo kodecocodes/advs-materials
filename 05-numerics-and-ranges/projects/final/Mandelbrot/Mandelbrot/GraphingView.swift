@@ -170,7 +170,16 @@ struct PolyLineShape: Shape {
       return path
     }
 
+    // Workaround SwiftUI drawing issue. If the bounding box doesn't
+    // intersect the display, call it a day.
     guard boundingRect.intersects(displayRect) else {
+      return path
+    }
+
+    // Workaround SwiftUI drawing issue.  Turn off drawing if the polyshape
+    // gets too massive.
+    guard boundingRect.width < displayRect.width * 10 ||
+      boundingRect.width < displayRect.width * 10 else {
       return path
     }
 
