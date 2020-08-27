@@ -30,49 +30,33 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
-
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
-
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
+/// Model a particular bit in a fixed width integer.
+struct FixedWidthIntegerBit: Identifiable {
+  let id: Int  ///< Index of the bit in a word with LSB == 0
+  let value: Bool
+  var string: String {
+    String(value ? "1" : "0")
   }
 }
 
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
+extension FixedWidthInteger {
+  /// Grab the bits from any fixed width type.
+  var bits: [FixedWidthIntegerBit] {
+    (0 ..< bitWidth).reversed().map { (index: Int) -> FixedWidthIntegerBit in
+      FixedWidthIntegerBit(id: index, value: (0x1 << index) & self != 0)
+    }
+  }
 
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+  /// Split the bits into bytes (groups of 8)
+  var bytesOfBits: [[FixedWidthIntegerBit]] {
+    var bytes: [[FixedWidthIntegerBit]] = []
+    var consume = self.bits
+
+    while !consume.isEmpty {
+      bytes.append(Array(consume.prefix(8)))
+      consume = Array(consume.dropFirst(8))
+    }
+
+    return bytes
   }
 }

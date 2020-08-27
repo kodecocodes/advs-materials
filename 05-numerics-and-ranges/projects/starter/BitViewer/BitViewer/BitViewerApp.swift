@@ -32,47 +32,14 @@
 
 import SwiftUI
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
+@main
+struct BitViewerApp: App {
+  @StateObject var model = ModelStore()
+  @StateObject var preferences = Preferences()
 
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
-  }
-}
-
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
-
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+  var body: some Scene {
+    WindowGroup {
+      BitViewerContentView(model: model).environmentObject(preferences)
+    }
   }
 }

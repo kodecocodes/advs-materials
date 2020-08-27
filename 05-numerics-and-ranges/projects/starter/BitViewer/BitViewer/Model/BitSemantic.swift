@@ -30,49 +30,27 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+enum BitSemantic: CaseIterable {
+  case sign
+  case exponent
+  case significand
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
-
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
+  static func provider<IntType: FixedWidthInteger>(for int: IntType.Type) -> (Int) -> Self? {
+    return {
+      bitIndex in
+      int.isSigned && bitIndex == int.bitWidth - 1 ? .sign : nil
+    }
   }
-}
 
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
-
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
+  static func provider<FloatType: BinaryFloatingPoint>(for floatType: FloatType.Type) -> (Int) -> Self {
+    return { bitIndex in
+      if bitIndex < FloatType.significandBitCount {
+        return .significand
+      } else if bitIndex < FloatType.significandBitCount + FloatType.exponentBitCount {
+        return .exponent
+      } else {
+        return .sign
       }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+    }
   }
 }

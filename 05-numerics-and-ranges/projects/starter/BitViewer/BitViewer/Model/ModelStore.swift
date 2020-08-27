@@ -30,49 +30,32 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Combine        // ObservableObject, @Published
+import CoreGraphics   // CGFloat
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
+/// The data model for the app that keeps the selection and backing store for each numeric type.
+final class ModelStore: ObservableObject {
+  @Published var selection: TypeSelection = .int8
 
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
-  }
+  @Published var int8: Int8 = 10
+  @Published var uint8: UInt8 = 10
+  @Published var int16: Int16 = 10
+  @Published var uint16: UInt16 = 10
+  @Published var int32: Int32 = 10
+  @Published var uint32: UInt32 = 10
+  @Published var int64: Int64 = 10
+  @Published var uint64: UInt64 = 10
+  @Published var int: Int = 10
+  @Published var uint: UInt = 10
+
+  @Published var float16: Float16 = 1.0
+  @Published var float32: Float32 = 1.0
+  @Published var float64: Float64 = 1.0
+  @Published var float: Float = 1.0
+  @Published var double: Double = 1.0
+  @Published var cgFloat: CGFloat = 1.0
 }
 
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
-
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
-  }
+final class Preferences: ObservableObject {
+  @Published var displayBitsStacked = false
 }

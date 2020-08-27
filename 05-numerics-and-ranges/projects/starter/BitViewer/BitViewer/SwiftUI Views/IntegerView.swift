@@ -29,50 +29,34 @@
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
+///
 
 import SwiftUI
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
+struct IntegerView<IntType: FixedWidthInteger>: View {
   @Binding var value: IntType
+  @EnvironmentObject var preferences: Preferences
 
   var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
+    VStack(alignment: .leading) {
+      if IntType.isSigned {
+        BitLegend(kind: .signedInteger)
+          .padding(.bottom, 10)
       }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
-  }
-}
-
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
-
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
+      if IntType.bitWidth > 8 {
+        Toggle(isOn: $preferences.displayBitsStacked) {
+          Text("Display bits as stacks of bytes")
+        }.toggleStyle(CheckboxToggleStyle())
       }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+      BitsView(value: $value, bitSemanticProvider: BitSemantic.provider(for: IntType.self))
+        .padding(.bottom, 10)
+      Group {
+        IntegerValueExpansionView(value: value, kind: .powersOfTwo)
+        Color.gray.frame(height: 1)
+        IntegerValueExpansionView(value: value, kind: .evaluated)
+      }.font(.system(size: 30, weight: .bold, design: .monospaced)).padding([.leading])
+    }
+    .padding()
+    .navigationTitle(String(describing: IntType.self))
   }
 }

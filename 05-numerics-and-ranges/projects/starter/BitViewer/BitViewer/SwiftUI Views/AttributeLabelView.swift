@@ -32,47 +32,39 @@
 
 import SwiftUI
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
+struct AttributeLabelView: View {
+  let labelText: String
+  let isOn: Bool
+  let color: Color
+
+  init(_ labelText: String, isOn: Bool, color: Color = .black) {
+    self.labelText = labelText
+    self.isOn = isOn
+    self.color = color
+  }
 
   var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
+    Text(labelText)
+      .padding(6)
+      .background(
+        ZStack {
+          RoundedRectangle(cornerRadius: cornerRadius).fill(backgroundColor)
+          RoundedRectangle(cornerRadius: cornerRadius).stroke(foregroundColor, lineWidth: 1)
+        })
+      .foregroundColor(foregroundColor)
   }
+
+  // MARK: - View constants
+
+  let cornerRadius: CGFloat = 5
+  let deselectColor = Color.gray.opacity(0.3)
+  let deselectBackground = Color.gray.opacity(0.01)
+  var backgroundColor: Color { isOn ? color.opacity(0.1) : deselectBackground }
+  var foregroundColor: Color { isOn ? color : deselectColor }
 }
 
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
-
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+struct AttributeLabelView_Previews: PreviewProvider {
+  static var previews: some View {
+    AttributeLabelView("Normalized", isOn: true, color: .red)
   }
 }

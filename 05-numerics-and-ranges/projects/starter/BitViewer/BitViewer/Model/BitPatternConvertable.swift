@@ -30,49 +30,40 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import CoreGraphics // CGFloat
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
+// Float and Double are aliases
 
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
-  }
+// Notably Float80 doesn't have a FixedWidthInteger that is able
+// to represent it.  Conforming this protocol would take some effort.
+// Since your main goal is to learn about IEEE 754, we won't worry
+// about supporting this extended type.
+
+protocol BitPatternConvertable {
+  associatedtype BitPattern: FixedWidthInteger
+  init(bitPattern: BitPattern)
+  var bitPattern: BitPattern { get }
 }
 
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
+extension Float64: BitPatternConvertable {}
+extension Float32: BitPatternConvertable {}
+extension Float16: BitPatternConvertable {}
+extension CGFloat: BitPatternConvertable {}
 
-  var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
-  }
+protocol DoubleConvertable {
+  init(_ double: Double)
+  func asDouble() -> Double
+}
+
+extension Float64: DoubleConvertable {
+  func asDouble() -> Double { Double(self) }
+}
+extension Float32: DoubleConvertable {
+  func asDouble() -> Double { Double(self) }
+}
+extension Float16: DoubleConvertable {
+  func asDouble() -> Double { Double(self) }
+}
+extension CGFloat: DoubleConvertable {
+  func asDouble() -> Double { Double(self) }
 }

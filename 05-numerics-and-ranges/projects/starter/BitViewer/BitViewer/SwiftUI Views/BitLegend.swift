@@ -32,47 +32,49 @@
 
 import SwiftUI
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
-
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
+private extension BitSemantic {
+  var longName: String {
+    switch self {
+    case .sign:
+      return "Sign Bit"
+    case .exponent:
+      return "Exponent Bits"
+    case .significand:
+      return "Significand Bits"
+    }
   }
 }
 
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
+struct BitLegend: View {
+  enum Kind { case signedInteger, floatingPoint }
+  let kind: Kind
+
+  var items: [BitSemantic] {
+    switch kind {
+    case .signedInteger:
+      return [BitSemantic.sign]
+    case .floatingPoint:
+      return BitSemantic.allCases
+    }
+  }
 
   var body: some View {
-    List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
+    VStack(alignment: .leading, spacing: spacing) {
+      ForEach(items, id: \.self) { item in
+        HStack {
+          Text(item.semanticLabel)
+            .frame(width: squareSize, height: squareSize)
+            .border(borderColor)
+            .background(item.color)
+          Text(item.longName).font(font)
         }
       }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+    }
   }
+
+  // MARK: - View constants
+  let spacing: CGFloat = 10
+  let font: Font = .system(size: 25, weight: .bold, design: .monospaced)
+  let squareSize: CGFloat = 30
+  let borderColor = Color.black
 }

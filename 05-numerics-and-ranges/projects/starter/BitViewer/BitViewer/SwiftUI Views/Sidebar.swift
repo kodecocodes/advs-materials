@@ -32,47 +32,38 @@
 
 import SwiftUI
 
-struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
-  @Binding var value: IntType
+struct Sidebar: View {
+  @ObservedObject var model: ModelStore
 
-  var body: some View {
-    List {
-      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
-            }
-          }
-        }
-      }
-    }.listStyle(GroupedListStyle())
-    .navigationTitle("\(String(describing: IntType.self)) Operations")
+  let integerTypes = TypeSelection.allCases.filter(\.isInteger)
+  let floatingPointTypes = TypeSelection.allCases.filter(\.isFloatingPoint)
+
+  func checkboxImage(for item: TypeSelection) -> some View {
+    item == model.selection ? Image(systemName: "checkmark.square") : Image(systemName: "square")
   }
-}
-
-struct FloatingPointOperationsView<FloatType: BinaryFloatingPoint & DoubleConvertable>: View {
-  @Binding var value: FloatType
 
   var body: some View {
     List {
-      ForEach(FloatingPointOperation<FloatType>.menu, id: \.title) { section in
-        Section(header: Text(section.title)) {
-          ForEach(section.items, id: \.name) { item in
-            HStack {
-              Image(systemName: "function")
-              Button(item.name) {
-                value = item.operation(value)
-              }
+      Section(header: Text("Integer Types")) {
+        ForEach(integerTypes, id: \.title) { item in
+          HStack {
+            checkboxImage(for: item)
+            Button(item.title) {
+              model.selection = item
             }
           }
         }
       }
-    }.listStyle(GroupedListStyle())
-    .navigationViewStyle(StackNavigationViewStyle())
-    .navigationTitle("\(String(describing: FloatType.self)) Operations")
+      Section(header: Text("Floating Point Types")) {
+        ForEach(floatingPointTypes, id: \.title) { item in
+          HStack {
+            checkboxImage(for: item)
+            Button(item.title) {
+              model.selection = item
+            }
+          }
+        }
+      }
+    }.listStyle(SidebarListStyle())
   }
 }
