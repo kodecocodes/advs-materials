@@ -86,7 +86,7 @@
 			children = (
 				5D0A01B324C22061000BC4A7 /* BitViewerApp.swift */,
 				5D0A01B524C2207F000BC4A7 /* Model */,
-				5D0A01C424C2209B000BC4A7 /* SwiftUI Views */,
+				5D0A01C424C2209B000BC4A7 /* Views */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
@@ -107,7 +107,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5D0A01C424C2209B000BC4A7 /* SwiftUI Views */ = {
+		5D0A01C424C2209B000BC4A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5D0A01C524C2209B000BC4A7 /* AttributeLabelView.swift */,
@@ -121,7 +121,7 @@
 				5D0A01CD24C2209B000BC4A7 /* IntegerExpansionView.swift */,
 				5D0A01CE24C2209B000BC4A7 /* BitsView.swift */,
 			);
-			path = "SwiftUI Views";
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

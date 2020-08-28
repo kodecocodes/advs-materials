@@ -37,19 +37,18 @@ struct IntegerOperationsView<IntType: FixedWidthInteger>: View {
 
   var body: some View {
     List {
-// TODO: - Uncomment after implementing IntegerOperation
-//      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
-//        Section(header: Text(section.title)) {
-//          ForEach(section.items, id: \.name) { item in
-//            HStack {
-//              Image(systemName: "function")
-//              Button(item.name) {
-//                value = item.operation(value)
-//              }
-//            }
-//          }
-//        }
-//      }
+      ForEach(IntegerOperation<IntType>.menu, id: \.title) { section in
+        Section(header: Text(section.title)) {
+          ForEach(section.items, id: \.name) { item in
+            HStack {
+              Image(systemName: "function")
+              Button(item.name) {
+                value = item.operation(value)
+              }
+            }
+          }
+        }
+      }
     }.listStyle(GroupedListStyle())
     .navigationTitle("\(String(describing: IntType.self)) Operations")
   }

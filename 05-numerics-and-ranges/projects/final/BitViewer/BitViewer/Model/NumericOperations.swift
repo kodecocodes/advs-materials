@@ -58,18 +58,23 @@ extension FixedWidthInteger {
 }
 
 enum IntegerOperation<IntType: FixedWidthInteger> {
+  // 1
   typealias Operation = (IntType) -> IntType
 
+  // 2
   struct Section {
     let title: String
     let items: [Item]
   }
 
+  // 3
   struct Item {
     let name: String
     let operation: Operation
   }
+}
 
+extension IntegerOperation {
   static var menu: [Section] {
     [
       Section(title: "Set Value", items:
