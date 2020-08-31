@@ -5,6 +5,7 @@
         <page name='2-StringProtocols'/>
         <page name='3-StingComparison'/>
         <page name='4-Substring'/>
-        <page name='5-StringInterpolation'/>
+        <page name='5-StringFolding'/>
+        <page name='6-StringInterpolation'/>
     </pages>
 </playground>
