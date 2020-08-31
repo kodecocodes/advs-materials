@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ehabamer/Raywenderlich/Books/Advanced-Swift/advs-materials/07-strings/projects/final/07-Strings.playground/Pages/5-StringInterpolation.xcplaygroundpage#CharacterRangeLen=60&amp;CharacterRangeLoc=2647&amp;EndingColumnNumber=19&amp;EndingLineNumber=66&amp;StartingColumnNumber=18&amp;StartingLineNumber=65&amp;Timestamp=620529595.40523"
+         lockedSize = "{540, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ehabamer/Raywenderlich/Books/Advanced-Swift/advs-materials/07-strings/projects/final/07-Strings.playground/Pages/5-StringInterpolation.xcplaygroundpage#CharacterRangeLen=19&amp;CharacterRangeLoc=2621&amp;EndingColumnNumber=11&amp;EndingLineNumber=65&amp;StartingColumnNumber=20&amp;StartingLineNumber=62&amp;Timestamp=620529595.405358"
+         lockedSize = "{729, 50}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/ehabamer/Raywenderlich/Books/Advanced-Swift/advs-materials/07-strings/projects/final/07-Strings.playground/Pages/5-StringInterpolation.xcplaygroundpage#CharacterRangeLen=144&amp;CharacterRangeLoc=3792&amp;EndingColumnNumber=4&amp;EndingLineNumber=112&amp;StartingColumnNumber=2&amp;StartingLineNumber=105&amp;Timestamp=620529595.405457"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>
