@@ -46,7 +46,9 @@ extension FixedWidthInteger {
     }
     return reversed
   }
+}
 
+extension FixedWidthInteger {
   var bitReversed: Self {
     precondition(MemoryLayout<Self>.size <= MemoryLayout<UInt64>.size)
     var reversed = UInt64(truncatingIfNeeded: self.byteSwapped)
@@ -104,6 +106,8 @@ extension IntegerOperation {
       [
         Item(name: "value + 1") { value in value &+ 1 },
         Item(name: "value - 1") { value in value &- 1 },
+        Item(name: "value * 10") { value in value &* 10 },
+        Item(name: "value / 10") { value in value / 10 },
         Item(name: "negate") { value in ~value &+ 1 }
       ])
     ]
