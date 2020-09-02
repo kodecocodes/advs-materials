@@ -15,7 +15,7 @@
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
 		F50A6EA724CDD69A006BDF06 /* SlowArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A6EA624CDD69A006BDF06 /* SlowArray.swift */; };
 		F50A6EA924CF08A9006BDF06 /* SlowMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A6EA824CF08A9006BDF06 /* SlowMath.swift */; };
-		F50A6EAB24CF1B28006BDF06 /* SlowChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A6EAA24CF1B27006BDF06 /* SlowChain.swift */; };
+		F50A6EAB24CF1B28006BDF06 /* SuspiciousChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A6EAA24CF1B27006BDF06 /* SuspiciousChain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F50A6EA624CDD69A006BDF06 /* SlowArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowArray.swift; sourceTree = "<group>"; };
 		F50A6EA824CF08A9006BDF06 /* SlowMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowMath.swift; sourceTree = "<group>"; };
-		F50A6EAA24CF1B27006BDF06 /* SlowChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowChain.swift; sourceTree = "<group>"; };
+		F50A6EAA24CF1B27006BDF06 /* SuspiciousChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuspiciousChain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			children = (
 				F50A6EA624CDD69A006BDF06 /* SlowArray.swift */,
 				F50A6EA824CF08A9006BDF06 /* SlowMath.swift */,
-				F50A6EAA24CF1B27006BDF06 /* SlowChain.swift */,
+				F50A6EAA24CF1B27006BDF06 /* SuspiciousChain.swift */,
 			);
 			path = "Slow Classes";
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 			files = (
 				F50A6EA924CF08A9006BDF06 /* SlowMath.swift in Sources */,
 				18D775C122AD944300AE281E /* AppDelegate.swift in Sources */,
-				F50A6EAB24CF1B28006BDF06 /* SlowChain.swift in Sources */,
+				F50A6EAB24CF1B28006BDF06 /* SuspiciousChain.swift in Sources */,
 				18D775C322AD944300AE281E /* SceneDelegate.swift in Sources */,
 				F50A6EA724CDD69A006BDF06 /* SlowArray.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,

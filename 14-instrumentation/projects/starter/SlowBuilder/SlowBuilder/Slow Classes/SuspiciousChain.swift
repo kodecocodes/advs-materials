@@ -32,7 +32,7 @@
 
 import Foundation
 
-struct SlowStruct {
+struct SuspiciousStruct {
   var name: String = ""
   var phone: String = ""
   var email: String = ""
@@ -41,56 +41,23 @@ struct SlowStruct {
   var address: String = ""
   var job: String = ""
 
-  func withName(_ value: String) -> SlowStruct {
+  func setting<T>(
+    _ keyPath: WritableKeyPath<Self, T>,
+    value: () -> T
+  ) -> Self {
     var copy = self
-    copy.name = value
+    copy[keyPath: keyPath] = value()
     return copy
   }
 
-  func withPhone(_ value: String) -> SlowStruct {
-    var copy = self
-    copy.phone = value
-    return copy
-  }
-
-  func withEmail(_ value: String) -> SlowStruct {
-    var copy = self
-    copy.email = value
-    return copy
-  }
-
-  func withCountry(_ value: String) -> SlowStruct {
-    var copy = self
-    copy.country = value
-    return copy
-  }
-
-  func withCity(_ value: String) -> SlowStruct {
-    var copy = self
-    copy.city = value
-    return copy
-  }
-
-  func withAddress(_ value: String) -> SlowStruct {
-    var copy = self
-    copy.address = value
-    return copy
-  }
-
-  func withJob(_ value: String) -> SlowStruct {
-    var copy = self
-    copy.job = value
-    return copy
-  }
-
-  static func getSlowStruct() -> SlowStruct {
-    SlowStruct()
-      .withName("SomeName")
-      .withPhone("0123456789")
-      .withEmail("email@somewhere.com")
-      .withCountry("Earth-Country")
-      .withCity("Earth-Country-City")
-      .withAddress("A place on earth, beside that shop")
-      .withJob("Super-Duper iOS Developer")
+  static func getSuspiciousStruct() -> Self {
+    SuspiciousStruct()
+      .setting(\.name) { "SomeName" }
+      .setting(\.phone) { "0123456789" }
+      .setting(\.email) { "email@somewhere.com" }
+      .setting(\.country) { "Earth-Country" }
+      .setting(\.city) { "Earth-Country-City" }
+      .setting(\.address) { "A place on earth, beside that shop" }
+      .setting(\.job) { "Super-Duper iOS Developer" }
   }
 }
