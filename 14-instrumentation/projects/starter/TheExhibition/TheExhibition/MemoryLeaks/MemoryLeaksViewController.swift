@@ -33,7 +33,7 @@
 import UIKit
 
 class MemoryLeaksViewController: UIViewController {
-  @IBOutlet weak var infoLabel: UILabel!
+  @IBOutlet var infoLabel: UILabel!
   var infoWriter: InformationWriter?
   var selfAsWriter: WriterProtocol?
   override func viewDidLoad() {
@@ -44,7 +44,7 @@ class MemoryLeaksViewController: UIViewController {
   }
 
   @IBAction func buttonPressed(_ sender: UIButton) {
-//    infoWriter?.doSomething()
+    infoWriter?.doSomething()
   }
 }
 

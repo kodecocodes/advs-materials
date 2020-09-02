@@ -32,21 +32,45 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class InformationWriter {
   var writeOperation: (String) -> Void
-  var repeatCount = 0
-
+  var cancellable: AnyCancellable?
   init(writer: WriterProtocol) {
     writeOperation = { [weak writer] info in
-      writer?.writeText("Information = \(info)")
+      writer?.writeText("\(info)")
     }
   }
 
   func doSomething() {
-    DispatchQueue.main.async {
-      self.repeatCount += 1
-      self.writeOperation("\(self.repeatCount)")
+    guard let url = URL(string: "https://icanhazdadjoke.com/") else {
+      return
     }
+    var request = URLRequest(url: url)
+    request.addValue("application/json", forHTTPHeaderField: "accept")
+    writeOperation("Loading awesome joke, please hold!")
+    cancellable = URLSession.shared
+      .dataTaskPublisher(for: request)
+      .tryMap { element -> Data in
+        guard let httpResponse = element.response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+          self.writeOperation("Failed to get joke")
+          throw URLError(.badServerResponse)
+        }
+        return element.data
+      }
+      .decode(type: Joke.self, decoder: JSONDecoder())
+      .sink(receiveCompletion: { print("Received completion: \($0).") },
+            receiveValue: { joke in
+              DispatchQueue.main.async {
+                self.writeOperation(joke.joke)
+              }
+            })
   }
+}
+
+struct Joke: Codable {
+  let id: String
+  let joke: String
 }

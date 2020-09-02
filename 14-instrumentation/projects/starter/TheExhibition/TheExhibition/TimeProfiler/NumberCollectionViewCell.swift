@@ -33,9 +33,9 @@
 import UIKit
 
 class NumberCollectionViewCell: UICollectionViewCell {
-  @IBOutlet weak var numberLabel: UILabel?
-  @IBOutlet weak var countLabel: UILabel?
-  @IBOutlet weak var timeLabel: UILabel?
+  @IBOutlet var numberLabel: UILabel?
+  @IBOutlet var countLabel: UILabel?
+  @IBOutlet var timeLabel: UILabel?
 
   var number: (Int, Int)? {
     didSet {

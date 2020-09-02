@@ -34,7 +34,7 @@ import UIKit
 
 class TimeProfilerViewController: UIViewController {
   let totalCells = 10000
-  @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet var collectionView: UICollectionView!
 }
 
 extension TimeProfilerViewController: UICollectionViewDelegate {
@@ -46,7 +46,7 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let startTime = mach_absolute_time()
+    let timer = MachineTimer()
 
     guard let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: "NumberCollectionViewCell",
@@ -56,13 +56,7 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
     }
     cell.number = TrackedNumbersGenerator.generate()
 
-    var baseInfo = mach_timebase_info_data_t(numer: 0, denom: 0)
-    if mach_timebase_info(&baseInfo) == KERN_SUCCESS {
-      let finishTime = mach_absolute_time()
-
-      let nano = (finishTime - startTime) * UInt64(baseInfo.numer / baseInfo.denom)
-      cell.time = "\(Int(nano / 1000))μ"
-    }
+    cell.time = "\(timer.mark())μs"
 
     return cell
   }

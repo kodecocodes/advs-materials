@@ -30,27 +30,21 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import UIKit
+import Foundation
 
-class MemoryLeaksViewController: UIViewController {
-  @IBOutlet var infoLabel: UILabel!
-  var infoWriter: InformationWriter?
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    infoWriter = InformationWriter(writer: self)
-    infoWriter?.writeOperation = { str in
-      self.writeText(str)
+struct MachineTimer {
+  let startTime = mach_absolute_time()
+
+  /// Time spent in milliseconds since the creation of the object.
+  func mark() -> Int {
+    var baseInfo = mach_timebase_info_data_t(numer: 0, denom: 0)
+    if mach_timebase_info(&baseInfo) == KERN_SUCCESS {
+      let finishTime = mach_absolute_time()
+
+      let nano = (finishTime - startTime) * UInt64(baseInfo.numer / baseInfo.denom)
+      return Int(nano / 1000)
     }
-    infoWriter?.doSomething()
-  }
 
-  @IBAction func buttonPressed(_ sender: UIButton) {
-    infoWriter?.doSomething()
-  }
-}
-
-extension MemoryLeaksViewController: WriterProtocol {
-  func writeText(_ text: String) {
-    infoLabel.text = text
+    return -1
   }
 }

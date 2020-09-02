@@ -58,7 +58,7 @@ class CountryCell: UITableViewCell {
     }
   }
 
-  @IBOutlet weak var countryName: UILabel!
-  @IBOutlet weak var continentName: UILabel!
-  @IBOutlet weak var languagesView: UIStackView!
+  @IBOutlet var countryName: UILabel!
+  @IBOutlet var continentName: UILabel!
+  @IBOutlet var languagesView: UIStackView!
 }
