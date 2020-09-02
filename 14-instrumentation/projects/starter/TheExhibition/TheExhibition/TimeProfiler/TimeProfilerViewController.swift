@@ -46,8 +46,6 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let timer = MachineTimer()
-
     guard let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: "NumberCollectionViewCell",
       for: indexPath
@@ -55,8 +53,6 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
     cell.number = TrackedNumbersGenerator.generate()
-
-    cell.time = "\(timer.mark())μs"
 
     return cell
   }

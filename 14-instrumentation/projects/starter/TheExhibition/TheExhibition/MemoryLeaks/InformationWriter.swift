@@ -37,6 +37,7 @@ import Combine
 class InformationWriter {
   var writeOperation: (String) -> Void
   var cancellable: AnyCancellable?
+  
   init(writer: WriterProtocol) {
     writeOperation = { info in
       writer.writeText("\(info)")
@@ -44,6 +45,12 @@ class InformationWriter {
   }
 
   func doSomething() {
+    fetchJoke { jokeText in
+      self.writeOperation(jokeText)
+    }
+  }
+
+  func fetchJoke(completion: @escaping (String) -> Void) {
     guard let url = URL(string: "https://icanhazdadjoke.com/") else {
       return
     }
@@ -64,7 +71,7 @@ class InformationWriter {
       .sink(receiveCompletion: { print("Received completion: \($0).") },
             receiveValue: { joke in
               DispatchQueue.main.async {
-                self.writeOperation(joke.joke)
+                completion(joke.joke)
               }
             })
   }
