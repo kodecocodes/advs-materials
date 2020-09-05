@@ -1,6 +1,7 @@
 //: [Previous](@previous)
 
 import Foundation
+import CryptoKit
 
 struct Customer: Encodable {
   var name: String
@@ -78,20 +79,32 @@ struct EncryptedCodableString: ExpressibleByStringLiteral, Codable {
   let value: String
 
   // 1
+  let key: SymmetricKey = {
+    // In a real app, this should be a secure key stored in a secure location,
+    // such as the keychain.
+    let hashed = SHA256.hash(data: "Advanced swift".data(using: .utf8)!)
+    return SymmetricKey(data: hashed)
+  }()
+
+  // 2
   init(stringLiteral value: StringLiteralType) {
     self.value = value
   }
 
-  // 2
+  // 3
   init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
-    self.value = try container.decode(String.self).decrypted()
+    let combined = try container.decode(Data.self)
+    let result = try AES.GCM.open(.init(combined: combined), using: key)
+    self.value = String(data: result, encoding: .utf8) ?? ""
   }
 
-  // 3
+  // 4
   func encode(to encoder: Encoder) throws {
     var container = encoder.singleValueContainer()
-    try container.encode(value.encrypted())
+    let data = value.data(using: .utf8)!
+    let sealed = try AES.GCM.seal(data, using: key)
+    try container.encode(sealed.combined)
   }
 }
 
