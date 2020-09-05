@@ -57,6 +57,7 @@ struct Stock: Decodable {
       update.date = dateFormatter.date(from: currentKey.stringValue) ?? update.date
       updates.append(update)
     }
+    .sorted(by: { $0.date < $1.date })
   }
 
   enum MetaKeys: String, CodingKey {
@@ -67,7 +68,7 @@ struct Stock: Decodable {
 }
 
 do {
-  let stock = try getStock(interval: .fifteenMinutes)
+  let stock = try getStock(interval: .oneMinute)
   print("\(stock.symbol), \(stock.refreshedAt): \(stock.info) with \(stock.updates.count) updates")
   for update in stock.updates {
     _ = update.open
@@ -80,11 +81,11 @@ do {
 
 extension Stock {
   struct Update: Decodable, CustomStringConvertible {
-    let open: Float
-    let high: Float
-    let low: Float
-    let close: Float
-    let volume: Float
+    let open: Decimal
+    let high: Decimal
+    let low: Decimal
+    let close: Decimal
+    let volume: Int
     var date = Date.distantPast
 
     enum CodingKeys: String, CodingKey {
@@ -97,12 +98,12 @@ extension Stock {
 
     init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
-
-      self.open = Float(try container.decode(String.self, forKey: .open)) ?? -1
-      self.high = Float(try container.decode(String.self, forKey: .high)) ?? -1
-      self.low = Float(try container.decode(String.self, forKey: .low)) ?? -1
-      self.close = Float(try container.decode(String.self, forKey: .close)) ?? -1
-      self.volume = Float(try container.decode(String.self, forKey: .volume)) ?? -1
+      
+      self.open = try Decimal(string: container.decode(String.self, forKey: .open)).unwrapOrThrow()
+      self.high = try Decimal(string: container.decode(String.self, forKey: .high)).unwrapOrThrow()
+      self.low = try Decimal(string: container.decode(String.self, forKey: .low)).unwrapOrThrow()
+      self.close = try Decimal(string: container.decode(String.self, forKey: .close)).unwrapOrThrow()
+      self.volume = try Int(container.decode(String.self, forKey: .volume)).unwrapOrThrow()
     }
 
     var description: String {

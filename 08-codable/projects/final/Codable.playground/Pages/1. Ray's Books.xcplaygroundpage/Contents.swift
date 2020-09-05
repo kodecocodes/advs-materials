@@ -4,28 +4,26 @@ import UIKit
 import PlaygroundSupport
 
 // Snake case
-example(of: "Books") {
-  let data = API.getData(for: .rwBooksKebab)
-  let decoder = JSONDecoder()
-  decoder.keyDecodingStrategy = .convertFromKebabCase
-  decoder.dataDecodingStrategy = .base64
+let data = API.getData(for: .rwBooksKebab)
+let decoder = JSONDecoder()
+decoder.keyDecodingStrategy = .convertFromKebabCase
+decoder.dataDecodingStrategy = .base64
 
-  do {
-    let books = try decoder.decode([Book].self, from: data)
-    for book in books {
-      print("\(book.name) (\(book.id)) by \(book.authors.joined(separator: ", ")). Get it at: \(book.storeUrl)")
-      _ = book.image
-    }
-  } catch {
-    print("Something went wrong: \(error)")
+do {
+  let books = try decoder.decode([Book].self, from: data)
+  for book in books {
+    print("\(book.name) (\(book.id)) by \(book.authors.joined(separator: ", ")). Get it at: \(book.storeLink)")
+    _ = book.image
   }
+} catch {
+  print("Something went wrong: \(error)")
 }
 
 struct Book: Decodable {
   let id: String
   let name: String
   let authors: [String]
-  let storeUrl: URL
+  let storeLink: URL
   let imageBlob: Data
   var image: UIImage? { UIImage(data: imageBlob) }
 }

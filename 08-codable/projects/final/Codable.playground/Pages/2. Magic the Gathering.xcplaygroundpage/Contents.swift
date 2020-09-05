@@ -22,13 +22,13 @@ do {
 }
 
 struct Card: Decodable {
-  let id: String
+  let id: UUID
   let name: String
   let type: String
   let text: String
   let number: String
   let flavor: String?
-  let imageUrl: URL?
+  let imageURL: URL?
   let manaCost: Mana
   let rarity: Rarity
   let set: Set
@@ -37,7 +37,7 @@ struct Card: Decodable {
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    self.id = try container.decode(String.self, forKey: .id)
+    self.id = try container.decode(UUID.self, forKey: .id)
     self.name = try container.decode(String.self, forKey: .name)
     self.manaCost = try container.decode(Mana.self, forKey: .manaCost)
     self.type = try container.decode(String.self, forKey: .type)
@@ -45,7 +45,7 @@ struct Card: Decodable {
     self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
     self.flavor = try container.decodeIfPresent(String.self, forKey: .flavor)
     self.number = try container.decode(String.self, forKey: .number)
-    self.imageUrl = try container.decodeIfPresent(URL.self, forKey: .imageUrl)
+    self.imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
 
     // 1
     // Set
@@ -66,9 +66,13 @@ struct Card: Decodable {
     self.rulings = rulingDict.compactMap { $0["text"] } // 2
   }
 
-  enum CodingKeys: String, CodingKey {
-    case id, name, manaCost, type, rarity, text, flavor, number, rulings, imageUrl, set, setName, power, toughness
-  }
+    enum CodingKeys: String, CodingKey {
+      case id, name, manaCost, type
+      case rarity, text, flavor, number
+      case rulings, imageURL = "imageUrl"
+      case set, setName
+      case power, toughness
+    }
 }
 
 extension Card {
