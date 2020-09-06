@@ -15,7 +15,7 @@ do {
 }
 
 struct Card: Decodable {
-  let id: String
+  let id: UUID
   let name: String
   let type: String
   let text: String
