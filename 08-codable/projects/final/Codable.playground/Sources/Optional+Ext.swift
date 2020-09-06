@@ -32,19 +32,16 @@
 
 import Foundation
 
-/// Represents a raw Coding Key, to be used when
-/// `Codable` keys are dynamic and aren't known in advanced
-public struct AnyCodingKey: CodingKey {
-  public let stringValue: String
-  public let intValue: Int?
+public extension Optional {
+  func unwrapOrThrow() throws -> Wrapped {
+    guard let unwrapped = self else {
+      throw Error.unexpectedNil(type: Wrapped.self)
+    }
 
-  public init?(stringValue: String) {
-    self.stringValue = stringValue
-    self.intValue = nil
+    return unwrapped
   }
 
-  public init?(intValue: Int) {
-    self.intValue = intValue
-    self.stringValue = "\(intValue)"
+  enum Error: Swift.Error {
+    case unexpectedNil(type: Wrapped.Type)
   }
 }

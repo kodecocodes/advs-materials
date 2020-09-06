@@ -2,7 +2,7 @@
     {
         "id": "comb",
         "name": "Combine: Asynchronous Programming with Swift",
-        "store-link": "https://store.raywenderlich.com/products/combine-asynchronous-programming-with-swift",
+        "store-url": "https://store.raywenderlich.com/products/combine-asynchronous-programming-with-swift",
         "authors": [
             "Scott Gardner",
             "Shai Mishali",
@@ -14,7 +14,7 @@
     {
         "id": "git",
         "name": "Mastering Git",
-        "store-link": "https://store.raywenderlich.com/products/mastering-git",
+        "store-url": "https://store.raywenderlich.com/products/mastering-git",
         "authors": [
             "Jawwad Ahmed",
             "Chris Belanger"
@@ -24,7 +24,7 @@
     {
         "id": "cat",
         "name": "Catalyst by Tutorials",
-        "store-link": "https://store.raywenderlich.com/products/catalyst-by-tutorials",
+        "store-url": "https://store.raywenderlich.com/products/catalyst-by-tutorials",
         "authors": [
             "Marin Bencevic",
             "Nick Bonatsakis",
@@ -35,7 +35,7 @@
     {
         "id": "sui",
         "name": "SwiftUI by Tutorials",
-        "store-link": "https://store.raywenderlich.com/products/swiftui-by-tutorials",
+        "store-url": "https://store.raywenderlich.com/products/swiftui-by-tutorials",
         "authors": [
             "Antonio Bello",
             "Bill Morefield",
@@ -46,7 +46,7 @@
     {
         "id": "tdd",
         "name": "iOS Test-Driven Developmnt by Tutorials",
-        "store-link": "https://store.raywenderlich.com/products/ios-test-driven-development",
+        "store-url": "https://store.raywenderlich.com/products/ios-test-driven-development",
         "authors": [
             "Joshua Greene",
             "Michael Katz"

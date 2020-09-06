@@ -1,7 +1,7 @@
 //: [Previous](@previous)
 
-import Foundation
 import CryptoKit
+import Foundation
 
 struct Customer: Encodable {
   var name: String
@@ -16,9 +16,28 @@ struct Customer: Encodable {
   let website: String
   let addedOn = Date()
 
+  func encode(to encoder: Encoder) throws {
+    var customer = encoder.container(keyedBy: CustomerKeys.self)
+    try customer.encode(name, forKey: .name)
+    try customer.encode(accessKey, forKey: .accessKey)
+    try customer.encode(atmCode, forKey: .atmCode)
+    try customer.encode(addedOn, forKey: .addedOn)
+
+    var address = customer
+      .nestedContainer(keyedBy: AddressKeys.self, forKey: .address)
+    try address.encode(street, forKey: .street)
+    try address.encode(city, forKey: .city)
+    try address.encode(zip, forKey: .zip)
+
+    var contactInfo = customer.nestedContainer(
+      keyedBy: ContactInfoKeys.self, forKey: .contactInfo)
+    try contactInfo.encode(homePhone, forKey: .homePhone)
+    try contactInfo.encode(cellularPhone, forKey: .cellularPhone)
+    try contactInfo.encode(email, forKey: .email)
+  }
+
   enum CustomerKeys: String, CodingKey {
-    case name, accessKey, atmCode, addedOn
-    case address, contactInfo
+    case name, accessKey, atmCode, addedOn, address, contactInfo
   }
 
   enum AddressKeys: String, CodingKey {
@@ -27,24 +46,6 @@ struct Customer: Encodable {
 
   enum ContactInfoKeys: String, CodingKey {
     case homePhone, cellularPhone, email
-  }
-
-  func encode(to encoder: Encoder) throws {
-    var customer = encoder.container(keyedBy: CustomerKeys.self)
-    try customer.encode(name, forKey: .name)
-    try customer.encode(accessKey, forKey: .accessKey)
-    try customer.encode(atmCode, forKey: .atmCode)
-    try customer.encode(addedOn, forKey: .addedOn)
-
-    var address = customer.nestedContainer(keyedBy: AddressKeys.self, forKey: .address)
-    try address.encode(street, forKey: .street)
-    try address.encode(city, forKey: .city)
-    try address.encode(zip, forKey: .zip)
-
-    var contactInfo = customer.nestedContainer(keyedBy: ContactInfoKeys.self, forKey: .contactInfo)
-    try contactInfo.encode(homePhone, forKey: .homePhone)
-    try contactInfo.encode(cellularPhone, forKey: .cellularPhone)
-    try contactInfo.encode(email, forKey: .email)
   }
 }
 
@@ -75,11 +76,13 @@ do {
   print("Something went wrong: \(error)")
 }
 
-struct EncryptedCodableString: ExpressibleByStringLiteral, Codable {
+struct EncryptedCodableString: ExpressibleByStringLiteral,
+                               Codable {
   let value: String
 
   // 1
-  let key = SymmetricKey(data: "Advanced Swift !".data(using: .utf8)!)
+  let key = SymmetricKey(data:
+                         "Advanced Swift !".data(using: .utf8)!)
 
   // 2
   init(stringLiteral value: StringLiteralType) {
@@ -90,7 +93,8 @@ struct EncryptedCodableString: ExpressibleByStringLiteral, Codable {
   init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     let combined = try container.decode(Data.self)
-    let result = try AES.GCM.open(.init(combined: combined), using: key)
+    let result = try AES.GCM.open(.init(combined: combined),
+                                  using: key)
     self.value = String(data: result, encoding: .utf8) ?? ""
   }
 

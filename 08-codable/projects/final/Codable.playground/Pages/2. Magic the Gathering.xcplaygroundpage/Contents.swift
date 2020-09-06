@@ -9,12 +9,11 @@ do {
   let cards = try decoder.decode([Card].self, from: data)
   for card in cards {
     print(
-      "🃏 \(card.name) #\(card.number) is a \(card.rarity) \(card.type)",
-      "and needs \(card.manaCost).",
+      "🃏 \(card.name) #\(card.number) is a \(card.rarity)",
+      "\(card.type) and needs \(card.manaCost).",
       "It's part of \(card.set.name) (\(card.set.id)).",
       card.attributes.map { "It's attributed as \($0.power)/\($0.toughness)." } ?? ""
     )
-
     print("Rulings: \(card.rulings.joined(separator: ", "))")
   }
 } catch {
@@ -47,12 +46,10 @@ struct Card: Decodable {
     self.number = try container.decode(String.self, forKey: .number)
     self.imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
 
-    // 1
     // Set
     self.set = Set(id: try container.decode(String.self, forKey: .set),
                    name: try container.decode(String.self, forKey: .setName))
 
-    // 2
     // Attributes
     if let power = try container.decodeIfPresent(String.self, forKey: .power),
        let toughness = try container.decodeIfPresent(String.self, forKey: .toughness) {
@@ -62,26 +59,22 @@ struct Card: Decodable {
     }
 
     // Rulings
-    let rulingDict = try container.decode([[String: String]].self, forKey: .rulings) // 1
-    self.rulings = rulingDict.compactMap { $0["text"] } // 2
+    let rulingDict = try container.decode([[String: String]].self, forKey: .rulings)
+    self.rulings = rulingDict.compactMap { $0["text"] }
   }
 
-    enum CodingKeys: String, CodingKey {
-      case id, name, manaCost, type
-      case rarity, text, flavor, number
-      case rulings, imageURL = "imageUrl"
-      case set, setName
-      case power, toughness
-    }
+  enum CodingKeys: String, CodingKey {
+    case id, name, manaCost, type, rarity
+    case text, flavor, number, set, setName
+    case power, toughness, rulings, imageURL = "imageUrl"
+  }
 }
 
 extension Card {
   /// Card's Mana
   struct Mana: Decodable, CustomStringConvertible {
-    // 1
     let colors: [Color]
 
-    // 2
     var description: String { colors.map(\.symbol).joined() }
 
     init(from decoder: Decoder) throws {
@@ -89,11 +82,11 @@ extension Card {
       let cost = try container.decode(String.self)
 
       self.colors = try cost
-        .components(separatedBy: "}") // 1
+        .components(separatedBy: "}")
+        .dropLast()
         .compactMap { rawCost in
-          let symbol = String(rawCost.dropFirst()) // 2
+          let symbol = String(rawCost.dropFirst())
 
-          // 3
           guard !symbol.isEmpty,
                 let color = Color(symbol: symbol) else {
             throw DecodingError.dataCorruptedError(
@@ -101,7 +94,6 @@ extension Card {
               debugDescription: "Unknown mana symbol \(symbol)")
           }
 
-          // 4
           return color
         }
     }
@@ -118,18 +110,6 @@ extension Card.Mana {
     case black
     case red
     case green
-
-    var symbol: String {
-      switch self {
-      case .white: return "W"
-      case .blue: return "U"
-      case .black: return "B"
-      case .red: return "R"
-      case .green: return "G"
-      case .extra: return "X"
-      case .colorless(let number): return "\(number)"
-      }
-    }
 
     init?(symbol: String) {
       if let value = Int(symbol) {
@@ -153,6 +133,18 @@ extension Card.Mana {
       default:
         print("UNKNOWN \(symbol)")
         return nil
+      }
+    }
+
+    var symbol: String {
+      switch self {
+      case .white: return "W"
+      case .blue: return "U"
+      case .black: return "B"
+      case .red: return "R"
+      case .green: return "G"
+      case .extra: return "X"
+      case .colorless(let number): return "\(number)"
       }
     }
   }
@@ -186,3 +178,35 @@ extension Card {
 }
 
 //: [Next](@next)
+
+/// Copyright (c) 2020 Razeware LLC
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+/// distribute, sublicense, create a derivative work, and/or sell copies of the
+/// Software in any work that is designed, intended, or marketed for pedagogical or
+/// instructional purposes related to programming, coding, application development,
+/// or information technology.  Permission for such use, copying, modification,
+/// merger, publication, distribution, sublicensing, creation of derivative works,
+/// or sale is expressly withheld.
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+/// THE SOFTWARE.
