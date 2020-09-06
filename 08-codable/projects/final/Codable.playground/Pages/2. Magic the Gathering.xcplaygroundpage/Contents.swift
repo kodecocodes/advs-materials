@@ -92,15 +92,16 @@ extension Card {
         .components(separatedBy: "}") // 1
         .compactMap { rawCost in
           let symbol = String(rawCost.dropFirst()) // 2
-          guard !symbol.isEmpty else { return nil } // 3
 
-          // 4
-          guard let color = Color(symbol: symbol) else {
-            throw DecodingError.dataCorruptedError(in: container,
-                                                    debugDescription: "Unknown mana symbol \(symbol), \(rawCost), \(cost)")
+          // 3
+          guard !symbol.isEmpty,
+                let color = Color(symbol: symbol) else {
+            throw DecodingError.dataCorruptedError(
+              in: container,
+              debugDescription: "Unknown mana symbol \(symbol)")
           }
 
-          // 5
+          // 4
           return color
         }
     }

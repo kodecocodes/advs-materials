@@ -79,12 +79,7 @@ struct EncryptedCodableString: ExpressibleByStringLiteral, Codable {
   let value: String
 
   // 1
-  let key: SymmetricKey = {
-    // In a real app, this should be a secure key stored in a secure location,
-    // such as the keychain.
-    let hashed = SHA256.hash(data: "Advanced swift".data(using: .utf8)!)
-    return SymmetricKey(data: hashed)
-  }()
+  let key = SymmetricKey(data: "Advanced Swift !".data(using: .utf8)!)
 
   // 2
   init(stringLiteral value: StringLiteralType) {
