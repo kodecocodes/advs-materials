@@ -15,7 +15,7 @@ struct Stock: Decodable {
 }
 
 do {
-  let stock = try getStock(interval: .fifteenMinutes)
+  let stock = try getStock(interval: .oneMinute)
   print(stock)
 } catch {
   print("Something went wrong: \(error)")
