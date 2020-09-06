@@ -21,7 +21,7 @@ struct Card: Decodable {
   let text: String
   let number: String
   let flavor: String?
-  let imageUrl: URL?
+  let imageURL: URL?
 }
 
 //: [Next](@next)
