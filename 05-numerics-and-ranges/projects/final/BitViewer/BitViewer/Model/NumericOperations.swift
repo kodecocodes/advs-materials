@@ -87,7 +87,9 @@ extension IntegerOperation {
         Item(name: "value = -1") { _ in -1 },
         Item(name: "max") { _ in IntType.max },
         Item(name: "min") { _ in IntType.min },
-        Item(name: "random") { _ in IntType.random(in: IntType.min...IntType.max) }
+        Item(name: "random") { _ in
+          IntType.random(in: IntType.min...IntType.max)
+        }
       ]),
       Section(title: "Endian", items:
       [
@@ -138,12 +140,24 @@ enum FloatingPointOperation<FloatType: BinaryFloatingPoint> {
         Item(name: "value = 1") { _ in 1 },
         Item(name: "value = -1") { _ in -1 },
         Item(name: "value = pi") { _ in FloatType.pi },
-        Item(name: "value = 100") { _ in 100 },
+        Item(name: "value = 100") { _ in 100 }
+      ]),
+      Section(title: "Set Special Values", items:
+      [
         Item(name: "infinity") { _ in FloatType.infinity },
         Item(name: "NaN") { _ in FloatType.nan },
-        Item(name: "Signaling NaN") { _ in FloatType.signalingNaN },
-        Item(name: "greatestFiniteMagnitude") { _ in FloatType.greatestFiniteMagnitude },
-        Item(name: "leastNormalMagnitude") { _ in FloatType.leastNormalMagnitude },
+        Item(name: "Signaling NaN") { _ in
+          FloatType.signalingNaN
+        },
+        Item(name: "greatestFiniteMagnitude") { _ in
+          FloatType.greatestFiniteMagnitude
+        },
+        Item(name: "leastNormalMagnitude") { _ in
+          FloatType.leastNormalMagnitude
+        },
+        Item(name: "leastNonzeroMagnitude") { _ in
+          FloatType.leastNonzeroMagnitude
+        },
         Item(name: "ulpOfOne") { _ in FloatType.ulpOfOne }
       ]),
       Section(title: "Stepping", items:
