@@ -49,12 +49,10 @@ class MemoryOptimizationViewController: UICollectionViewController {
       }
       photosList.append(image)
     }
-
-//    navigationController?.navigationBar.topItem?.title = "Memory Optimization"
   }
 }
 
-// MARK: Collection View Data Source Methods
+// MARK: - UICollectionViewDataSource
 extension MemoryOptimizationViewController {
   override func collectionView(
     _ collectionView: UICollectionView,
@@ -79,21 +77,21 @@ extension MemoryOptimizationViewController {
   }
 }
 
-// MARK: Collection View Delegate Flow Layout Methods
+// MARK: - UICollectionViewDelegateFlowLayout
 extension MemoryOptimizationViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(
     _ collectionView: UICollectionView,
     layout collectionViewLayout: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath
   ) -> CGSize {
-    if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-      let emptySpace =
-        layout.sectionInset.left + layout.sectionInset.right + (columns * cellSpacing - 1)
-      cellSize = (view.frame.size.width - emptySpace) / columns
-      return CGSize(width: cellSize, height: cellSize)
+    guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {
+      return CGSize()
     }
 
-    return CGSize()
+    let emptySpace =
+      layout.sectionInset.left + layout.sectionInset.right + (columns * cellSpacing - 1)
+    cellSize = (view.frame.size.width - emptySpace) / columns
+    return CGSize(width: cellSize, height: cellSize)
   }
 
   func collectionView(
