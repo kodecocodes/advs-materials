@@ -35,19 +35,18 @@ import UIKit
 class MemoryLeaksViewController: UIViewController {
   @IBOutlet var infoLabel: UILabel!
   var infoWriter: InformationWriter?
-  var selfAsWriter: WriterProtocol?
   override func viewDidLoad() {
     super.viewDidLoad()
     infoWriter = InformationWriter(writer: self)
     infoWriter?.doSomething()
-    selfAsWriter = self
   }
 
-  @IBAction func buttonPressed(_ sender: UIButton) {
+  @IBAction func buttonPressed() {
     infoWriter?.doSomething()
   }
 }
 
+// MARK: - WriterProtocol
 extension MemoryLeaksViewController: WriterProtocol {
   func writeText(_ text: String) {
     infoLabel.text = text

@@ -27,7 +27,7 @@
                                 <rect key="frame" x="158.5" y="433" width="97" height="30"/>
                                 <state key="normal" title="Tell me a joke!"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="Uzb-QQ-OyE" eventType="touchUpInside" id="C6O-BV-egx"/>
+                                    <action selector="buttonPressed" destination="Uzb-QQ-OyE" eventType="touchUpInside" id="S6W-go-OqV"/>
                                 </connections>
                             </button>
                         </subviews>

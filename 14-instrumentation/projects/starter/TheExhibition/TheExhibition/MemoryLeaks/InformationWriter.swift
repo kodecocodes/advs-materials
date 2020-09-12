@@ -30,7 +30,6 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
 import UIKit
 import Combine
 
@@ -40,7 +39,7 @@ class InformationWriter {
   
   init(writer: WriterProtocol) {
     writeOperation = { info in
-      writer.writeText("\(info)")
+      writer.writeText(info)
     }
   }
 
@@ -59,20 +58,21 @@ class InformationWriter {
     writeOperation("Loading awesome joke, please hold!")
     cancellable = URLSession.shared
       .dataTaskPublisher(for: request)
-      .tryMap { element -> Data in
-        guard let httpResponse = element.response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-          self.writeOperation("Failed to get joke")
-          throw URLError(.badServerResponse)
+      .tryMap { element in
+        guard
+          let httpResponse = element.response as? HTTPURLResponse,
+          httpResponse.statusCode == 200
+          else {
+            self.writeOperation("Failed to get joke")
+            throw URLError(.badServerResponse)
         }
         return element.data
       }
       .decode(type: Joke.self, decoder: JSONDecoder())
+      .receive(on: RunLoop.main)
       .sink(receiveCompletion: { print("Received completion: \($0).") },
             receiveValue: { joke in
-              DispatchQueue.main.async {
                 completion(joke.joke)
-              }
             })
   }
 }
