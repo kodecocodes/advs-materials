@@ -37,15 +37,19 @@ class TimeProfilerViewController: UIViewController {
   @IBOutlet var collectionView: UICollectionView!
 }
 
-extension TimeProfilerViewController: UICollectionViewDelegate {
-}
-
+// MARK: - UICollectionViewDataSource
 extension TimeProfilerViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int
+  ) -> Int {
     return totalCells
   }
 
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath
+  ) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: "NumberCollectionViewCell",
       for: indexPath
@@ -53,7 +57,6 @@ extension TimeProfilerViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
     cell.number = TrackedNumbersGenerator.generate()
-
     return cell
   }
 }

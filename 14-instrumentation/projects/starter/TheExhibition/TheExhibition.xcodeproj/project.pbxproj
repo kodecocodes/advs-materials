@@ -130,8 +130,8 @@
 			children = (
 				F5E4F53224DF30A40068911A /* TimeProfiler.storyboard */,
 				F5E4F52E24DF30A40068911A /* TimeProfilerViewController.swift */,
-				F5E4F53124DF30A40068911A /* FileManager.swift */,
 				F5E4F52F24DF30A40068911A /* NumberCollectionViewCell.swift */,
+				F5E4F53124DF30A40068911A /* FileManager.swift */,
 				F5E4F53024DF30A40068911A /* TrackedNumbersGenerator.swift */,
 				F5F0A0E524FF210C00B3159E /* MachineTimer.swift */,
 			);
