@@ -33,7 +33,7 @@
 import UIKit
 
 class CountryCell: UITableViewCell {
-  var country: Countries? {
+  var country: Country? {
     didSet {
       guard let country = country else {
         return
@@ -41,24 +41,31 @@ class CountryCell: UITableViewCell {
       countryName.text = country.name
       continentName.text = country.continent?.name
 
-      guard showLanguages else {
+      guard shouldShowLanguages else {
+        languageNames.isHidden = true
         return
       }
 
-      for subView in languagesView.arrangedSubviews {
-        languagesView.removeArrangedSubview(subView)
-        subView.removeFromSuperview()
-      }
+      languageNames.isHidden = false
 
-      for language in country.languagesArray {
-        let languageLabel = UILabel()
-        languageLabel.text = language.name
-        languagesView.addArrangedSubview(languageLabel)
-      }
+      let names = country.languagesArray
+        .map {
+          $0.name
+        }
+        .compactMap {
+          $0
+        }
+      languageNames.text = names.joined(separator: " ▪︎ ")
     }
   }
 
   @IBOutlet var countryName: UILabel!
   @IBOutlet var continentName: UILabel!
-  @IBOutlet var languagesView: UIStackView!
+  @IBOutlet weak var languageNames: UILabel!
+}
+
+extension Country {
+  var languagesArray: [Language] {
+    return (languages?.allObjects as? [Language]) ?? []
+  }
 }
