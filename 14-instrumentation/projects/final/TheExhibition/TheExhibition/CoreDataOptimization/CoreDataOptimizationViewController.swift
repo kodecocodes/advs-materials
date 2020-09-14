@@ -32,14 +32,14 @@
 
 import UIKit
 
-let showLanguages = true
+let shouldShowLanguages = true
 
 class CoreDataOptimizationViewController: UITableViewController {
-  var countriesList: [Countries] = []
+  var countries: [Country] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    countriesList = CoreDataManager.shared.allCountries()
+    countries = CoreDataManager.shared.allCountries()
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       CoreDataManager.shared.clearMemory()
@@ -47,17 +47,25 @@ class CoreDataOptimizationViewController: UITableViewController {
   }
 }
 
-// MARK: - Table view data source
+// MARK: - UICollectionViewDataSource
 extension CoreDataOptimizationViewController {
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return countriesList.count
+  override func tableView(
+    _ tableView: UITableView,
+    numberOfRowsInSection section: Int
+  ) -> Int {
+    return countries.count
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell else {
+  override func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "CountryCell",
+            for: indexPath) as? CountryCell else {
       return UITableViewCell()
     }
-    cell.country = countriesList[indexPath.row]
+    cell.country = countries[indexPath.row]
     return cell
   }
 }

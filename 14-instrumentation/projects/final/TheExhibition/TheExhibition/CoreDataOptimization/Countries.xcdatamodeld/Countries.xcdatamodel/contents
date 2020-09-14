@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Continents" representedClassName="Continents" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17189" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Continents" representedClassName="Continent" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="countries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Countries" inverseName="continent" inverseEntity="Countries"/>
     </entity>
-    <entity name="Countries" representedClassName="Countries" syncable="YES" codeGenerationType="class">
+    <entity name="Countries" representedClassName="Country" syncable="YES" codeGenerationType="class">
         <attribute name="capital" optional="YES" attributeType="String"/>
         <attribute name="code" optional="YES" attributeType="String"/>
         <attribute name="currency" optional="YES" attributeType="String"/>
@@ -17,7 +17,7 @@
         <relationship name="continent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Continents" inverseName="countries" inverseEntity="Continents"/>
         <relationship name="languages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Languages" inverseName="countries" inverseEntity="Languages"/>
     </entity>
-    <entity name="Languages" representedClassName="Languages" syncable="YES" codeGenerationType="class">
+    <entity name="Languages" representedClassName="Language" syncable="YES" codeGenerationType="class">
         <attribute name="code" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>

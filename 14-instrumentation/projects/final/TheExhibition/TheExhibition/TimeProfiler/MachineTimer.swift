@@ -38,13 +38,13 @@ struct MachineTimer {
   /// Time spent in milliseconds since the creation of the object.
   func mark() -> Int {
     var baseInfo = mach_timebase_info_data_t(numer: 0, denom: 0)
-    if mach_timebase_info(&baseInfo) == KERN_SUCCESS {
-      let finishTime = mach_absolute_time()
 
-      let nano = (finishTime - startTime) * UInt64(baseInfo.numer / baseInfo.denom)
-      return Int(nano / 1000)
+    guard mach_timebase_info(&baseInfo) == KERN_SUCCESS else {
+      return -1
     }
 
-    return -1
+    let finishTime = mach_absolute_time()
+    let nano = (finishTime - startTime) * UInt64(baseInfo.numer / baseInfo.denom)
+    return Int(nano / 1000)
   }
 }

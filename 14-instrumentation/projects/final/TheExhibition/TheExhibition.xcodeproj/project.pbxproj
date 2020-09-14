@@ -33,7 +33,7 @@
 		F5E4F55D24DF404C0068911A /* CoreDataOptimization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E4F55C24DF404C0068911A /* CoreDataOptimization.storyboard */; };
 		F5E4F55F24DF40770068911A /* CoreDataOptimizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E4F55E24DF40770068911A /* CoreDataOptimizationViewController.swift */; };
 		F5E4F56124DF41F40068911A /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E4F56024DF41F40068911A /* CountryCell.swift */; };
-		F5F0A0E224FF1E5B00B3159E /* MachineTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0A0E124FF1E5B00B3159E /* MachineTimer.swift */; };
+		F5F0A0E624FF210D00B3159E /* MachineTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0A0E524FF210C00B3159E /* MachineTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +65,7 @@
 		F5E4F55C24DF404C0068911A /* CoreDataOptimization.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoreDataOptimization.storyboard; sourceTree = "<group>"; };
 		F5E4F55E24DF40770068911A /* CoreDataOptimizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataOptimizationViewController.swift; sourceTree = "<group>"; };
 		F5E4F56024DF41F40068911A /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
-		F5F0A0E124FF1E5B00B3159E /* MachineTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineTimer.swift; sourceTree = "<group>"; };
+		F5F0A0E524FF210C00B3159E /* MachineTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MachineTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,10 +130,10 @@
 			children = (
 				F5E4F53224DF30A40068911A /* TimeProfiler.storyboard */,
 				F5E4F52E24DF30A40068911A /* TimeProfilerViewController.swift */,
-				F5E4F53124DF30A40068911A /* FileManager.swift */,
 				F5E4F52F24DF30A40068911A /* NumberCollectionViewCell.swift */,
+				F5E4F53124DF30A40068911A /* FileManager.swift */,
 				F5E4F53024DF30A40068911A /* TrackedNumbersGenerator.swift */,
-				F5F0A0E124FF1E5B00B3159E /* MachineTimer.swift */,
+				F5F0A0E524FF210C00B3159E /* MachineTimer.swift */,
 			);
 			path = TimeProfiler;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 				F5E4F53524DF30A40068911A /* TrackedNumbersGenerator.swift in Sources */,
 				F5E4F53424DF30A40068911A /* NumberCollectionViewCell.swift in Sources */,
 				F5E4F56124DF41F40068911A /* CountryCell.swift in Sources */,
-				F5F0A0E224FF1E5B00B3159E /* MachineTimer.swift in Sources */,
+				F5F0A0E624FF210D00B3159E /* MachineTimer.swift in Sources */,
 				185CB1FC23C78CE6009F7571 /* AppDelegate.swift in Sources */,
 				F5E4F55524DF3EED0068911A /* Countries.xcdatamodeld in Sources */,
 				F5E4F53C24DF30CC0068911A /* InformationWriter.swift in Sources */,
@@ -426,6 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TheExhibition/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -443,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TheExhibition/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

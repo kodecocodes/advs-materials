@@ -56,7 +56,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A-2: Leaks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lA-e2-HUs">
-                                                    <rect key="frame" x="32" y="11.5" width="81.5" height="21"/>
+                                                    <rect key="frame" x="32" y="11.5" width="82" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="bqE-1A-joG" kind="show" id="eGf-2m-g5b"/>
+                                            <segue destination="bqE-1A-joG" kind="show" id="FM7-oP-oxb"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

@@ -40,27 +40,9 @@ class CoreDataManager {
   }
 
   // MARK: - Core Data stack
-  lazy var persistentContainer: NSPersistentContainer = {
-    if !FileManager.default.fileExists(
-      atPath: NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite"
-      ) {
-      let sqlFileURL = Bundle.main.url(forResource: "Countries", withExtension: ".sqlite")
-      let shmFileURL = Bundle.main.url(forResource: "Countries", withExtension: ".sqlite-shm")
-      let walFileURL = Bundle.main.url(forResource: "Countries", withExtension: ".sqlite-wal")
 
-      let sqlFileDest = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite"
-      let shmFileDest = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite-shm"
-      let walFileDest = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite-wal"
-
-      do {
-        try FileManager.default.copyItem(atPath: sqlFileURL?.path ?? "", toPath: sqlFileDest)
-        try FileManager.default.copyItem(atPath: shmFileURL?.path ?? "", toPath: shmFileDest)
-        try FileManager.default.copyItem(atPath: walFileURL?.path ?? "", toPath: walFileDest)
-      } catch {
-        print("Error: \(error)")
-      }
-    }
-
+  private lazy var persistentContainer: NSPersistentContainer = {
+    preloadDatabaseIfNeeded()
 
     let container = NSPersistentContainer(name: "Countries")
     container.loadPersistentStores { _, error in
@@ -71,68 +53,39 @@ class CoreDataManager {
     return container
   }()
 
+  private func preloadDatabaseIfNeeded() {
+    let path = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite"
+    guard !FileManager.default.fileExists(atPath: path) else {
+      return
+    }
+
+    let sqlFileURL = Bundle.main.url(forResource: "Countries", withExtension: ".sqlite")
+    let shmFileURL = Bundle.main.url(forResource: "Countries", withExtension: ".sqlite-shm")
+    let walFileURL = Bundle.main.url(forResource: "Countries", withExtension: ".sqlite-wal")
+
+    let sqlFileDest = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite"
+    let shmFileDest = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite-shm"
+    let walFileDest = NSPersistentContainer.defaultDirectoryURL().relativePath + "/Countries.sqlite-wal"
+
+    do {
+      try FileManager.default.copyItem(atPath: sqlFileURL?.path ?? "", toPath: sqlFileDest)
+      try FileManager.default.copyItem(atPath: shmFileURL?.path ?? "", toPath: shmFileDest)
+      try FileManager.default.copyItem(atPath: walFileURL?.path ?? "", toPath: walFileDest)
+    } catch {
+      fatalError("Unresolved error \(error)")
+    }
+  }
+
   // MARK: - Core Data Saving support
-  func saveContext () {
-    let context = persistentContainer.viewContext
-    if context.hasChanges {
-      do {
-        try context.save()
-      } catch {
-        let nserror = error as NSError
-        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-      }
-    }
-  }
 
-  func continent(code: String) -> Continents? {
-    let request: NSFetchRequest<Continents> = Continents.fetchRequest()
-    request.predicate = NSPredicate(format: "code == %@", code)
-    request.fetchLimit = 1
-    guard let results = try? context.fetch(request) else {
-      return nil
-    }
-    return results.first
-  }
-
-  func language(code: String) -> Languages? {
-    let request: NSFetchRequest<Languages> = Languages.fetchRequest()
-    request.predicate = NSPredicate(format: "code == %@", code)
-    request.fetchLimit = 1
-    guard let results = try? context.fetch(request) else {
-      return nil
-    }
-    return results.first
-  }
-
-  func allCountries() -> [Countries] {
-    let request: NSFetchRequest<Countries> = Countries.fetchRequest()
-
+  func allCountries() -> [Country] {
+    let request: NSFetchRequest<Country> = Country.fetchRequest()
     request.relationshipKeyPathsForPrefetching = ["languages", "continent"]
-
-    guard let results = try? context.fetch(request) else {
-      return []
-    }
-    return results
-  }
-
-  func isEmpty() -> Bool {
-    let request: NSFetchRequest<Languages> = Languages.fetchRequest()
-    guard let results = try? context.fetch(request) else {
-      return true
-    }
-    return results.isEmpty
+    request.sortDescriptors = [.init(key: "name", ascending: true)]
+    return (try? context.fetch(request)) ?? []
   }
 
   func clearMemory() {
     context.refreshAllObjects()
-  }
-}
-
-extension Countries {
-  var languagesArray: [Languages] {
-    guard let array = languages?.allObjects as? [Languages] else {
-      return []
-    }
-    return array
   }
 }

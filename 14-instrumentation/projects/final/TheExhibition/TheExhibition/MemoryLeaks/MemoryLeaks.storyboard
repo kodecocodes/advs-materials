@@ -27,19 +27,19 @@
                                 <rect key="frame" x="158.5" y="433" width="97" height="30"/>
                                 <state key="normal" title="Tell me a joke!"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="Uzb-QQ-OyE" eventType="touchUpInside" id="C6O-BV-egx"/>
+                                    <action selector="buttonPressed" destination="Uzb-QQ-OyE" eventType="touchUpInside" id="S6W-go-OqV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qho-2b-3Bp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Qho-2b-3Bp" firstAttribute="trailing" secondItem="hax-yl-nfJ" secondAttribute="trailing" constant="20" id="Iv4-XR-kum"/>
+                            <constraint firstItem="U6j-nW-bkm" firstAttribute="centerY" secondItem="JXA-ld-ZM2" secondAttribute="centerY" id="1Qt-Ua-7p8"/>
+                            <constraint firstItem="Qho-2b-3Bp" firstAttribute="trailing" secondItem="hax-yl-nfJ" secondAttribute="trailing" constant="20" id="Hw6-XN-Kl6"/>
                             <constraint firstItem="hax-yl-nfJ" firstAttribute="centerX" secondItem="JXA-ld-ZM2" secondAttribute="centerX" id="PGG-qC-jES"/>
-                            <constraint firstItem="U6j-nW-bkm" firstAttribute="centerY" secondItem="JXA-ld-ZM2" secondAttribute="centerY" id="Sqt-Ja-IdO"/>
-                            <constraint firstItem="hax-yl-nfJ" firstAttribute="leading" secondItem="Qho-2b-3Bp" secondAttribute="leading" constant="20" id="W3Z-g6-51a"/>
                             <constraint firstItem="U6j-nW-bkm" firstAttribute="centerX" secondItem="JXA-ld-ZM2" secondAttribute="centerX" id="aJp-u3-5tK"/>
-                            <constraint firstItem="U6j-nW-bkm" firstAttribute="top" secondItem="hax-yl-nfJ" secondAttribute="bottom" constant="20" id="ehw-lr-07f"/>
+                            <constraint firstItem="U6j-nW-bkm" firstAttribute="top" secondItem="hax-yl-nfJ" secondAttribute="bottom" constant="20" id="trZ-Gz-vmz"/>
+                            <constraint firstItem="hax-yl-nfJ" firstAttribute="leading" secondItem="Qho-2b-3Bp" secondAttribute="leading" constant="20" id="vdr-qY-29p"/>
                         </constraints>
                     </view>
                     <connections>
