@@ -58,9 +58,11 @@ class PhotoViewController: UIViewController {
     let resizedImageRequest = ImageRequest(
       url: url,
       processors: resizedImageProcessors)
-    let resizedImagePublisher = ImagePipeline.shared.imagePublisher(with: resizedImageRequest)
+    let resizedImagePublisher =
+      ImagePipeline.shared.imagePublisher(with: resizedImageRequest)
       .lane("Resized Image")
-    let originalImagePublisher = ImagePipeline.shared.imagePublisher(with: url)
+    let originalImagePublisher =
+      ImagePipeline.shared.imagePublisher(with: url)
       .lane("Full Image")
 
     guard let failedImage = ImageLoadingOptions.shared.failureImage else {
@@ -70,7 +72,7 @@ class PhotoViewController: UIViewController {
     cancellable = resizedImagePublisher.append(
       originalImagePublisher)
       .map {
-        ($0.image, UIView.ContentMode.scaleAspectFill )
+        ($0.image, UIView.ContentMode.scaleAspectFill)
       }
       .catch { _ in
         Just((failedImage, .scaleAspectFit))

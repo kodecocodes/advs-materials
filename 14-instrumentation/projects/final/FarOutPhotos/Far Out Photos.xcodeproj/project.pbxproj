@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39453D7A250F1EBA00C715B6 /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 39453D79250F1EBA00C715B6 /* TimelaneCombine */; };
 		9F227A75215AC7DD00C83B03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F227A74215AC7DD00C83B03 /* AppDelegate.swift */; };
 		9F227A77215AC7DD00C83B03 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F227A76215AC7DD00C83B03 /* PhotoGalleryViewController.swift */; };
 		9F227A7A215AC7DD00C83B03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F227A78215AC7DD00C83B03 /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		9FDC071C215AD1C100330A8D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC071B215AD1C100330A8D /* PhotoCell.swift */; };
 		9FDC0720215BFD7100330A8D /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC071F215BFD7100330A8D /* PhotoViewController.swift */; };
 		F50A7956247F1D7300169C0A /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = F50A7955247F1D7300169C0A /* Nuke */; };
-		F579011F24E29CF000455133 /* TimelaneCombine in Frameworks */ = {isa = PBXBuildFile; productRef = F579011E24E29CF000455133 /* TimelaneCombine */; };
 		F5BF1FE2248136BC00E798A9 /* ImagePublisher in Frameworks */ = {isa = PBXBuildFile; productRef = F5BF1FE1248136BC00E798A9 /* ImagePublisher */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F50A7956247F1D7300169C0A /* Nuke in Frameworks */,
-				F579011F24E29CF000455133 /* TimelaneCombine in Frameworks */,
+				39453D7A250F1EBA00C715B6 /* TimelaneCombine in Frameworks */,
 				F5BF1FE2248136BC00E798A9 /* ImagePublisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,7 +101,7 @@
 			packageProductDependencies = (
 				F50A7955247F1D7300169C0A /* Nuke */,
 				F5BF1FE1248136BC00E798A9 /* ImagePublisher */,
-				F579011E24E29CF000455133 /* TimelaneCombine */,
+				39453D79250F1EBA00C715B6 /* TimelaneCombine */,
 			);
 			productName = "Far Out Photos";
 			productReference = 9F227A71215AC7DD00C83B03 /* Far Out Photos.app */;
@@ -135,7 +135,7 @@
 			packageReferences = (
 				F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */,
 				F5BF1FE0248136BC00E798A9 /* XCRemoteSwiftPackageReference "ImagePublisher" */,
-				F579011D24E29CF000455133 /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
+				39453D78250F1EBA00C715B6 /* XCRemoteSwiftPackageReference "TimelaneCombine" */,
 			);
 			productRefGroup = 9F227A72215AC7DD00C83B03 /* Products */;
 			projectDirPath = "";
@@ -344,7 +344,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Far-Out-Photos";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raywenderlich.Far-Out-Photos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -363,7 +363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.Far-Out-Photos";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.raywenderlich.Far-Out-Photos";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -394,20 +394,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		39453D78250F1EBA00C715B6 /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.10;
+			};
+		};
 		F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
-			};
-		};
-		F579011D24E29CF000455133 /* XCRemoteSwiftPackageReference "TimelaneCombine" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.10;
 			};
 		};
 		F5BF1FE0248136BC00E798A9 /* XCRemoteSwiftPackageReference "ImagePublisher" */ = {
@@ -421,15 +421,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		39453D79250F1EBA00C715B6 /* TimelaneCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39453D78250F1EBA00C715B6 /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
+			productName = TimelaneCombine;
+		};
 		F50A7955247F1D7300169C0A /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
-		};
-		F579011E24E29CF000455133 /* TimelaneCombine */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F579011D24E29CF000455133 /* XCRemoteSwiftPackageReference "TimelaneCombine" */;
-			productName = TimelaneCombine;
 		};
 		F5BF1FE1248136BC00E798A9 /* ImagePublisher */ = {
 			isa = XCSwiftPackageProductDependency;

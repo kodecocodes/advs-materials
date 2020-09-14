@@ -36,8 +36,8 @@ import ImagePublisher
 import TimelaneCore
 
 class PhotoGalleryViewController: UICollectionViewController {
-  var photoURLs: [URL] = []
   var galleryLanes: [ImageTask: Timelane.Subscription] = [:]
+  var photoURLs: [URL] = []
 
   let cellSpacing: CGFloat = 1
   let columns: CGFloat = 3
@@ -194,8 +194,8 @@ extension PhotoGalleryViewController: ImagePipelineObserving {
       galleryLanes[imageTask] = nil
       print("completed " + imageName)
     case .progressUpdated(
-          completedUnitCount: let completed,
-          totalUnitCount: let total
+      completedUnitCount: let completed,
+      totalUnitCount: let total
     ):
       let lane = galleryLanes[imageTask]
       let percent = completed * 100 / total
