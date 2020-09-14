@@ -36,7 +36,9 @@ import ImagePublisher
 import os.signpost
 
 class PhotoGalleryViewController: UICollectionViewController {
-  let log = OSLog(subsystem: "com.razeware.Far-Out-Photos", category: "PhotoGallery")
+  let log = OSLog(
+    subsystem: "com.raywenderlich.Far-Out-Photos",
+    category: "PhotoGallery")
   var photoURLs: [URL] = []
 
   let cellSpacing: CGFloat = 1
@@ -81,7 +83,7 @@ class PhotoGalleryViewController: UICollectionViewController {
     DataLoader.sharedUrlCache.diskCapacity = 0
 
     let pipeline = ImagePipeline {
-      let dataCache = try? DataCache(name: "com.razeware.Far-Out-Photos.datacache")
+      let dataCache = try? DataCache(name: "com.raywenderlich.Far-Out-Photos.datacache")
       dataCache?.sizeLimit = 200 * 1024 * 1024
       $0.dataCache = dataCache
     }
@@ -180,21 +182,25 @@ extension PhotoGalleryViewController: ImagePipelineObserving {
 
     switch event {
     case .started:
+      os_signpost(.begin, log: log, name: "ImageDownload",
+        signpostID: signpostID, "%{public}s", imageName)
       print("started " + imageName)
-      os_signpost(.begin, log: log, name: "ImageDownload", signpostID: signpostID, "%{public}s", imageName)
     case .cancelled:
-      os_signpost(.end, log: log, name: "ImageDownload", signpostID: signpostID, "cancelled")
+      os_signpost(.end, log: log, name: "ImageDownload",
+                  signpostID: signpostID, "cancelled")
       print("cancelled " + imageName)
     case .completed(result: _):
+      os_signpost(.end, log: log, name: "ImageDownload",
+        signpostID: signpostID, "completed")
       print("completed " + imageName)
-      os_signpost(.end, log: log, name: "ImageDownload", signpostID: signpostID, "completed")
     case .progressUpdated(
           completedUnitCount: let completed,
           totalUnitCount: let total
     ):
       let percent = completed * 100 / total
+      os_signpost(.event, log: log, name: "ImageProgress",
+                  signpostID: signpostID, "%{public}s progress: %d", imageName, percent)
       print("progress for \(imageName): \(percent)")
-      os_signpost(.event, log: log, name: "ImageProgress", signpostID: signpostID, "%{public}s progress: %d", imageName, percent)
     default:
       print("default")
     }
