@@ -33,20 +33,6 @@
 import Numerics
 import CoreGraphics
 
-/// Conversion function CGFloat
-/// Passing this as an argument to a generic function will dispatch it to the correct type.
-protocol CGFloatConvertable {
-  init(_: CGFloat)
-  var cgFloat: CGFloat { get }
-}
-extension Float16: CGFloatConvertable { var cgFloat: CGFloat { CGFloat(self) } }
-extension Float32: CGFloatConvertable { var cgFloat: CGFloat { CGFloat(self) } }
-extension Float64: CGFloatConvertable { var cgFloat: CGFloat { CGFloat(self) } }
-#if arch(x86_64)
-extension Float80: CGFloatConvertable { var cgFloat: CGFloat { CGFloat(self) } }
-#endif
-
-
 /// Uninhabited type for Mandelbrot math related methods.
 enum MandelbrotMath {
   /// Points that describe the evolution points

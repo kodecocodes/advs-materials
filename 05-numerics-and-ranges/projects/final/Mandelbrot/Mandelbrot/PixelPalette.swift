@@ -32,12 +32,46 @@
 
 import Numerics
 
+
+enum PixelPaletteName: CaseIterable {
+  case blackAndWhite, color
+
+  var name: String {
+    switch self {
+    case .blackAndWhite:
+      return "Black and White"
+    case .color:
+      return "Color"
+    }
+  }
+
+  var palette: PixelPalette {
+    switch self {
+    case .blackAndWhite:
+      return PixelPalette.blackAndWhite
+    case .color:
+      return PixelPalette.color
+    }
+  }
+}
+
 struct PixelPalette {
   var values: [ColorPixel]
 }
 
 extension PixelPalette {
-  static let rainbow: Self = {
+
+  static let blackAndWhite: Self = {
+    return PixelPalette(values:
+                          (0..<16).reversed().map { index in
+      ColorPixel(
+        red: index*16,
+        green: index*16,
+        blue: index*16)
+    })
+  }()
+
+  static let color: Self = {
     let ramp = { (index: Int) -> UInt8 in
       UInt8(16 * (16 - (index - 16).magnitude))
     }

@@ -94,6 +94,13 @@ struct NavigationSidebar: View {
           }
         }.pickerStyle(SegmentedPickerStyle())
 
+        Text("Color Palette")
+        Picker(model.paletteName.name, selection: $model.paletteName) {
+          ForEach(PixelPaletteName.allCases, id: \.self.name) { palette in
+            Text(palette.name).tag(palette)
+          }
+        }.pickerStyle(SegmentedPickerStyle())
+
         if model.isComputingImage {
           HStack {
             Text("Calculating...")
@@ -106,6 +113,6 @@ struct NavigationSidebar: View {
       }
     }
     .listStyle(SidebarListStyle())
-    .navigationBarTitle("Mandelbrot Explorer", displayMode: .inline)
+    .navigationBarTitle("Mandelbrot", displayMode: .inline)
   }
 }

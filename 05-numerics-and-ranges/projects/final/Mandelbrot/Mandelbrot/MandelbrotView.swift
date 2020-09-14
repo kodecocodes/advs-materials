@@ -60,17 +60,17 @@ struct MandelbrotView: View {
 
   func testPointLines(modelToDisplay: CGAffineTransform) -> some View {
     Group {
-      PolyLineShape(
-        modelToDisplay: modelToDisplay,
-        points: mandelbrotPoints(for: Float64.self))
-        .stroke(.float64)
-
       #if arch(x86_64)
       PolyLineShape(
         modelToDisplay: modelToDisplay,
         points: mandelbrotPoints(for: Float80.self))
         .stroke(.float80)
       #endif
+
+      PolyLineShape(
+        modelToDisplay: modelToDisplay,
+        points: mandelbrotPoints(for: Float64.self))
+        .stroke(.float64)
 
       PolyLineShape(
         modelToDisplay: modelToDisplay,

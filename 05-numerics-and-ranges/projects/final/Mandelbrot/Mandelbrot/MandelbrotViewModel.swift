@@ -107,8 +107,9 @@ final class MandelbrotViewModel: ObservableObject {
   @Published var center = CGPoint.zero
   @Published var scale: CGFloat = 150
   @Published var imageSize: CGSize?
-  @Published var maxIterations: CGFloat = 16
+  @Published var maxIterations: CGFloat = 15
   @Published var floatSize: FloatSize = .float64
+  @Published var paletteName: PixelPaletteName = .color
 
   @Published var isComputingImage = false
   @Published var computationTime: TimeInterval?
@@ -137,9 +138,9 @@ final class MandelbrotViewModel: ObservableObject {
     // swiftlint:disable:next trailing_closure
     Publishers.CombineLatest(
       Publishers.CombineLatest4($showImage, $center, $scale, $imageSize),
-      Publishers.CombineLatest($maxIterations, $floatSize))
+      Publishers.CombineLatest3($maxIterations, $floatSize, $paletteName))
       .map { [weak self] combined -> AnyPublisher<MandelbrotImage?, Never> in
-        let ((showImage, center, scale, imageSizeOptional), (maxIterations, floatSize)) = combined
+        let ((showImage, center, scale, imageSizeOptional), (maxIterations, floatSize, paletteName)) = combined
         guard showImage, let imageSize = imageSizeOptional else {
           return Just(nil).eraseToAnyPublisher()
         }
@@ -150,7 +151,7 @@ final class MandelbrotViewModel: ObservableObject {
           imageSize: imageSize,
           maxIterations: Int(maxIterations),
           floatSize: floatSize,
-          palette: .rainbow)
+          palette: paletteName.palette)
         return mandelbrot.publisher()
       }
       .switchToLatest()
@@ -166,15 +167,11 @@ final class MandelbrotViewModel: ObservableObject {
 
 extension MandelbrotViewModel {
   var landmarks: [(String, CGPoint)] { [
-    ("All Float Sizes Converge",
-    CGPoint(x: -0.6, y: 0.33333333333333337)),
-    ("All Float Sizes Diverge",
-    CGPoint(x: -2.116666666666667, y: 0.4700000000000001)),
-    ("Slower Convergence",
-    CGPoint(x: -0.6733333333333333, y: -0.3433333333333333)),
-    ("Float16 Different Path",
-    CGPoint(x: -0.9566666666666667, y: -0.26666666666666666)),
-    ("All Sizes Different Paths",
-    CGPoint(x: -1.5333333333333339, y: 8.326672684688674e-17))
+    ("Divergent", CGPoint(x: -2, y: 0.5)),
+    ("One iteration", CGPoint(x: 0.88, y: 0.71)),
+    ("Two iterations", CGPoint(x: 0.556, y: 0.679)),
+    ("Many iterations", CGPoint(x: -0.673, y: -0.343)),
+    ("Float16 Different Path", CGPoint(x: -0.9567, y: -0.2667)),
+    ("All Sizes Different Paths", CGPoint(x: -1.533, y: 8.326672684688674e-17))
   ]}
 }

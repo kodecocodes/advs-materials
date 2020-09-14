@@ -10,6 +10,7 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		5D044ABE24F6DEAC00AB4908 /* PanZoomScaleTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */; };
+		5D2B1CC9250FE2C4000F6403 /* CGFloatConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B1CC8250FE2C4000F6403 /* CGFloatConvertable.swift */; };
 		5DCDC80224F6416000A1B2B5 /* StrokeLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */; };
 		5DCDC80324F6416000A1B2B5 /* MandelbrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */; };
 		5DCDC80424F6416000A1B2B5 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */; };
@@ -32,6 +33,7 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomScaleTracker.swift; sourceTree = "<group>"; };
+		5D2B1CC8250FE2C4000F6403 /* CGFloatConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatConvertable.swift; sourceTree = "<group>"; };
 		5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeLegend.swift; sourceTree = "<group>"; };
 		5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MandelbrotApp.swift; sourceTree = "<group>"; };
 		5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */,
+				5D2B1CC8250FE2C4000F6403 /* CGFloatConvertable.swift */,
 				5DCDC7FE24F6416000A1B2B5 /* CGPoint+Operators.swift */,
 				5DCDC7FB24F6416000A1B2B5 /* GraphingView.swift */,
 				5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */,
@@ -210,6 +213,7 @@
 			files = (
 				5DCDC80B24F6416000A1B2B5 /* NavigationSidebar.swift in Sources */,
 				5DCDC80924F6416000A1B2B5 /* CGPoint+Operators.swift in Sources */,
+				5D2B1CC9250FE2C4000F6403 /* CGFloatConvertable.swift in Sources */,
 				5DCDC80C24F6416000A1B2B5 /* MandelbrotImagePublisher.swift in Sources */,
 				5DCDC80224F6416000A1B2B5 /* StrokeLegend.swift in Sources */,
 				5D044ABE24F6DEAC00AB4908 /* PanZoomScaleTracker.swift in Sources */,
