@@ -47,8 +47,7 @@ class SlowMath {
   func calculateEquation() -> Double {
     (Bool.random() ?
       (pow(pow(Double.random(in: 100...1000), 2.0), 6.0) / 5.5
-        + Double.random(in: 100...1000)) * 25 / 3
-      + Double.random(in: 100...1000)
+        + Double.random(in: 100...1000)) * 25 / 3 + Double.random(in: 100...1000)
       :
       (pow(pow(Double.random(in: 1...100), 2.0), 6.0) / 5.5
         + Double.random(in: 1...100)) * 25 / 3 + Double.random(in: 1...100))
