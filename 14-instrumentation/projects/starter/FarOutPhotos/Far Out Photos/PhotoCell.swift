@@ -31,7 +31,6 @@
 /// THE SOFTWARE.
 
 import UIKit
-import Nuke
 
 class PhotoCell: UICollectionViewCell {
   @IBOutlet weak var imageView: UIImageView!

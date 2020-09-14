@@ -67,7 +67,7 @@ class PhotoViewController: UIViewController {
     cancellable = resizedImagePublisher.append(
       originalImagePublisher)
       .map {
-        ($0.image, UIView.ContentMode.scaleAspectFill )
+        ($0.image, UIView.ContentMode.scaleAspectFill)
       }
       .catch { _ in
         Just((failedImage, .scaleAspectFit))
