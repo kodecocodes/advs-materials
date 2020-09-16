@@ -36,7 +36,11 @@ import CoreGraphics
 /// Uninhabited type for Mandelbrot math related methods.
 enum MandelbrotMath {
   /// Points that describe the evolution points
-  static func points<RealType: Real>(start: Complex<RealType>, maxIterations: Int) -> [Complex<RealType>] {
+  static func points<RealType: Real>(start: Complex<RealType>,
+                                     maxIterations: Int)
+    -> [Complex<RealType>] {
+
+
     var results: [Complex<RealType>] = []
     results.reserveCapacity(maxIterations)
 
@@ -117,7 +121,7 @@ enum MandelbrotMath {
     let left = ScalarFloat(upperLeft.x)
     let upper = ScalarFloat(upperLeft.y)
 
-    let fours = SIMDX<ScalarFloat>(repeating: 4)
+    let fours = SIMDX(repeating: ScalarFloat(4))
     let twos = SIMDX(repeating: ScalarFloat(2))
     let ones = SIMDX<ScalarInt>.one
     let zeros = SIMDX<ScalarInt>.zero
@@ -177,7 +181,8 @@ enum MandelbrotMath {
             z = z * z + start
             iteration += 1
           }
-          buffer[lastIndex + index + y * width] = palette.values[0]
+          buffer[lastIndex + index + y * width] =
+            palette.values[iteration % palette.values.count]
         }
       }
     }
