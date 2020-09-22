@@ -27,7 +27,7 @@ struct Card: Decodable {
   let text: String
   let number: String
   let flavor: String?
-  let imageURL: URL?
+  let imageUrl: URL?
   let manaCost: Mana
   let rarity: Rarity
   let set: Set
@@ -44,7 +44,7 @@ struct Card: Decodable {
     self.text = try container.decodeIfPresent(String.self, forKey: .text) ?? ""
     self.flavor = try container.decodeIfPresent(String.self, forKey: .flavor)
     self.number = try container.decode(String.self, forKey: .number)
-    self.imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
+    self.imageUrl = try container.decodeIfPresent(URL.self, forKey: .imageUrl)
 
     // Set
     self.set = Set(id: try container.decode(String.self, forKey: .set),
@@ -66,7 +66,7 @@ struct Card: Decodable {
   enum CodingKeys: String, CodingKey {
     case id, name, manaCost, type, rarity
     case text, flavor, number, set, setName
-    case power, toughness, rulings, imageURL = "imageUrl"
+    case power, toughness, rulings, imageUrl
   }
 }
 
