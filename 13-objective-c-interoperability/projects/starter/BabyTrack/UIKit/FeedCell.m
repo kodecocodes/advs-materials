@@ -42,20 +42,20 @@
 @implementation FeedCell
 
 - (void)configureWithFeedItem:(FeedItem *)feedItem {
-    NSRelativeDateTimeFormatter *df = [NSRelativeDateTimeFormatter new];
-    df.formattingContext = NSFormattingContextStandalone;
-    self.lblDate.text = [df stringForObjectValue:feedItem.date];
-
-    [self.attachment setHidden: feedItem.attachmentId == nil];
-
-    [[NSURLSession.sharedSession dataTaskWithURL:[NSURL new]
-                               completionHandler:^(NSData * _Nullable data,
-                                                   NSURLResponse * _Nullable response,
-                                                   NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.attachment.image = [UIImage imageWithData:data];
-        });
-    }] resume];
+  NSRelativeDateTimeFormatter *df = [NSRelativeDateTimeFormatter new];
+  df.formattingContext = NSFormattingContextStandalone;
+  self.lblDate.text = [df stringForObjectValue:feedItem.date];
+  
+  [self.attachment setHidden: feedItem.attachmentId == nil];
+  
+  [[NSURLSession.sharedSession dataTaskWithURL:[NSURL new]
+                             completionHandler:^(NSData * _Nullable data,
+                                                 NSURLResponse * _Nullable response,
+                                                 NSError * _Nullable error) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      self.attachment.image = [UIImage imageWithData:data];
+    });
+  }] resume];
 }
 
 @end

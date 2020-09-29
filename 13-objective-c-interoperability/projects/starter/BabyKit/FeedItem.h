@@ -41,12 +41,12 @@
 //extern FeedItemKind const _Nonnull FeedItemKindAwake;
 
 typedef enum {
-    FeedItemKindBottle,
-    FeedItemKindFood,
-    FeedItemKindSleep,
-    FeedItemKindDiaper,
-    FeedItemKindMoment,
-    FeedItemKindAwake
+  FeedItemKindBottle,
+  FeedItemKindFood,
+  FeedItemKindSleep,
+  FeedItemKindDiaper,
+  FeedItemKindMoment,
+  FeedItemKindAwake
 } FeedItemKind;
 
 @interface FeedItem: NSObject
@@ -54,11 +54,11 @@ typedef enum {
 - (FeedItem *) initWithKind: (FeedItemKind) kind;
 
 - (FeedItem *) initWithKind: (FeedItemKind) kind
-                                date: (NSDate *) date;
+                       date: (NSDate *) date;
 
 - (FeedItem *) initWithKind: (FeedItemKind) kind
-                                date: (NSDate *) date
-                        attachmentId: (NSUUID *) attachmentId;
+                       date: (NSDate *) date
+               attachmentId: (NSUUID *) attachmentId;
 
 @property (nonatomic, assign) FeedItemKind kind;
 @property (nonatomic, strong) NSDate * date;
