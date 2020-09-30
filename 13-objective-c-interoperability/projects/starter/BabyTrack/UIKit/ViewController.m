@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 #import "ViewController.h"
+#import "BabyTrack-Swift.h"
 #import "FeedCell.h"
 #import <BabyKit/BabyKit.h>
 

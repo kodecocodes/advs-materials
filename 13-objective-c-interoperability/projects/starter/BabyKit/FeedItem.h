@@ -32,14 +32,6 @@
 
 #import <Foundation/Foundation.h>
 
-//typedef NSString *FeedItemKind NS_EXTENSIBLE_STRING_ENUM;
-//extern FeedItemKind const _Nonnull FeedItemKindBottle;
-//extern FeedItemKind const _Nonnull FeedItemKindFood;
-//extern FeedItemKind const _Nonnull FeedItemKindSleep;
-//extern FeedItemKind const _Nonnull FeedItemKindDiaper;
-//extern FeedItemKind const _Nonnull FeedItemKindMoment;
-//extern FeedItemKind const _Nonnull FeedItemKindAwake;
-
 typedef enum {
   FeedItemKindBottle,
   FeedItemKindFood,
