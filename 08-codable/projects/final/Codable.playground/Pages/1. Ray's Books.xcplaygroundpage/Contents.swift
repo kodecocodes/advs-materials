@@ -13,7 +13,7 @@ do {
   for book in books {
     print("\(book.name) (\(book.id))",
           "by \(book.authors.joined(separator: ", ")).",
-          "Get it at: \(book.storeUrl)")
+          "Get it at: \(book.storeLink)")
     _ = book.image
   }
 } catch {
@@ -24,7 +24,7 @@ struct Book: Decodable {
   let id: String
   let name: String
   let authors: [String]
-  let storeUrl: URL
+  let storeLink: URL
   let imageBlob: Data
   var image: UIImage? { UIImage(data: imageBlob) }
 }
