@@ -34,6 +34,8 @@
 #import <BabyKit/FeedItem.h>
 #import <PhotosUI/PhotosUI.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 extern NSString * const FeedStorageFilename;
 
 @interface Feed: NSObject <PHPickerViewControllerDelegate>
@@ -44,9 +46,11 @@ extern NSString * const FeedStorageFilename;
 - (FeedItem *) addFeedItem: (FeedItem *) item;
 - (FeedItem *) addFeedItemOfKind: (FeedItemKind) kind;
 
-- (NSUUID *) storeImage:(UIImage *) image;
+- (NSUUID * _Nullable) storeImage:(UIImage *) image;
 
 - (void) addMomentOnPresenter: (UIViewController *) presenter
-                   completion: (void (^)(FeedItem *)) completion;
+                   completion: (void (^ _Nullable)(FeedItem *)) completion;
 
 @end
+
+NS_ASSUME_NONNULL_END
