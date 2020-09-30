@@ -137,7 +137,12 @@ NSString * _Nonnull const FeedStorageFilename = @"feed.data";
 }
 
 - (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results {
-  if (results.count == 0) { return; }
+  if (results.count == 0) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [picker dismissViewControllerAnimated:true completion:nil];
+    });
+    return;
+  }
 
   PHPickerResult *result = results[0];
 

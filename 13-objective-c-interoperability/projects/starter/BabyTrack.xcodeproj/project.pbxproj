@@ -19,11 +19,11 @@
 		785DFAD92519396500B6108E /* FeedItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 780E75E52517B07400D6BE5C /* FeedItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		785DFAEE2519BAC500B6108E /* Feed.h in Headers */ = {isa = PBXBuildFile; fileRef = 785DFAEC2519BAC500B6108E /* Feed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		785DFAEF2519BAC500B6108E /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DFAED2519BAC500B6108E /* Feed.m */; };
-		785DFAFF2519E42E00B6108E /* FeedItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E75F82517CAA200D6BE5C /* FeedItem+Ext.swift */; };
 		786334FE251F8F6A002D02DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786334FD251F8F6A002D02DB /* SceneDelegate.swift */; };
 		78633523251F8FB4002D02DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78633522251F8FB4002D02DB /* AppDelegate.swift */; };
 		78633528251F9497002D02DB /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78633527251F9497002D02DB /* FeedView.swift */; };
 		78633531251F9847002D02DB /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78633530251F9847002D02DB /* FeedCell.m */; };
+		78F06E3B2524FE1F00A76ECE /* FeedItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E75F82517CAA200D6BE5C /* FeedItem+Ext.swift */; };
 		78FE5820251FC39E00B4A591 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE581F251FC39E00B4A591 /* FeedCell.swift */; };
 		78FE5823251FC3B800B4A591 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE5822251FC3B800B4A591 /* URLImage.swift */; };
 		78FE5827251FD15800B4A591 /* AddMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE5826251FD15800B4A591 /* AddMomentView.swift */; };
@@ -178,6 +178,7 @@
 				780E75D6251753EE00D6BE5C /* Info.plist */,
 				786334FD251F8F6A002D02DB /* SceneDelegate.swift */,
 				78633522251F8FB4002D02DB /* AppDelegate.swift */,
+				782DFD3C2523CFBC00026159 /* BabyKit-Bridging.h */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -304,6 +305,7 @@
 				786334FE251F8F6A002D02DB /* SceneDelegate.swift in Sources */,
 				78633523251F8FB4002D02DB /* AppDelegate.swift in Sources */,
 				780E75CD251753EC00D6BE5C /* ViewController.m in Sources */,
+				78F06E3B2524FE1F00A76ECE /* FeedItem+Ext.swift in Sources */,
 				780E75E0251757A100D6BE5C /* UIView+Ext.swift in Sources */,
 				78FE5823251FC3B800B4A591 /* URLImage.swift in Sources */,
 			);

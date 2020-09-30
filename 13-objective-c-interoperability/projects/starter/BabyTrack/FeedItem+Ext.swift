@@ -31,8 +31,9 @@
 /// THE SOFTWARE.
 
 import UIKit
+import BabyKit
 
-public extension FeedItem {
+extension FeedItem {
   var attachmentURL: URL? {
     attachmentId.flatMap {
       try? FileManager.default.url(for: .documentDirectory,
@@ -44,7 +45,7 @@ public extension FeedItem {
   }
 }
 
-public extension FeedItemKind {
+extension FeedItemKind {
   var title: String {
     switch self {
     case FeedItemKindBottle:
