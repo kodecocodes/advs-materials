@@ -34,6 +34,8 @@ import SwiftUI
 import BabyKit
 
 struct FeedView: View {
+  let feed = Feed()
+
   var body: some View {
     Text("Hello World!")
       .navigationViewStyle(StackNavigationViewStyle())
