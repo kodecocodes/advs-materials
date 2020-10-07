@@ -74,8 +74,6 @@ NSString * _Nonnull const FeedStorageFilename = @"feed.data";
 - (NSArray <FeedItem *> *) loadFeedItems {
   NSError *error;
 
-  NSLog(@"Loading items from %@", FeedStorageFilename);
-
   if (![[NSFileManager defaultManager] fileExistsAtPath: self.storageUrl.path]) {
     [[NSFileManager defaultManager] createFileAtPath:self.storageUrl.path contents:nil attributes:@{}];
   }
