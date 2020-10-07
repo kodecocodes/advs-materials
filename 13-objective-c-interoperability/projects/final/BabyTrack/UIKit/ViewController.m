@@ -31,12 +31,11 @@
 /// THE SOFTWARE.
 
 #import "ViewController.h"
-#import "FeedItem.h"
 #import "BabyTrack-Swift.h"
 #import "FeedCell.h"
 #import <BabyKit/BabyKit.h>
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray<FeedItem *>* items;
 @property (nonatomic, strong) IBOutlet UITableView *tblFeed;
@@ -48,101 +47,101 @@
 
 - (instancetype)init
 {
-    self = [super init];
+  self = [super init];
 
-    if (self) {
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main"
-                                                     bundle:[NSBundle mainBundle]];
-        self = [sb instantiateInitialViewController];
-    }
+  if (self) {
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main"
+                                                 bundle:[NSBundle mainBundle]];
+    self = [sb instantiateInitialViewController];
+  }
 
-    return self;
+  return self;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    NSError *error;
-    self.feed = [Feed new];
-    self.items = [[self.feed loadFeedItems] mutableCopy];
+  [super viewDidLoad];
+  NSError *error;
+  self.feed = [Feed new];
+  self.items = [[self.feed loadFeedItems] mutableCopy];
 
-    if (error) {
-        NSLog(@"Something went wrong: %@", error.localizedDescription);
-    }
+  if (error) {
+    NSLog(@"Something went wrong: %@", error.localizedDescription);
+  }
 
-    self.tblFeed.refreshControl = [[UIRefreshControl alloc] init];
-    [self.tblFeed.refreshControl addTarget:self action:@selector(reload) forControlEvents: UIControlEventValueChanged];
+  self.tblFeed.refreshControl = [[UIRefreshControl alloc] init];
+  [self.tblFeed.refreshControl addTarget:self action:@selector(reload) forControlEvents: UIControlEventValueChanged];
 
-    [self reload];
+  [self reload];
 }
 
 -(IBAction)tappedAdd:(id)sender {
-    FeedItemKind kind = [_actionButtons indexOfObject: sender];
-    
-    if(kind == FeedItemKindSleep && [self.feed babySleeping]) {
-        kind = FeedItemKindAwake;
-    }
+  FeedItemKind kind = (FeedItemKind) [_actionButtons indexOfObject: sender];
 
-    if(kind == FeedItemKindMoment) {
-        __weak ViewController *weakSelf = self;
-        [self.feed addMomentOnPresenter:self
-                             completion:^(FeedItem *moment) {
-            [weakSelf.items insertObject:moment atIndex:0];
-            [weakSelf reload];
-        }];
-    } else {
-        [self.items insertObject:[self.feed addFeedItemOfKind:kind] atIndex:0];
-        [self reload];
-    }
+  if(kind == FeedItemKindSleep && [self.feed babySleeping]) {
+    kind = FeedItemKindAwake;
+  }
+
+  if(kind == FeedItemKindMoment) {
+    __weak ViewController *weakSelf = self;
+    [self.feed addMomentOnPresenter:self
+                         completion:^(FeedItem *moment) {
+      [weakSelf.items insertObject:moment atIndex:0];
+      [weakSelf reload];
+    }];
+  } else {
+    [self.items insertObject:[self.feed addFeedItemOfKind:kind] atIndex:0];
+    [self reload];
+  }
 }
 
 - (void)reload {
-    // Reload buttons
-    for (FeedItemKind kind = 0; kind < 5; kind++) {
-        UIButton *button = self.actionButtons[kind];
+  // Reload buttons
+  for (FeedItemKind kind = 0; kind < 5; kind++) {
+    UIButton *button = self.actionButtons[kind];
 
-        if(kind == FeedItemKindSleep && [self.feed babySleeping]) {
-            kind = FeedItemKindAwake;
-        }
-
-        [button setTitle:[FeedItem emojiForKind:kind] forState:UIControlStateNormal];
-        [button setBackgroundColor:[FeedItem colorForKind:kind]];
+    if(kind == FeedItemKindSleep && [self.feed babySleeping]) {
+      kind = FeedItemKindAwake;
     }
 
-    // Reload table
-    [self.tblFeed reloadData];
+    [button setTitle:[FeedItem emojiForKind:kind] forState:UIControlStateNormal];
+    [button setBackgroundColor:[FeedItem colorForKind:kind]];
+  }
 
-    // Stop refresh control
-    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC);
-    dispatch_after(delay, dispatch_get_main_queue(), ^{
-        [self.tblFeed.refreshControl endRefreshing];
-    });
+  // Reload table
+  [self.tblFeed reloadData];
+
+  // Stop refresh control
+  dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC);
+  dispatch_after(delay, dispatch_get_main_queue(), ^{
+    [self.tblFeed.refreshControl endRefreshing];
+  });
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedItem *item = self.items[indexPath.item];
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
+  FeedItem *item = self.items[indexPath.item];
+  FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FeedCell" forIndexPath:indexPath];
 
-    [cell configureWithFeedItem:item];
+  [cell configureWithFeedItem:item];
 
-    return cell;
+  return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.items count];
+  return [self.items count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FeedItem *item = self.items[indexPath.item];
+  FeedItem *item = self.items[indexPath.item];
 
-    if(item.attachmentId == nil) {
-        return 64;
-    } else {
-        return 200;
-    }
+  if(item.attachmentId == nil) {
+    return 64;
+  } else {
+    return 200;
+  }
 }
 
 @end

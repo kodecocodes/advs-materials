@@ -41,13 +41,16 @@ struct FeedView: View {
     NavigationView {
       VStack {
         AddFeedItemBar(isBabySleeping: feed.isBabySleeping) { kind in
+          // 1
           print("Selected \(kind.description)")
 
-          guard kind != .moment else {
+          // 2
+          if kind == .moment {
             isPickingMoment = true
             return
           }
 
+          // 3
           feed.addItem(of: kind)
         }
         .padding([.top, .bottom], 8)

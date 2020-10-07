@@ -53,7 +53,7 @@ struct URLImage: View {
 
 private class ImageLoader: ObservableObject {
   private let url: URL
-  private let loadingQueue = DispatchQueue(label: "queue", qos: .background, attributes: .concurrent)
+  private let loadingQueue = DispatchQueue(label: "images", qos: .background, attributes: .concurrent)
   @Published var image: UIImage?
 
   init(_ url: URL) {

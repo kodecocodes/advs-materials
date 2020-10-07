@@ -32,63 +32,34 @@
 
 #import <Foundation/Foundation.h>
 
-//typedef enum {
-//    FeedItemKindBottle,
-//    FeedItemKindFood,
-//    FeedItemKindSleep,
-//    FeedItemKindDiaper,
-//    FeedItemKindMoment,
-//    FeedItemKindAwake
-//} FeedItemKind;
-
-//typedef NSString *FeedItemKind NS_EXTENSIBLE_STRING_ENUM;
-//extern FeedItemKind const _Nonnull FeedItemKindBottle;
-//extern FeedItemKind const _Nonnull FeedItemKindFood;
-//extern FeedItemKind const _Nonnull FeedItemKindSleep;
-//extern FeedItemKind const _Nonnull FeedItemKindDiaper;
-//extern FeedItemKind const _Nonnull FeedItemKindMoment;
-//extern FeedItemKind const _Nonnull FeedItemKindAwake;
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_CLOSED_ENUM(NSInteger, FeedItemKind) {
-    FeedItemKindBottle,
-    FeedItemKindFood,
-    FeedItemKindSleep,
-    FeedItemKindDiaper,
-    FeedItemKindMoment,
-    FeedItemKindAwake
+  FeedItemKindBottle,
+  FeedItemKindFood,
+  FeedItemKindSleep,
+  FeedItemKindDiaper,
+  FeedItemKindMoment,
+  FeedItemKindAwake
 } NS_SWIFT_NAME(FeedItem.Kind);
 
 @interface FeedItem: NSObject
 
-//- (FeedItem * _Nonnull) initWithKind: (FeedItemKind) kind;
-//
-//- (FeedItem * _Nonnull) initWithKind: (FeedItemKind) kind
-//                                date: (NSDate * _Nonnull) date;
-//
-//- (FeedItem * _Nonnull) initWithKind: (FeedItemKind) kind
-//                                date: (NSDate * _Nonnull) date
-//                        attachmentId: (NSUUID * _Nullable) attachmentId;
-//
-//@property (nonatomic, assign) FeedItemKind kind;
-//@property (nonatomic, strong) NSDate * _Nonnull date;
-//@property (nonatomic, strong) NSUUID * _Nullable attachmentId;
-//
-
-NS_ASSUME_NONNULL_BEGIN
 - (FeedItem *) initWithKind: (FeedItemKind) kind;
 
 - (FeedItem *) initWithKind: (FeedItemKind) kind
-                                date: (NSDate *) date;
+                       date: (NSDate *) date;
 
 - (FeedItem *) initWithKind: (FeedItemKind) kind
-                                date: (NSDate * _Nullable) date
-                        attachmentId: (NSUUID * _Nullable) attachmentId;
+                       date: (NSDate * _Nullable) date
+               attachmentId: (NSUUID * _Nullable) attachmentId;
 
 @property (nonatomic, assign) FeedItemKind kind;
 @property (nonatomic, strong) NSDate * date;
 @property (nonatomic, strong) NSUUID * _Nullable attachmentId;
-NS_ASSUME_NONNULL_END
 @end
 
 NSString * _Nonnull FeedItemKindDescription(FeedItemKind)
 NS_SWIFT_NAME(getter:FeedItemKind.description(self:));
+
+NS_ASSUME_NONNULL_END

@@ -31,8 +31,9 @@
 /// THE SOFTWARE.
 
 import UIKit
+import BabyKit
 
-@objc public extension FeedItem {
+@objc extension FeedItem {
   var attachmentURL: URL? {
     attachmentId.flatMap {
       try? FileManager.default.url(for: .documentDirectory,
@@ -59,7 +60,7 @@ import UIKit
   }
 }
 
-public extension FeedItem.Kind {
+extension FeedItem.Kind {
   var title: String {
     switch self {
     case .bottle:
@@ -74,6 +75,8 @@ public extension FeedItem.Kind {
       return "Got a new diaper"
     case .moment:
       return "Captured a moment"
+    default:
+      return ""
     }
   }
 
@@ -91,6 +94,8 @@ public extension FeedItem.Kind {
       return "💩"
     case .moment:
       return "📸"
+    default:
+      return ""
     }
   }
 
@@ -106,12 +111,13 @@ public extension FeedItem.Kind {
       return UIColor(r: 244, g: 164, b: 96)
     case .moment:
       return UIColor(r: 83, g: 83, b: 83)
+    default:
+      return .white
     }
   }
 }
 
 private extension UIColor {
-  // swiftlint:disable:next identifier_name
   convenience init(r: Int, g: Int, b: Int, a: CGFloat = 1.0) {
     self.init(red: CGFloat(r) / 255,
               green: CGFloat(g) / 255,

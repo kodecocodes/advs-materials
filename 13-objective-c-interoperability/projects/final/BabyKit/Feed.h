@@ -34,23 +34,24 @@
 #import <BabyKit/FeedItem.h>
 #import <PhotosUI/PhotosUI.h>
 
-//NS_SWIFT_NAME(__Feed.storageFilename)
-extern NSString * _Nonnull const FeedStorageFilename;
+NS_ASSUME_NONNULL_BEGIN
+
+extern NSString * const FeedStorageFilename;
 
 NS_REFINED_FOR_SWIFT
 @interface Feed: NSObject <PHPickerViewControllerDelegate>
 
 @property (nonatomic, readonly) BOOL babySleeping NS_SWIFT_NAME(isBabySleeping);
 
-NS_ASSUME_NONNULL_BEGIN
 - (NSArray <FeedItem *> *) loadFeedItems;
 - (FeedItem *) addFeedItem: (FeedItem *) item;
 - (FeedItem *) addFeedItemOfKind: (FeedItemKind) kind;
 
-- (NSUUID * _Nullable) storeImage:(UIImage * _Nonnull) image NS_SWIFT_NAME(storeImage(_:));
+- (NSUUID * _Nullable) storeImage:(UIImage *) image NS_SWIFT_NAME(storeImage(_:));
 
 - (void) addMomentOnPresenter: (UIViewController *) presenter
                    completion: (void (^ _Nullable)(FeedItem *)) completion NS_SWIFT_UNAVAILABLE("Use `AddMomentView` and `addMoment(with:)` instead");
-NS_ASSUME_NONNULL_END
 
 @end
+
+NS_ASSUME_NONNULL_END

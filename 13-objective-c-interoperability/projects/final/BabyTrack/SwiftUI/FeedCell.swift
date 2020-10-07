@@ -39,6 +39,7 @@ struct FeedCell: View {
 
   init(feedItem: FeedItem) {
     self.feedItem = feedItem
+
     formatter.formattingContext = .standalone
   }
 
@@ -49,7 +50,7 @@ struct FeedCell: View {
         .background(Color(feedItem.kind.color))
         .cornerRadius(22)
 
-      VStack(alignment: .leading, spacing: 0) {
+      VStack(alignment: .leading) {
         Text(feedItem.kind.title)
           .font(.headline)
 

@@ -19,12 +19,12 @@
 		785DFAD92519396500B6108E /* FeedItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 780E75E52517B07400D6BE5C /* FeedItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		785DFAEE2519BAC500B6108E /* Feed.h in Headers */ = {isa = PBXBuildFile; fileRef = 785DFAEC2519BAC500B6108E /* Feed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		785DFAEF2519BAC500B6108E /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 785DFAED2519BAC500B6108E /* Feed.m */; };
-		785DFAFA2519D62D00B6108E /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785DFAF92519D62D00B6108E /* Feed.swift */; };
-		785DFAFF2519E42E00B6108E /* FeedItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E75F82517CAA200D6BE5C /* FeedItem+Ext.swift */; };
 		786334FE251F8F6A002D02DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786334FD251F8F6A002D02DB /* SceneDelegate.swift */; };
 		78633523251F8FB4002D02DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78633522251F8FB4002D02DB /* AppDelegate.swift */; };
 		78633528251F9497002D02DB /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78633527251F9497002D02DB /* FeedView.swift */; };
 		78633531251F9847002D02DB /* FeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78633530251F9847002D02DB /* FeedCell.m */; };
+		78DD2EF3252E453A00D9371D /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DD2EF2252E453A00D9371D /* Feed.swift */; };
+		78F06E3B2524FE1F00A76ECE /* FeedItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780E75F82517CAA200D6BE5C /* FeedItem+Ext.swift */; };
 		78FE5820251FC39E00B4A591 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE581F251FC39E00B4A591 /* FeedCell.swift */; };
 		78FE5823251FC3B800B4A591 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE5822251FC3B800B4A591 /* URLImage.swift */; };
 		78FE5827251FD15800B4A591 /* AddMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78FE5826251FD15800B4A591 /* AddMomentView.swift */; };
@@ -66,19 +66,19 @@
 		780E75DF251757A100D6BE5C /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		780E75E52517B07400D6BE5C /* FeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
 		780E75E62517B07400D6BE5C /* FeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
-		780E75EB2517B31000D6BE5C /* BabyTrack-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BabyTrack-Bridging.h"; sourceTree = "<group>"; };
 		780E75F82517CAA200D6BE5C /* FeedItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItem+Ext.swift"; sourceTree = "<group>"; };
+		782DFD3C2523CFBC00026159 /* BabyKit-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BabyKit-Bridging.h"; sourceTree = "<group>"; };
 		785DFAC6251938F300B6108E /* BabyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BabyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		785DFAC8251938F300B6108E /* BabyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BabyKit.h; sourceTree = "<group>"; };
 		785DFAC9251938F300B6108E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		785DFAEC2519BAC500B6108E /* Feed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Feed.h; sourceTree = "<group>"; };
 		785DFAED2519BAC500B6108E /* Feed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Feed.m; sourceTree = "<group>"; };
-		785DFAF92519D62D00B6108E /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		786334FD251F8F6A002D02DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		78633522251F8FB4002D02DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78633527251F9497002D02DB /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		7863352F251F9847002D02DB /* FeedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCell.h; sourceTree = "<group>"; };
 		78633530251F9847002D02DB /* FeedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCell.m; sourceTree = "<group>"; };
+		78DD2EF2252E453A00D9371D /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		78FE581F251FC39E00B4A591 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		78FE5822251FC3B800B4A591 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		78FE5826251FD15800B4A591 /* AddMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMomentView.swift; sourceTree = "<group>"; };
@@ -133,7 +133,6 @@
 				780E75CE251753EC00D6BE5C /* Main.storyboard */,
 				780E75D1251753EE00D6BE5C /* Assets.xcassets */,
 				780E75F82517CAA200D6BE5C /* FeedItem+Ext.swift */,
-				780E75EB2517B31000D6BE5C /* BabyTrack-Bridging.h */,
 			);
 			path = BabyTrack;
 			sourceTree = "<group>";
@@ -143,11 +142,11 @@
 			children = (
 				785DFAEC2519BAC500B6108E /* Feed.h */,
 				785DFAED2519BAC500B6108E /* Feed.m */,
-				785DFAF92519D62D00B6108E /* Feed.swift */,
 				785DFAC9251938F300B6108E /* Info.plist */,
 				780E75E52517B07400D6BE5C /* FeedItem.h */,
 				780E75E62517B07400D6BE5C /* FeedItem.m */,
 				785DFAC8251938F300B6108E /* BabyKit.h */,
+				78DD2EF2252E453A00D9371D /* Feed.swift */,
 			);
 			path = BabyKit;
 			sourceTree = "<group>";
@@ -183,6 +182,7 @@
 				780E75D6251753EE00D6BE5C /* Info.plist */,
 				786334FD251F8F6A002D02DB /* SceneDelegate.swift */,
 				78633522251F8FB4002D02DB /* AppDelegate.swift */,
+				782DFD3C2523CFBC00026159 /* BabyKit-Bridging.h */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -254,6 +254,7 @@
 					};
 					785DFAC5251938F300B6108E = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -309,6 +310,7 @@
 				786334FE251F8F6A002D02DB /* SceneDelegate.swift in Sources */,
 				78633523251F8FB4002D02DB /* AppDelegate.swift in Sources */,
 				780E75CD251753EC00D6BE5C /* ViewController.m in Sources */,
+				78F06E3B2524FE1F00A76ECE /* FeedItem+Ext.swift in Sources */,
 				780E75E0251757A100D6BE5C /* UIView+Ext.swift in Sources */,
 				78FE5823251FC3B800B4A591 /* URLImage.swift in Sources */,
 			);
@@ -319,8 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				785DFAEF2519BAC500B6108E /* Feed.m in Sources */,
-				785DFAFF2519E42E00B6108E /* FeedItem+Ext.swift in Sources */,
-				785DFAFA2519D62D00B6108E /* Feed.swift in Sources */,
+				78DD2EF3252E453A00D9371D /* Feed.swift in Sources */,
 				785DFAD42519390200B6108E /* FeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,7 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.freak4pc.BabyTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BabyTrack/BabyTrack-Bridging.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BabyTrack/Boilerplate/BabyKit-Bridging.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -508,7 +509,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.freak4pc.BabyTrack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BabyTrack/BabyTrack-Bridging.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/BabyTrack/Boilerplate/BabyKit-Bridging.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -517,6 +518,7 @@
 		785DFAD0251938F300B6108E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -531,10 +533,12 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULEMAP_PRIVATE_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freak4pc.BabyKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -545,6 +549,7 @@
 		785DFAD1251938F300B6108E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -559,6 +564,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULEMAP_PRIVATE_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.freak4pc.BabyKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

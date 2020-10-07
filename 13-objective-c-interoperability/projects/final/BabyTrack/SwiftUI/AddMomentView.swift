@@ -64,18 +64,22 @@ struct AddMomentView: UIViewControllerRepresentable {
     }
 
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-      defer { parent.isPresented = false }
-
       guard let result = results.first,
             result.itemProvider.canLoadObject(ofClass: UIImage.self) else {
         return
       }
 
-      result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] object, error in
-        guard let image = object as? UIImage,
+      // 1
+      result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] obj, err in
+        // 2
+        defer { self?.parent.isPresented = false }
+
+        // 3
+        guard let image = obj as? UIImage,
               let parent = self?.parent else { return }
 
-        if let error = error {
+        // 4
+        if let error = err {
           print("Error in picked image: \(error)")
           return
         }
@@ -85,6 +89,7 @@ struct AddMomentView: UIViewControllerRepresentable {
           return
         }
 
+        // 5
         DispatchQueue.main.async {
           parent.feed.addMoment(with: attachmentId)
         }
