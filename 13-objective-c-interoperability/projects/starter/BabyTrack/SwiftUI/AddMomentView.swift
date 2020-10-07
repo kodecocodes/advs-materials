@@ -35,7 +35,6 @@ import PhotosUI
 import BabyKit
 
 struct AddMomentView: UIViewControllerRepresentable {
-  let feed: Feed
   @Binding var isPresented: Bool
 
   func makeUIViewController(context: Context) -> PHPickerViewController {
