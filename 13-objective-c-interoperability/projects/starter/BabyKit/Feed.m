@@ -90,7 +90,7 @@ NSString * _Nonnull const FeedStorageFilename = @"feed.data";
     NSArray <NSString *> *components = [line componentsSeparatedByString:@","];
     if (components.count != 3) { return; }
 
-    FeedItem *item = [[FeedItem alloc] initWithKind:(FeedItemKind) components[0]
+    FeedItem *item = [[FeedItem alloc] initWithKind:(FeedItemKind) [components[0] intValue]
                                                date:[NSDate dateWithTimeIntervalSince1970:[components[1] doubleValue]]
                                        attachmentId:[[NSUUID alloc] initWithUUIDString:components[2]]];
 
