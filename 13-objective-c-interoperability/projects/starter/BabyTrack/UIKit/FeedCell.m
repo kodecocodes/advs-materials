@@ -52,8 +52,10 @@
                              completionHandler:^(NSData * _Nullable data,
                                                  NSURLResponse * _Nullable response,
                                                  NSError * _Nullable error) {
+
+    __weak FeedCell *weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-      self.attachment.image = [UIImage imageWithData:data];
+      weakSelf.attachment.image = [UIImage imageWithData:data];
     });
   }] resume];
 }
