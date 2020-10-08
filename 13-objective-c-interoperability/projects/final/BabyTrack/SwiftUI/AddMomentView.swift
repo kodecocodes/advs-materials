@@ -69,17 +69,13 @@ struct AddMomentView: UIViewControllerRepresentable {
         return
       }
 
-      // 1
       result.itemProvider
         .loadObject(ofClass: UIImage.self) { [weak self] obj, err in
-        // 2
         defer { self?.parent.isPresented = false }
 
-        // 3
         guard let image = obj as? UIImage,
               let parent = self?.parent else { return }
 
-        // 4
         if let err = err {
           print("Error in picked image: \(err)")
           return
@@ -90,7 +86,6 @@ struct AddMomentView: UIViewControllerRepresentable {
           return
         }
 
-        // 5
         DispatchQueue.main.async {
           parent.feed.addMoment(with: attachmentId)
         }
