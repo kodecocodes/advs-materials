@@ -62,9 +62,7 @@ struct AddMomentView: UIViewControllerRepresentable {
       self.parent = parent
     }
 
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-      defer { parent.isPresented = false }
-
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) { 
       guard let result = results.first,
             result.itemProvider.canLoadObject(ofClass: UIImage.self) else {
         return
