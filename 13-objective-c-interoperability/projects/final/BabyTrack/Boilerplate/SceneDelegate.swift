@@ -53,7 +53,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 
   private func startNewApp() {
-    self.window?.rootViewController = UIHostingController(rootView: FeedView())
+    self.window?.rootViewController = UIHostingController(
+      rootView: FeedView()
+    )
     self.window?.makeKeyAndVisible()
   }
 }

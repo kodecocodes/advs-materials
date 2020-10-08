@@ -70,7 +70,8 @@ struct AddMomentView: UIViewControllerRepresentable {
       }
 
       // 1
-      result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] obj, err in
+      result.itemProvider
+        .loadObject(ofClass: UIImage.self) { [weak self] obj, err in
         // 2
         defer { self?.parent.isPresented = false }
 
@@ -79,8 +80,8 @@ struct AddMomentView: UIViewControllerRepresentable {
               let parent = self?.parent else { return }
 
         // 4
-        if let error = err {
-          print("Error in picked image: \(error)")
+        if let err = err {
+          print("Error in picked image: \(err)")
           return
         }
 

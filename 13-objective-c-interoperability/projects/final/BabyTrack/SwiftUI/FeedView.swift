@@ -34,8 +34,8 @@ import SwiftUI
 import BabyKit
 
 struct FeedView: View {
-  @StateObject var feed = Feed()
   @State private var isPickingMoment = false
+  @StateObject var feed = Feed()
 
   var body: some View {
     NavigationView {
@@ -54,7 +54,6 @@ struct FeedView: View {
           feed.addItem(of: kind)
         }
         .padding([.top, .bottom], 8)
-
         List(feed.items, id: \.date) { item in
           FeedCell(feedItem: item)
         }

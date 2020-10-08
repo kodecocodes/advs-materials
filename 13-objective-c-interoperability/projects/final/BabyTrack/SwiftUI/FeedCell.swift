@@ -39,7 +39,6 @@ struct FeedCell: View {
 
   init(feedItem: FeedItem) {
     self.feedItem = feedItem
-
     formatter.formattingContext = .standalone
   }
 

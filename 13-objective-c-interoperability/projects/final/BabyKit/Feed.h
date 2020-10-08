@@ -50,7 +50,7 @@ NS_REFINED_FOR_SWIFT
 - (NSUUID * _Nullable) storeImage:(UIImage *) image NS_SWIFT_NAME(storeImage(_:));
 
 - (void) addMomentOnPresenter: (UIViewController *) presenter
-                   completion: (void (^ _Nullable)(FeedItem *)) completion NS_SWIFT_UNAVAILABLE("Use `AddMomentView` and `addMoment(with:)` instead");
+                   completion: (void (^ _Nullable)(FeedItem *)) completion NS_SWIFT_UNAVAILABLE("Use `AddMomentView` instead");
 
 @end
 

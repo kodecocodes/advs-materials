@@ -48,10 +48,12 @@ public class Feed: ObservableObject {
   }
 
   public func addMoment(with attachmentId: UUID) {
-    items.insert(legacyFeed.add(FeedItem(kind: .moment,
-                                         date: nil,
-                                         attachmentId: attachmentId)),
-                 at: 0)
+    items.insert(
+      legacyFeed.add(FeedItem(kind: .moment,
+                              date: nil,
+                              attachmentId: attachmentId)),
+                     at: 0
+    )
   }
 
   public func storeImage(_ image: UIImage) -> UUID? {
@@ -61,4 +63,4 @@ public class Feed: ObservableObject {
   public subscript<T>(dynamicMember keyPath: KeyPath<__Feed, T>) -> T {
     legacyFeed[keyPath: keyPath]
   }
-}
+} 

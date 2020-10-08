@@ -59,7 +59,7 @@ typedef NS_CLOSED_ENUM(NSInteger, FeedItemKind) {
 @property (nonatomic, strong) NSUUID * _Nullable attachmentId;
 @end
 
-NSString * _Nonnull FeedItemKindDescription(FeedItemKind)
+NSString * FeedItemKindDescription(FeedItemKind)
 NS_SWIFT_NAME(getter:FeedItemKind.description(self:));
 
 NS_ASSUME_NONNULL_END

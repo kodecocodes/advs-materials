@@ -103,7 +103,8 @@
       kind = FeedItemKindAwake;
     }
 
-    [button setTitle:[FeedItem emojiForKind:kind] forState:UIControlStateNormal];
+    [button setTitle:[FeedItem emojiForKind:kind]
+            forState:UIControlStateNormal];
     [button setBackgroundColor:[FeedItem colorForKind:kind]];
   }
 
