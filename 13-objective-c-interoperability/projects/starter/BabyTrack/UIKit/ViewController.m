@@ -68,9 +68,6 @@
     NSLog(@"Something went wrong: %@", error.localizedDescription);
   }
 
-  self.tblFeed.refreshControl = [[UIRefreshControl alloc] init];
-  [self.tblFeed.refreshControl addTarget:self action:@selector(reload) forControlEvents: UIControlEventValueChanged];
-
   [self reload];
 }
 
@@ -104,12 +101,6 @@
 
   // Reload table
   [self.tblFeed reloadData];
-
-  // Stop refresh control
-  dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC);
-  dispatch_after(delay, dispatch_get_main_queue(), ^{
-    [self.tblFeed.refreshControl endRefreshing];
-  });
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
