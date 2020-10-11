@@ -1,12 +1,4 @@
-import Foundation
 
-var safeString: String? = nil
-
-//print(safeString!)
-
-var unsafeString: String? = nil
-
-//print(unsafeString.unsafelyUnwrapped)
 
 MemoryLayout<Int>.size          // returns 8 (on 64-bit)
 MemoryLayout<Int>.alignment     // returns 8 (on 64-bit)
