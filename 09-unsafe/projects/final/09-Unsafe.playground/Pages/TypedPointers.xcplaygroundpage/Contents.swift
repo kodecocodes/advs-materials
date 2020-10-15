@@ -1,7 +1,26 @@
 //: [Previous](@previous)
 
-import Foundation
+let count = 4
 
-var str = "Hello, playground"
+let pointer = UnsafeMutablePointer<Int>.allocate(capacity: count)
+pointer.initialize(repeating: 0, count: count)
+defer {
+  pointer.deinitialize(count: count)
+  pointer.deallocate()
+}
 
-//: [Next](@next)
+pointer.pointee = 10001
+pointer.advanced(by: 1).pointee = 10002
+(pointer+2).pointee = 10003
+pointer.advanced(by: 3).pointee = 10004
+
+pointer.pointee
+pointer.advanced(by: 1).pointee
+(pointer+1).pointee
+pointer.advanced(by: 2).pointee
+(pointer+3).pointee
+
+let bufferPointer = UnsafeBufferPointer(start: pointer, count: count)
+for (offset, value) in bufferPointer.enumerated() {
+  print("value \(offset): \(value)")
+}
