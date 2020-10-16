@@ -6,5 +6,8 @@
         <page name='RawPointer'/>
         <page name='RawBuffer'/>
         <page name='TypedPointers'/>
+        <page name='MemoryBinding'/>
+        <page name='Rebinding'/>
+        <page name='Rebinding2'/>
     </pages>
 </playground>
