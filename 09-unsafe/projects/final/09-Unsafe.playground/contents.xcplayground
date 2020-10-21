@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' buildActiveScheme='true'>
     <pages>
-        <page name='Intro'/>
         <page name='MemoryLayout'/>
         <page name='RawPointer'/>
         <page name='RawBuffer'/>
@@ -9,5 +8,8 @@
         <page name='MemoryBinding'/>
         <page name='Rebinding'/>
         <page name='Rebinding2'/>
+        <page name='Unwrap'/>
+        <page name='Untitled Page'/>
+        <page name='Arithmatic'/>
     </pages>
 </playground>
