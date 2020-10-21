@@ -32,22 +32,6 @@
 
 import Foundation
 
-protocol Addition: CaseIterable, RawRepresentable, Identifiable, Hashable
-where RawValue == String, AllCases.Index == Int {
-  static var type: String { get }
-  var name: String { get }
-  var price: Decimal { get }
-}
-
-extension Addition {
-  var id: String { rawValue }
-}
-
-struct PricedAddition<A: Addition> {
-  let addition: A
-  let price: Decimal
-}
-
 struct Guitar: CustomStringConvertible {
   let shape: Shape
   let color: Color
@@ -67,6 +51,7 @@ struct Guitar: CustomStringConvertible {
   }
 }
 
+// MARK: - Guitar Additions
 extension Guitar {
   enum Shape: String, Addition {
     static var type: String { "Shape" }
@@ -197,15 +182,4 @@ extension Guitar {
       }
     }
   }
-}
-
-/// https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
-/// https://api.exchangeratesapi.io/latest?base=USD
-public enum Currency: String {
-  case usd
-  case eur
-  case gbp
-  case ils
-
-  var code: String { rawValue.uppercased() }
 }

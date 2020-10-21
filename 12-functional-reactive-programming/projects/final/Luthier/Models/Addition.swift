@@ -31,32 +31,14 @@
 /// THE SOFTWARE.
 
 import Foundation
-import Combine
 
-final class GuitarService {
-  static let basePrice = Decimal(2_000)
+protocol Addition: CaseIterable, RawRepresentable, Identifiable, Hashable
+where RawValue == String, AllCases.Index == Int {
+  static var type: String { get }
+  var name: String { get }
+  var price: Decimal { get }
+}
 
-  func getShipmentOptions() -> AnyPublisher<[ShippingOption], Never> {
-    let mockOptions = [("Pickup", "As soon as ready", 0),
-                       ("Ground", "2-6 weeks", 100),
-                       ("Express", "1 week", 250)]
-      .map(ShippingOption.init).self
-
-    return Just(mockOptions)
-      .delay(for: .init(.random(in: 0.3...1)), scheduler: RunLoop.main)
-      .eraseToAnyPublisher()
-  }
-
-  func getBuildTimeEstimate(for guitar: Guitar) -> AnyPublisher<String, Never> {
-    Just("About \([3, 6, 9, 12, 14, 18].randomElement() ?? "") months")
-      .delay(for: .init(.random(in: 0.7...1.5)), scheduler: RunLoop.main)
-      .eraseToAnyPublisher()
-  }
-
-  func ensureAvailability(for guitar: Guitar) -> AnyPublisher<Bool, Never> {
-    // 10% chance for not-availables
-    Just([true, true, true, true, true, true, true, true, true, false].randomElement() ?? false)
-      .delay(for: .init(.random(in: 1...2.0)), scheduler: RunLoop.main)
-      .eraseToAnyPublisher()
-  }
+extension Addition {
+  var id: String { rawValue }
 }
