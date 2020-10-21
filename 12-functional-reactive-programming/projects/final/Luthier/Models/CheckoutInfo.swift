@@ -34,6 +34,7 @@ import Foundation
 
 struct CheckoutInfo: Identifiable {
   let id = UUID()
+  let guitar: Guitar
   let shippingOptions: [ShippingOption]
   let buildEstimate: String
   let isAvailable: Bool

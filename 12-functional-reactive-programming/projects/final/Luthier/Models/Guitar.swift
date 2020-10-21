@@ -33,17 +33,21 @@
 import Foundation
 
 struct Guitar: CustomStringConvertible {
+  static var basePrice: Decimal = 2_000
   let shape: Shape
   let color: Color
   let body: Body
   let fretboard: Fretboard
 
   var price: Decimal {
+    Self.basePrice + additionsPrice
+  }
+
+  var additionsPrice: Decimal {
     [shape.price,
      color.price,
      body.price,
-     fretboard.price,
-     GuitarService.basePrice].reduce(0, +)
+     fretboard.price].reduce(0, +)
   }
 
   var description: String {

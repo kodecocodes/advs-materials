@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -30,18 +30,33 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
+import Combine
 import Foundation
 
-protocol Addition: CaseIterable, RawRepresentable, Identifiable, Hashable
-where RawValue == String, AllCases.Index == Int {
-  static var type: String { get }
-  var name: String { get }
-  var price: Decimal { get }
-}
+@dynamicMemberLookup
+class CheckoutViewModel: ObservableObject {
+  @Published var selectedShippingIdx = 0
+  var selectedShippingOption: ShippingOption { self.shippingOptions[selectedShippingIdx] }
+  
+  private var checkoutInfo: CheckoutInfo
 
-extension Addition {
-  var id: String { rawValue }
-  var pricedName: String {
-    price > 0 ? "\(name) (+$\(price))" : name
+  var totalPrice: Decimal {
+    self.guitar.price + selectedShippingOption.price
+  }
+
+  var availability: String {
+    self.isAvailable ? "Available" : "Currently unavailable"
+  }
+
+  var checkoutButton: String {
+    self.isAvailable ? "Order now" : "Model unavailable"
+  }
+
+  init(checkoutInfo: CheckoutInfo) {
+    self.checkoutInfo = checkoutInfo
+  }
+
+  subscript<T>(dynamicMember keyPath: KeyPath<CheckoutInfo, T>) -> T {
+    checkoutInfo[keyPath: keyPath]
   }
 }

@@ -32,16 +32,14 @@
 
 import Foundation
 
-protocol Addition: CaseIterable, RawRepresentable, Identifiable, Hashable
-where RawValue == String, AllCases.Index == Int {
-  static var type: String { get }
-  var name: String { get }
-  var price: Decimal { get }
-}
+private let usdFormatter: NumberFormatter = {
+  let nf = NumberFormatter()
+  nf.numberStyle = .currency
+  nf.currencyCode = "USD"
+  nf.maximumFractionDigits = 0
+  return nf
+}()
 
-extension Addition {
-  var id: String { rawValue }
-  var pricedName: String {
-    price > 0 ? "\(name) (+$\(price))" : name
-  }
+extension Decimal {
+  var formatted: String { usdFormatter.string(for: self) ?? String(describing: self) }
 }
