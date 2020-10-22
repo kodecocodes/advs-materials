@@ -22,6 +22,7 @@
 		7836D5002538E17F00326B1A /* GuitarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7836D4FF2538E17F00326B1A /* GuitarService.swift */; };
 		7848991C2540A7F7001CD4DF /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848991B2540A7F7001CD4DF /* CheckoutViewModel.swift */; };
 		784899202540D2BC001CD4DF /* Decimal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */; };
+		78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB06292542108600FDEB17 /* CurrencyService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		7836D4FF2538E17F00326B1A /* GuitarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarService.swift; sourceTree = "<group>"; };
 		7848991B2540A7F7001CD4DF /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Ext.swift"; sourceTree = "<group>"; };
+		78BB06292542108600FDEB17 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				78276C512540A40C00835AB2 /* Checkout */,
 				78276C482540A1D600835AB2 /* Build */,
 				7836D4FB2538DA7600326B1A /* Models */,
+				78BB062C2542179200FDEB17 /* Services */,
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
@@ -119,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				7836D4FC2538DAF300326B1A /* Currency.swift */,
-				7836D4FF2538E17F00326B1A /* GuitarService.swift */,
 				78276C562540A42B00835AB2 /* Guitar.swift */,
 				78276C592540A43300835AB2 /* ShippingOption.swift */,
 				78276C5C2540A43C00835AB2 /* CheckoutInfo.swift */,
@@ -134,6 +136,15 @@
 				7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		78BB062C2542179200FDEB17 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7836D4FF2538E17F00326B1A /* GuitarService.swift */,
+				78BB06292542108600FDEB17 /* CurrencyService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 				7836D4FD2538DAF300326B1A /* Currency.swift in Sources */,
 				78276C4E2540A1EC00835AB2 /* BuildViewModel.swift in Sources */,
 				78276C532540A41800835AB2 /* CheckoutView.swift in Sources */,
+				78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */,
 				78276C5A2540A43300835AB2 /* ShippingOption.swift in Sources */,
 				78276C5D2540A43C00835AB2 /* CheckoutInfo.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,

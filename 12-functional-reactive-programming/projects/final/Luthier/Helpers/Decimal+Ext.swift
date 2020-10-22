@@ -41,5 +41,17 @@ private let usdFormatter: NumberFormatter = {
 }()
 
 extension Decimal {
-  var formatted: String { usdFormatter.string(for: self) ?? String(describing: self) }
+  var formatted: String {
+    usdFormatter.string(for: self) ?? String(describing: self)
+  }
+
+  func formatted(for currency: Currency) -> String {
+    let nf = NumberFormatter()
+    nf.numberStyle = .currency
+    nf.currencyCode = currency.code
+    nf.maximumFractionDigits = 0
+    return nf.string(for: self) ?? String(describing: self)
+  }
 }
+
+

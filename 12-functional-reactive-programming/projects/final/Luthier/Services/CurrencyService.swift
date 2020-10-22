@@ -31,9 +31,26 @@
 /// THE SOFTWARE.
 
 import Foundation
+import Combine
 
-struct ShippingOption: Hashable {
-  let name: String
-  let duration: String
-  let price: Decimal
+final class CurrencyService {
+  func getExchangeRate(for currency: Currency) -> AnyPublisher<Decimal, Error> {
+    URLSession.shared
+      .dataTaskPublisher(for: URL(string: "https://api.exchangeratesapi.io/latest?base=USD")!)
+      .map(\.data)
+      .decode(type: ExchangeResponse.self, decoder: JSONDecoder())
+      .map { response in
+        guard let rate = response.rates[currency.code] else {
+          fatalError()
+        }
+
+        return rate
+      }
+      .eraseToAnyPublisher()
+  }
+}
+
+private struct ExchangeResponse: Decodable {
+  let rates: [String: Decimal]
+  let base: String
 }

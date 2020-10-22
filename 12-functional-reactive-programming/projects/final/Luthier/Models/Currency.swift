@@ -30,15 +30,37 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-#warning("Maybe remove")
 import Foundation
 /// https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
 /// https://api.exchangeratesapi.io/latest?base=USD
-public enum Currency: String {
+public enum Currency: String, Codable, CaseIterable, Identifiable {
   case usd
   case eur
   case gbp
   case ils
 
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    let value = try container.decode(String.self)
+
+    guard let currency = Currency(rawValue: value) else {
+      throw DecodingError.dataCorrupted(
+        DecodingError.Context(codingPath: [], debugDescription: "Invalid currency \(value)")
+      )
+    }
+
+    self = currency
+  }
+
+  var symbol: String {
+    switch self {
+    case .usd: return "$"
+    case .eur: return "€"
+    case .gbp: return "£"
+    case .ils: return "₪"
+    }
+  }
+
   var code: String { rawValue.uppercased() }
+  public var id: String { rawValue }
 }

@@ -69,38 +69,47 @@ struct CheckoutView: View {
           let shipping = viewModel.selectedShippingOption
 
           Section(header: Text("Shipping")) {
-            Picker(selection: $viewModel.selectedShippingIdx,
+            Picker(selection: $viewModel.selectedShippingOption,
                    label: Text("Shipping method")) {
-              ForEach(0..<viewModel.shippingOptions.count) {
-                let option = viewModel.shippingOptions[$0]
-                let price = option.price == 0 ? "Free" : "+\(option.price.formatted)"
-                Text("\(option.name) (\(price))")
+              ForEach(Array(viewModel.shippingOptionsPrices.keys), id: \.self) { option in
+                let price = viewModel.shippingOptionsPrices[option] ?? "N/A"
+                Text("\(option.name) (\(price))").tag(option)
               }
             }
             TextRow("Time", shipping.duration)
           }
 
-          Section(header: Text("Totals"),
-                  footer: Spacer(minLength: 200)) {
+          Section(header: Text("Totals")) {
+            HStack {
+              Text("Currency")
+              Spacer(minLength: 16)
+              Picker("Currency",
+                     selection: $viewModel.currency) {
+                ForEach(Currency.allCases) {
+                  Text($0.symbol).tag($0)
+                }
+              }
+              .pickerStyle(SegmentedPickerStyle())
+            }
+
             TextRow("Base price",
-                    Guitar.basePrice.formatted)
+                    viewModel.basePrice)
 
             TextRow("Additions",
-                    viewModel.guitar.additionsPrice.formatted)
+                    viewModel.additionsPrice)
 
             TextRow("Shipping",
-                    shipping.price == 0
-                      ? "Free"
-                      : shipping.price.formatted)
+                    viewModel.shippingPrice)
 
             TextRow("Grand total",
-                    viewModel.totalPrice.formatted,
+                    viewModel.totalPrice,
                     weight: .semibold)
           }
         }
         .padding(.bottom, 40)
 
-        let buttonColor = viewModel.isAvailable ? Color.green : Color.red
+        let buttonColor = viewModel.isAvailable
+          ? Color.green : Color.red
 
         Button(viewModel.checkoutButton) {
 

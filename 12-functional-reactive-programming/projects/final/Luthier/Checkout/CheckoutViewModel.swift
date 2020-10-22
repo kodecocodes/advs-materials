@@ -35,14 +35,19 @@ import Foundation
 
 @dynamicMemberLookup
 class CheckoutViewModel: ObservableObject {
-  @Published var selectedShippingIdx = 0
-  var selectedShippingOption: ShippingOption { self.shippingOptions[selectedShippingIdx] }
-  
-  private var checkoutInfo: CheckoutInfo
+  // Input/Bindings
+  @Published var selectedShippingOption = ShippingOption(name: "", duration: "", price: 0)
+  @Published var currency = Currency.usd
 
-  var totalPrice: Decimal {
-    self.guitar.price + selectedShippingOption.price
-  }
+  // Outputs
+  @Published var basePrice = ""
+  @Published var additionsPrice = ""
+  @Published var totalPrice = ""
+  @Published var shippingPrice = ""
+  @Published var shippingOptionsPrices = [ShippingOption: String]()
+
+  private let service = CurrencyService()
+  private var checkoutInfo: CheckoutInfo
 
   var availability: String {
     self.isAvailable ? "Available" : "Currently unavailable"
@@ -54,6 +59,71 @@ class CheckoutViewModel: ObservableObject {
 
   init(checkoutInfo: CheckoutInfo) {
     self.checkoutInfo = checkoutInfo
+    self.selectedShippingOption = checkoutInfo.shippingOptions[0]
+
+    let currencyAndRate = $currency
+      .map { currency -> AnyPublisher<(Currency, Decimal), Never> in
+        guard currency != .usd else {
+          return Just((currency, 1.0)).eraseToAnyPublisher()
+        }
+
+        return self.service
+          .getExchangeRate(for: currency)
+          .map { (currency, $0) }
+          .replaceError(with: (.usd, 1.0))
+          .eraseToAnyPublisher()
+      }
+      .switchToLatest()
+      .receive(on: RunLoop.main)
+      .share()
+
+    currencyAndRate
+      .map { currency, rate in
+        (Guitar.basePrice * rate).formatted(for: currency)
+      }
+      .assign(to: &$basePrice)
+
+    currencyAndRate
+      .map { [weak self] currency, rate -> String in
+        guard let self = self else { return "N/A" }
+
+        return self.guitar.additionsPrice.formatted(for: currency)
+      }
+      .assign(to: &$additionsPrice)
+
+    currencyAndRate
+      .map { [weak self] currency, rate -> [ShippingOption: String] in
+        guard let self = self else { return [:] }
+
+        return self.shippingOptions
+          .reduce(into: [ShippingOption: String]()) { pricedOptions, option in
+            pricedOptions[option] = (option.price * rate).formatted(for: currency)
+          }
+      }
+      .assign(to: &$shippingOptionsPrices)
+
+    $shippingOptionsPrices
+      .compactMap { [weak self] pricedOptions in
+        guard let selectedOption = self?.selectedShippingOption else { return nil }
+
+        guard selectedOption.price != 0 else { return "Free" }
+
+        return selectedOption.price == 0
+          ? "Free"
+          : pricedOptions[selectedOption] ?? "N/A"
+      }
+      .assign(to: &$shippingPrice)
+
+    currencyAndRate
+      .map { [weak self] currency, rate -> String in
+        guard let self = self else { return "N/A" }
+
+        let totalPrice = self.guitar.price + self.selectedShippingOption.price
+        let exchanged = totalPrice * rate
+
+        return exchanged.formatted(for: currency)
+      }
+      .assign(to: &$totalPrice)
   }
 
   subscript<T>(dynamicMember keyPath: KeyPath<CheckoutInfo, T>) -> T {
