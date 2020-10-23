@@ -153,7 +153,7 @@ extension Guitar {
     case maple
     case birdseyeMaple
     case flamedMaple
-    case blackEbony
+    case ebony
     case blackLimba
 
     var name: String {
@@ -162,8 +162,8 @@ extension Guitar {
         return "Birdseye Maple"
       case .flamedMaple:
         return "Flamed Maple"
-      case .blackEbony:
-        return "Black Ebony"
+      case .ebony:
+        return "Ebony"
       case .blackLimba:
         return "Black Limba"
       default:
@@ -179,7 +179,7 @@ extension Guitar {
         return 80
       case .flamedMaple:
         return 80
-      case .blackEbony:
+      case .ebony:
         return 100
       case .blackLimba:
         return 120

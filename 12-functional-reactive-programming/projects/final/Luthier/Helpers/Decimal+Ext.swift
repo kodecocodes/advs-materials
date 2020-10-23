@@ -32,18 +32,8 @@
 
 import Foundation
 
-private let usdFormatter: NumberFormatter = {
-  let nf = NumberFormatter()
-  nf.numberStyle = .currency
-  nf.currencyCode = "USD"
-  nf.maximumFractionDigits = 0
-  return nf
-}()
-
 extension Decimal {
-  var formatted: String {
-    usdFormatter.string(for: self) ?? String(describing: self)
-  }
+  var formatted: String { formatted(for: .usd) }
 
   func formatted(for currency: Currency) -> String {
     let nf = NumberFormatter()

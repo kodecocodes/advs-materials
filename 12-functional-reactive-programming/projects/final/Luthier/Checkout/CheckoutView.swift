@@ -106,6 +106,7 @@ struct CheckoutView: View {
                     weight: .semibold)
           }
         }
+        .disabled(viewModel.isUpdatingCurrency)
         .padding(.bottom, 40)
 
         let buttonColor = viewModel.isAvailable
@@ -115,10 +116,13 @@ struct CheckoutView: View {
 
         }
         .foregroundColor(.white)
-        .font(.system(size: 28, weight: .semibold, design: .rounded))
-        .frame(maxWidth: .infinity, maxHeight: 52, alignment: .bottom)
+        .font(.system(size: 28,
+                      weight: .semibold,
+                      design: .rounded))
+        .frame(maxWidth: .infinity,
+               maxHeight: 64)
         .background(buttonColor.edgesIgnoringSafeArea(.bottom))
-        .disabled(!viewModel.isAvailable)
+        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency)
       }
       .navigationTitle("Your guitar")
     }
@@ -164,7 +168,7 @@ struct CheckoutView_Previews: PreviewProvider {
             .init(name: "Method 3", duration: "4-6 days", price: 250)
           ],
           buildEstimate: "12 months",
-          isAvailable: false
+          isAvailable: true
         )
       )
     )

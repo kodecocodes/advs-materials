@@ -39,19 +39,6 @@ public enum Currency: String, Codable, CaseIterable, Identifiable {
   case gbp
   case ils
 
-  public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    let value = try container.decode(String.self)
-
-    guard let currency = Currency(rawValue: value) else {
-      throw DecodingError.dataCorrupted(
-        DecodingError.Context(codingPath: [], debugDescription: "Invalid currency \(value)")
-      )
-    }
-
-    self = currency
-  }
-
   var symbol: String {
     switch self {
     case .usd: return "$"
