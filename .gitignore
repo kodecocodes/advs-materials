@@ -192,7 +192,7 @@ out/
 
 # Gradle files
 .gradle/
-build/
+./build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -273,7 +273,7 @@ xcuserdata/
 *.xccheckout
 
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
-build/
+./build/
 DerivedData/
 *.moved-aside
 *.pbxuser
