@@ -100,7 +100,6 @@ class BuildViewModel: ObservableObject {
       .share()
 
     $checkoutInfo
-      .print("x")
       .sink(receiveValue: { _ in })
       .store(in: &subscriptions)
 

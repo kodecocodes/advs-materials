@@ -93,17 +93,21 @@ struct CheckoutView: View {
             }
 
             TextRow("Base price",
-                    viewModel.basePrice)
+                    viewModel.basePrice,
+                    isLoading: viewModel.isUpdatingCurrency)
 
             TextRow("Additions",
-                    viewModel.additionsPrice)
+                    viewModel.additionsPrice,
+                    isLoading: viewModel.isUpdatingCurrency)
 
             TextRow("Shipping",
-                    viewModel.shippingPrice)
+                    viewModel.shippingPrice,
+                    isLoading: viewModel.isUpdatingCurrency)
 
             TextRow("Grand total",
                     viewModel.totalPrice,
-                    weight: .semibold)
+                    weight: .semibold,
+                    isLoading: viewModel.isUpdatingCurrency)
           }
         }
         .disabled(viewModel.isUpdatingCurrency)
@@ -133,20 +137,30 @@ struct TextRow: View {
   private let title: String
   private let value: String
   private let weight: Font.Weight?
+  private let isLoading: Bool
 
   init(_ title: String,
        _ value: String,
-       weight: Font.Weight? = nil) {
+       weight: Font.Weight? = nil,
+       isLoading: Bool = false) {
     self.title = title
     self.value = value
     self.weight = weight
+    self.isLoading = isLoading
   }
 
   var body: some View {
     HStack {
       Text(title).fontWeight(weight)
       Spacer()
-      Text(value).fontWeight(weight)
+      
+      if isLoading {
+        Text("-----")
+          .fontWeight(weight)
+          .redacted(reason: .placeholder)
+      } else {
+        Text(value).fontWeight(weight)
+      }
     }
   }
 }

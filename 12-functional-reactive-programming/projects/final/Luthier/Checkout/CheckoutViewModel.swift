@@ -90,24 +90,18 @@ class CheckoutViewModel: ObservableObject {
 
     rateAndLoading
       .map { currency, rate, isLoading in
-        guard !isLoading else { return "----" }
-
-        return (Guitar.basePrice * rate).formatted(for: currency)
+        (Guitar.basePrice * rate).formatted(for: currency)
       }
       .assign(to: &$basePrice)
 
     rateAndLoading
       .map { currency, rate, isLoading in
-        guard !isLoading else { return "----" }
-
-        return self.guitar.additionsPrice.formatted(for: currency)
+        self.guitar.additionsPrice.formatted(for: currency)
       }
       .assign(to: &$additionsPrice)
 
     rateAndLoading
       .map { [weak self] currency, rate, isLoading in
-        guard !isLoading else { return "----" }
-
         guard let self = self else { return "N/A" }
 
         let totalPrice = self.guitar.price + self.selectedShippingOption.price
@@ -133,7 +127,6 @@ class CheckoutViewModel: ObservableObject {
     $shippingOptionsPrices
       .combineLatest($selectedShippingOption, $isUpdatingCurrency)
       .compactMap { pricedOptions, selectedOption, isLoading in
-        guard !isLoading else { return "----" }
         guard selectedOption.price != 0 else { return "Free" }
         return pricedOptions[selectedOption] ?? "N/A"
       }
