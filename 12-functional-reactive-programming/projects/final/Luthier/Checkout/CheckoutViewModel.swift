@@ -48,6 +48,7 @@ class CheckoutViewModel: ObservableObject {
   @Published var shippingPrice = ""
   @Published var shippingOptionsPrices = [ShippingOption: String]()
   @Published var isUpdatingCurrency = false
+  @Published var didCheckout = false
 
   private let service = CurrencyService()
   private var checkoutInfo: CheckoutInfo

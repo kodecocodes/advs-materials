@@ -35,6 +35,7 @@ import Combine
 
 struct CheckoutView: View {
   @ObservedObject var viewModel: CheckoutViewModel
+  @Environment(\.presentationMode) var presentationMode
 
   var body: some View {
     NavigationView {
@@ -117,7 +118,7 @@ struct CheckoutView: View {
           ? Color.green : Color.red
 
         Button(viewModel.checkoutButton) {
-
+          viewModel.didCheckout = true
         }
         .foregroundColor(.white)
         .font(.system(size: 28,
@@ -127,6 +128,17 @@ struct CheckoutView: View {
                maxHeight: 64)
         .background(buttonColor.edgesIgnoringSafeArea(.bottom))
         .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency)
+
+        if viewModel.didCheckout {
+          ConfettiView()
+        }
+      }
+      .alert(isPresented: $viewModel.didCheckout) {
+        Alert(title: Text("Congratulations!"),
+              message: Text("We're working on your new guitar! Hang tight, we'll be in touch"),
+              dismissButton: .default(Text("Dismiss")) {
+                presentationMode.wrappedValue.dismiss()
+              })
       }
       .navigationTitle("Your guitar")
     }
