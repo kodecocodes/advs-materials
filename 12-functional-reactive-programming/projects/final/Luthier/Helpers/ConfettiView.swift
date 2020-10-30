@@ -34,13 +34,14 @@ import SwiftUI
 import UIKit
 
 public struct ConfettiView: UIViewRepresentable {
-    public func makeUIView(context: Context) -> UIConfettiView {
-        return UIConfettiView()
-    }
+  public func makeUIView(context: Context) -> UIConfettiView {
+    let view = UIConfettiView()
+    view.start()
+    return view
+  }
 
-    public func updateUIView(_ uiView: UIConfettiView, context: Context) {
-        uiView.start()
-    }
+  public func updateUIView(_ uiView: UIConfettiView, context: Context) {
+  }
 }
 
 /// The UIView Confetti Emitter

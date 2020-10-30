@@ -65,7 +65,11 @@ class CheckoutViewModel: ObservableObject {
     self.checkoutInfo = checkoutInfo
     self.selectedShippingOption = checkoutInfo.shippingOptions[0]
 
-    let currencyAndRate = $currency
+    let currency = $currency
+      .debounce(for: 0.5, scheduler: RunLoop.main)
+      .removeDuplicates()
+
+    let currencyAndRate = currency
       .flatMap { currency -> AnyPublisher<(Currency, Decimal), Never> in
         guard currency != .usd else {
           return Just((currency, 1.0)).eraseToAnyPublisher()
@@ -84,7 +88,7 @@ class CheckoutViewModel: ObservableObject {
       .combineLatest($isUpdatingCurrency) { ($0.0, $0.1, $1) }
 
     Publishers.Merge(
-      $currency.map { _ in true },
+      currency.map { _ in true },
       currencyAndRate.map { _ in false }
     )
     .assign(to: &$isUpdatingCurrency)
