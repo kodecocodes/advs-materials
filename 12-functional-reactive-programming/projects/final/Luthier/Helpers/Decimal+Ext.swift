@@ -43,5 +43,3 @@ extension Decimal {
     return nf.string(for: self) ?? String(describing: self)
   }
 }
-
-

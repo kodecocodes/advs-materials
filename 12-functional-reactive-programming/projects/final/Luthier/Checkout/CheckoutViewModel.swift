@@ -48,9 +48,13 @@ class CheckoutViewModel: ObservableObject {
   @Published var shippingPrice = ""
   @Published var shippingOptionsPrices = [ShippingOption: String]()
   @Published var isUpdatingCurrency = false
-  @Published var didCheckout = false
+  @Published var isOrdering = false
+  @Published var didOrder = false
 
-  private let service = CurrencyService()
+  private let shouldOrder = PassthroughSubject<Void, Never>()
+
+  private let currencyServicee = CurrencyService()
+  private let guitarService = GuitarService()
   private var checkoutInfo: CheckoutInfo
 
   var availability: String {
@@ -75,7 +79,7 @@ class CheckoutViewModel: ObservableObject {
           return Just((currency, 1.0)).eraseToAnyPublisher()
         }
 
-        return self.service
+        return self.currencyServicee
           .getExchangeRate(for: currency)
           .map { (currency, $0) }
           .replaceError(with: (.usd, 1.0))
@@ -131,11 +135,32 @@ class CheckoutViewModel: ObservableObject {
 
     $shippingOptionsPrices
       .combineLatest($selectedShippingOption, $isUpdatingCurrency)
-      .compactMap { pricedOptions, selectedOption, isLoading in
+      .map { pricedOptions, selectedOption, isLoading in
         guard selectedOption.price != 0 else { return "Free" }
         return pricedOptions[selectedOption] ?? "N/A"
       }
       .assign(to: &$shippingPrice)
+
+    let orderResponse = shouldOrder
+      .flatMap { [weak self] _ -> AnyPublisher<Void, Never> in
+        guard let self = self else { return Empty().eraseToAnyPublisher() }
+        return self.guitarService.order(self.guitar)
+      }
+      .share()
+    
+    Publishers.Merge(
+      shouldOrder.map { true },
+      orderResponse.map { false }
+    )
+    .assign(to: &$isOrdering)
+    
+    orderResponse
+      .map { true }
+      .assign(to: &$didOrder)
+  }
+
+  func order() {
+    shouldOrder.send()
   }
 
   subscript<T>(dynamicMember keyPath: KeyPath<CheckoutInfo, T>) -> T {

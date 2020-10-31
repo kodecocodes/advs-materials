@@ -111,34 +111,47 @@ struct CheckoutView: View {
                     isLoading: viewModel.isUpdatingCurrency)
           }
         }
-        .disabled(viewModel.isUpdatingCurrency)
+        .disabled(viewModel.isUpdatingCurrency || viewModel.isOrdering)
         .padding(.bottom, 40)
 
-        let buttonColor = viewModel.isAvailable
-          ? Color.green : Color.red
+        if viewModel.isOrdering {
+          ZStack {
+            Color.green.edgesIgnoringSafeArea(.bottom)
+              .frame(maxWidth: .infinity, maxHeight: 64, alignment: .bottom)
 
-        Button(viewModel.checkoutButton) {
-          viewModel.didCheckout = true
+            ProgressView()
+              .progressViewStyle(CircularProgressViewStyle(tint: .white))
+          }
+        } else {
+          let buttonColor = viewModel.isAvailable
+            ? Color.green : Color.red
+
+          Button(viewModel.checkoutButton) {
+            viewModel.order()
+          }
+          .foregroundColor(.white)
+          .font(.system(size: 28,
+                        weight: .semibold,
+                        design: .rounded))
+          .frame(maxWidth: .infinity,
+                 maxHeight: 64)
+          .background(buttonColor.edgesIgnoringSafeArea(.bottom))
+          .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
         }
-        .foregroundColor(.white)
-        .font(.system(size: 28,
-                      weight: .semibold,
-                      design: .rounded))
-        .frame(maxWidth: .infinity,
-               maxHeight: 64)
-        .background(buttonColor.edgesIgnoringSafeArea(.bottom))
-        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency)
 
-        if viewModel.didCheckout {
+        if viewModel.didOrder {
           ConfettiView()
         }
       }
-      .alert(isPresented: $viewModel.didCheckout) {
-        Alert(title: Text("Congratulations!"),
-              message: Text("We're working on your new guitar! Hang tight, we'll be in touch"),
-              dismissButton: .default(Text("Dismiss")) {
-                presentationMode.wrappedValue.dismiss()
-              })
+      .alert(isPresented: $viewModel.didOrder) {
+        Alert(
+          title: Text("Congratulations!"),
+          message: Text("We're working on your new guitar! " +
+                        "Hang tight, we'll be in touch"),
+          dismissButton: .default(Text("Dismiss")) {
+            presentationMode.wrappedValue.dismiss()
+          }
+        )
       }
       .navigationTitle("Your guitar")
     }

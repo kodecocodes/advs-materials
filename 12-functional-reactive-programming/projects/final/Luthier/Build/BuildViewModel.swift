@@ -51,7 +51,7 @@ class BuildViewModel: ObservableObject {
 
   private let shouldCheckout = PassthroughSubject<Void, Never>()
 
-  private let service = GuitarService()
+  private let guitarService = GuitarService()
   private var subscriptions = Set<AnyCancellable>()
 
   init() {
@@ -73,19 +73,19 @@ class BuildViewModel: ObservableObject {
       .map(\.price.formatted)
       .assign(to: &$price)
 
-    let availability = service
+    let availability = guitarService
       .ensureAvailability(for: guitar)
       .handleEvents(
         receiveOutput: { _ in print("availability") }
       )
 
-    let estimate = service
+    let estimate = guitarService
       .getBuildTimeEstimate(for: guitar)
       .handleEvents(
         receiveOutput: { _ in print("estimate") }
       )
 
-    let shipment = service
+    let shipment = guitarService
       .getShipmentOptions()
       .handleEvents(
         receiveOutput: { _ in print("shipment") }

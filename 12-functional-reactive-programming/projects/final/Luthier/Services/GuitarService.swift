@@ -34,6 +34,13 @@ import Foundation
 import Combine
 
 final class GuitarService {
+  func order(_ guitar: Guitar) -> AnyPublisher<Void, Never> {
+    Deferred {
+      Just(()).delay(for: .init(.random(in: 1.0...2.0)), scheduler: RunLoop.main)
+    }
+    .eraseToAnyPublisher()
+  }
+
   func getShipmentOptions() -> AnyPublisher<[ShippingOption], Never> {
     let mockOptions = [("Pickup", "As soon as ready", 0),
                        ("Ground", "2-6 weeks", 100),
