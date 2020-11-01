@@ -178,7 +178,6 @@
 				780E75D6251753EE00D6BE5C /* Info.plist */,
 				786334FD251F8F6A002D02DB /* SceneDelegate.swift */,
 				78633522251F8FB4002D02DB /* AppDelegate.swift */,
-				782DFD3C2523CFBC00026159 /* BabyKit-Bridging.h */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -316,7 +315,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				785DFAEF2519BAC500B6108E /* Feed.m in Sources */,
-				785DFAFF2519E42E00B6108E /* FeedItem+Ext.swift in Sources */,
 				785DFAD42519390200B6108E /* FeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,7 +470,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7374UMDQL2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BabyTrack/Boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -496,7 +494,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7374UMDQL2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = BabyTrack/Boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
