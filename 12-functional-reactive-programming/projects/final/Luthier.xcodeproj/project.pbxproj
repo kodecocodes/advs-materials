@@ -24,6 +24,7 @@
 		784899202540D2BC001CD4DF /* Decimal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */; };
 		78A40D1B254B6E0E00CBAFB7 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */; };
 		78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB06292542108600FDEB17 /* CurrencyService.swift */; };
+		78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D8EC92254EA34F00D8A64E /* ActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Ext.swift"; sourceTree = "<group>"; };
 		78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		78BB06292542108600FDEB17 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		78D8EC92254EA34F00D8A64E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */,
 				78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */,
+				78D8EC92254EA34F00D8A64E /* ActionButton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				7848991C2540A7F7001CD4DF /* CheckoutViewModel.swift in Sources */,
 				78276C572540A42B00835AB2 /* Guitar.swift in Sources */,
 				7836D5002538E17F00326B1A /* GuitarService.swift in Sources */,
+				78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */,
 				78276C602540A49300835AB2 /* Addition.swift in Sources */,
 				784899202540D2BC001CD4DF /* Decimal+Ext.swift in Sources */,
 			);

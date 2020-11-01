@@ -78,22 +78,9 @@ struct BuildView: View {
         }
          .padding(.bottom, 40)
 
-        if viewModel.isLoadingCheckout {
-          ZStack {
-            Color.green.edgesIgnoringSafeArea(.bottom)
-              .frame(maxWidth: .infinity, maxHeight: 64, alignment: .bottom)
-
-            ProgressView()
-              .progressViewStyle(CircularProgressViewStyle(tint: .white))
-          }
-        } else {
-          Button("Checkout (\(viewModel.price))") {
-            viewModel.checkout()
-          }
-          .foregroundColor(.white)
-          .font(.system(size: 28, weight: .semibold, design: .rounded))
-          .frame(maxWidth: .infinity, maxHeight: 64)
-          .background(Color.green.edgesIgnoringSafeArea(.bottom))
+        ActionButton("Checkout (\(viewModel.price))",
+                     isLoading: viewModel.isLoadingCheckout) {
+          viewModel.checkout()
         }
       }
       .sheet(item: $viewModel.checkoutInfo,

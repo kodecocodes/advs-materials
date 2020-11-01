@@ -114,30 +114,37 @@ struct CheckoutView: View {
         .disabled(viewModel.isUpdatingCurrency || viewModel.isOrdering)
         .padding(.bottom, 40)
 
-        if viewModel.isOrdering {
-          ZStack {
-            Color.green.edgesIgnoringSafeArea(.bottom)
-              .frame(maxWidth: .infinity, maxHeight: 64, alignment: .bottom)
-
-            ProgressView()
-              .progressViewStyle(CircularProgressViewStyle(tint: .white))
-          }
-        } else {
-          let buttonColor = viewModel.isAvailable
-            ? Color.green : Color.red
-
-          Button(viewModel.checkoutButton) {
-            viewModel.order()
-          }
-          .foregroundColor(.white)
-          .font(.system(size: 28,
-                        weight: .semibold,
-                        design: .rounded))
-          .frame(maxWidth: .infinity,
-                 maxHeight: 64)
-          .background(buttonColor.edgesIgnoringSafeArea(.bottom))
-          .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
+        ActionButton(viewModel.checkoutButton,
+                     isLoading: viewModel.isOrdering,
+                     color: viewModel.isAvailable ? .green : .red) {
+          viewModel.order()
         }
+        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
+//
+//        if viewModel.isOrdering {
+//          ZStack {
+//            Color.green.edgesIgnoringSafeArea(.bottom)
+//              .frame(maxWidth: .infinity, maxHeight: 64, alignment: .bottom)
+//
+//            ProgressView()
+//              .progressViewStyle(CircularProgressViewStyle(tint: .white))
+//          }
+//        } else {
+//          let buttonColor = viewModel.isAvailable
+//            ? Color.green : Color.red
+//
+//          Button(viewModel.checkoutButton) {
+//            viewModel.order()
+//          }
+//          .foregroundColor(.white)
+//          .font(.system(size: 28,
+//                        weight: .semibold,
+//                        design: .rounded))
+//          .frame(maxWidth: .infinity,
+//                 maxHeight: 64)
+//          .background(buttonColor.edgesIgnoringSafeArea(.bottom))
+//          .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
+//        }
 
         if viewModel.didOrder {
           ConfettiView()
