@@ -398,8 +398,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/icanzilb/TimelaneCombine";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.10;
+				kind = exactVersion;
+				version = 2.0.0;
 			};
 		};
 		F50A7954247F1D7300169C0A /* XCRemoteSwiftPackageReference "Nuke" */ = {
