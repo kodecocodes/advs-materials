@@ -26,6 +26,7 @@
 		5D0A01D624C2209B000BC4A7 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CC24C2209B000BC4A7 /* Sidebar.swift */; };
 		5D0A01D724C2209B000BC4A7 /* IntegerExpansionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CD24C2209B000BC4A7 /* IntegerExpansionView.swift */; };
 		5D0A01D824C2209B000BC4A7 /* BitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CE24C2209B000BC4A7 /* BitsView.swift */; };
+		5DC5C6092565CCBE0045EDDB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5DC5C6082565CCBE0045EDDB /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		5D0A01CC24C2209B000BC4A7 /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		5D0A01CD24C2209B000BC4A7 /* IntegerExpansionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerExpansionView.swift; sourceTree = "<group>"; };
 		5D0A01CE24C2209B000BC4A7 /* BitsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitsView.swift; sourceTree = "<group>"; };
+		5DC5C6082565CCBE0045EDDB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		18D775B422AD944300AE281E = {
 			isa = PBXGroup;
 			children = (
+				5DC5C6082565CCBE0045EDDB /* LICENSE */,
 				18D775BF22AD944300AE281E /* BitViewer */,
 				18D775BE22AD944300AE281E /* Products */,
 			);
@@ -184,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC5C6092565CCBE0045EDDB /* LICENSE in Resources */,
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);

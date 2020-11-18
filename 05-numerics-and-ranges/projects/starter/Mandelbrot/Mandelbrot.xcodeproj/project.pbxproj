@@ -11,6 +11,10 @@
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		5D044ABE24F6DEAC00AB4908 /* PanZoomScaleTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */; };
 		5D2B1CC9250FE2C4000F6403 /* CGFloatConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B1CC8250FE2C4000F6403 /* CGFloatConvertable.swift */; };
+		5DC5C5FF2565C8EF0045EDDB /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC5C5FE2565C8EF0045EDDB /* ComplexModule */; };
+		5DC5C6012565C8EF0045EDDB /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC5C6002565C8EF0045EDDB /* RealModule */; };
+		5DC5C6032565C8EF0045EDDB /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC5C6022565C8EF0045EDDB /* Numerics */; };
+		5DC5C6062565CBE30045EDDB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5DC5C6052565CBE30045EDDB /* LICENSE */; };
 		5DCDC80224F6416000A1B2B5 /* StrokeLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */; };
 		5DCDC80324F6416000A1B2B5 /* MandelbrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */; };
 		5DCDC80424F6416000A1B2B5 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */; };
@@ -22,9 +26,6 @@
 		5DCDC80A24F6416000A1B2B5 /* MandelbrotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7FF24F6416000A1B2B5 /* MandelbrotView.swift */; };
 		5DCDC80B24F6416000A1B2B5 /* NavigationSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC80024F6416000A1B2B5 /* NavigationSidebar.swift */; };
 		5DCDC80C24F6416000A1B2B5 /* MandelbrotImagePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC80124F6416000A1B2B5 /* MandelbrotImagePublisher.swift */; };
-		5DCDC80F24F64C3600A1B2B5 /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DCDC80E24F64C3600A1B2B5 /* ComplexModule */; };
-		5DCDC81124F64C3600A1B2B5 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DCDC81024F64C3600A1B2B5 /* RealModule */; };
-		5DCDC81324F64C3600A1B2B5 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DCDC81224F64C3600A1B2B5 /* Numerics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanZoomScaleTracker.swift; sourceTree = "<group>"; };
 		5D2B1CC8250FE2C4000F6403 /* CGFloatConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatConvertable.swift; sourceTree = "<group>"; };
+		5DC5C6052565CBE30045EDDB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeLegend.swift; sourceTree = "<group>"; };
 		5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MandelbrotApp.swift; sourceTree = "<group>"; };
 		5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
@@ -52,9 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DCDC81124F64C3600A1B2B5 /* RealModule in Frameworks */,
-				5DCDC81324F64C3600A1B2B5 /* Numerics in Frameworks */,
-				5DCDC80F24F64C3600A1B2B5 /* ComplexModule in Frameworks */,
+				5DC5C6012565C8EF0045EDDB /* RealModule in Frameworks */,
+				5DC5C6032565C8EF0045EDDB /* Numerics in Frameworks */,
+				5DC5C5FF2565C8EF0045EDDB /* ComplexModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +66,7 @@
 		18D775B422AD944300AE281E = {
 			isa = PBXGroup;
 			children = (
+				5DC5C6052565CBE30045EDDB /* LICENSE */,
 				18D775BF22AD944300AE281E /* Mandelbrot */,
 				18D775BE22AD944300AE281E /* Products */,
 			);
@@ -128,9 +131,9 @@
 			);
 			name = Mandelbrot;
 			packageProductDependencies = (
-				5DCDC80E24F64C3600A1B2B5 /* ComplexModule */,
-				5DCDC81024F64C3600A1B2B5 /* RealModule */,
-				5DCDC81224F64C3600A1B2B5 /* Numerics */,
+				5DC5C5FE2565C8EF0045EDDB /* ComplexModule */,
+				5DC5C6002565C8EF0045EDDB /* RealModule */,
+				5DC5C6022565C8EF0045EDDB /* Numerics */,
 			);
 			productName = MyRWTutorial;
 			productReference = 18D775BD22AD944300AE281E /* Mandelbrot.app */;
@@ -162,7 +165,7 @@
 			);
 			mainGroup = 18D775B422AD944300AE281E;
 			packageReferences = (
-				5DCDC80D24F64C3600A1B2B5 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+				5DC5C5FD2565C8EF0045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			productRefGroup = 18D775BE22AD944300AE281E /* Products */;
 			projectDirPath = "";
@@ -178,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DC5C6062565CBE30045EDDB /* LICENSE in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);
@@ -411,30 +415,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5DCDC80D24F64C3600A1B2B5 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+		5DC5C5FD2565C8EF0045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "http://github.com/apple/swift-numerics";
+			repositoryURL = "https://github.com/apple/swift-numerics";
 			requirement = {
-				branch = "swift-5.3";
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5DCDC80E24F64C3600A1B2B5 /* ComplexModule */ = {
+		5DC5C5FE2565C8EF0045EDDB /* ComplexModule */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DCDC80D24F64C3600A1B2B5 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			package = 5DC5C5FD2565C8EF0045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = ComplexModule;
 		};
-		5DCDC81024F64C3600A1B2B5 /* RealModule */ = {
+		5DC5C6002565C8EF0045EDDB /* RealModule */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DCDC80D24F64C3600A1B2B5 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			package = 5DC5C5FD2565C8EF0045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = RealModule;
 		};
-		5DCDC81224F64C3600A1B2B5 /* Numerics */ = {
+		5DC5C6022565C8EF0045EDDB /* Numerics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DCDC80D24F64C3600A1B2B5 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			package = 5DC5C5FD2565C8EF0045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = Numerics;
 		};
 /* End XCSwiftPackageProductDependency section */
