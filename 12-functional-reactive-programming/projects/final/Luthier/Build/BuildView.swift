@@ -40,18 +40,7 @@ struct BuildView: View {
     NavigationView {
       ZStack(alignment: .bottom) {
         ScrollView {
-          VStack {
-            Image("guitar").padding(8)
-
-            Text(viewModel.guitar.description)
-              .lineLimit(0)
-              .font(.caption2)
-              .padding(8)
-          }
-          .background(Color.gray)
-          .cornerRadius(12)
-          .padding()
-          .animation(.easeInOut)
+          GuitarView(viewModel.guitar)
 
           VStack(alignment: .center) {
             additionPicker(

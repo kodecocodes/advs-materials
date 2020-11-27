@@ -11,6 +11,7 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		781ADEC825645E4E004A1B38 /* GuitarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781ADEC725645E4E004A1B38 /* GuitarView.swift */; };
 		78276C4A2540A1E200835AB2 /* BuildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78276C492540A1E200835AB2 /* BuildView.swift */; };
 		78276C4E2540A1EC00835AB2 /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78276C4D2540A1EC00835AB2 /* BuildViewModel.swift */; };
 		78276C532540A41800835AB2 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78276C522540A41800835AB2 /* CheckoutView.swift */; };
@@ -24,6 +25,7 @@
 		784899202540D2BC001CD4DF /* Decimal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */; };
 		78A40D1B254B6E0E00CBAFB7 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */; };
 		78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB06292542108600FDEB17 /* CurrencyService.swift */; };
+		78D78E5025718FB90001BB77 /* GuitarParts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78D78E4F25718FB90001BB77 /* GuitarParts.xcassets */; };
 		78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D8EC92254EA34F00D8A64E /* ActionButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,7 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		781ADEC725645E4E004A1B38 /* GuitarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarView.swift; sourceTree = "<group>"; };
 		78276C492540A1E200835AB2 /* BuildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildView.swift; sourceTree = "<group>"; };
 		78276C4D2540A1EC00835AB2 /* BuildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildViewModel.swift; sourceTree = "<group>"; };
 		78276C522540A41800835AB2 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Ext.swift"; sourceTree = "<group>"; };
 		78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		78BB06292542108600FDEB17 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		78D78E4F25718FB90001BB77 /* GuitarParts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GuitarParts.xcassets; sourceTree = "<group>"; };
 		78D8EC92254EA34F00D8A64E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +93,7 @@
 				78BB062C2542179200FDEB17 /* Services */,
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
+				78D78E4F25718FB90001BB77 /* GuitarParts.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
 				18D775C822AD944400AE281E /* Preview Content */,
@@ -109,6 +114,7 @@
 			children = (
 				78276C492540A1E200835AB2 /* BuildView.swift */,
 				78276C4D2540A1EC00835AB2 /* BuildViewModel.swift */,
+				781ADEC725645E4E004A1B38 /* GuitarView.swift */,
 			);
 			path = Build;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 			files = (
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
+				78D78E5025718FB90001BB77 /* GuitarParts.xcassets in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +233,7 @@
 			files = (
 				78A40D1B254B6E0E00CBAFB7 /* ConfettiView.swift in Sources */,
 				7836D4FD2538DAF300326B1A /* Currency.swift in Sources */,
+				781ADEC825645E4E004A1B38 /* GuitarView.swift in Sources */,
 				78276C4E2540A1EC00835AB2 /* BuildViewModel.swift in Sources */,
 				78276C532540A41800835AB2 /* CheckoutView.swift in Sources */,
 				78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */,

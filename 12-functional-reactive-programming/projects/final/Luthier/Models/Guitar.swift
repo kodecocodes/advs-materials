@@ -60,8 +60,8 @@ extension Guitar {
   enum Shape: String, Addition {
     static var type: String { "Shape" }
 
-    case chunky
     case casual
+    case chunky
     case longV
     case sharpV
 
