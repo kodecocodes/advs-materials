@@ -25,7 +25,7 @@
 		784899202540D2BC001CD4DF /* Decimal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */; };
 		78A40D1B254B6E0E00CBAFB7 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */; };
 		78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB06292542108600FDEB17 /* CurrencyService.swift */; };
-		78D78E5025718FB90001BB77 /* GuitarParts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78D78E4F25718FB90001BB77 /* GuitarParts.xcassets */; };
+		78D78E5B257192160001BB77 /* GuitarParts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78D78E5A257192160001BB77 /* GuitarParts.xcassets */; };
 		78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D8EC92254EA34F00D8A64E /* ActionButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,7 @@
 		7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Ext.swift"; sourceTree = "<group>"; };
 		78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		78BB06292542108600FDEB17 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
-		78D78E4F25718FB90001BB77 /* GuitarParts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GuitarParts.xcassets; sourceTree = "<group>"; };
+		78D78E5A257192160001BB77 /* GuitarParts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GuitarParts.xcassets; sourceTree = "<group>"; };
 		78D8EC92254EA34F00D8A64E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,7 +93,7 @@
 				78BB062C2542179200FDEB17 /* Services */,
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
-				78D78E4F25718FB90001BB77 /* GuitarParts.xcassets */,
+				78D78E5A257192160001BB77 /* GuitarParts.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
 				18D775C822AD944400AE281E /* Preview Content */,
@@ -219,7 +219,7 @@
 			files = (
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
-				78D78E5025718FB90001BB77 /* GuitarParts.xcassets in Resources */,
+				78D78E5B257192160001BB77 /* GuitarParts.xcassets in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
