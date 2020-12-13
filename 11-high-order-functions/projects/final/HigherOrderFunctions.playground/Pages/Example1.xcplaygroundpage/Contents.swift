@@ -43,3 +43,14 @@ let exampleParagraphs = [
 ]
 
 textPrinter.printText(exampleParagraphs)
+
+extension Array where Element == String {
+  func printFormatted(formatter: ParagraphFormatterProtocol) {
+    let textPrinter = TextPrinter(formatter: formatter)
+    textPrinter.printText(self)
+  }
+}
+
+print("----------------------")
+
+exampleParagraphs.printFormatted(formatter: simpleFormatter)
