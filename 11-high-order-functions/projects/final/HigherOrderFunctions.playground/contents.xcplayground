@@ -3,5 +3,14 @@
     <pages>
         <page name='Example1'/>
         <page name='Example2'/>
+        <page name='map'/>
+        <page name='compactMap'/>
+        <page name='flatMap'/>
+        <page name='filter'/>
+        <page name='reduce'/>
+        <page name='sorted'/>
+        <page name='split'/>
+        <page name='zip'/>
+        <page name='LazyMethod'/>
     </pages>
 </playground>

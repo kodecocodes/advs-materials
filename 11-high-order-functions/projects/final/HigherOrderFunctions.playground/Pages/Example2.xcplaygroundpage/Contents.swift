@@ -36,3 +36,18 @@ print("------------------")
 let theFunction = formatParagraph
 exampleParagraphs.printFormatted(formatter:theFunction)
 
+print("------------------")
+
+exampleParagraphs.printFormatted { text in
+  guard !text.isEmpty else { return text }
+  var formattedText = text.prefix(1).uppercased() + text.dropFirst()
+  if let lastCharacter = formattedText.last,
+     !lastCharacter.isPunctuation {
+    formattedText += "."
+  }
+  return formattedText
+}
+
+print("------------------")
+
+exampleParagraphs.printFormatted(formatter: { formatParagraph($0) })
