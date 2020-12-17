@@ -96,7 +96,10 @@ final class LifeSimulation: ObservableObject {
   /// Turn cells into a displayable, color bitmap.
   var cellImage: UIImage {
     let pixels = cells.map { $0 ? Self.live : Self.none }
-    return UIImage(cgImage: Bitmap(pixels: pixels, width: cells.width).cgImage!)
+    guard let image = Bitmap(pixels: pixels, width: cells.width).cgImage else {
+      fatalError("could not create a core graphics image")
+    }
+    return UIImage(cgImage: image)
   }
 
   /// Set positions to live cells.

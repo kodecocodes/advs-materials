@@ -9,7 +9,7 @@ extension Bitmap: RandomAccessCollection, MutableCollection {
   /// where row is considered before column.
   @usableFromInline
   struct Index: Comparable {
-    static func < (lhs: Index, rhs: Index) -> Bool {
+    @inlinable static func < (lhs: Index, rhs: Index) -> Bool {
       (lhs.row, lhs.column) < (rhs.row, lhs.column)
     }
     var row, column: Int
@@ -40,12 +40,12 @@ extension Bitmap: RandomAccessCollection, MutableCollection {
   }
   ///　Requred by RandomAccessCollection.  Advance in raster-scan order.
   @inlinable func index(_ i: Index, offsetBy distance: Int) -> Index {
-    Index(row: i.row+distance/width, column: i.column+distance%width)
+    Index(row: i.row + distance / width, column: i.column + distance % width)
   }
 
   /// Distance between two points in raster-scan order.
   @inlinable func distance(from start: Index, to end: Index) -> Int {
-    (end.row*width+end.column) - (start.row*width+start.row)
+    (end.row * width + end.column) - (start.row * width + start.column)
   }
 
   /// Convenience method.  Create an index by offsettng the row and column.
@@ -64,13 +64,13 @@ extension Bitmap: RandomAccessCollection, MutableCollection {
     /// Required by collections.
     get {
       precondition(contains(index: position), "out of bounds index \(position)")
-      return pixels[position.row*width+position.column]
+      return pixels[position.row * width + position.column]
     }
 
-    /// MutableCollection magic.  It does not invalidate indicies
+    /// MutableCollection requirement.  It does not invalidate indicies.
     set {
       precondition(contains(index: position), "out of bounds index \(position)")
-      pixels[position.row*width+position.column] = newValue
+      pixels[position.row * width + position.column] = newValue
     }
   }
 }
