@@ -44,7 +44,7 @@ class BuildViewModel: ObservableObject {
   // Output
   @Published private(set) var guitar: Guitar = .init(shape: .casual,
                                                      color: .dusk,
-                                                     body: .basswood,
+                                                     body: .mahogany,
                                                      fretboard: .birdseyeMaple)
   @Published private(set) var price = "N/A"
   @Published private(set) var isLoadingCheckout = false

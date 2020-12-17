@@ -206,7 +206,7 @@ struct CheckoutView_Previews: PreviewProvider {
           guitar: .init(
             shape: .casual,
             color: .dusk,
-            body: .basswood,
+            body: .mahogany,
             fretboard: .birdseyeMaple),
           shippingOptions: [
             .init(name: "Method 1", duration: "6-8 weeks", price: 100),
