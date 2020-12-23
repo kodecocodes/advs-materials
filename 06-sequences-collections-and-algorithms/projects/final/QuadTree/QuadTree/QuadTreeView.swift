@@ -14,7 +14,7 @@ struct SizeKey: PreferenceKey {
 }
 
 struct QuadTreeView: View {
-  @Binding var quadTree: QuadTreeOfPoints
+  @Binding var quadTree: QuadTree<CGPoint>
 
   var points: [CGPoint] {
     quadTree.allItems()

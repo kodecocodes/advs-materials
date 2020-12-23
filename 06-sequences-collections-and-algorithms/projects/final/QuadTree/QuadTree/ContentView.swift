@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var size: CGSize?
-  @State private var quadTree = QuadTreeOfPoints(region: CGRect(origin: .zero, size: CGSize(width: 1, height: 1)))
+  @State private var quadTree = QuadTree<CGPoint>(region: CGRect(origin: .zero, size: CGSize(width: 1, height: 1)))
 
   var drag: some Gesture {
     DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged { gesture in
