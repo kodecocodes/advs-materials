@@ -32,7 +32,6 @@
 
 import Foundation
 
-struct ImageRequest: Request {
-  let url: URL
-  var method: HTTPMethod { .get }
+protocol URLSessionDecodable {
+  init(from output: Data) throws
 }

@@ -31,45 +31,14 @@
 /// THE SOFTWARE.
 
 import Foundation
-import Combine
 
-protocol Networking {
-  func fetch(_ request: Request) -> AnyPublisher<Data, URLError>
-  var delegate: NetworkingDelegate? { get set }
-}
-
-protocol NetworkingDelegate: AnyObject {
-  func headers(for networking: Networking) -> [String: String]
-  func networking(_ networking: Networking, transformPublisher: AnyPublisher<Data, URLError>) -> AnyPublisher<Data, URLError>
-}
-
-extension NetworkingDelegate {
-  func headers(for networking: Networking) -> [String: String] {
-    [:]
+struct ArticleRequest: Request {
+  var url: URL {
+    let baseURL = "https://api.raywenderlich.com/api"
+    let path = "/contents?filter[content_types][]=article"
+    // swiftlint:disable:next force_unwrapping
+    return URL(string: baseURL + path)!
   }
 
-  func networking(_ networking: Networking, transformPublisher publisher: AnyPublisher<Data, URLError>) -> AnyPublisher<Data, URLError> {
-    publisher
-  }
-}
-
-class Networker: Networking {
-  weak var delegate: NetworkingDelegate?
-
-  func fetch(_ request: Request) -> AnyPublisher<Data, URLError> {
-    var urlRequest = URLRequest(url: request.url)
-    urlRequest.allHTTPHeaderFields = delegate?.headers(for: self)
-    urlRequest.httpMethod = request.method.rawValue
-
-    let publisher = URLSession.shared
-      .dataTaskPublisher(for: urlRequest)
-      .compactMap { $0.data }
-      .eraseToAnyPublisher()
-
-    if let delegate = delegate {
-      return delegate.networking(self, transformPublisher: publisher)
-    } else {
-      return publisher
-    }
-  }
+  var method: HTTPMethod { .get }
 }

@@ -61,23 +61,3 @@ struct ArticleData: Codable {
     case article = "attributes"
   }
 }
-
-extension Array: URLSessionDecodable where Element == Article {
-  init(fromRequestOutput output: Data) throws {
-    let decoder = JSONDecoder()
-    let articlesCollection = try decoder.decode(Articles.self, from: output)
-    let articles = articlesCollection.data.map { $0.article }
-    self.init(articles)
-  }
-}
-
-struct ArticleRequest: Request {
-  var url: URL {
-    let baseURL = "https://api.raywenderlich.com/api"
-    let path = "/contents?filter[content_types][]=article"
-    // swiftlint:disable:next force_unwrapping
-    return URL(string: baseURL + path)!
-  }
-
-  var method: HTTPMethod { .get }
-}

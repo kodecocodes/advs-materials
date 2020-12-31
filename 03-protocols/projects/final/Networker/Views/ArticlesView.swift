@@ -33,7 +33,7 @@
 import SwiftUI
 
 struct ArticlesView: View {
-  @ObservedObject private var viewModel = ArticlesViewModel()
+  @ObservedObject private var viewModel = ArticlesViewModel(networker: Networker())
 
   var body: some View {
     List(viewModel.articles) { article in

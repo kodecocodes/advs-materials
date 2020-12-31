@@ -36,51 +36,12 @@ import Combine
 class ArticlesViewModel: ObservableObject {
   @Published private(set) var articles: [Article] = []
 
-  private var networker: Networking
-
-  init(networker: Networking) {
-    self.networker = networker
-    self.networker.delegate = self
-  }
-
   private var cancellables: Set<AnyCancellable> = []
 
   func fetchArticles() {
-    let request = ArticleRequest()
-    networker.fetch(request)
-      .tryMap([Article].init)
-      .replaceError(with: [])
-      .assign(to: \.articles, on: self)
-      .store(in: &cancellables)
+    articles = [ArticleRow_Previews.article]
   }
 
   func fetchImage(for article: Article) {
-    guard article.downloadedImage == nil,
-      let articleIndex = articles.firstIndex(where: { $0.id == article.id })
-    else {
-      return
-    }
-
-    let request = ImageRequest(url: article.image)
-    networker.fetch(request)
-      .map(UIImage.init)
-      .replaceError(with: nil)
-      .sink { [weak self] image in
-        self?.articles[articleIndex].downloadedImage = image
-      }
-      .store(in: &cancellables)
-  }
-}
-
-extension ArticlesViewModel: NetworkingDelegate {
-  func headers(for networking: Networking) -> [String: String] {
-    return ["Content-Type": "application/vnd.api+json; charset=utf-8"]
-  }
-
-  func networking(
-    _ networking: Networking,
-    transformPublisher publisher: AnyPublisher<Data, URLError>
-  ) -> AnyPublisher<Data, URLError> {
-    publisher.receive(on: DispatchQueue.main).eraseToAnyPublisher()
   }
 }
