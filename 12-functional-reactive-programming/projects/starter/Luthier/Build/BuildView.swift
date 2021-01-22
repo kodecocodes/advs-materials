@@ -49,27 +49,27 @@ struct BuildView: View {
       .navigationTitle("Build your guitar")
     }
   }
-}
 
-private func additionPicker<A: Addition>(
-  for addition: A.Type,
-  selection: Binding<Int>
-) -> some View {
-  let options = addition.allCases
+  private func additionPicker<A: Addition>(
+    for addition: A.Type,
+    selection: Binding<Int>
+  ) -> some View {
+    let options = addition.allCases
 
-  return VStack(alignment: .center) {
-    Text(addition.type).font(.subheadline)
+    return VStack(alignment: .center) {
+      Text(addition.type).font(.subheadline)
 
-    Picker(options[selection.wrappedValue].pricedName,
-           selection: selection) {
-      ForEach((0..<options.count)) { idx in
-        let addition = options[idx]
-        Text(addition.pricedName).tag(idx)
+      Picker(options[selection.wrappedValue].pricedName,
+             selection: selection) {
+        ForEach((0..<options.count)) { idx in
+          let addition = options[idx]
+          Text(addition.pricedName).tag(idx)
+        }
       }
+      .animation(.none)
+      .pickerStyle(MenuPickerStyle())
     }
-    .animation(.none)
-    .pickerStyle(MenuPickerStyle())
+    .frame(maxWidth: .infinity)
+    .padding()
   }
-  .frame(maxWidth: .infinity)
-  .padding()
 }

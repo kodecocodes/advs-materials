@@ -47,8 +47,7 @@ struct Guitar: CustomStringConvertible {
     [shape.price,
      color.price,
      body.price,
-     fretboard.price
-    ].reduce(0, +)
+     fretboard.price].reduce(0, +)
   }
 
   var description: String {
@@ -61,8 +60,8 @@ extension Guitar {
   enum Shape: String, Addition {
     static var type: String { "Shape" }
 
-    case chunky
     case casual
+    case chunky
     case longV
     case sharpV
 
@@ -116,8 +115,6 @@ extension Guitar {
     case mahogany
     case blackLimba
     case swampAsh
-    case poplar
-    case basswood
     case koa
 
     var name: String {
@@ -133,14 +130,12 @@ extension Guitar {
 
     var price: Decimal {
       switch self {
-      case .mahogany, .basswood:
+      case .mahogany:
         return 0
       case .blackLimba:
         return 150
       case .swampAsh:
         return 80
-      case .poplar:
-        return 50
       case .koa:
         return 100
       }
@@ -151,9 +146,7 @@ extension Guitar {
     static var type: String { "Fretboard" }
 
     case rosewood
-    case maple
     case birdseyeMaple
-    case flamedMaple
     case ebony
     case blackLimba
 
@@ -161,8 +154,6 @@ extension Guitar {
       switch self {
       case .birdseyeMaple:
         return "Birdseye Maple"
-      case .flamedMaple:
-        return "Flamed Maple"
       case .ebony:
         return "Ebony"
       case .blackLimba:
@@ -174,11 +165,9 @@ extension Guitar {
 
     var price: Decimal {
       switch self {
-      case .rosewood, .maple:
+      case .rosewood:
         return 0
       case .birdseyeMaple:
-        return 80
-      case .flamedMaple:
         return 80
       case .ebony:
         return 100
