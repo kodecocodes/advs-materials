@@ -1,15 +1,15 @@
 /// Copyright (c) 2020 Razeware LLC
-/// 
+///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-/// 
+///
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-/// 
+///
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -31,48 +31,45 @@
 /// THE SOFTWARE.
 
 import SwiftUI
-import Combine
 
-struct BuildView: View {
-  var body: some View {
-    NavigationView {
-      ZStack(alignment: .bottom) {
-        ScrollView {
-          GuitarView(Guitar(shape: .casual,
-                            color: .natural,
-                            body: .mahogany,
-                            fretboard: .rosewood))
-        }
-        .padding(.bottom, 40)
+struct GuitarView: View {
+  private let guitar: Guitar
 
-        ActionButton("Checkout") {
-
-        }
-      }
-      .navigationTitle("Build your guitar")
-    }
+  init(_ guitar: Guitar) {
+    self.guitar = guitar
   }
 
-  private func additionPicker<A: Addition>(
-    for addition: A.Type,
-    selection: Binding<Int>
-  ) -> some View {
-    let options = addition.allCases
-
-    return VStack(alignment: .center) {
-      Text(addition.type).font(.subheadline)
-
-      Picker(options[selection.wrappedValue].pricedName,
-             selection: selection) {
-        ForEach((0..<options.count)) { idx in
-          let addition = options[idx]
-          Text(addition.pricedName).tag(idx)
-        }
+  var body: some View {
+    VStack {
+      ZStack {
+        Image(guitar.bodyAsset).resizable().aspectRatio(contentMode: .fit)
+        Image(guitar.neckAsset).resizable().aspectRatio(contentMode: .fit)
+        Image(guitar.stringsAsset).resizable().aspectRatio(contentMode: .fit)
       }
-      .animation(.none)
-      .pickerStyle(MenuPickerStyle())
+      .padding(8)
+
+      Text(guitar.description)
+        .lineLimit(0)
+        .font(.caption2)
+        .padding(8)
     }
-    .frame(maxWidth: .infinity)
+    .background(Color.gray)
+    .cornerRadius(12)
     .padding()
+    .animation(.easeInOut)
+  }
+}
+
+private extension Guitar {
+  var bodyAsset: String {
+    "\(shape.rawValue)_body_\(body.rawValue)_\(color.rawValue)"
+  }
+
+  var neckAsset: String {
+    "\(shape.rawValue)_neck_\(fretboard.rawValue)"
+  }
+
+  var stringsAsset: String {
+    "\(shape.rawValue)_strings"
   }
 }

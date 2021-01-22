@@ -24,6 +24,7 @@
 		78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BB06292542108600FDEB17 /* CurrencyService.swift */; };
 		78D78E5B257192160001BB77 /* GuitarParts.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78D78E5A257192160001BB77 /* GuitarParts.xcassets */; };
 		78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D8EC92254EA34F00D8A64E /* ActionButton.swift */; };
+		A2189A2425BB7EBA00522C53 /* GuitarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2189A2325BB7EBA00522C53 /* GuitarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		78BB06292542108600FDEB17 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		78D78E5A257192160001BB77 /* GuitarParts.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GuitarParts.xcassets; sourceTree = "<group>"; };
 		78D8EC92254EA34F00D8A64E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		A2189A2325BB7EBA00522C53 /* GuitarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				78276C492540A1E200835AB2 /* BuildView.swift */,
+				A2189A2325BB7EBA00522C53 /* GuitarView.swift */,
 			);
 			path = Build;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				7836D4FD2538DAF300326B1A /* Currency.swift in Sources */,
 				78276C532540A41800835AB2 /* CheckoutView.swift in Sources */,
 				78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */,
+				A2189A2425BB7EBA00522C53 /* GuitarView.swift in Sources */,
 				78276C5A2540A43300835AB2 /* ShippingOption.swift in Sources */,
 				78276C5D2540A43C00835AB2 /* CheckoutInfo.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
