@@ -49,7 +49,7 @@ class QuadTreeTests: XCTestCase {
     var tree1 = QuadTree<CGPoint>(region: region)
     var tree2 = tree1
 
-    for _ in 1...5000 {
+    for _ in 1...50 {
       tree2.insert(CGPoint(x: CGFloat.random(in: 0..<1),
                            y: CGFloat.random(in: 0..<1)))
     }
@@ -57,13 +57,13 @@ class QuadTreeTests: XCTestCase {
     XCTAssertEqual(tree1.allItems().count, 0)
     XCTAssertEqual(tree2.allItems().count, 5000)
 
-    for _ in 1...10000 {
+    for _ in 1...10 {
       tree1.insert(CGPoint(x: CGFloat.random(in: 0..<1),
                            y: CGFloat.random(in: 0..<1)))
     }
 
-    XCTAssertEqual(tree1.allItems().count, 10000)
-    XCTAssertEqual(tree2.allItems().count, 5000)
+    XCTAssertEqual(tree1.allItems().count, 10)
+    XCTAssertEqual(tree2.allItems().count, 50)
   }
 
 
