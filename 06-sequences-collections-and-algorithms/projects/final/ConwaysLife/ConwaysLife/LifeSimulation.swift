@@ -12,8 +12,8 @@ final class LifeSimulation: ObservableObject {
   /// Controls if the simulation is running.
   @Published var isRunning: Bool = false
 
-  /// Track the epoch (step) of the simulation.
-  @Published var epoch = 0
+  /// Track the generation (tick) of the simulation.
+  @Published var generation = 0
 
   /// The cellular automata being simulated.  Use a 2D Bitmap
   @Published var cells: Bitmap<Bool>
@@ -66,7 +66,7 @@ final class LifeSimulation: ObservableObject {
       return
     }
 
-    epoch += 1
+    generation += 1
 
     let neighbors = cells.indices.map(neighborCount(around:))
 
@@ -114,7 +114,7 @@ final class LifeSimulation: ObservableObject {
   /// Clear all of the cells, stop the simulation and forget everything.
   func clear() {
     cells.set(false)
-    epoch = 0
+    generation = 0
     isRunning = false
     previous.reset()
   }

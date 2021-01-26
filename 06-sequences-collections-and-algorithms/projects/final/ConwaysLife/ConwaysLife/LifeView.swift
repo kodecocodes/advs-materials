@@ -36,7 +36,7 @@ struct LifeView: View {
   // View showing the simulation and some controls.
   var body: some View {
     VStack {
-      Text("Epoch: \(model.epoch)")
+      Text("Generation: \(model.generation)")
         .font(.system(size: 25, weight: .bold, design: .monospaced))
       Image(uiImage: model.cellImage)
         .interpolation(.none)
