@@ -34,15 +34,131 @@ import SwiftUI
 import Combine
 
 struct CheckoutView: View {
+  @ObservedObject var viewModel: CheckoutViewModel
+  @Environment(\.presentationMode) var presentationMode
+
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
-        Text("To be implemented")
-          .frame(maxHeight: .infinity)
+        Form {
+          Section(header: Text("Your Guitar")) {
+            let guitar = viewModel.guitar
 
-        ActionButton("Order") {
+            TextRow("Shape",
+                    guitar.shape.pricedName)
 
+            TextRow("Color",
+                    guitar.color.pricedName)
+
+            TextRow("Body",
+                    guitar.body.pricedName)
+
+            TextRow("Fretboard",
+                    guitar.fretboard.pricedName)
+          }
+
+          Section(header: Text("Order details")) {
+            TextRow("Estimated build time",
+                    viewModel.buildEstimate)
+
+            TextRow("Availability",
+                    viewModel.isAvailable
+                      ? "Available"
+                      : "Currently unavailable")
+          }
+
+          let shipping = viewModel.selectedShippingOption
+
+          Section(header: Text("Shipping")) {
+            Picker(selection: $viewModel.selectedShippingOption,
+                   label: Text("Shipping method")) {
+              ForEach(Array(viewModel.shippingOptionsPrices.keys), id: \.self) { option in
+                let price = viewModel.shippingOptionsPrices[option] ?? "N/A"
+                Text("\(option.name) (\(price))").tag(option)
+              }
+            }
+            TextRow("Time", shipping.duration)
+          }
+
+          Section(header: Text("Totals")) {
+            HStack {
+              Text("Currency")
+              Spacer(minLength: 16)
+              Picker("Currency",
+                     selection: $viewModel.currency) {
+                ForEach(Currency.allCases) {
+                  Text($0.symbol).tag($0)
+                }
+              }
+              .pickerStyle(SegmentedPickerStyle())
+            }
+
+            TextRow("Base price",
+                    viewModel.basePrice,
+                    isLoading: viewModel.isUpdatingCurrency)
+
+            TextRow("Additions",
+                    viewModel.additionsPrice,
+                    isLoading: viewModel.isUpdatingCurrency)
+
+            TextRow("Shipping",
+                    viewModel.shippingPrice,
+                    isLoading: viewModel.isUpdatingCurrency)
+
+            TextRow("Grand total",
+                    viewModel.totalPrice,
+                    weight: .semibold,
+                    isLoading: viewModel.isUpdatingCurrency)
+          }
         }
+        .disabled(viewModel.isUpdatingCurrency || viewModel.isOrdering)
+        .padding(.bottom, 40)
+
+        ActionButton(viewModel.checkoutButton,
+                     isLoading: viewModel.isOrdering,
+                     color: viewModel.isAvailable ? .green : .red) {
+          viewModel.order()
+        }
+        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
+//
+//        if viewModel.isOrdering {
+//          ZStack {
+//            Color.green.edgesIgnoringSafeArea(.bottom)
+//              .frame(maxWidth: .infinity, maxHeight: 64, alignment: .bottom)
+//
+//            ProgressView()
+//              .progressViewStyle(CircularProgressViewStyle(tint: .white))
+//          }
+//        } else {
+//          let buttonColor = viewModel.isAvailable
+//            ? Color.green : Color.red
+//
+//          Button(viewModel.checkoutButton) {
+//            viewModel.order()
+//          }
+//          .foregroundColor(.white)
+//          .font(.system(size: 28,
+//                        weight: .semibold,
+//                        design: .rounded))
+//          .frame(maxWidth: .infinity,
+//                 maxHeight: 64)
+//          .background(buttonColor.edgesIgnoringSafeArea(.bottom))
+//          .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
+//        }
+
+        if viewModel.didOrder {
+          ConfettiView()
+        }
+      }
+      .alert(isPresented: $viewModel.didOrder) {
+        Alert(
+          title: Text("Congratulations!"),
+          message: Text("We're working on your new guitar! " +
+                        "Hang tight, we'll be in touch"),
+          dismissButton: .default(Text("Dismiss")) {
+            presentationMode.wrappedValue.dismiss()
+          }
+        )
       }
       .navigationTitle("Your guitar")
     }
@@ -80,3 +196,28 @@ struct TextRow: View {
     }
   }
 }
+
+#if DEBUG
+struct CheckoutView_Previews: PreviewProvider {
+  static var previews: some View {
+    CheckoutView(
+      viewModel: CheckoutViewModel(
+        checkoutInfo: CheckoutInfo(
+          guitar: .init(
+            shape: .casual,
+            color: .dusk,
+            body: .mahogany,
+            fretboard: .birdseyeMaple),
+          shippingOptions: [
+            .init(name: "Method 1", duration: "6-8 weeks", price: 100),
+            .init(name: "Method 2", duration: "1 month", price: 120),
+            .init(name: "Method 3", duration: "4-6 days", price: 250)
+          ],
+          buildEstimate: "12 months",
+          isAvailable: true
+        )
+      )
+    )
+  }
+}
+#endif

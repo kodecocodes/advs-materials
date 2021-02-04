@@ -35,7 +35,18 @@ import Combine
 
 final class CurrencyService {
   func getExchangeRate(for currency: Currency) -> AnyPublisher<Decimal, Error> {
-    Empty().eraseToAnyPublisher()
+    URLSession.shared
+      .dataTaskPublisher(for: URL(string: "https://api.exchangeratesapi.io/latest?base=USD&salt=\(UUID().uuidString)")!)
+      .map(\.data)
+      .decode(type: ExchangeResponse.self, decoder: JSONDecoder())
+      .map { response in
+        guard let rate = response.rates[currency.code] else {
+          fatalError()
+        }
+
+        return rate
+      }
+      .eraseToAnyPublisher()
   }
 }
 
