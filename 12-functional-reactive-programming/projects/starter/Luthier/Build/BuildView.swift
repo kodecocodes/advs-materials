@@ -34,21 +34,51 @@ import SwiftUI
 import Combine
 
 struct BuildView: View {
+  @ObservedObject var viewModel = BuildViewModel()
+
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
         ScrollView {
-          GuitarView(Guitar(shape: .casual,
-                            color: .natural,
-                            body: .mahogany,
-                            fretboard: .rosewood))
+          GuitarView(viewModel.guitar)
+          
+          VStack(alignment: .center) {
+            additionPicker(
+              for: Guitar.Shape.self,
+              selection: $viewModel.selectedShapeIdx
+            )
+
+            additionPicker(
+              for: Guitar.Color.self,
+              selection: $viewModel.selectedColorIdx
+            )
+
+            additionPicker(
+              for: Guitar.Body.self,
+              selection: $viewModel.selectedBodyIdx
+            )
+
+            additionPicker(
+              for: Guitar.Fretboard.self,
+              selection: $viewModel.selectedFretboardIdx)
+
+            Spacer()
+          }
         }
         .padding(.bottom, 40)
 
-        ActionButton("Checkout") {
-
+        ActionButton("Checkout (\(viewModel.guitar.price.formatted))",
+                     isLoading: viewModel.isLoadingCheckout) {
+          viewModel.checkout()
         }
       }
+      .sheet(
+        item: $viewModel.checkoutInfo,
+        onDismiss: { viewModel.clear() },
+        content: { info in
+          CheckoutView()
+        }
+      )
       .navigationTitle("Build your guitar")
     }
   }
