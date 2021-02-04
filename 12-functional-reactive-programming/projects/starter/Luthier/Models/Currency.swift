@@ -31,8 +31,7 @@
 /// THE SOFTWARE.
 
 import Foundation
-/// https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
-/// https://api.exchangeratesapi.io/latest?base=USD
+
 public enum Currency: String, Codable, CaseIterable, Identifiable {
   case usd
   case eur
