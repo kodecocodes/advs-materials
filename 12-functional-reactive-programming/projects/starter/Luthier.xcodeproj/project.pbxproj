@@ -26,6 +26,7 @@
 		78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D8EC92254EA34F00D8A64E /* ActionButton.swift */; };
 		A2189A2425BB7EBA00522C53 /* GuitarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2189A2325BB7EBA00522C53 /* GuitarView.swift */; };
 		A21CC1EF25CC858500EC319E /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CC1EE25CC858500EC319E /* BuildViewModel.swift */; };
+		A21CC1F225CDF6BC00EC319E /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		78D8EC92254EA34F00D8A64E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		A2189A2325BB7EBA00522C53 /* GuitarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarView.swift; sourceTree = "<group>"; };
 		A21CC1EE25CC858500EC319E /* BuildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildViewModel.swift; sourceTree = "<group>"; };
+		A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				78276C522540A41800835AB2 /* CheckoutView.swift */,
+				A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				7836D4FD2538DAF300326B1A /* Currency.swift in Sources */,
 				78276C532540A41800835AB2 /* CheckoutView.swift in Sources */,
 				78BB062F25421A9B00FDEB17 /* CurrencyService.swift in Sources */,
+				A21CC1F225CDF6BC00EC319E /* CheckoutViewModel.swift in Sources */,
 				A21CC1EF25CC858500EC319E /* BuildViewModel.swift in Sources */,
 				A2189A2425BB7EBA00522C53 /* GuitarView.swift in Sources */,
 				78276C5A2540A43300835AB2 /* ShippingOption.swift in Sources */,

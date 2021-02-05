@@ -76,7 +76,7 @@ struct BuildView: View {
         item: $viewModel.checkoutInfo,
         onDismiss: { viewModel.clear() },
         content: { info in
-          CheckoutView()
+          CheckoutView(info: info)
         }
       )
       .navigationTitle("Build your guitar")

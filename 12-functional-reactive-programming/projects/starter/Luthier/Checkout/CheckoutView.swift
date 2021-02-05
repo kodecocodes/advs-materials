@@ -1,15 +1,15 @@
 /// Copyright (c) 2020 Razeware LLC
-/// 
+///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-/// 
+///
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-/// 
+///
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -34,13 +34,71 @@ import SwiftUI
 import Combine
 
 struct CheckoutView: View {
+  @ObservedObject var viewModel: CheckoutViewModel
+  @Environment(\.presentationMode) var presentationMode
+
+  init(info: CheckoutInfo) {
+    self.viewModel = CheckoutViewModel(info: info)
+  }
+  
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
-        Text("To be implemented")
-          .frame(maxHeight: .infinity)
+        Form {
+          Section(header: Text("Your Guitar")) {
+            let guitar = viewModel.guitar
 
-        ActionButton("Order") {
+            TextRow("Shape",
+                    guitar.shape.pricedName)
+
+            TextRow("Color",
+                    guitar.color.pricedName)
+
+            TextRow("Body",
+                    guitar.body.pricedName)
+
+            TextRow("Fretboard",
+                    guitar.fretboard.pricedName)
+          }
+
+          Section(header: Text("Order details")) {
+            TextRow("Estimated build time",
+                    viewModel.buildEstimate)
+
+            TextRow("Availability",
+                    viewModel.isAvailable
+                      ? "Available"
+                      : "Currently unavailable")
+          }
+
+          Section(header: Text("Shipping")) {
+            TextRow("Time", "TBD")
+          }
+
+          Section(header: Text("Totals")) {
+            HStack {
+              Text("Currency")
+              Spacer(minLength: 16)
+              Text(Currency.usd.symbol)
+            }
+
+            TextRow("Base price",
+                    viewModel.guitar.price.formatted)
+
+            TextRow("Additions",
+                    viewModel.guitar.additionsPrice.formatted)
+
+            TextRow("Shipping",
+                    "TBD")
+
+            TextRow("Grand total",
+                    (viewModel.guitar.price + viewModel.guitar.additionsPrice).formatted,
+                    weight: .semibold)
+          }
+        }
+        .padding(.bottom, 40)
+
+        ActionButton("Checkout") {
 
         }
       }
