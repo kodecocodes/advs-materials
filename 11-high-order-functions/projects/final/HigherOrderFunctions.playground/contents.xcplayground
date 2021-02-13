@@ -9,5 +9,9 @@
         <page name='filter'/>
         <page name='reduce'/>
         <page name='sorted'/>
+        <page name='Curry'/>
+        <page name='Curry-Flip Generic'/>
+        <page name='GeneratedFunctions'/>
+        <page name='MergeFunctions'/>
     </pages>
 </playground>
