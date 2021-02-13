@@ -1,4 +1,4 @@
-/// Copyright (c) 2020 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,8 +30,8 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Combine
 import Foundation
+import Combine
 
 class BuildViewModel: ObservableObject {
   // Bindings / State
@@ -39,20 +39,19 @@ class BuildViewModel: ObservableObject {
   @Published var selectedColorIdx = 0
   @Published var selectedBodyIdx = 0
   @Published var selectedFretboardIdx = 0
-  @Published var checkoutInfo: CheckoutInfo?
-
-  // Output
-  @Published private(set) var guitar = Guitar(shape: .casual,
-                                              color: .dusk,
-                                              body: .mahogany,
-                                              fretboard: .birdseyeMaple)
-  @Published private(set) var price = "N/A"
+  
+  // Outputs
+  @Published private(set) var guitar = Guitar(
+    shape: .casual,
+    color: .natural,
+    body: .mahogany,
+    fretboard: .rosewood
+  )
   @Published private(set) var isLoadingCheckout = false
-
+  @Published var checkoutInfo: CheckoutInfo?
+  
   private let shouldCheckout = PassthroughSubject<Void, Never>()
-
   private let guitarService = GuitarService()
-  private var subscriptions = Set<AnyCancellable>()
 
   init() {
     $selectedShapeIdx
@@ -68,55 +67,51 @@ class BuildViewModel: ObservableObject {
         )
       }
       .assign(to: &$guitar)
-
-    $guitar
-      .map(\.price.formatted)
-      .assign(to: &$price)
-
+    
     let availability = guitarService
       .ensureAvailability(for: guitar)
       .handleEvents(
-        receiveOutput: { _ in print("availability") }
+        receiveOutput: { print("available? \($0)") }
       )
-
+    
     let estimate = guitarService
       .getBuildTimeEstimate(for: guitar)
       .handleEvents(
-        receiveOutput: { _ in print("estimate") }
+        receiveOutput: { print("estimate: \($0)") }
       )
 
     let shipment = guitarService
       .getShipmentOptions()
       .handleEvents(
-        receiveOutput: { _ in print("shipment") }
+        receiveOutput: { print("shipment \($0.map(\.name))") }
       )
-
+    
     let response = shouldCheckout
       .flatMap { shipment.zip(estimate, availability) }
-      .map { CheckoutInfo(guitar: self.guitar,
-                          shippingOptions: $0,
-                          buildEstimate: $1,
-                          isAvailable: $2) }
+      .map {
+        CheckoutInfo(
+          guitar: self.guitar,
+          shippingOptions: $0,
+          buildEstimate: $1,
+          isAvailable: $2
+        )
+      }
       .share()
-
-    $checkoutInfo
-      .sink(receiveValue: { _ in })
-      .store(in: &subscriptions)
-
-    response
-      .map { $0 as CheckoutInfo? }
-      .assign(to: &$checkoutInfo)
-
+    
     Publishers
       .Merge(shouldCheckout.map { _ in true },
              response.map { _ in false })
       .assign(to: &$isLoadingCheckout)
+    
+    response
+      .map { $0 as CheckoutInfo? }
+      .assign(to: &$checkoutInfo)
   }
-
+  
   func checkout() {
     shouldCheckout.send()
   }
-
+  
   func clear() {
     selectedShapeIdx = 0
     selectedColorIdx = 0

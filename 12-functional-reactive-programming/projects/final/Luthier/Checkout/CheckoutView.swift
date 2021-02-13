@@ -1,15 +1,15 @@
 /// Copyright (c) 2020 Razeware LLC
-/// 
+///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-/// 
+///
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-/// 
+///
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,7 +17,7 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
 /// This project and source code may use libraries or frameworks that are
 /// released under various Open-Source licenses. Use of those libraries and
 /// frameworks are governed by their own individual licenses.
@@ -37,6 +37,10 @@ struct CheckoutView: View {
   @ObservedObject var viewModel: CheckoutViewModel
   @Environment(\.presentationMode) var presentationMode
 
+  init(info: CheckoutInfo) {
+    self.viewModel = CheckoutViewModel(info: info)
+  }
+  
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
@@ -67,17 +71,19 @@ struct CheckoutView: View {
                       : "Currently unavailable")
           }
 
-          let shipping = viewModel.selectedShippingOption
-
           Section(header: Text("Shipping")) {
             Picker(selection: $viewModel.selectedShippingOption,
                    label: Text("Shipping method")) {
-              ForEach(Array(viewModel.shippingOptionsPrices.keys), id: \.self) { option in
-                let price = viewModel.shippingOptionsPrices[option] ?? "N/A"
+              ForEach(
+                Array(viewModel.shippingPrices.keys),
+                id: \.self
+              ) { option in
+                let price = viewModel.shippingPrices[option] ?? "N/A"
                 Text("\(option.name) (\(price))").tag(option)
               }
             }
-            TextRow("Time", shipping.duration)
+
+            TextRow("Time", viewModel.selectedShippingOption.duration)
           }
 
           Section(header: Text("Totals")) {
@@ -111,44 +117,19 @@ struct CheckoutView: View {
                     isLoading: viewModel.isUpdatingCurrency)
           }
         }
-        .disabled(viewModel.isUpdatingCurrency || viewModel.isOrdering)
+        .disabled(viewModel.isUpdatingCurrency)
         .padding(.bottom, 40)
-
+        
+        if viewModel.didOrder {
+          ConfettiView()
+        }
+        
         ActionButton(viewModel.checkoutButton,
                      isLoading: viewModel.isOrdering,
                      color: viewModel.isAvailable ? .green : .red) {
           viewModel.order()
         }
-        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
-//
-//        if viewModel.isOrdering {
-//          ZStack {
-//            Color.green.edgesIgnoringSafeArea(.bottom)
-//              .frame(maxWidth: .infinity, maxHeight: 64, alignment: .bottom)
-//
-//            ProgressView()
-//              .progressViewStyle(CircularProgressViewStyle(tint: .white))
-//          }
-//        } else {
-//          let buttonColor = viewModel.isAvailable
-//            ? Color.green : Color.red
-//
-//          Button(viewModel.checkoutButton) {
-//            viewModel.order()
-//          }
-//          .foregroundColor(.white)
-//          .font(.system(size: 28,
-//                        weight: .semibold,
-//                        design: .rounded))
-//          .frame(maxWidth: .infinity,
-//                 maxHeight: 64)
-//          .background(buttonColor.edgesIgnoringSafeArea(.bottom))
-//          .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
-//        }
-
-        if viewModel.didOrder {
-          ConfettiView()
-        }
+        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency)
       }
       .alert(isPresented: $viewModel.didOrder) {
         Alert(
@@ -196,28 +177,3 @@ struct TextRow: View {
     }
   }
 }
-
-#if DEBUG
-struct CheckoutView_Previews: PreviewProvider {
-  static var previews: some View {
-    CheckoutView(
-      viewModel: CheckoutViewModel(
-        checkoutInfo: CheckoutInfo(
-          guitar: .init(
-            shape: .casual,
-            color: .dusk,
-            body: .mahogany,
-            fretboard: .birdseyeMaple),
-          shippingOptions: [
-            .init(name: "Method 1", duration: "6-8 weeks", price: 100),
-            .init(name: "Method 2", duration: "1 month", price: 120),
-            .init(name: "Method 3", duration: "4-6 days", price: 250)
-          ],
-          buildEstimate: "12 months",
-          isAvailable: true
-        )
-      )
-    )
-  }
-}
-#endif

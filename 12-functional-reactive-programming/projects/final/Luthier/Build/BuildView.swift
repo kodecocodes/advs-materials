@@ -34,14 +34,14 @@ import SwiftUI
 import Combine
 
 struct BuildView: View {
-  @ObservedObject var viewModel: BuildViewModel
+  @ObservedObject var viewModel = BuildViewModel()
 
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
         ScrollView {
           GuitarView(viewModel.guitar)
-
+          
           VStack(alignment: .center) {
             additionPicker(
               for: Guitar.Shape.self,
@@ -65,23 +65,25 @@ struct BuildView: View {
             Spacer()
           }
         }
-         .padding(.bottom, 40)
+        .padding(.bottom, 40)
 
-        ActionButton("Checkout (\(viewModel.price))",
+        ActionButton("Checkout (\(viewModel.guitar.price.formatted))",
                      isLoading: viewModel.isLoadingCheckout) {
           viewModel.checkout()
         }
       }
-      .sheet(item: $viewModel.checkoutInfo,
-             onDismiss: { viewModel.clear() },
-             content: { info in
-              CheckoutView(viewModel: .init(checkoutInfo: info))
-             })
+      .sheet(
+        item: $viewModel.checkoutInfo,
+        onDismiss: { viewModel.clear() },
+        content: { info in
+          CheckoutView(info: info)
+        }
+      )
       .navigationTitle("Build your guitar")
     }
   }
 
-  func additionPicker<A: Addition>(
+  private func additionPicker<A: Addition>(
     for addition: A.Type,
     selection: Binding<Int>
   ) -> some View {
@@ -104,11 +106,3 @@ struct BuildView: View {
     .padding()
   }
 }
-
-#if DEBUG
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    BuildView(viewModel: BuildViewModel())
-  }
-}
-#endif
