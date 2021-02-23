@@ -37,6 +37,10 @@ import Foundation
 class CheckoutViewModel: ObservableObject {
   private let info: CheckoutInfo
   
+  var checkoutButton: String {
+    self.isAvailable ? "Order now" : "Model unavailable"
+  }
+  
   init(info: CheckoutInfo) {
     self.info = info
   }
