@@ -72,7 +72,16 @@ struct CheckoutView: View {
           }
 
           Section(header: Text("Shipping")) {
-            TextRow("Time", "TBD")
+            Picker(selection: $viewModel.selectedShippingOption,
+                   label: Text("Shipping method")) {
+              ForEach(Array(viewModel.shippingPrices.keys),
+                      id: \.self) { option in
+                let price = viewModel.shippingPrices[option] ?? "N/A"
+                Text("\(option.name) (\(price))").tag(option)
+              }
+            }
+
+            TextRow("Time", viewModel.selectedShippingOption.duration)
           }
 
           Section(header: Text("Totals")) {
@@ -89,18 +98,25 @@ struct CheckoutView: View {
                     viewModel.guitar.additionsPrice.formatted)
 
             TextRow("Shipping",
-                    "TBD")
+                    viewModel.selectedShippingOption.price.formatted)
 
             TextRow("Grand total",
-                    (viewModel.guitar.price + viewModel.guitar.additionsPrice).formatted,
+                    (viewModel.guitar.price +
+                     viewModel.guitar.additionsPrice +
+                     viewModel.selectedShippingOption.price).formatted,
                     weight: .semibold)
           }
         }
         .padding(.bottom, 40)
 
-        ActionButton("Checkout") {
-
+        ActionButton(
+          viewModel.checkoutButton,
+          isLoading: false,
+          color: viewModel.isAvailable ? .green : .red
+        ) {
+          // Handle checkout
         }
+        .disabled(!viewModel.isAvailable)
       }
       .navigationTitle("Your guitar")
     }
