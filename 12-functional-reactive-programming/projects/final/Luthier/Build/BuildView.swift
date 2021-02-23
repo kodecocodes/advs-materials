@@ -35,7 +35,7 @@ import Combine
 
 struct BuildView: View {
   @ObservedObject var viewModel = BuildViewModel()
-
+  
   var body: some View {
     NavigationView {
       ZStack(alignment: .bottom) {
@@ -47,21 +47,22 @@ struct BuildView: View {
               for: Guitar.Shape.self,
               selection: $viewModel.selectedShapeIdx
             )
-
+            
             additionPicker(
               for: Guitar.Color.self,
               selection: $viewModel.selectedColorIdx
             )
-
+            
             additionPicker(
               for: Guitar.Body.self,
               selection: $viewModel.selectedBodyIdx
             )
-
+            
             additionPicker(
               for: Guitar.Fretboard.self,
-              selection: $viewModel.selectedFretboardIdx)
-
+              selection: $viewModel.selectedFretboardIdx
+            )
+            
             Spacer()
           }
         }

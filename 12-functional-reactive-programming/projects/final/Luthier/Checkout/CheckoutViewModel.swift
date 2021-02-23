@@ -40,7 +40,7 @@ class CheckoutViewModel: ObservableObject {
                                                          duration: "",
                                                          price: 0)
   @Published var currency = Currency.usd
-  
+
   // Outputs
   @Published var shippingPrices = [ShippingOption: String]()
   @Published var basePrice = ""
@@ -50,7 +50,6 @@ class CheckoutViewModel: ObservableObject {
   @Published var isUpdatingCurrency = false
   @Published var isOrdering = false
   @Published var didOrder = false
-
   private let shouldOrder = PassthroughSubject<Void, Never>()
   
   private let info: CheckoutInfo
@@ -93,37 +92,35 @@ class CheckoutViewModel: ObservableObject {
     
     currencyAndRate
       .map { currency, rate in
-        (self.guitar.additionsPrice * rate)
-          .formatted(for: currency)
+        (self.guitar.additionsPrice * rate).formatted(for: currency)
       }
       .assign(to: &$additionsPrice)
     
     currencyAndRate
       .map { [weak self] currency, rate in
         guard let self = self else { return "N/A" }
+
+        let totalPrice = self.guitar.price +
+                         self.selectedShippingOption.price
         
-        let totalPrice = self.guitar.price + self.selectedShippingOption.price
         let exchanged = totalPrice * rate
-        
         return exchanged.formatted(for: currency)
       }
       .assign(to: &$totalPrice)
     
-    // 1
     currencyAndRate
-      .map { [weak self] currency, rate -> [ShippingOption: String] in
+      .map { [weak self] currency, rate in
         guard let self = self else { return [:] }
-        
+
         return self.shippingOptions
-          .reduce(into: [ShippingOption: String]()) { options, option in
-            options[option] = option.price == 0
+          .reduce(into: [ShippingOption: String]()) { opts, opt in
+            opts[opt] = opt.price == 0
               ? "Free"
-              : (option.price * rate).formatted(for: currency)
+              : (opt.price * rate).formatted(for: currency)
           }
       }
       .assign(to: &$shippingPrices)
-    
-    
+
     $shippingPrices
       .combineLatest($selectedShippingOption, $isUpdatingCurrency)
       .map { pricedOptions, selectedOption, isLoading in
@@ -133,15 +130,15 @@ class CheckoutViewModel: ObservableObject {
       .assign(to: &$shippingPrice)
     
     Publishers.Merge(
-      currency.map { _ in true },
+      currency.dropFirst().map { _ in true },
       currencyAndRate.map { _ in false }
     )
     .assign(to: &$isUpdatingCurrency)
     
     let orderResponse = shouldOrder
       .flatMap { [weak self] _ -> AnyPublisher<Void, Never> in
-        guard let self = self else { return Empty().eraseToAnyPublisher() }
-        return self.guitarService.order(self.guitar)
+        self.map { $0.guitarService.order($0.guitar) } ??
+        Empty().eraseToAnyPublisher()
       }
       .share()
 

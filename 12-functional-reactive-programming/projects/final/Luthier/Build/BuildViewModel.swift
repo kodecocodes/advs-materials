@@ -30,7 +30,6 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import Foundation
 import Combine
 
 class BuildViewModel: ObservableObject {
@@ -49,10 +48,10 @@ class BuildViewModel: ObservableObject {
   )
   @Published private(set) var isLoadingCheckout = false
   @Published var checkoutInfo: CheckoutInfo?
-  
+
   private let shouldCheckout = PassthroughSubject<Void, Never>()
   private let guitarService = GuitarService()
-
+  
   init() {
     $selectedShapeIdx
       .combineLatest($selectedColorIdx,
@@ -104,12 +103,8 @@ class BuildViewModel: ObservableObject {
       .assign(to: &$isLoadingCheckout)
     
     response
-      .map { $0 as CheckoutInfo? }
-      .assign(to: &$checkoutInfo)
-  }
-  
-  func checkout() {
-    shouldCheckout.send()
+     .map { $0 as CheckoutInfo? }
+     .assign(to: &$checkoutInfo)
   }
   
   func clear() {
@@ -118,5 +113,8 @@ class BuildViewModel: ObservableObject {
     selectedBodyIdx = 0
     selectedFretboardIdx = 0
   }
+  
+  func checkout() {
+   shouldCheckout.send()
+ }
 }
-

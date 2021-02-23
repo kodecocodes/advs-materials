@@ -37,7 +37,7 @@ final class CurrencyService {
   func getExchangeRate(for currency: Currency) -> AnyPublisher<Decimal, Error> {
     URLSession.shared
       .dataTaskPublisher(
-        for: URL(string: "https://api.exchangeratesapi.io/latest?base=USD&salt=\(UUID().uuidString)")!
+        for: URL(string: "https://api.exchangeratesapi.io/latest?base=USD")!
       )
       .map(\.data)
       .decode(type: ExchangeResponse.self, decoder: JSONDecoder())

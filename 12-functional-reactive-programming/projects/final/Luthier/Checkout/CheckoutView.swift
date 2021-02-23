@@ -74,10 +74,8 @@ struct CheckoutView: View {
           Section(header: Text("Shipping")) {
             Picker(selection: $viewModel.selectedShippingOption,
                    label: Text("Shipping method")) {
-              ForEach(
-                Array(viewModel.shippingPrices.keys),
-                id: \.self
-              ) { option in
+              ForEach(Array(viewModel.shippingPrices.keys),
+                      id: \.self) { option in
                 let price = viewModel.shippingPrices[option] ?? "N/A"
                 Text("\(option.name) (\(price))").tag(option)
               }
@@ -117,7 +115,6 @@ struct CheckoutView: View {
                     isLoading: viewModel.isUpdatingCurrency)
           }
         }
-        .disabled(viewModel.isUpdatingCurrency)
         .padding(.bottom, 40)
         
         if viewModel.didOrder {
@@ -129,8 +126,9 @@ struct CheckoutView: View {
                      color: viewModel.isAvailable ? .green : .red) {
           viewModel.order()
         }
-        .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency)
       }
+      .disabled(!viewModel.isAvailable || viewModel.isUpdatingCurrency || viewModel.isOrdering)
+      .navigationTitle("Your guitar")
       .alert(isPresented: $viewModel.didOrder) {
         Alert(
           title: Text("Congratulations!"),
@@ -141,7 +139,6 @@ struct CheckoutView: View {
           }
         )
       }
-      .navigationTitle("Your guitar")
     }
   }
 }
