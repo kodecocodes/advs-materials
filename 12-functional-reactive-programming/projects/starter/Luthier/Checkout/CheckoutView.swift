@@ -114,7 +114,7 @@ struct CheckoutView: View {
           isLoading: false,
           color: viewModel.isAvailable ? .green : .red
         ) {
-          // Handle checkout
+          
         }
       }
       .disabled(!viewModel.isAvailable)
