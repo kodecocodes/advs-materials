@@ -116,8 +116,8 @@ struct CheckoutView: View {
         ) {
           // Handle checkout
         }
-        .disabled(!viewModel.isAvailable)
       }
+      .disabled(!viewModel.isAvailable)
       .navigationTitle("Your guitar")
     }
   }
