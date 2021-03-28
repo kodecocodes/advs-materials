@@ -6,12 +6,12 @@
 import Foundation
 
 struct StructPoint {
-    var x, y: Double
+  var x, y: Double
 }
 
 class ClassPoint {
-    var x, y: Double
-    init(x: Double, y: Double) { (self.x, self.y) = (x, y) }
+  var x, y: Double
+  init(x: Double, y: Double) { (self.x, self.y) = (x, y) }
 }
 
 let structPointA = StructPoint(x: 0, y: 0)
@@ -25,30 +25,30 @@ classPointB.x += 10
 print(classPointA.x) // affected, prints 10.0
 
 struct Point: Equatable {
-    var x, y: Double
+  var x, y: Double
 }
 struct Size: Equatable {
-    var width, height: Double
+  var width, height: Double
 }
 struct Rectangle: Equatable {
-    var origin: Point
-    var size: Size
+  var origin: Point
+  var size: Size
 }
 
 extension Point {
-    func flipped() -> Self {
-        Point(x: y, y: x)
-    }
-    mutating func flip() {
-        self = flipped()
-    }
+  func flipped() -> Self {
+    Point(x: y, y: x)
+  }
+  mutating func flip() {
+    self = flipped()
+  }
 }
 
 extension Point {
   static var zero: Point {
     Point(x: 0, y: 0)
   }
-  static func random(in radius: Double) -> Point {
+  static func random(inRadius radius: Double) -> Point {
     guard radius >= 0 else {
       return .zero
     }
@@ -84,7 +84,7 @@ struct PermutedCongruential: RandomNumberGenerator {
 }
 
 extension Point {
-  static func random(in radius: Double,
+  static func random(inRadius radius: Double,
                      using randomSource:
                       inout PermutedCongruential) -> Point {
     guard radius >= 0 else {
@@ -101,7 +101,7 @@ extension Point {
 
 var pcg = PermutedCongruential(seed: 1234)
 for _ in 1...10 {
-  print(Point.random(in: 1, using: &pcg))
+  print(Point.random(inRadius: 1, using: &pcg))
 }
 
 enum Quadrant: CaseIterable, Hashable {
@@ -139,3 +139,4 @@ func sin(_ angle: Angle) -> Double {
 }
 sin(a)  // 1
 sin(b)  // 1
+
