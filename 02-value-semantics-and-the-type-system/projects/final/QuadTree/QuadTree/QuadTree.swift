@@ -8,6 +8,19 @@ import CoreGraphics.CGBase // CGPoint
 
 struct QuadTree {
   private final class Node {
+    let maxItemCapactiy = 4
+    var region: CGRect
+    var points: [CGPoint] = []
+    var quad: Quad?
+
+    init(region: CGRect, points: [CGPoint] = [], quad: Quad? = nil) {
+      self.region = region
+      self.quad = quad
+      self.points = points
+      self.points.reserveCapacity(maxItemCapactiy)
+      precondition(points.count <= maxItemCapactiy)
+    }
+
     struct Quad {
       var northWest: Node
       var northEast: Node
@@ -48,19 +61,7 @@ struct QuadTree {
              southWest: southWest.copy(),
              southEast: southEast.copy())
       }
-    }
-
-    let maxItemCapactiy = 4
-    var region: CGRect
-    var points: [CGPoint] = []
-    var quad: Quad?
-
-    init(region: CGRect, points: [CGPoint] = [], quad: Quad? = nil) {
-      self.region = region
-      self.quad = quad
-      self.points = points
-      self.points.reserveCapacity(maxItemCapactiy)
-    }
+    } // End of Quad
 
     func copy() -> Node {
       Node(region: region, points: points, quad: quad?.copy())
