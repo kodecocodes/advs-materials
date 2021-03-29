@@ -42,33 +42,23 @@ let quadrantIICount = (1...100).lazy.reduce(0) { count, _ in
 }
 print(quadrantIICount)
 
-
 // Exercise 2
-
-// Typealias don't create a new type but cam make it easier
-// to read your code.
-
-typealias Angle = Measurement<UnitAngle>
-
-func sin(_ angle: Angle) -> Double {
-  sin(angle.converted(to: .radians).value)
-}
-
-func cos(_ angle: Angle) -> Double {
-  cos(angle.converted(to: .radians).value)
-}
-
-// Exercise 3
-
-extension Angle {
-  static let pi = Measurement(value: .pi, unit: .radians)
-}
-
-cos(Angle.pi)     // -1
-sin(Angle.pi / 2) // 1
-
-// Exercise 4
 
 let liters = Measurement(value: 1.5, unit: UnitVolume.liters)
 let cups = liters.converted(to: .cups)
 print(cups)
+
+// Exercise 3
+
+extension Quadrant {
+  init?(_ polar: Polar) {
+    self.init(Point(polar))
+  }
+}
+
+Quadrant(Polar(angle: Angle(degrees: 0), distance: 1))
+Quadrant(Polar(angle: Angle(degrees: 45), distance: 1))
+Quadrant(Polar(angle: Angle(degrees: 135), distance: 1))
+Quadrant(Polar(angle: Angle(degrees: 225), distance: 1))
+Quadrant(Polar(angle: Angle(degrees: 315), distance: 1))
+

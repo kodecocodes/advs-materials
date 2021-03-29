@@ -123,6 +123,8 @@ enum Quadrant: CaseIterable, Hashable {
   }
 }
 
+Quadrant.allCases
+
 Quadrant(Point(x: 10, y: -3)) // evaluates to .iv
 Quadrant(.zero) // evaluates to nil
 
@@ -134,9 +136,65 @@ a + b  // 180 degrees
 
 typealias Angle = Measurement<UnitAngle>
 
-func sin(_ angle: Angle) -> Double {
-  sin(angle.converted(to: .radians).value)
+extension Angle {
+  init(radians: Double) {
+    self = Angle(value: radians, unit: .radians)
+  }
+  init(degrees: Double) {
+    self = Angle(value: degrees, unit: .degrees)
+  }
+  var radians: Double {
+    converted(to: .radians).value
+  }
+  var degrees: Double {
+    converted(to: .degrees).value
+  }
 }
+
+func cos(_ angle: Angle) -> Double {
+  cos(angle.radians)
+}
+func sin(_ angle: Angle) -> Double {
+  sin(angle.radians)
+}
+cos(a)  // 0
+cos(b)  // 0
 sin(a)  // 1
 sin(b)  // 1
 
+struct Polar: Equatable {
+  var angle: Angle
+  var distance: Double
+}
+
+// Convert polar-coordinates to xy-coordinates
+extension Point {
+  init(_ polar: Polar) {
+    self.init(x: polar.distance * cos(polar.angle),
+              y: polar.distance * sin(polar.angle))
+  }
+}
+
+// Convert xy coordinates to polar coordinates
+extension Polar {
+  init(_ point: Point) {
+    self.init(angle: Angle(radians: atan2(point.y, point.x)),
+              distance: hypot(point.x, point.y))
+  }
+}
+
+let coord = Point(x: 4, y: 3)
+Polar(coord).angle.degrees // 36.87
+Polar(coord).distance      // 5
+
+
+enum Shape {
+  case point(Point)
+  case segment(start: Point, end: Point)
+  case circle(center: Point, radius: Double)
+  case rectangle(Rectangle)
+}
+
+let size = Size(width: 10, height: 10)
+let rect = Rectangle(origin: .zero, size: size)
+let shape = Shape.rectangle(rect)

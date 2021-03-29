@@ -34,16 +34,20 @@ struct QuadTree {
         let halfHeight = region.size.height * 0.5
 
         northWest =
-          Node(region: CGRect(x: region.origin.x, y: region.origin.y,
+          Node(region: CGRect(x: region.origin.x,
+                              y: region.origin.y,
                               width: halfWidth, height: halfHeight))
         northEast =
-          Node(region: CGRect(x: region.origin.x+halfWidth, y: region.origin.y,
+          Node(region: CGRect(x: region.origin.x + halfWidth,
+                              y: region.origin.y,
                               width: halfWidth, height: halfHeight))
         southWest =
-          Node(region: CGRect(x: region.origin.x, y: region.origin.y+halfHeight,
+          Node(region: CGRect(x: region.origin.x,
+                              y: region.origin.y + halfHeight,
                               width: halfWidth, height: halfHeight))
         southEast =
-          Node(region: CGRect(x: region.origin.x+halfWidth, y: region.origin.y+halfHeight,
+          Node(region: CGRect(x: region.origin.x + halfWidth,
+                              y: region.origin.y + halfHeight,
                               width: halfWidth, height: halfHeight))
       }
 
@@ -67,7 +71,11 @@ struct QuadTree {
       Node(region: region, points: points, quad: quad?.copy())
     }
 
-    @discardableResult
+    func subdivide() {
+      precondition(quad == nil, "Can't subdivide a node already subdivided")
+      quad = Quad(region: region)
+    }
+
     func insert(_ point: CGPoint) -> Bool {
       if let quad = quad {
         return quad.northWest.insert(point) ||
@@ -88,11 +96,6 @@ struct QuadTree {
           return true
         }
       }
-    }
-
-    func subdivide() {
-      precondition(quad == nil, "Can't subdivide a node already subdivided")
-      quad = Quad(region: region)
     }
 
     func find(in searchRegion: CGRect) -> [CGPoint] {
@@ -119,8 +122,11 @@ struct QuadTree {
     if !isKnownUniquelyReferenced(&root) {
       root = root.copy()
     }
+    guard root.insert(point) else {
+      return false
+    }
     count += 1
-    return root.insert(point)
+    return true
   }
 
   func find(in searchRegion: CGRect) -> [CGPoint] {
