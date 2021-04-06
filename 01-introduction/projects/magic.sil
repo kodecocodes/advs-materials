@@ -1,0 +1,159 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+class Magic {
+  func number() -> Int
+  @objc deinit
+  init()
+}
+
+@_inheritsConvenienceInitializers final class SpecialMagic : Magic {
+  override final func number() -> Int
+  @objc deinit
+  override init()
+}
+
+@_hasStorage @_hasInitialValue public var number: Int { get set }
+
+func magicTest()
+
+// number
+sil_global @$s5magic6numberSivp : $Int
+
+// main
+sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
+  alloc_global @$s5magic6numberSivp               // id: %2
+  %3 = global_addr @$s5magic6numberSivp : $*Int   // user: %6
+  %4 = integer_literal $Builtin.Int64, -1         // user: %5
+  %5 = struct $Int (%4 : $Builtin.Int64)          // user: %6
+  store %5 to %3 : $*Int                          // id: %6
+  %7 = integer_literal $Builtin.Int32, 0          // user: %8
+  %8 = struct $Int32 (%7 : $Builtin.Int32)        // user: %9
+  return %8 : $Int32                              // id: %9
+} // end sil function 'main'
+
+// Magic.number()
+sil hidden @$s5magic5MagicC6numberSiyF : $@convention(method) (@guaranteed Magic) -> Int {
+// %0 "self"
+bb0(%0 : $Magic):
+  %1 = integer_literal $Builtin.Int64, 0          // user: %2
+  %2 = struct $Int (%1 : $Builtin.Int64)          // user: %3
+  return %2 : $Int                                // id: %3
+} // end sil function '$s5magic5MagicC6numberSiyF'
+
+// Magic.deinit
+sil hidden @$s5magic5MagicCfd : $@convention(method) (@guaranteed Magic) -> @owned Builtin.NativeObject {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $Magic):
+  debug_value %0 : $Magic, let, name "self", argno 1 // id: %1
+  %2 = unchecked_ref_cast %0 : $Magic to $Builtin.NativeObject // user: %3
+  return %2 : $Builtin.NativeObject               // id: %3
+} // end sil function '$s5magic5MagicCfd'
+
+// Magic.__deallocating_deinit
+sil hidden @$s5magic5MagicCfD : $@convention(method) (@owned Magic) -> () {
+// %0 "self"                                      // users: %3, %2, %1
+bb0(%0 : $Magic):
+  debug_value %0 : $Magic, let, name "self", argno 1 // id: %1
+  debug_value %0 : $Magic, let, name "self", argno 1 // id: %2
+  dealloc_ref %0 : $Magic                         // id: %3
+  %4 = tuple ()                                   // user: %5
+  return %4 : $()                                 // id: %5
+} // end sil function '$s5magic5MagicCfD'
+
+// Magic.__allocating_init()
+sil hidden [exact_self_class] @$s5magic5MagicCACycfC : $@convention(method) (@thick Magic.Type) -> @owned Magic {
+// %0 "$metatype"
+bb0(%0 : $@thick Magic.Type):
+  %1 = alloc_ref $Magic                           // users: %3, %2
+  debug_value %1 : $Magic, let, name "self", argno 1 // id: %2
+  return %1 : $Magic                              // id: %3
+} // end sil function '$s5magic5MagicCACycfC'
+
+// Magic.init()
+sil hidden @$s5magic5MagicCACycfc : $@convention(method) (@owned Magic) -> @owned Magic {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $Magic):
+  debug_value %0 : $Magic, let, name "self", argno 1 // id: %1
+  return %0 : $Magic                              // id: %2
+} // end sil function '$s5magic5MagicCACycfc'
+
+// SpecialMagic.number()
+sil hidden @$s5magic12SpecialMagicC6numberSiyF : $@convention(method) (@guaranteed SpecialMagic) -> Int {
+// %0 "self"
+bb0(%0 : $SpecialMagic):
+  %1 = integer_literal $Builtin.Int64, 42         // user: %2
+  %2 = struct $Int (%1 : $Builtin.Int64)          // user: %3
+  return %2 : $Int                                // id: %3
+} // end sil function '$s5magic12SpecialMagicC6numberSiyF'
+
+// SpecialMagic.deinit
+sil hidden @$s5magic12SpecialMagicCfd : $@convention(method) (@guaranteed SpecialMagic) -> @owned Builtin.NativeObject {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $SpecialMagic):
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1 // id: %1
+  %2 = unchecked_ref_cast %0 : $SpecialMagic to $Builtin.NativeObject // user: %3
+  return %2 : $Builtin.NativeObject               // id: %3
+} // end sil function '$s5magic12SpecialMagicCfd'
+
+// SpecialMagic.__deallocating_deinit
+sil hidden @$s5magic12SpecialMagicCfD : $@convention(method) (@owned SpecialMagic) -> () {
+// %0 "self"                                      // users: %3, %2, %1
+bb0(%0 : $SpecialMagic):
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1 // id: %1
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1 // id: %2
+  dealloc_ref %0 : $SpecialMagic                  // id: %3
+  %4 = tuple ()                                   // user: %5
+  return %4 : $()                                 // id: %5
+} // end sil function '$s5magic12SpecialMagicCfD'
+
+// SpecialMagic.__allocating_init()
+sil hidden [exact_self_class] @$s5magic12SpecialMagicCACycfC : $@convention(method) (@thick SpecialMagic.Type) -> @owned SpecialMagic {
+// %0 "$metatype"
+bb0(%0 : $@thick SpecialMagic.Type):
+  %1 = alloc_ref $SpecialMagic                    // user: %2
+  return %1 : $SpecialMagic                       // id: %2
+} // end sil function '$s5magic12SpecialMagicCACycfC'
+
+// SpecialMagic.init()
+sil hidden @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic {
+// %0 "self"                                      // user: %1
+bb0(%0 : $SpecialMagic):
+  return %0 : $SpecialMagic                       // id: %1
+} // end sil function '$s5magic12SpecialMagicCACycfc'
+
+// magicTest()
+sil hidden @$s5magic0A4TestyyF : $@convention(thin) () -> () {
+bb0:
+  %0 = global_addr @$s5magic6numberSivp : $*Int   // user: %3
+  %1 = integer_literal $Builtin.Int64, 42         // user: %2
+  %2 = struct $Int (%1 : $Builtin.Int64)          // user: %4
+  %3 = begin_access [modify] [dynamic] [no_nested_conflict] %0 : $*Int // users: %4, %5
+  store %2 to %3 : $*Int                          // id: %4
+  end_access %3 : $*Int                           // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+} // end sil function '$s5magic0A4TestyyF'
+
+sil_vtable Magic {
+  #Magic.number: (Magic) -> () -> Int : @$s5magic5MagicC6numberSiyF	// Magic.number()
+  #Magic.init!allocator: (Magic.Type) -> () -> Magic : @$s5magic5MagicCACycfC	// Magic.__allocating_init()
+  #Magic.deinit!deallocator: @$s5magic5MagicCfD	// Magic.__deallocating_deinit
+}
+
+sil_vtable SpecialMagic {
+  #Magic.number: (Magic) -> () -> Int : @$s5magic12SpecialMagicC6numberSiyF [override]	// SpecialMagic.number()
+  #Magic.init!allocator: (Magic.Type) -> () -> Magic : @$s5magic12SpecialMagicCACycfC [override]	// SpecialMagic.__allocating_init()
+  #SpecialMagic.deinit!deallocator: @$s5magic12SpecialMagicCfD	// SpecialMagic.__deallocating_deinit
+}
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'magic/magic.swift' => 'magic.swift'
+
+
