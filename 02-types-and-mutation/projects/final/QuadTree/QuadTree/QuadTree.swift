@@ -8,7 +8,7 @@ import CoreGraphics.CGBase // CGPoint
 
 struct QuadTree {
   private final class Node {
-    let maxItemCapactiy = 4
+    let maxItemCapacity = 4
     var region: CGRect
     var points: [CGPoint] = []
     var quad: Quad?
@@ -17,8 +17,8 @@ struct QuadTree {
       self.region = region
       self.quad = quad
       self.points = points
-      self.points.reserveCapacity(maxItemCapactiy)
-      precondition(points.count <= maxItemCapactiy)
+      self.points.reserveCapacity(maxItemCapacity)
+      precondition(points.count <= maxItemCapacity)
     }
 
     struct Quad {
@@ -84,7 +84,7 @@ struct QuadTree {
           quad.southEast.insert(point)
       }
       else {
-        if points.count == maxItemCapactiy {
+        if points.count == maxItemCapacity {
           subdivide()
           return insert(point)
         }
