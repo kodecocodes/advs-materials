@@ -30,7 +30,7 @@ example("functional, early-exit") {
   print(total)
 }
 
-example("imperatve, early-exit") {
+example("imperative, early-exit") {
   var total = 0
   for value in numbers {
     guard value >= 0 else { break }
