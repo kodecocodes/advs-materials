@@ -12,4 +12,8 @@ struct AppMain: App {
       BuildView()
     }
   }
+  
+  init() {
+    URLProtocol.registerClass(MockExchangeService.self)
+  }
 }

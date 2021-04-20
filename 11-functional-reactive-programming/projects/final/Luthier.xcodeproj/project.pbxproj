@@ -27,6 +27,7 @@
 		A2189A2425BB7EBA00522C53 /* GuitarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2189A2325BB7EBA00522C53 /* GuitarView.swift */; };
 		A21CC1F225CDF6BC00EC319E /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */; };
 		A278F67F25E5A9B70058B03F /* BuildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A278F67E25E5A9B70058B03F /* BuildViewModel.swift */; };
+		A2922032262EBA9500448882 /* MockExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2922031262EBA9500448882 /* MockExchange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		A2189A2325BB7EBA00522C53 /* GuitarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarView.swift; sourceTree = "<group>"; };
 		A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
 		A278F67E25E5A9B70058B03F /* BuildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildViewModel.swift; sourceTree = "<group>"; };
+		A2922031262EBA9500448882 /* MockExchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExchange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */,
 				78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */,
 				78D8EC92254EA34F00D8A64E /* ActionButton.swift */,
+				A2922031262EBA9500448882 /* MockExchange.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */,
 				78276C602540A49300835AB2 /* Addition.swift in Sources */,
 				784899202540D2BC001CD4DF /* Decimal+Ext.swift in Sources */,
+				A2922032262EBA9500448882 /* MockExchange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

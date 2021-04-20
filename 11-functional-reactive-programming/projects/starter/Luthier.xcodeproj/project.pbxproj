@@ -26,6 +26,7 @@
 		78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D8EC92254EA34F00D8A64E /* ActionButton.swift */; };
 		A2189A2425BB7EBA00522C53 /* GuitarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2189A2325BB7EBA00522C53 /* GuitarView.swift */; };
 		A21CC1F225CDF6BC00EC319E /* CheckoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */; };
+		A2922036262EC4D300448882 /* MockExchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2922035262EC4D300448882 /* MockExchange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		78D8EC92254EA34F00D8A64E /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		A2189A2325BB7EBA00522C53 /* GuitarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuitarView.swift; sourceTree = "<group>"; };
 		A21CC1F125CDF6BC00EC319E /* CheckoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewModel.swift; sourceTree = "<group>"; };
+		A2922035262EC4D300448882 /* MockExchange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockExchange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				7848991F2540D2BC001CD4DF /* Decimal+Ext.swift */,
 				78A40D1A254B6E0E00CBAFB7 /* ConfettiView.swift */,
 				78D8EC92254EA34F00D8A64E /* ActionButton.swift */,
+				A2922035262EC4D300448882 /* MockExchange.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				78276C5D2540A43C00835AB2 /* CheckoutInfo.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				78276C4A2540A1E200835AB2 /* BuildView.swift in Sources */,
+				A2922036262EC4D300448882 /* MockExchange.swift in Sources */,
 				78276C572540A42B00835AB2 /* Guitar.swift in Sources */,
 				7836D5002538E17F00326B1A /* GuitarService.swift in Sources */,
 				78D8EC93254EA34F00D8A64E /* ActionButton.swift in Sources */,
