@@ -7,7 +7,7 @@ import SwiftUI
 import Combine
 
 struct BuildView: View {
-  @ObservedObject var viewModel = BuildViewModel()
+  @StateObject var viewModel = BuildViewModel()
   
   var body: some View {
     NavigationView {
