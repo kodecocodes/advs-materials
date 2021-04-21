@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
+		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		5D0A01B424C22061000BC4A7 /* BitViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01B324C22061000BC4A7 /* BitViewerApp.swift */; };
+		5D0A01BD24C2207F000BC4A7 /* BitSemantic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01B624C2207F000BC4A7 /* BitSemantic.swift */; };
+		5D0A01BE24C2207F000BC4A7 /* ModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01B724C2207F000BC4A7 /* ModelStore.swift */; };
+		5D0A01BF24C2207F000BC4A7 /* FixedWidthIntegerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01B824C2207F000BC4A7 /* FixedWidthIntegerExtensions.swift */; };
+		5D0A01C024C2207F000BC4A7 /* TypeSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01B924C2207F000BC4A7 /* TypeSelection.swift */; };
+		5D0A01C124C2207F000BC4A7 /* NumericOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01BA24C2207F000BC4A7 /* NumericOperations.swift */; };
+		5D0A01C224C2207F000BC4A7 /* BitPatternConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01BB24C2207F000BC4A7 /* BitPatternConvertable.swift */; };
+		5D0A01CF24C2209B000BC4A7 /* AttributeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01C524C2209B000BC4A7 /* AttributeLabelView.swift */; };
+		5D0A01D024C2209B000BC4A7 /* FloatingPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01C624C2209B000BC4A7 /* FloatingPointView.swift */; };
+		5D0A01D124C2209B000BC4A7 /* BitViewerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01C724C2209B000BC4A7 /* BitViewerContentView.swift */; };
+		5D0A01D224C2209B000BC4A7 /* BitLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01C824C2209B000BC4A7 /* BitLegend.swift */; };
+		5D0A01D324C2209B000BC4A7 /* IntegerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01C924C2209B000BC4A7 /* IntegerView.swift */; };
+		5D0A01D424C2209B000BC4A7 /* NumericOperationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CA24C2209B000BC4A7 /* NumericOperationsView.swift */; };
+		5D0A01D524C2209B000BC4A7 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CB24C2209B000BC4A7 /* CheckboxToggleStyle.swift */; };
+		5D0A01D624C2209B000BC4A7 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CC24C2209B000BC4A7 /* Sidebar.swift */; };
+		5D0A01D724C2209B000BC4A7 /* IntegerExpansionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CD24C2209B000BC4A7 /* IntegerExpansionView.swift */; };
+		5D0A01D824C2209B000BC4A7 /* BitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0A01CE24C2209B000BC4A7 /* BitsView.swift */; };
+		5DC5C5F92565C65B0045EDDB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5DC5C5F82565C65B0045EDDB /* LICENSE */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		18D775BD22AD944300AE281E /* BitViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5D0A01B324C22061000BC4A7 /* BitViewerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitViewerApp.swift; sourceTree = "<group>"; };
+		5D0A01B624C2207F000BC4A7 /* BitSemantic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitSemantic.swift; sourceTree = "<group>"; };
+		5D0A01B724C2207F000BC4A7 /* ModelStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelStore.swift; sourceTree = "<group>"; };
+		5D0A01B824C2207F000BC4A7 /* FixedWidthIntegerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedWidthIntegerExtensions.swift; sourceTree = "<group>"; };
+		5D0A01B924C2207F000BC4A7 /* TypeSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeSelection.swift; sourceTree = "<group>"; };
+		5D0A01BA24C2207F000BC4A7 /* NumericOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericOperations.swift; sourceTree = "<group>"; };
+		5D0A01BB24C2207F000BC4A7 /* BitPatternConvertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitPatternConvertable.swift; sourceTree = "<group>"; };
+		5D0A01C524C2209B000BC4A7 /* AttributeLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeLabelView.swift; sourceTree = "<group>"; };
+		5D0A01C624C2209B000BC4A7 /* FloatingPointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingPointView.swift; sourceTree = "<group>"; };
+		5D0A01C724C2209B000BC4A7 /* BitViewerContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitViewerContentView.swift; sourceTree = "<group>"; };
+		5D0A01C824C2209B000BC4A7 /* BitLegend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLegend.swift; sourceTree = "<group>"; };
+		5D0A01C924C2209B000BC4A7 /* IntegerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerView.swift; sourceTree = "<group>"; };
+		5D0A01CA24C2209B000BC4A7 /* NumericOperationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericOperationsView.swift; sourceTree = "<group>"; };
+		5D0A01CB24C2209B000BC4A7 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
+		5D0A01CC24C2209B000BC4A7 /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		5D0A01CD24C2209B000BC4A7 /* IntegerExpansionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerExpansionView.swift; sourceTree = "<group>"; };
+		5D0A01CE24C2209B000BC4A7 /* BitsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitsView.swift; sourceTree = "<group>"; };
+		5DC5C5F82565C65B0045EDDB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = BitViewer/LICENSE; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		18D775BA22AD944300AE281E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18D775B422AD944300AE281E = {
+			isa = PBXGroup;
+			children = (
+				5DC5C5F82565C65B0045EDDB /* LICENSE */,
+				18D775BF22AD944300AE281E /* BitViewer */,
+				18D775BE22AD944300AE281E /* Products */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		18D775BE22AD944300AE281E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18D775BD22AD944300AE281E /* BitViewer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18D775BF22AD944300AE281E /* BitViewer */ = {
+			isa = PBXGroup;
+			children = (
+				5D0A01B324C22061000BC4A7 /* BitViewerApp.swift */,
+				5D0A01B524C2207F000BC4A7 /* Model */,
+				5D0A01C424C2209B000BC4A7 /* Views */,
+				18D775C622AD944400AE281E /* Assets.xcassets */,
+				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
+				18D775CE22AD944400AE281E /* Info.plist */,
+			);
+			path = BitViewer;
+			sourceTree = "<group>";
+		};
+		5D0A01B524C2207F000BC4A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D0A01B624C2207F000BC4A7 /* BitSemantic.swift */,
+				5D0A01B724C2207F000BC4A7 /* ModelStore.swift */,
+				5D0A01B824C2207F000BC4A7 /* FixedWidthIntegerExtensions.swift */,
+				5D0A01B924C2207F000BC4A7 /* TypeSelection.swift */,
+				5D0A01BA24C2207F000BC4A7 /* NumericOperations.swift */,
+				5D0A01BB24C2207F000BC4A7 /* BitPatternConvertable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D0A01C424C2209B000BC4A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D0A01C524C2209B000BC4A7 /* AttributeLabelView.swift */,
+				5D0A01C624C2209B000BC4A7 /* FloatingPointView.swift */,
+				5D0A01C724C2209B000BC4A7 /* BitViewerContentView.swift */,
+				5D0A01C824C2209B000BC4A7 /* BitLegend.swift */,
+				5D0A01C924C2209B000BC4A7 /* IntegerView.swift */,
+				5D0A01CA24C2209B000BC4A7 /* NumericOperationsView.swift */,
+				5D0A01CB24C2209B000BC4A7 /* CheckboxToggleStyle.swift */,
+				5D0A01CC24C2209B000BC4A7 /* Sidebar.swift */,
+				5D0A01CD24C2209B000BC4A7 /* IntegerExpansionView.swift */,
+				5D0A01CE24C2209B000BC4A7 /* BitsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		18D775BC22AD944300AE281E /* BitViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18D775D122AD944400AE281E /* Build configuration list for PBXNativeTarget "BitViewer" */;
+			buildPhases = (
+				181FE31D248EA6C900A180EA /* ShellScript */,
+				18D775B922AD944300AE281E /* Sources */,
+				18D775BA22AD944300AE281E /* Frameworks */,
+				18D775BB22AD944300AE281E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitViewer;
+			productName = MyRWTutorial;
+			productReference = 18D775BD22AD944300AE281E /* BitViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18D775B522AD944300AE281E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = "Ray Wenderlich";
+				TargetAttributes = {
+					18D775BC22AD944300AE281E = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1200;
+					};
+				};
+			};
+			buildConfigurationList = 18D775B822AD944300AE281E /* Build configuration list for PBXProject "BitViewer" */;
+			compatibilityVersion = "Xcode 11.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 18D775B422AD944300AE281E;
+			productRefGroup = 18D775BE22AD944300AE281E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				18D775BC22AD944300AE281E /* BitViewer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		18D775BB22AD944300AE281E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DC5C5F92565C65B0045EDDB /* LICENSE in Resources */,
+				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
+				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		181FE31D248EA6C900A180EA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18D775B922AD944300AE281E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D0A01D424C2209B000BC4A7 /* NumericOperationsView.swift in Sources */,
+				5D0A01D524C2209B000BC4A7 /* CheckboxToggleStyle.swift in Sources */,
+				5D0A01D624C2209B000BC4A7 /* Sidebar.swift in Sources */,
+				5D0A01D124C2209B000BC4A7 /* BitViewerContentView.swift in Sources */,
+				5D0A01D824C2209B000BC4A7 /* BitsView.swift in Sources */,
+				5D0A01B424C22061000BC4A7 /* BitViewerApp.swift in Sources */,
+				5D0A01BE24C2207F000BC4A7 /* ModelStore.swift in Sources */,
+				5D0A01C024C2207F000BC4A7 /* TypeSelection.swift in Sources */,
+				5D0A01D224C2209B000BC4A7 /* BitLegend.swift in Sources */,
+				5D0A01C124C2207F000BC4A7 /* NumericOperations.swift in Sources */,
+				5D0A01D724C2209B000BC4A7 /* IntegerExpansionView.swift in Sources */,
+				5D0A01C224C2207F000BC4A7 /* BitPatternConvertable.swift in Sources */,
+				5D0A01D024C2209B000BC4A7 /* FloatingPointView.swift in Sources */,
+				5D0A01D324C2209B000BC4A7 /* IntegerView.swift in Sources */,
+				5D0A01CF24C2209B000BC4A7 /* AttributeLabelView.swift in Sources */,
+				5D0A01BF24C2207F000BC4A7 /* FixedWidthIntegerExtensions.swift in Sources */,
+				5D0A01BD24C2207F000BC4A7 /* BitSemantic.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		18D775DA22AD963800AE281E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18D775DE22AD96B400AE281E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		18D775CF22AD944400AE281E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		18D775D022AD944400AE281E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		18D775D222AD944400AE281E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Y2JLK838WQ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BitViewer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.BitViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		18D775D322AD944400AE281E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Y2JLK838WQ;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BitViewer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.BitViewer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		18D775B822AD944300AE281E /* Build configuration list for PBXProject "BitViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18D775CF22AD944400AE281E /* Debug */,
+				18D775D022AD944400AE281E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18D775D122AD944400AE281E /* Build configuration list for PBXNativeTarget "BitViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18D775D222AD944400AE281E /* Debug */,
+				18D775D322AD944400AE281E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 18D775B522AD944300AE281E /* Project object */;
+}
