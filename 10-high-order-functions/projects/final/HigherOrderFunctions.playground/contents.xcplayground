@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true'>
+    <pages>
+        <page name='Example1'/>
+        <page name='Example2'/>
+        <page name='map'/>
+        <page name='compactMap'/>
+        <page name='flatMap'/>
+        <page name='filter'/>
+        <page name='reduce'/>
+        <page name='sorted'/>
+        <page name='Curry'/>
+        <page name='Curry-Flip Generic'/>
+        <page name='GeneratedFunctions'/>
+        <page name='MergeFunctions'/>
+    </pages>
+</playground>
