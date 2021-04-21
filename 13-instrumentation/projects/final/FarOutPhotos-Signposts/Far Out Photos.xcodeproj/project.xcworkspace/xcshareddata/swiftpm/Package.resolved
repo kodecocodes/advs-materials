@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ImagePublisher",
+        "repositoryURL": "https://github.com/kean/ImagePublisher",
+        "state": {
+          "branch": null,
+          "revision": "b74c0c3b36c5f77023891f996be818fafc77f264",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "Nuke",
+        "repositoryURL": "https://github.com/kean/Nuke.git",
+        "state": {
+          "branch": null,
+          "revision": "e901272a7cc5a28734d4f196d543edcf7efd8f4c",
+          "version": "9.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
