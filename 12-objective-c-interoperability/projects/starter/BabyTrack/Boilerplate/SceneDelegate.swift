@@ -1,0 +1,27 @@
+/// Sample code from the book, Advanced Swift,
+/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// See LICENSE for details. Thank you for supporting our work!
+/// Visit https://www.raywenderlich.com/books/advanced-swift
+
+import Foundation
+import SwiftUI
+import UIKit
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+  var window: UIWindow?
+
+  func scene(_ scene: UIScene,
+             willConnectTo session: UISceneSession,
+             options connectionOptions: UIScene.ConnectionOptions) {
+    self.window = (scene as? UIWindowScene).map(UIWindow.init)
+    startLegacyApp()
+  }
+
+  private func startLegacyApp() {
+    let navigation = UINavigationController(rootViewController: UIViewController())
+    navigation.navigationBar.prefersLargeTitles = true
+
+    self.window?.rootViewController = navigation
+    self.window?.makeKeyAndVisible()
+  }
+}
