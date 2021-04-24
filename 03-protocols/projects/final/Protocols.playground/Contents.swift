@@ -18,11 +18,10 @@ protocol MutableLocalizable: Localizable {
 }
 
 struct Text: ImmutableLocalizable {
-  
   static let supportedLanguages: [Language] = [.english, .croatian]
-  
+
   var content = "Help"
-  
+
   func changed(to language: Language) -> Self {
     let newContent: String
     switch language {
@@ -37,7 +36,7 @@ struct Text: ImmutableLocalizable {
 // Conforming to a protocol with an extension
 extension UILabel: MutableLocalizable {
   static let supportedLanguages: [Language] = [.english, .german]
-    
+
   func change(to language: Language) {
     switch language {
     case .english: text = "Help"

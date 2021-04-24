@@ -52,4 +52,4 @@ struct User {
 UserDefaults.standard.setValue(User(name: "Marin"), forKey: "user")
 
 let user: User? = getValue(forKey: "user")
-print(user)
+print(user ?? "No user stored")
