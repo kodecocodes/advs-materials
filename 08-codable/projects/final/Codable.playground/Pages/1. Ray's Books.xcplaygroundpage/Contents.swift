@@ -10,6 +10,7 @@ decoder.dataDecodingStrategy = .base64
 
 do {
   let books = try decoder.decode([Book].self, from: data)
+  print("—— Example of: Books ——")
   for book in books {
     print("\(book.name) (\(book.id))",
           "by \(book.authors.joined(separator: ", ")).",
