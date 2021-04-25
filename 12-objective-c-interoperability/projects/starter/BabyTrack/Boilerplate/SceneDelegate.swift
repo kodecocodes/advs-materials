@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 
   private func startLegacyApp() {
-    let navigation = UINavigationController(rootViewController: UIViewController())
+    let navigation = UINavigationController(
+      rootViewController: UIViewController()
+    )
     navigation.navigationBar.prefersLargeTitles = true
 
     self.window?.rootViewController = navigation
