@@ -12,7 +12,7 @@ struct AddFeedItemBar: View {
 
   var body: some View {
     let kinds: [FeedItem.Kind] = [.bottle, .food, .sleep,
-                                 .diaper, .moment]
+                                  .diaper, .moment]
 
     HStack(spacing: 16) {
       ForEach(kinds, id: \.self) { kind in

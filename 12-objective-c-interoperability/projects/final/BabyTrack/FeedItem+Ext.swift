@@ -16,19 +16,19 @@ import BabyKit
         .appendingPathComponent("\($0).jpg")
     }
   }
-
+  
   @objc(colorForKind:)
-  static func color(for kind: FeedItem.Kind) -> UIColor {
+  static func color(for kind: Kind) -> UIColor {
     kind.color
   }
 
   @objc(emojiForKind:)
-  static func emoji(for kind: FeedItem.Kind) -> String {
+  static func emoji(for kind: Kind) -> String {
     kind.emoji
   }
 
   @objc(titleForKind:)
-  static func title(for kind: FeedItem.Kind) -> String {
+  static func title(for kind: Kind) -> String {
     kind.title
   }
 }

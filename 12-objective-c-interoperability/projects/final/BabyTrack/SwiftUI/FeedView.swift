@@ -24,6 +24,7 @@ struct FeedView: View {
           feed.addItem(of: kind)
         }
         .padding([.top, .bottom], 8)
+
         List(feed.items, id: \.date) { item in
           FeedCell(feedItem: item)
         }
