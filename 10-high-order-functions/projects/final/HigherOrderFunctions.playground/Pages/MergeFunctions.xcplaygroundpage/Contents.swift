@@ -23,7 +23,7 @@ func mergeFunctions<A, B, C>(
   _ g: @escaping (B) -> () -> C
 ) -> (A) -> C {
   return { a in
-    var fValue = f(a)()
+    let fValue = f(a)()
     return g(fValue)()
   }
 }

@@ -1,4 +1,4 @@
-/// Sample code from the book, Advanced Swift, published at raywenderlich.com, Copyright 2020.
+/// Sample code from the book, Advanced Swift, published at raywenderlich.com, Copyright 2021.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.raywenderlich.com/books/advanced-swift
 
@@ -33,8 +33,8 @@ extension CoreDataOptimizationViewController {
     cellForRowAt indexPath: IndexPath
   ) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "CountryCell",
-            for: indexPath) as? CountryCell else {
+      withIdentifier: "CountryCell",
+      for: indexPath) as? CountryCell else {
       return UITableViewCell()
     }
     cell.country = countries[indexPath.row]

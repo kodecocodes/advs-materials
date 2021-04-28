@@ -1,4 +1,4 @@
-/// Sample code from the book, Advanced Swift, published at raywenderlich.com, Copyright 2020.
+/// Sample code from the book, Advanced Swift, published at raywenderlich.com, Copyright 2021.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.raywenderlich.com/books/advanced-swift
 
@@ -15,8 +15,8 @@ let originalString = "H̾e͜l͘l͘ò W͛òr̠l͘d͐!"
 originalString.contains("Hello")
 
 let foldedString = originalString.folding(
-    options: [.caseInsensitive, .diacriticInsensitive],
-    locale: .current)
+  options: [.caseInsensitive, .diacriticInsensitive],
+  locale: .current)
 foldedString.contains("hello")
 
 originalString.localizedStandardContains("hello")

@@ -3,12 +3,12 @@
 import Foundation
 
 func someOperation(_ p1: Int, _ p2: String) {
-  var str = "number is: \(p1), and String is: \(p2)"
+  let str = "number is: \(p1), and String is: \(p2)"
   print(str)
 }
 
 func aHigherOrderFunction(_ operation: (Int) -> ()) {
-  var numbers = 1...10
+  let numbers = 1...10
   numbers.forEach(operation)
 }
 

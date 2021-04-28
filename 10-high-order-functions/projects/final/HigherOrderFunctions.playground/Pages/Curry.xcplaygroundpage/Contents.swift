@@ -3,7 +3,7 @@
 import Foundation
 
 func aHigherOrderFunction(_ operation: (Int) -> ()) {
-  var numbers = 1...10
+  let numbers = 1...10
   numbers.forEach(operation)
 }
 

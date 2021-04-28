@@ -1,4 +1,4 @@
-/// Sample code from the book, Advanced Swift, published at raywenderlich.com, Copyright 2020.
+/// Sample code from the book, Advanced Swift, published at raywenderlich.com, Copyright 2021.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.raywenderlich.com/books/advanced-swift
 
@@ -26,8 +26,8 @@ let zero = 0.0
 MemoryLayout.size(ofValue: zero) // returns 8
 
 struct IntBoolStruct {
-    var intValue: Int
-    var boolValue: Bool
+  var intValue: Int
+  var boolValue: Bool
 }
 
 MemoryLayout<IntBoolStruct>.size       // returns 9
@@ -35,8 +35,8 @@ MemoryLayout<IntBoolStruct>.alignment  // returns 8
 MemoryLayout<IntBoolStruct>.stride     // returns 16
 
 struct BoolIntStruct {
-    var boolValue: Bool
-    var intValue: Int
+  var boolValue: Bool
+  var intValue: Int
 }
 
 MemoryLayout<BoolIntStruct>.size       // returns 16
@@ -50,8 +50,8 @@ MemoryLayout<EmptyStruct>.alignment  // returns 1
 MemoryLayout<EmptyStruct>.stride     // returns 1
 
 class IntBoolClass {
-    var intValue: Int = 0
-    var boolValue: Bool = false
+  var intValue: Int = 0
+  var boolValue: Bool = false
 }
 
 MemoryLayout<IntBoolClass>.size       // returns 8
@@ -59,8 +59,8 @@ MemoryLayout<IntBoolClass>.alignment  // returns 8
 MemoryLayout<IntBoolClass>.stride     // returns 8
 
 class BoolIntClass {
-    var boolValue: Bool = false
-    var intValue: Int = 0
+  var boolValue: Bool = false
+  var intValue: Int = 0
 }
 
 MemoryLayout<BoolIntClass>.size       // returns 8

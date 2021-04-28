@@ -36,7 +36,7 @@ import Combine
 class InformationWriter {
   var writeOperation: (String) -> Void
   var cancellable: AnyCancellable?
-  
+
   init(writer: WriterProtocol) {
     writeOperation = { [weak writer] info in
       writer?.writeText(info)
@@ -71,9 +71,9 @@ class InformationWriter {
       .decode(type: Joke.self, decoder: JSONDecoder())
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { print("Received completion: \($0).") },
-            receiveValue: { joke in
-                completion(joke.joke)
-            })
+        receiveValue: { joke in
+        completion(joke.joke)
+        })
   }
 }
 
