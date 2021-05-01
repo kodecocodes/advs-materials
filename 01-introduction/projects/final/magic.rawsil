@@ -12,8 +12,8 @@ class Magic {
 
 @_inheritsConvenienceInitializers final class SpecialMagic : Magic {
   override final func number() -> Int
-  @objc deinit
   override init()
+  @objc deinit
 }
 
 @_hasStorage @_hasInitialValue public var number: Int { get set }
@@ -118,6 +118,37 @@ bb0(%0 : @guaranteed $SpecialMagic):
   return %5 : $Int                                // id: %6
 } // end sil function '$s5magic12SpecialMagicC6numberSiyF'
 
+// SpecialMagic.__allocating_init()
+sil hidden [exact_self_class] [ossa] @$s5magic12SpecialMagicCACycfC : $@convention(method) (@thick SpecialMagic.Type) -> @owned SpecialMagic {
+// %0 "$metatype"
+bb0(%0 : $@thick SpecialMagic.Type):
+  %1 = alloc_ref $SpecialMagic                    // user: %3
+  // function_ref SpecialMagic.init()
+  %2 = function_ref @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic // user: %3
+  %3 = apply %2(%1) : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic // user: %4
+  return %3 : $SpecialMagic                       // id: %4
+} // end sil function '$s5magic12SpecialMagicCACycfC'
+
+// SpecialMagic.init()
+sil hidden [ossa] @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic {
+// %0 "self"                                      // user: %4
+bb0(%0 : @owned $SpecialMagic):
+  %1 = alloc_box ${ var SpecialMagic }, let, name "self" // user: %2
+  %2 = mark_uninitialized [derivedself] %1 : ${ var SpecialMagic } // users: %12, %3
+  %3 = project_box %2 : ${ var SpecialMagic }, 0  // users: %11, %10, %5, %4
+  store %0 to [init] %3 : $*SpecialMagic          // id: %4
+  %5 = load [take] %3 : $*SpecialMagic            // user: %6
+  %6 = upcast %5 : $SpecialMagic to $Magic        // user: %8
+  // function_ref Magic.init()
+  %7 = function_ref @$s5magic5MagicCACycfc : $@convention(method) (@owned Magic) -> @owned Magic // user: %8
+  %8 = apply %7(%6) : $@convention(method) (@owned Magic) -> @owned Magic // user: %9
+  %9 = unchecked_ref_cast %8 : $Magic to $SpecialMagic // user: %10
+  store %9 to [init] %3 : $*SpecialMagic          // id: %10
+  %11 = load [copy] %3 : $*SpecialMagic           // user: %13
+  destroy_value %2 : ${ var SpecialMagic }        // id: %12
+  return %11 : $SpecialMagic                      // id: %13
+} // end sil function '$s5magic12SpecialMagicCACycfc'
+
 // SpecialMagic.deinit
 sil hidden [ossa] @$s5magic12SpecialMagicCfd : $@convention(method) (@guaranteed SpecialMagic) -> @owned Builtin.NativeObject {
 // %0 "self"                                      // users: %2, %1
@@ -149,37 +180,6 @@ bb0(%0 : @owned $SpecialMagic):
   %9 = tuple ()                                   // user: %10
   return %9 : $()                                 // id: %10
 } // end sil function '$s5magic12SpecialMagicCfD'
-
-// SpecialMagic.__allocating_init()
-sil hidden [exact_self_class] [ossa] @$s5magic12SpecialMagicCACycfC : $@convention(method) (@thick SpecialMagic.Type) -> @owned SpecialMagic {
-// %0 "$metatype"
-bb0(%0 : $@thick SpecialMagic.Type):
-  %1 = alloc_ref $SpecialMagic                    // user: %3
-  // function_ref SpecialMagic.init()
-  %2 = function_ref @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic // user: %3
-  %3 = apply %2(%1) : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic // user: %4
-  return %3 : $SpecialMagic                       // id: %4
-} // end sil function '$s5magic12SpecialMagicCACycfC'
-
-// SpecialMagic.init()
-sil hidden [ossa] @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic {
-// %0 "self"                                      // user: %4
-bb0(%0 : @owned $SpecialMagic):
-  %1 = alloc_box ${ var SpecialMagic }, let, name "self" // user: %2
-  %2 = mark_uninitialized [derivedself] %1 : ${ var SpecialMagic } // users: %12, %3
-  %3 = project_box %2 : ${ var SpecialMagic }, 0  // users: %11, %10, %5, %4
-  store %0 to [init] %3 : $*SpecialMagic          // id: %4
-  %5 = load [take] %3 : $*SpecialMagic            // user: %6
-  %6 = upcast %5 : $SpecialMagic to $Magic        // user: %8
-  // function_ref Magic.init()
-  %7 = function_ref @$s5magic5MagicCACycfc : $@convention(method) (@owned Magic) -> @owned Magic // user: %8
-  %8 = apply %7(%6) : $@convention(method) (@owned Magic) -> @owned Magic // user: %9
-  %9 = unchecked_ref_cast %8 : $Magic to $SpecialMagic // user: %10
-  store %9 to [init] %3 : $*SpecialMagic          // id: %10
-  %11 = load [copy] %3 : $*SpecialMagic           // user: %13
-  destroy_value %2 : ${ var SpecialMagic }        // id: %12
-  return %11 : $SpecialMagic                      // id: %13
-} // end sil function '$s5magic12SpecialMagicCACycfc'
 
 // magicTest()
 sil hidden [ossa] @$s5magic0A4TestyyF : $@convention(thin) () -> () {
