@@ -12,8 +12,8 @@ class Magic {
 
 @_inheritsConvenienceInitializers final class SpecialMagic : Magic {
   override final func number() -> Int
-  @objc deinit
   override init()
+  @objc deinit
 }
 
 @_hasStorage @_hasInitialValue public var number: Int { get set }
@@ -91,6 +91,21 @@ bb0(%0 : $SpecialMagic):
   return %2 : $Int                                // id: %3
 } // end sil function '$s5magic12SpecialMagicC6numberSiyF'
 
+// SpecialMagic.__allocating_init()
+sil hidden [exact_self_class] @$s5magic12SpecialMagicCACycfC : $@convention(method) (@thick SpecialMagic.Type) -> @owned SpecialMagic {
+// %0 "$metatype"
+bb0(%0 : $@thick SpecialMagic.Type):
+  %1 = alloc_ref $SpecialMagic                    // user: %2
+  return %1 : $SpecialMagic                       // id: %2
+} // end sil function '$s5magic12SpecialMagicCACycfC'
+
+// SpecialMagic.init()
+sil hidden @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic {
+// %0 "self"                                      // user: %1
+bb0(%0 : $SpecialMagic):
+  return %0 : $SpecialMagic                       // id: %1
+} // end sil function '$s5magic12SpecialMagicCACycfc'
+
 // SpecialMagic.deinit
 sil hidden @$s5magic12SpecialMagicCfd : $@convention(method) (@guaranteed SpecialMagic) -> @owned Builtin.NativeObject {
 // %0 "self"                                      // users: %2, %1
@@ -110,21 +125,6 @@ bb0(%0 : $SpecialMagic):
   %4 = tuple ()                                   // user: %5
   return %4 : $()                                 // id: %5
 } // end sil function '$s5magic12SpecialMagicCfD'
-
-// SpecialMagic.__allocating_init()
-sil hidden [exact_self_class] @$s5magic12SpecialMagicCACycfC : $@convention(method) (@thick SpecialMagic.Type) -> @owned SpecialMagic {
-// %0 "$metatype"
-bb0(%0 : $@thick SpecialMagic.Type):
-  %1 = alloc_ref $SpecialMagic                    // user: %2
-  return %1 : $SpecialMagic                       // id: %2
-} // end sil function '$s5magic12SpecialMagicCACycfC'
-
-// SpecialMagic.init()
-sil hidden @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic {
-// %0 "self"                                      // user: %1
-bb0(%0 : $SpecialMagic):
-  return %0 : $SpecialMagic                       // id: %1
-} // end sil function '$s5magic12SpecialMagicCACycfc'
 
 // magicTest()
 sil hidden @$s5magic0A4TestyyF : $@convention(thin) () -> () {
