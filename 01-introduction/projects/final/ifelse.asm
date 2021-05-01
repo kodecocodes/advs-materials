@@ -1,5 +1,5 @@
 	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 11, 0	sdk_version 11, 1
+	.build_version macos, 11, 0	sdk_version 11, 3
 	.globl	_main
 	.p2align	4, 0x90
 _main:
@@ -131,6 +131,6 @@ ___swift_reflection_version:
 	.section	__DATA,__objc_imageinfo,regular,no_dead_strip
 L_OBJC_IMAGE_INFO:
 	.long	0
-	.long	84084544
+	.long	84150080
 
 .subsections_via_symbols
