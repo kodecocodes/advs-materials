@@ -10,11 +10,11 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		5D044ABE24F6DEAC00AB4908 /* PanZoomScaleTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D044ABD24F6DEAC00AB4908 /* PanZoomScaleTracker.swift */; };
+		5D233621263D43490047D1FD /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D233620263D43490047D1FD /* ComplexModule */; };
+		5D233623263D43490047D1FD /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5D233622263D43490047D1FD /* RealModule */; };
+		5D233625263D43490047D1FD /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 5D233624263D43490047D1FD /* Numerics */; };
 		5D2B1CC9250FE2C4000F6403 /* CGFloatConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B1CC8250FE2C4000F6403 /* CGFloatConvertable.swift */; };
 		5DC5C60D2565CD2C0045EDDB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5DC5C60C2565CD2C0045EDDB /* LICENSE */; };
-		5DC5C6112565CDA90045EDDB /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC5C6102565CDA90045EDDB /* ComplexModule */; };
-		5DC5C6132565CDA90045EDDB /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC5C6122565CDA90045EDDB /* RealModule */; };
-		5DC5C6152565CDA90045EDDB /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = 5DC5C6142565CDA90045EDDB /* Numerics */; };
 		5DCDC80224F6416000A1B2B5 /* StrokeLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F724F6416000A1B2B5 /* StrokeLegend.swift */; };
 		5DCDC80324F6416000A1B2B5 /* MandelbrotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F824F6416000A1B2B5 /* MandelbrotApp.swift */; };
 		5DCDC80424F6416000A1B2B5 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCDC7F924F6416000A1B2B5 /* Bitmap.swift */; };
@@ -54,9 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DC5C6132565CDA90045EDDB /* RealModule in Frameworks */,
-				5DC5C6152565CDA90045EDDB /* Numerics in Frameworks */,
-				5DC5C6112565CDA90045EDDB /* ComplexModule in Frameworks */,
+				5D233623263D43490047D1FD /* RealModule in Frameworks */,
+				5D233625263D43490047D1FD /* Numerics in Frameworks */,
+				5D233621263D43490047D1FD /* ComplexModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,9 +131,9 @@
 			);
 			name = Mandelbrot;
 			packageProductDependencies = (
-				5DC5C6102565CDA90045EDDB /* ComplexModule */,
-				5DC5C6122565CDA90045EDDB /* RealModule */,
-				5DC5C6142565CDA90045EDDB /* Numerics */,
+				5D233620263D43490047D1FD /* ComplexModule */,
+				5D233622263D43490047D1FD /* RealModule */,
+				5D233624263D43490047D1FD /* Numerics */,
 			);
 			productName = MyRWTutorial;
 			productReference = 18D775BD22AD944300AE281E /* Mandelbrot.app */;
@@ -165,7 +165,7 @@
 			);
 			mainGroup = 18D775B422AD944300AE281E;
 			packageReferences = (
-				5DC5C60F2565CDA90045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */,
+				5D23361F263D43490047D1FD /* XCRemoteSwiftPackageReference "swift-numerics" */,
 			);
 			productRefGroup = 18D775BE22AD944300AE281E /* Products */;
 			projectDirPath = "";
@@ -415,30 +415,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5DC5C60F2565CDA90045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+		5D23361F263D43490047D1FD /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "http://github.com/apple/swift-numerics";
+			repositoryURL = "https://github.com/apple/swift-numerics";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.8;
+				minimumVersion = 0.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5DC5C6102565CDA90045EDDB /* ComplexModule */ = {
+		5D233620263D43490047D1FD /* ComplexModule */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DC5C60F2565CDA90045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			package = 5D23361F263D43490047D1FD /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = ComplexModule;
 		};
-		5DC5C6122565CDA90045EDDB /* RealModule */ = {
+		5D233622263D43490047D1FD /* RealModule */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DC5C60F2565CDA90045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			package = 5D23361F263D43490047D1FD /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = RealModule;
 		};
-		5DC5C6142565CDA90045EDDB /* Numerics */ = {
+		5D233624263D43490047D1FD /* Numerics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5DC5C60F2565CDA90045EDDB /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			package = 5D23361F263D43490047D1FD /* XCRemoteSwiftPackageReference "swift-numerics" */;
 			productName = Numerics;
 		};
 /* End XCSwiftPackageProductDependency section */
