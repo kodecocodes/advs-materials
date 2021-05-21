@@ -1,7 +1,7 @@
-/// Sample code from the book, Advanced Swift,
+/// Sample code from the book, Expert Swift,
 /// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/advanced-swift
+/// Visit https://www.raywenderlich.com/books/expert-swift
 
 import Foundation
 
@@ -23,20 +23,20 @@ extension Book: ExpressibleByStringLiteral {
 }
 
 var book: Book = """
-Advanced Swift by: Ehab Amer,Libranner Santos,\
+Expert Swift by: Ehab Amer,Libranner Santos,\
 Ray Fix,Shai Mishali
 """
 
-book.name // Advanced Swift
+book.name // Expert Swift
 book.authors.first // Ehab Amer
 
 var invalidBook: Book = """
-Book name is `Advanced Swift`. \
+Book name is `Expert Swift`. \
 Written by: Ehab Amer, Libranner Santos, \
 Ray Fix & Shai Mishali
 """
 
-invalidBook.name // Book name is `Advanced Swift`. Written
+invalidBook.name // Book name is `Expert Swift`. Written
 invalidBook.authors.last // Ray Fix & Shai Mishali
 
 
@@ -75,7 +75,7 @@ extension Book: ExpressibleByStringInterpolation {
 var interpolatedBook: Book = """
 The awesome team of authors \(authors:
   ["Ehab Amer", "Libranner Santos", "Ray Fix", "Shai Mishali"]) \
-wrote this great book. Titled \("Advanced Swift")
+wrote this great book. Titled \("Expert Swift")
 """
 
 interpolatedBook.name
@@ -88,7 +88,7 @@ extension Book.StringInterpolation {
 
 
 var interpolatedBookWithFPE: Book = """
-\("Advanced Swift") had an amazing \
+\("Expert Swift") had an amazing \
 final pass editor \(fpe: "Eli Ganim")
 """
 
@@ -104,7 +104,7 @@ extension Book.StringInterpolation {
 
 var interpolatedBook2: Book = """
 \(anAuthor: "Ray Fix") & \(anAuthor: "Shai Mishali") \
-were authors in \(bookName: "Advanced Swift")
+were authors in \(bookName: "Expert Swift")
 """
 
 extension String.StringInterpolation {

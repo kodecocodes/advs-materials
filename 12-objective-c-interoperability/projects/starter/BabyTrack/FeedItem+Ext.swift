@@ -1,10 +1,24 @@
-/// Sample code from the book, Advanced Swift,
+/// Sample code from the book, Expert Swift,
 /// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/advanced-swift
+/// Visit https://www.raywenderlich.com/books/expert-swift
 
 import UIKit
 import BabyKit
+import Combine
+
+extension Publisher {
+  func sample(every count: Int) -> AnyPublisher<Output, Failure> {
+    scan((0, nil as Output?)) { args, value in
+      (args.0 + 1, value)
+    }
+    .compactMap { idx, value in
+      guard idx % count == 0 else { return nil }
+      return value
+    }
+    .eraseToAnyPublisher()
+  }
+}
 
 extension FeedItem {
   var attachmentURL: URL? {

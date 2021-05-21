@@ -86,7 +86,7 @@ struct EncryptedCodableString: ExpressibleByStringLiteral,
 
   // 1
   let key = SymmetricKey(data:
-                         "Advanced Swift !".data(using: .utf8)!)
+                         "Expert Swift !!!".data(using: .utf8)!)
 
   // 2
   init(stringLiteral value: StringLiteralType) {
@@ -113,8 +113,8 @@ struct EncryptedCodableString: ExpressibleByStringLiteral,
 
 //: [Next](@next)
 
-/// Sample code from the book, Advanced Swift,
+/// Sample code from the book, Expert Swift,
 /// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/advanced-swift
+/// Visit https://www.raywenderlich.com/books/expert-swift
 
