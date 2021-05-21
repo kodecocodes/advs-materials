@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/ehabamer/Raywenderlich/Books/Advanced-Swift/advs-materials/14-instrumentation/projects/starter/SlowBuilder/SlowBuilder.xcodeproj">
+      location = "self:/Users/ehabamer/Raywenderlich/Books/expert-swift/advs-materials/14-instrumentation/projects/starter/SlowBuilder/SlowBuilder.xcodeproj">
    </FileRef>
 </Workspace>
