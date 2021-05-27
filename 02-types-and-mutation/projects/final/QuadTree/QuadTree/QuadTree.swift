@@ -77,6 +77,10 @@ struct QuadTree {
     }
 
     func insert(_ point: CGPoint) -> Bool {
+      guard region.contains(point) else {
+        return false
+      }
+      
       if let quad = quad {
         return quad.northWest.insert(point) ||
           quad.northEast.insert(point) ||
@@ -89,9 +93,6 @@ struct QuadTree {
           return insert(point)
         }
         else {
-          guard region.contains(point) else {
-            return false
-          }
           points.append(point)
           return true
         }
