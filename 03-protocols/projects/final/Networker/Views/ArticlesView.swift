@@ -11,9 +11,9 @@ struct ArticlesView: View {
   var body: some View {
     List(viewModel.articles) { article in
       ArticleRow(article: article, image: .constant(nil))
-        .onAppear { viewModel.fetchImage(for: article) }
+        .task { await viewModel.fetchImage(for: article) }
     }
-    .onAppear(perform: viewModel.fetchArticles)
+    .task(viewModel.fetchArticles)
   }
 }
 

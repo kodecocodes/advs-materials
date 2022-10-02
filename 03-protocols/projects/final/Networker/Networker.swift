@@ -4,52 +4,35 @@
 /// Visit https://www.raywenderlich.com/books/expert-swift
 
 import Foundation
-import Combine
 
 protocol NetworkingDelegate: AnyObject {
   func headers(for networking: Networking) -> [String: String]
-
-  func networking(
-    _ networking: Networking,
-    transformPublisher: AnyPublisher<Data, URLError>
-  ) -> AnyPublisher<Data, URLError>
+  func networking(_ networking: Networking, didReceive response: URLResponse)
 }
 
 extension NetworkingDelegate {
   func headers(for networking: Networking) -> [String: String] {
     [:]
   }
+  func networking(_ networking: Networking, didReceive response: URLResponse) {
 
-  func networking(
-    _ networking: Networking,
-    transformPublisher publisher: AnyPublisher<Data, URLError>
-  ) -> AnyPublisher<Data, URLError> {
-    publisher
   }
 }
 
 protocol Networking {
+  func fetch(_ request: Request) async throws -> Data
   var delegate: NetworkingDelegate? { get set }
-  func fetch(_ request: Request) -> AnyPublisher<Data, URLError>
 }
 
 class Networker: Networking {
   weak var delegate: NetworkingDelegate?
-
-  func fetch(_ request: Request) -> AnyPublisher<Data, URLError> {
+  
+  func fetch(_ request: Request) async throws -> Data {
     var urlRequest = URLRequest(url: request.url)
     urlRequest.httpMethod = request.method.rawValue
     urlRequest.allHTTPHeaderFields = delegate?.headers(for: self)
-
-    let publisher = URLSession.shared
-      .dataTaskPublisher(for: urlRequest)
-      .compactMap { $0.data }
-      .eraseToAnyPublisher()
-
-    if let delegate = delegate {
-      return delegate.networking(self, transformPublisher: publisher)
-    } else {
-      return publisher
-    }
+    let (data, response) = try await URLSession.shared.data(for: urlRequest)
+    delegate?.networking(self, didReceive: response)
+    return data
   }
 }

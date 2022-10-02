@@ -10,7 +10,6 @@ import Combine
 class ArticlesViewModelTests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var viewModel: ArticlesViewModel!
-  var cancellables: Set<AnyCancellable> = []
 
   override func setUpWithError() throws {
     try super.setUpWithError()

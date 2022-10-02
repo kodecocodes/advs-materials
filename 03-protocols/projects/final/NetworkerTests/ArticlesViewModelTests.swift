@@ -9,57 +9,37 @@ import Combine
 
 class MockNetworker: Networking {
   weak var delegate: NetworkingDelegate?
-
-  func fetch(_ request: Request) -> AnyPublisher<Data, URLError> {
-    let outputData: Data
-
+  
+  func fetch(_ request: Request) async throws -> Data {
     switch request {
     case is ArticleRequest:
       let article = Article(
         name: "Article Name",
         description: "Article Description",
-        // swiftlint:disable:next force_unwrapping
         image: URL(string: "https://image.com")!,
         id: "Article ID",
         downloadedImage: nil)
       let articleData = ArticleData(article: article)
       let articles = Articles(data: [articleData])
-      // swiftlint:disable:next force_try
-      outputData = try! JSONEncoder().encode(articles)
+      return try! JSONEncoder().encode(articles)
     default:
-      outputData = Data()
+      return Data()
     }
-
-    return Just<Data>(outputData)
-      .setFailureType(to: URLError.self)
-      .eraseToAnyPublisher()
   }
 }
 
 class ArticlesViewModelTests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var viewModel: ArticlesViewModel!
-  var cancellables: Set<AnyCancellable> = []
 
   override func setUpWithError() throws {
     try super.setUpWithError()
     viewModel = ArticlesViewModel(networker: MockNetworker())
   }
 
-  func testArticlesAreFetchedCorrectly() {
+  func testArticlesAreFetchedCorrectly() async {
     XCTAssert(viewModel.articles.isEmpty)
-    let expectation = XCTestExpectation(description: "Article received")
-
-    viewModel.$articles.sink { articles in
-      guard !articles.isEmpty else {
-        return
-      }
-      XCTAssertEqual(articles[0].id, "Article ID")
-      expectation.fulfill()
-    }
-    .store(in: &cancellables)
-
-    viewModel.fetchArticles()
-    wait(for: [expectation], timeout: 0.1)
+    await viewModel.fetchArticles()
+    XCTAssertEqual(viewModel.articles[0].id, "Article ID")
   }
 }

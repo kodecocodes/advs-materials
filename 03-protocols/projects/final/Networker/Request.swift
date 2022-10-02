@@ -17,3 +17,18 @@ protocol Request {
   var url: URL { get }
   var method: HTTPMethod { get }
 }
+
+struct ArticleRequest: Request {
+  var url: URL {
+    let baseURL = "https://api.raywenderlich.com/api"
+    let path = "/contents?filter[content_types][]=article"
+    return URL(string: baseURL + path)!
+  }
+
+  var method: HTTPMethod { .get }
+}
+
+struct ImageRequest: Request {
+  let url: URL
+  var method: HTTPMethod { .get }
+}
