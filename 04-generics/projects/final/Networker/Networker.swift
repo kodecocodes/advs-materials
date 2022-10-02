@@ -2,80 +2,48 @@
 /// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.raywenderlich.com/books/expert-swift
-
 import Foundation
-import Combine
-import UIKit
 
-protocol NetworkingDelegate: AnyObject {
-  func headers(for networking: Networking) -> [String: String]
-
-  func networking(
-    _ networking: Networking,
-    transformPublisher: AnyPublisher<Data, URLError>
-  ) -> AnyPublisher<Data, URLError>
-}
-
-extension NetworkingDelegate {
-  func headers(for networking: Networking) -> [String: String] {
-    [:]
+class Networker {
+  func fetch<T: Decodable>(url: URL) async throws -> T {
+    let (data, _) = try await URLSession.shared.data(from: url)
+    let decoder = JSONDecoder()
+    let decoded = try decoder.decode(T.self, from: data)
+    return decoded
   }
 
-  func networking(
-    _ networking: Networking,
-    transformPublisher publisher: AnyPublisher<Data, URLError>
-  ) -> AnyPublisher<Data, URLError> {
-    publisher
-  }
-}
-
-protocol Networking {
-  var delegate: NetworkingDelegate? { get set }
-  func fetch<T: Decodable>(url: URL) -> AnyPublisher<T, Error>
-  func fetch<R: Request>(_ request: R) -> AnyPublisher<R.Output, Error>
-  func fetchWithCache<R: Request>(_ request: R) -> AnyPublisher<R.Output, Error> where R.Output == UIImage
-}
-
-class Networker: Networking {
-  weak var delegate: NetworkingDelegate?
-  private let imageCache = RequestCache<UIImage>()
-
-  func fetchWithCache<R: Request>(_ request: R) -> AnyPublisher<R.Output, Error> where R.Output == UIImage {
-    if let response = imageCache.response(for: request) {
-      return Just<R.Output>(response)
-        .setFailureType(to: Error.self)
-        .eraseToAnyPublisher()
-    }
-
-    // swiftlint:disable:next trailing_closure
-    return fetch(request)
-      .handleEvents(receiveOutput: {
-        self.imageCache.saveResponse($0, for: request)
-      })
-      .eraseToAnyPublisher()
+  func upload(_ value: some Encodable, to url: URL) async throws -> URLResponse {
+    let encoder = JSONEncoder()
+    let json = try encoder.encode(value)
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.httpBody = json
+    let (_, response) = try await URLSession.shared.data(for: request)
+    return response
   }
 
-  func fetch<T: Decodable>(url: URL) -> AnyPublisher<T, Error> {
-    URLSession.shared.dataTaskPublisher(for: url)
-      .map { $0.data }
-      .decode(type: T.self, decoder: JSONDecoder())
-      .eraseToAnyPublisher()
-  }
-
-  func fetch<R: Request>(_ request: R) -> AnyPublisher<R.Output, Error> {
+  func fetch<R: Request>(_ request: R) async throws -> R.Output {
     var urlRequest = URLRequest(url: request.url)
     urlRequest.httpMethod = request.method.rawValue
-    urlRequest.allHTTPHeaderFields = delegate?.headers(for: self)
+    let (data, _) = try await URLSession.shared
+      .data(for: urlRequest)
+    let decoded = try request.decode(data)
+    return decoded
+  }
 
-    var publisher = URLSession.shared
-      .dataTaskPublisher(for: urlRequest)
-      .compactMap { $0.data }
-      .eraseToAnyPublisher()
+  func download(_ request: some Request<Data>) async throws -> URL {
+    var urlRequest = URLRequest(url: request.url)
+    urlRequest.httpMethod = request.method.rawValue
+    let (url, _) = try await URLSession.shared
+      .download(for: urlRequest)
+    return url
+  }
 
-    if let delegate = delegate {
-      publisher = delegate.networking(self, transformPublisher: publisher)
+  func fetchAll<Output>(_ requests: [any Request<Output>]) async throws -> [Output] {
+    var outputs: [Output] = []
+    for request in requests {
+      outputs.append(try await fetch(request))
     }
-
-    return publisher.tryMap(request.decode).eraseToAnyPublisher()
+    return outputs
   }
 }

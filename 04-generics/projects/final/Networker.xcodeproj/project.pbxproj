@@ -14,14 +14,11 @@
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
 		F541D8872599CA8700110F28 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8862599CA8700110F28 /* Article.swift */; };
 		F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8932599D1EA00110F28 /* ArticleRow.swift */; };
-		F547ECCD25A49410009AD92B /* RequestCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F547ECCC25A49410009AD92B /* RequestCache.swift */; };
 		F550BB162599D46600720FAD /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB152599D46600720FAD /* ArticlesView.swift */; };
 		F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB192599D5AB00720FAD /* ArticlesViewModel.swift */; };
+		F5B3FA8428C7806700E894BA /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3FA8328C7806700E894BA /* UserDefaults.swift */; };
 		F5B80A82259C69F60081C076 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A81259C69F60081C076 /* Request.swift */; };
-		F5B80A86259C6AC70081C076 /* ArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A85259C6AC70081C076 /* ArticleRequest.swift */; };
 		F5B80A8A259C6BEC0081C076 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A89259C6BEC0081C076 /* Networker.swift */; };
-		F5B80A8E259C70FD0081C076 /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A8D259C70FC0081C076 /* ImageRequest.swift */; };
-		F5B80A92259C74CE0081C076 /* URLSessionDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A91259C74CE0081C076 /* URLSessionDecodable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,14 +31,11 @@
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F541D8862599CA8700110F28 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		F541D8932599D1EA00110F28 /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
-		F547ECCC25A49410009AD92B /* RequestCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCache.swift; sourceTree = "<group>"; };
 		F550BB152599D46600720FAD /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
 		F550BB192599D5AB00720FAD /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
+		F5B3FA8328C7806700E894BA /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F5B80A81259C69F60081C076 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		F5B80A85259C6AC70081C076 /* ArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRequest.swift; sourceTree = "<group>"; };
 		F5B80A89259C6BEC0081C076 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
-		F5B80A8D259C70FC0081C076 /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
-		F5B80A91259C74CE0081C076 /* URLSessionDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDecodable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,11 +78,8 @@
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				F541D8862599CA8700110F28 /* Article.swift */,
 				F5B80A81259C69F60081C076 /* Request.swift */,
-				F5B80A85259C6AC70081C076 /* ArticleRequest.swift */,
 				F5B80A89259C6BEC0081C076 /* Networker.swift */,
-				F5B80A8D259C70FC0081C076 /* ImageRequest.swift */,
-				F5B80A91259C74CE0081C076 /* URLSessionDecodable.swift */,
-				F547ECCC25A49410009AD92B /* RequestCache.swift */,
+				F5B3FA8328C7806700E894BA /* UserDefaults.swift */,
 			);
 			path = Networker;
 			sourceTree = "<group>";
@@ -225,14 +216,11 @@
 				F550BB162599D46600720FAD /* ArticlesView.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
 				F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */,
-				F5B80A86259C6AC70081C076 /* ArticleRequest.swift in Sources */,
 				F5B80A8A259C6BEC0081C076 /* Networker.swift in Sources */,
-				F547ECCD25A49410009AD92B /* RequestCache.swift in Sources */,
+				F5B3FA8428C7806700E894BA /* UserDefaults.swift in Sources */,
 				F5B80A82259C69F60081C076 /* Request.swift in Sources */,
-				F5B80A92259C74CE0081C076 /* URLSessionDecodable.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */,
-				F5B80A8E259C70FD0081C076 /* ImageRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -356,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -375,11 +363,12 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Networker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Networker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -395,11 +384,12 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Networker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Networker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -4,6 +4,7 @@
 /// Visit https://www.raywenderlich.com/books/expert-swift
 
 import Foundation
+import UIKit
 
 enum HTTPMethod: String {
   case get = "GET"
@@ -11,9 +12,4 @@ enum HTTPMethod: String {
   case put = "PUT"
   case update = "UPDATE"
   case delete = "DELETE"
-}
-
-protocol Request {
-  var url: URL { get }
-  var method: HTTPMethod { get }
 }

@@ -4,6 +4,7 @@
 /// Visit https://www.raywenderlich.com/books/expert-swift
 
 import Foundation
+import UIKit
 
 enum HTTPMethod: String {
   case get = "GET"
@@ -13,11 +14,31 @@ enum HTTPMethod: String {
   case delete = "DELETE"
 }
 
-protocol Request {
+protocol Request<Output> {
+  associatedtype Output
+
   var url: URL { get }
   var method: HTTPMethod { get }
-  associatedtype Output
   func decode(_ data: Data) throws -> Output
+}
+
+struct ArticleRequest: Request {
+  typealias Output = [Article]
+
+  var url: URL {
+    let baseURL = "https://api.raywenderlich.com/api"
+    let path = "/contents?filter[content_types][]=article"
+    return URL(string: baseURL + path)!
+  }
+
+  var method: HTTPMethod { .get }
+
+  func decode(_ data: Data) throws -> [Article] {
+    let decoder = JSONDecoder()
+    let articlesCollection = try decoder
+      .decode(Articles.self, from: data)
+    return articlesCollection.data.map { $0.article }
+  }
 }
 
 extension Request where Output: Decodable {
@@ -27,7 +48,17 @@ extension Request where Output: Decodable {
   }
 }
 
-struct AnyRequest: Hashable {
+struct ImageRequest: Request {
   let url: URL
-  let method: HTTPMethod
+  var method: HTTPMethod { .get }
+
+  func decode(_ data: Data) throws -> UIImage {
+    if let image = UIImage(data: data) {
+      return image
+    } else {
+      throw DecodingError.typeMismatch(UIImage.self, DecodingError.Context(
+        codingPath: [],
+        debugDescription: "No image in data."))
+    }
+  }
 }

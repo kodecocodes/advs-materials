@@ -6,8 +6,19 @@
 import SwiftUI
 
 struct ContentView: View {
+  @ObservedObject private var viewModel = ArticlesViewModel(networker: Networker())
+
   var body: some View {
-    ArticlesView()
+    TabView {
+      ArticlesView(articles: viewModel.articles, readLaterAction: viewModel.readLater)
+        .tabItem {
+          Label("All Articles", systemImage: "list.bullet")
+        }
+      ArticlesView(articles: viewModel.savedArticles)
+        .tabItem {
+          Label("Read Later", systemImage: "checklist")
+        }
+    }.task(viewModel.fetchArticles)
   }
 }
 

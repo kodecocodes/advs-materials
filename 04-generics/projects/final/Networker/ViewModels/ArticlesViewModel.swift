@@ -7,51 +7,46 @@ import SwiftUI
 import Combine
 
 class ArticlesViewModel: ObservableObject {
-  private var networker: Networking
-  @Published private(set) var articles: [Article] = []
-  private var cancellables: Set<AnyCancellable> = []
+  let networker: Networker
 
-  init(networker: Networking) {
+  init(networker: Networker) {
     self.networker = networker
-    self.networker.delegate = self
   }
 
-  func fetchArticles() {
-    let request = ArticleRequest()
-    networker.fetch(request)
-      .replaceError(with: [])
-      .assign(to: \.articles, on: self)
-      .store(in: &cancellables)
-  }
+  @Published private(set) var articles: [Article] = []
+  @Published private(set) var savedArticles: [Article] = []
 
-  func fetchImage(for article: Article) {
-    guard article.downloadedImage == nil,
-      let articleIndex = articles.firstIndex(where: { $0.id == article.id })
-    else {
-      print("Already downloaded")
-      return
+  @Sendable @MainActor
+  func fetchArticles() async {
+    let url = URL(string: "https://api.raywenderlich.com/api/contents?filter[content_types][]=article")!
+    do {
+      let articlesData: Articles = try await networker.fetch(url: url)
+      articles = articlesData.data.map { $0.article }
+      let imageRequests = articles.map {
+        ImageRequest(url: $0.image)
+      }
+      let images = try await networker.fetchAll(imageRequests)
+      for i in 0..<articles.count {
+        articles[i].downloadedImage = images[i]
+      }
+    } catch {
+      articles = []
     }
-
-    let request = ImageRequest(url: article.image)
-    networker.fetch(request)
-      .sink(receiveCompletion: { completion in
-        switch completion {
-        case .failure(let error): print(error)
-        default: break
-        }
-      }, receiveValue: { [weak self] image in
-        self?.articles[articleIndex].downloadedImage = image
-      })
-      .store(in: &cancellables)
-  }
-}
-
-extension ArticlesViewModel: NetworkingDelegate {
-  func headers(for networking: Networking) -> [String: String] {
-    return ["Content-Type": "application/vnd.api+json; charset=utf-8"]
+    reloadSavedArticles()
   }
 
-  func networking(_ networking: Networking, transformPublisher publisher: AnyPublisher<Data, URLError>) -> AnyPublisher<Data, URLError> {
-    publisher.receive(on: DispatchQueue.main).eraseToAnyPublisher()
+  func readLater(_ article: Article) {
+    var savedArticles = UserDefaultsValue<[String]>(key: "savedArticles")
+    savedArticles.append(article.id)
+    reloadSavedArticles()
+  }
+
+  func reloadSavedArticles() {
+    let storedSavedArticles = UserDefaultsValue<[String]>(key: "savedArticles")
+    if let savedArticleIDs = storedSavedArticles.value {
+      savedArticles = articles.filter {
+        savedArticleIDs.contains($0.id)
+      }
+    }
   }
 }
