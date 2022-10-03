@@ -1,5 +1,5 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at raywenderlich.com, Copyright (c) 2022 Razeware LLC.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.raywenderlich.com/books/expert-swift
 
@@ -13,11 +13,11 @@ struct Book {
 
 extension Book: ExpressibleByStringLiteral {
   public init(stringLiteral value: String) {
-    let parts = value.components(separatedBy: " by: ")
+    let parts = value.split(separator: " by: ")
     let bookName = parts.first ?? ""
-    let authorNames = parts.last?.components(separatedBy: ",") ?? []
-    self.name = bookName
-    self.authors = authorNames
+    let authorNames = parts.last?.split(separator: ",") ?? []
+    self.name = String(bookName)
+    self.authors = authorNames.map { String($0) }
     self.fpe = ""
   }
 }

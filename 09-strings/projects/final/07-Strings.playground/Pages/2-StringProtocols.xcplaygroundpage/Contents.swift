@@ -1,5 +1,5 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at raywenderlich.com, Copyright (c) 2022 Razeware LLC.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.raywenderlich.com/books/expert-swift
 
@@ -10,7 +10,7 @@ var sampleString = "Lo͞r̉em̗ ȉp͇sum̗ do͞l͙o͞r̉ sȉt̕ a͌m̗et̕"
 sampleString.last
 let reversedString = String(sampleString.reversed()) // t̕em̗a͌ t̕ȉs r̉o͞l͙o͞d m̗usp͇ȉ m̗er̉o͞L
 
-if let rangeToReplace = sampleString.range(of: "Lo͞r̉em̗") {
+if let rangeToReplace = sampleString.firstRange(of: "Lo͞r̉em̗") {
   sampleString.replaceSubrange(rangeToReplace, with: "Lorem") // Lorem ȉp͇sum̗ do͞l͙o͞r̉ sȉt̕ a͌m̗et̕
 }
 
