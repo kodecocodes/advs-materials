@@ -140,3 +140,87 @@ let repeatedCaptures = Regex {
 for match in repetition.matches(of: repeatedCaptures) {
   print(match.output)
 }
+
+print("------------------")
+
+let expressionWithNamedCapture = /[a-z]+(?<digits>\d+)[a-z]+/
+
+for match in testingString4.matches(of: expressionWithNamedCapture) {
+  print(match.output.digits)
+}
+
+print("------------------")
+
+let digitsReference = Reference(Substring.self)
+let regexWithNamedCapture = Regex {
+  OneOrMore {
+    "a"..."z"
+  }
+    Capture(as: digitsReference) {
+    OneOrMore {
+      CharacterClass.digit
+    }
+  }
+  OneOrMore {
+    "a"..."z"
+  }
+}
+
+for match in testingString4.matches(of: regexWithNamedCapture) {
+  print(match[digitsReference])
+}
+
+print("------------------")
+
+let transformedDigitsReference = Reference(Int.self)
+let regexWithNamedTransformedCapture = Regex {
+  OneOrMore {
+    "a"..."z"
+  }
+    TryCapture(as: transformedDigitsReference) {
+        OneOrMore {
+            CharacterClass.digit
+        }
+    } transform: {
+        Int(String($0)) ?? -1
+    }
+  OneOrMore {
+    "a"..."z"
+  }
+}
+
+var sum = 0
+for match in testingString4.matches(of: regexWithNamedTransformedCapture) {
+  sum += match[transformedDigitsReference]
+}
+print(sum)
+
+print("------------------")
+
+let fieldData = "BookName: Expert Swift"
+
+let wholeMatchRegex = Regex {
+  Capture {
+    OneOrMore { CharacterClass.word }
+  }
+  /\:\s/
+  Capture {
+    OneOrMore { CharacterClass.any }
+  }
+}
+
+if let match = fieldData.wholeMatch(of: wholeMatchRegex) {
+  print("FieldName  = " + match.output.1)
+  print("FieldValue = " + match.output.2)
+}
+
+print("------------------")
+
+let invalidFieldData = "The Book name is Expert Swift"
+
+if let match = invalidFieldData.wholeMatch(of: wholeMatchRegex) {
+  print("FieldName  = " + match.output.1)
+  print("FieldValue = " + match.output.2)
+} else {
+  print("It doesn't match")
+}
