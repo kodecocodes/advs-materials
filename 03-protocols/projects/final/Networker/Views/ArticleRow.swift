@@ -1,13 +1,14 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2022 Kodeco LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 
 struct ArticleRow: View {
   let article: Article
-  let image: Binding<UIImage?>
+//  let image: Binding<UIImage?>
+//  let image: UIImage?
 
   var body: some View {
     HStack(alignment: .top) {
@@ -41,7 +42,7 @@ struct ArticleRow_Previews: PreviewProvider {
 
   static var previews: some View {
     Group {
-      ArticleRow(article: article, image: .constant(nil))
+      ArticleRow(article: article)
         .previewLayout(.fixed(width: 300, height: 100))
     }
   }

@@ -12,6 +12,7 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		843DD478291560C80006A532 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD477291560C80006A532 /* Request.swift */; };
 		F541D8872599CA8700110F28 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8862599CA8700110F28 /* Article.swift */; };
 		F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8932599D1EA00110F28 /* ArticleRow.swift */; };
 		F550BB162599D46600720FAD /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB152599D46600720FAD /* ArticlesView.swift */; };
@@ -37,6 +38,7 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		843DD477291560C80006A532 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		F541D8862599CA8700110F28 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		F541D8932599D1EA00110F28 /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		F550BB152599D46600720FAD /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				F541D88E2599D1C400110F28 /* Views */,
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				F541D8862599CA8700110F28 /* Article.swift */,
+				843DD477291560C80006A532 /* Request.swift */,
 			);
 			path = Networker;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				F550BB162599D46600720FAD /* ArticlesView.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
 				F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */,
+				843DD478291560C80006A532 /* Request.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */,
 			);
@@ -472,7 +476,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.NetworkerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.NetworkerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -492,7 +496,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.NetworkerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.NetworkerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

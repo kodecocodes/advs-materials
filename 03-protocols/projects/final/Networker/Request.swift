@@ -1,7 +1,7 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2022 Kodeco LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import Foundation
 
@@ -20,7 +20,7 @@ protocol Request {
 
 struct ArticleRequest: Request {
   var url: URL {
-    let baseURL = "https://api.raywenderlich.com/api"
+    let baseURL = "https://api.kodeco.com/api"
     let path = "/contents?filter[content_types][]=article"
     return URL(string: baseURL + path)!
   }
