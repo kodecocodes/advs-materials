@@ -1,6 +1,9 @@
 let testingString1 = "abcdef ABCDEF 12345 abc123 ABC 123 123ABC 123abc abcABC"
 let lettersAndNumbers = /[a-z]+[0-9]+/
 
+let lettersAndNumbersString = "/[a-z]+[0-9]+"
+let lettersAndNumbersFromString = try? Regex(lettersAndNumbersString)
+
 for match in testingString1.matches(of: lettersAndNumbers) {
   print(String(match.output))
 }
@@ -92,7 +95,26 @@ let newFixedRegex = Regex {
   Anchor.wordBoundary
 }
 
+let newFixedRegexMixed = Regex {
+  Anchor.wordBoundary
+  ChoiceOf {
+    Regex {
+        /[a-z]+/
+        /[0-9]*/
+    }
+    Regex {
+        /[a-z]*/
+        /[0-9]+/
+    }
+  }
+  Anchor.wordBoundary
+}
+
 for match in testingString1.matches(of: newFixedRegex) {
+  print(String(match.output))
+}
+
+for match in testingString1.matches(of: newFixedRegexMixed) {
   print(String(match.output))
 }
 
@@ -113,10 +135,10 @@ let regexWithCapture = Regex {
   }
 }
 
-let testingString4 = "welc0me to chap7er 10 in exp3r7 sw1ft. " +
+let testingString3 = "welc0me to chap7er 10 in exp3r7 sw1ft. " +
   "th1s chap7er c0vers regu1ar express1ons and regexbu1lder"
 
-for match in testingString4.matches(of: regexWithCapture) {
+for match in testingString3.matches(of: regexWithCapture) {
   print(match.output)
 }
 
@@ -145,7 +167,7 @@ print("------------------")
 
 let expressionWithNamedCapture = /[a-z]+(?<digits>\d+)[a-z]+/
 
-for match in testingString4.matches(of: expressionWithNamedCapture) {
+for match in testingString3.matches(of: expressionWithNamedCapture) {
   print(match.output.digits)
 }
 
@@ -166,7 +188,7 @@ let regexWithNamedCapture = Regex {
   }
 }
 
-for match in testingString4.matches(of: regexWithNamedCapture) {
+for match in testingString3.matches(of: regexWithNamedCapture) {
   print(match[digitsReference])
 }
 
@@ -190,7 +212,7 @@ let regexWithNamedTransformedCapture = Regex {
 }
 
 var sum = 0
-for match in testingString4.matches(of: regexWithNamedTransformedCapture) {
+for match in testingString3.matches(of: regexWithNamedTransformedCapture) {
   sum += match[transformedDigitsReference]
 }
 print(sum)
