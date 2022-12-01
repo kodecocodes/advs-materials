@@ -114,9 +114,9 @@ extension UITableViewDelegate where Self: UIViewController {
   }
 }
 
-extension Array where Element: Greetable {
-  var allGreetings: String {
-    self.map { $0.greet() }.joined()
+extension Array where Element: ImmutableLocalizable {
+  func changed(to language: Language) -> Self {
+    return self.map { $0.changed(to: language) }
   }
 }
 
