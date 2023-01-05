@@ -38,18 +38,19 @@ bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>
 
 // Magic.number()
 sil hidden @$s5magic5MagicC6numberSiyF : $@convention(method) (@guaranteed Magic) -> Int {
-// %0 "self"
+// %0 "self"                                      // user: %1
 bb0(%0 : $Magic):
-  %1 = integer_literal $Builtin.Int64, 0          // user: %2
-  %2 = struct $Int (%1 : $Builtin.Int64)          // user: %3
-  return %2 : $Int                                // id: %3
+  debug_value %0 : $Magic, let, name "self", argno 1, implicit // id: %1
+  %2 = integer_literal $Builtin.Int64, 0          // user: %3
+  %3 = struct $Int (%2 : $Builtin.Int64)          // user: %4
+  return %3 : $Int                                // id: %4
 } // end sil function '$s5magic5MagicC6numberSiyF'
 
 // Magic.deinit
 sil hidden @$s5magic5MagicCfd : $@convention(method) (@guaranteed Magic) -> @owned Builtin.NativeObject {
 // %0 "self"                                      // users: %2, %1
 bb0(%0 : $Magic):
-  debug_value %0 : $Magic, let, name "self", argno 1 // id: %1
+  debug_value %0 : $Magic, let, name "self", argno 1, implicit // id: %1
   %2 = unchecked_ref_cast %0 : $Magic to $Builtin.NativeObject // user: %3
   return %2 : $Builtin.NativeObject               // id: %3
 } // end sil function '$s5magic5MagicCfd'
@@ -58,8 +59,8 @@ bb0(%0 : $Magic):
 sil hidden @$s5magic5MagicCfD : $@convention(method) (@owned Magic) -> () {
 // %0 "self"                                      // users: %3, %2, %1
 bb0(%0 : $Magic):
-  debug_value %0 : $Magic, let, name "self", argno 1 // id: %1
-  debug_value %0 : $Magic, let, name "self", argno 1 // id: %2
+  debug_value %0 : $Magic, let, name "self", argno 1, implicit // id: %1
+  debug_value %0 : $Magic, let, name "self", argno 1, implicit // id: %2
   dealloc_ref %0 : $Magic                         // id: %3
   %4 = tuple ()                                   // user: %5
   return %4 : $()                                 // id: %5
@@ -70,7 +71,7 @@ sil hidden [exact_self_class] @$s5magic5MagicCACycfC : $@convention(method) (@th
 // %0 "$metatype"
 bb0(%0 : $@thick Magic.Type):
   %1 = alloc_ref $Magic                           // users: %3, %2
-  debug_value %1 : $Magic, let, name "self", argno 1 // id: %2
+  debug_value %1 : $Magic, let, name "self", argno 1, implicit // id: %2
   return %1 : $Magic                              // id: %3
 } // end sil function '$s5magic5MagicCACycfC'
 
@@ -78,39 +79,44 @@ bb0(%0 : $@thick Magic.Type):
 sil hidden @$s5magic5MagicCACycfc : $@convention(method) (@owned Magic) -> @owned Magic {
 // %0 "self"                                      // users: %2, %1
 bb0(%0 : $Magic):
-  debug_value %0 : $Magic, let, name "self", argno 1 // id: %1
+  debug_value %0 : $Magic, let, name "self", argno 1, implicit // id: %1
   return %0 : $Magic                              // id: %2
 } // end sil function '$s5magic5MagicCACycfc'
 
 // SpecialMagic.number()
 sil hidden @$s5magic12SpecialMagicC6numberSiyF : $@convention(method) (@guaranteed SpecialMagic) -> Int {
-// %0 "self"
+// %0 "self"                                      // user: %1
 bb0(%0 : $SpecialMagic):
-  %1 = integer_literal $Builtin.Int64, 42         // user: %2
-  %2 = struct $Int (%1 : $Builtin.Int64)          // user: %3
-  return %2 : $Int                                // id: %3
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1, implicit // id: %1
+  %2 = integer_literal $Builtin.Int64, 42         // user: %3
+  %3 = struct $Int (%2 : $Builtin.Int64)          // user: %4
+  return %3 : $Int                                // id: %4
 } // end sil function '$s5magic12SpecialMagicC6numberSiyF'
 
 // SpecialMagic.__allocating_init()
 sil hidden [exact_self_class] @$s5magic12SpecialMagicCACycfC : $@convention(method) (@thick SpecialMagic.Type) -> @owned SpecialMagic {
 // %0 "$metatype"
 bb0(%0 : $@thick SpecialMagic.Type):
-  %1 = alloc_ref $SpecialMagic                    // user: %2
-  return %1 : $SpecialMagic                       // id: %2
+  %1 = alloc_ref $SpecialMagic                    // users: %4, %3, %2
+  debug_value %1 : $SpecialMagic, let, name "self", implicit // id: %2
+  debug_value %1 : $SpecialMagic, let, name "self", implicit // id: %3
+  return %1 : $SpecialMagic                       // id: %4
 } // end sil function '$s5magic12SpecialMagicCACycfC'
 
 // SpecialMagic.init()
 sil hidden @$s5magic12SpecialMagicCACycfc : $@convention(method) (@owned SpecialMagic) -> @owned SpecialMagic {
-// %0 "self"                                      // user: %1
+// %0 "self"                                      // users: %3, %2, %1
 bb0(%0 : $SpecialMagic):
-  return %0 : $SpecialMagic                       // id: %1
+  debug_value %0 : $SpecialMagic, let, name "self", implicit // id: %1
+  debug_value %0 : $SpecialMagic, let, name "self", implicit // id: %2
+  return %0 : $SpecialMagic                       // id: %3
 } // end sil function '$s5magic12SpecialMagicCACycfc'
 
 // SpecialMagic.deinit
 sil hidden @$s5magic12SpecialMagicCfd : $@convention(method) (@guaranteed SpecialMagic) -> @owned Builtin.NativeObject {
 // %0 "self"                                      // users: %2, %1
 bb0(%0 : $SpecialMagic):
-  debug_value %0 : $SpecialMagic, let, name "self", argno 1 // id: %1
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1, implicit // id: %1
   %2 = unchecked_ref_cast %0 : $SpecialMagic to $Builtin.NativeObject // user: %3
   return %2 : $Builtin.NativeObject               // id: %3
 } // end sil function '$s5magic12SpecialMagicCfd'
@@ -119,8 +125,8 @@ bb0(%0 : $SpecialMagic):
 sil hidden @$s5magic12SpecialMagicCfD : $@convention(method) (@owned SpecialMagic) -> () {
 // %0 "self"                                      // users: %3, %2, %1
 bb0(%0 : $SpecialMagic):
-  debug_value %0 : $SpecialMagic, let, name "self", argno 1 // id: %1
-  debug_value %0 : $SpecialMagic, let, name "self", argno 1 // id: %2
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1, implicit // id: %1
+  debug_value %0 : $SpecialMagic, let, name "self", argno 1, implicit // id: %2
   dealloc_ref %0 : $SpecialMagic                  // id: %3
   %4 = tuple ()                                   // user: %5
   return %4 : $()                                 // id: %5

@@ -1,7 +1,7 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at raywenderlich.com, Copyright (c) 2023 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 let numbers = [1, 2, 4, 10, -1, 2, -10]
 
@@ -18,18 +18,6 @@ example("functional") {
   print(total)
 }
 
-example("functional, early-exit") {
-  let total = numbers.reduce((accumulating: true, total: 0)) { (state, value) in
-    if state.accumulating && value >= 0 {
-      return (accumulating: true, state.total + value)
-    }
-    else {
-      return (accumulating: false, state.total)
-    }
-  }.total
-  print(total)
-}
-
 example("imperative, early-exit") {
   var total = 0
   for value in numbers {
@@ -40,14 +28,23 @@ example("imperative, early-exit") {
 }
 
 example("imperative, early-exit with just-in-time mutability") {
-  let total: Int = {
-    // same-old imperative code
+  func sumWhilePositive(_ numbers: [Int]) -> Int {
     var total = 0
     for value in numbers {
       guard value >= 0 else { break }
       total += value
     }
     return total
-  }()
+  }
+
+  let total = sumWhilePositive(numbers)
   print(total)
 }
+
+example("functional, early-exit") {
+  let total = numbers
+                .prefix { $0 >= 0 }
+                .reduce(0, +)
+  print(total)
+}
+
