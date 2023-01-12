@@ -1,21 +1,21 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at raywenderlich.com, Copyright (c) 2023 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 
 struct ContentView: View {
 
-  @StateObject var model = QuadTreeViewModel()
+  @StateObject var viewModel = QuadTreeViewModel()
 
   private var drag: some Gesture {
     DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged { gesture in
-      switch model.mode {
+      switch viewModel.mode {
       case .add:
-        model.insert(gesture.location)
+        viewModel.insert(gesture.location)
       case .find:
-        model.find(at: gesture.location, searchSize: 40)
+        viewModel.find(at: gesture.location, searchSize: 40)
       }
     }
   }
@@ -23,27 +23,27 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       VStack {
-        Picker("Mode", selection: $model.mode) {
+        Picker("Mode", selection: $viewModel.mode) {
           Text("Add Points").tag(Mode.add)
           Text("Find Points").tag(Mode.find)
         }
         .pickerStyle(SegmentedPickerStyle())
         .padding()
 
-        Text(model.info)
+        Text(viewModel.info)
 
-        QuadTreeView(model: model)
+        QuadTreeView(model: viewModel)
           .gesture(drag)
           .onPreferenceChange(SizeKey.self) { key in
-            model.windowSize = key
+            viewModel.windowSize = key
           }
       }.navigationTitle("QuadTree Demo")
       .toolbar {
         Button("Clear") {
-          model.clear()
+          viewModel.clear()
         }
       }
-    }
+    }.navigationViewStyle(.stack)
   }
 }
 

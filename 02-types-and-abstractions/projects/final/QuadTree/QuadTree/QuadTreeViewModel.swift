@@ -1,7 +1,7 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at raywenderlich.com, Copyright (c) 2023 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 
@@ -9,10 +9,17 @@ enum Mode {
   case add, find
 }
 
+@MainActor
 final class QuadTreeViewModel: ObservableObject {
   private var quadTree = QuadTree(region: CGRect(x: 0, y: 0, width: 1, height: 1))
   var windowSize: CGSize?
-  @Published var mode: Mode = .add
+  @Published var mode: Mode = .add {
+    didSet {
+      if mode == .add {
+        clearFindWindow()
+      }
+    }
+  }
   @Published var findWindow: CGRect?
   @Published var foundPoints: [CGPoint] = []
 
@@ -39,33 +46,34 @@ final class QuadTreeViewModel: ObservableObject {
   }
 
   func find(at point: CGPoint, searchSize: CGFloat) {
-    guard let size = windowSize else {
+    guard let windowSize else {
       return
     }
     let searchSize2: CGFloat = searchSize / 2
     findWindow = CGRect(x: point.x, y: point.y, width: 0, height: 0)
         .insetBy(dx: -searchSize2, dy: -searchSize2)
-    foundPoints = quadTree.find(in: CGRect(x: (point.x-searchSize2) / size.width,
-                                           y: (point.y-searchSize2) / size.height,
-                                           width: searchSize / size.width,
-                                           height: searchSize / size.height))
+    foundPoints = quadTree.find(in: CGRect(x: (point.x-searchSize2) / windowSize.width,
+                                           y: (point.y-searchSize2) / windowSize.height,
+                                           width: searchSize / windowSize.width,
+                                           height: searchSize / windowSize.height))
   }
 
   func insert(_ point: CGPoint) {
-    guard let size = windowSize else {
-      return
-    }
+    guard let windowSize else { return }
     objectWillChange.send()
-    let x = point.x / size.width
-    let y = point.y / size.height
+    let x = point.x / windowSize.width
+    let y = point.y / windowSize.height
     quadTree.insert(CGPoint(x: x, y: y))
   }
 
+  func clearFindWindow() {
+    findWindow = nil
+    foundPoints = []
+  }
+  
   func clear() {
     objectWillChange.send()
     quadTree = QuadTree(region: CGRect(x: 0, y: 0, width: 1, height: 1))
-    findWindow = nil
-    foundPoints = []
     mode = .add
   }
 }

@@ -1,13 +1,13 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at raywenderlich.com, Copyright (c) 2023 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import Foundation
 import CoreGraphics.CGBase // CGPoint
 
-struct QuadTree {
-  private final class Node {
+struct QuadTree: Sendable {
+  private final class Node: @unchecked Sendable {
     let maxItemCapacity = 4
     var region: CGRect
     var points: [CGPoint] = []
