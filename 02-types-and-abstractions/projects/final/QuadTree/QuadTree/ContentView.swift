@@ -10,14 +10,15 @@ struct ContentView: View {
   @StateObject var viewModel = QuadTreeViewModel()
 
   private var drag: some Gesture {
-    DragGesture(minimumDistance: 0, coordinateSpace: .local).onChanged { gesture in
-      switch viewModel.mode {
-      case .add:
-        viewModel.insert(gesture.location)
-      case .find:
-        viewModel.find(at: gesture.location, searchSize: 40)
+    DragGesture(minimumDistance: 0, coordinateSpace: .local)
+      .onChanged { gesture in
+        switch viewModel.mode {
+        case .add:
+          viewModel.insert(gesture.location)
+        case .find:
+          viewModel.find(at: gesture.location, searchSize: 40)
+        }
       }
-    }
   }
 
   var body: some View {
