@@ -15,7 +15,23 @@
 		5D7A960D26103F4700EF03C3 /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A960C26103F4700EF03C3 /* QuadTree.swift */; };
 		5D7A96102610401300EF03C3 /* QuadTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A960F2610401300EF03C3 /* QuadTreeViewModel.swift */; };
 		5D7A96132610407500EF03C3 /* QuadTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A96122610407500EF03C3 /* QuadTreeView.swift */; };
+		5D9C086F29722A2300736500 /* CollectionsBenchmark in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C086E29722A2300736500 /* CollectionsBenchmark */; };
+		5D9C087729722AD500736500 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9C087629722AD500736500 /* main.swift */; };
+		5D9C087D29722C9400736500 /* CollectionsBenchmark in Frameworks */ = {isa = PBXBuildFile; productRef = 5D9C087C29722C9400736500 /* CollectionsBenchmark */; };
+		5DD6844A29749D7C00EEA1EB /* QuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7A960C26103F4700EF03C3 /* QuadTree.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5D9C087229722AD500736500 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1839F4AF25190F2A00BB00F1 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
@@ -28,6 +44,8 @@
 		5D7A960C26103F4700EF03C3 /* QuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuadTree.swift; sourceTree = "<group>"; };
 		5D7A960F2610401300EF03C3 /* QuadTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadTreeViewModel.swift; sourceTree = "<group>"; };
 		5D7A96122610407500EF03C3 /* QuadTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuadTreeView.swift; sourceTree = "<group>"; };
+		5D9C087429722AD500736500 /* QuadTreeBenchmark */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = QuadTreeBenchmark; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D9C087629722AD500736500 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +53,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9C086F29722A2300736500 /* CollectionsBenchmark in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D9C087129722AD500736500 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D9C087D29722C9400736500 /* CollectionsBenchmark in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +72,9 @@
 			isa = PBXGroup;
 			children = (
 				18D775BF22AD944300AE281E /* QuadTree */,
+				5D9C087529722AD500736500 /* QuadTreeBenchmark */,
 				18D775BE22AD944300AE281E /* Products */,
+				5D9C087B29722C9400736500 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -55,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				18D775BD22AD944300AE281E /* QuadTree.app */,
+				5D9C087429722AD500736500 /* QuadTreeBenchmark */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +113,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5D9C087529722AD500736500 /* QuadTreeBenchmark */ = {
+			isa = PBXGroup;
+			children = (
+				5D9C087629722AD500736500 /* main.swift */,
+			);
+			path = QuadTreeBenchmark;
+			sourceTree = "<group>";
+		};
+		5D9C087B29722C9400736500 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -100,9 +145,33 @@
 			dependencies = (
 			);
 			name = QuadTree;
+			packageProductDependencies = (
+				5D9C086E29722A2300736500 /* CollectionsBenchmark */,
+			);
 			productName = MyRWTutorial;
 			productReference = 18D775BD22AD944300AE281E /* QuadTree.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5D9C087329722AD500736500 /* QuadTreeBenchmark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D9C087829722AD500736500 /* Build configuration list for PBXNativeTarget "QuadTreeBenchmark" */;
+			buildPhases = (
+				5D9C087029722AD500736500 /* Sources */,
+				5D9C087129722AD500736500 /* Frameworks */,
+				5D9C087229722AD500736500 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D9C087F29722CA100736500 /* PBXTargetDependency */,
+			);
+			name = QuadTreeBenchmark;
+			packageProductDependencies = (
+				5D9C087C29722C9400736500 /* CollectionsBenchmark */,
+			);
+			productName = QuadTreeBenchmark;
+			productReference = 5D9C087429722AD500736500 /* QuadTreeBenchmark */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,12 +179,15 @@
 		18D775B522AD944300AE281E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1200;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
 					18D775BC22AD944300AE281E = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					5D9C087329722AD500736500 = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -128,11 +200,15 @@
 				Base,
 			);
 			mainGroup = 18D775B422AD944300AE281E;
+			packageReferences = (
+				5D9C086D29722A2300736500 /* XCRemoteSwiftPackageReference "swift-collections-benchmark" */,
+			);
 			productRefGroup = 18D775BE22AD944300AE281E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				18D775BC22AD944300AE281E /* QuadTree */,
+				5D9C087329722AD500736500 /* QuadTreeBenchmark */,
 			);
 		};
 /* End PBXProject section */
@@ -185,7 +261,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5D9C087029722AD500736500 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5DD6844A29749D7C00EEA1EB /* QuadTree.swift in Sources */,
+				5D9C087729722AD500736500 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D9C087F29722CA100736500 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5D9C087E29722CA100736500 /* CollectionsBenchmark */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		18D775CF22AD944400AE281E /* Debug */ = {
@@ -346,6 +438,38 @@
 			};
 			name = Release;
 		};
+		5D9C087929722AD500736500 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = Y2JLK838WQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5D9C087A29722AD500736500 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = Y2JLK838WQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -367,7 +491,45 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5D9C087829722AD500736500 /* Build configuration list for PBXNativeTarget "QuadTreeBenchmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D9C087929722AD500736500 /* Debug */,
+				5D9C087A29722AD500736500 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D9C086D29722A2300736500 /* XCRemoteSwiftPackageReference "swift-collections-benchmark" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections-benchmark";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D9C086E29722A2300736500 /* CollectionsBenchmark */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D9C086D29722A2300736500 /* XCRemoteSwiftPackageReference "swift-collections-benchmark" */;
+			productName = CollectionsBenchmark;
+		};
+		5D9C087C29722C9400736500 /* CollectionsBenchmark */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D9C086D29722A2300736500 /* XCRemoteSwiftPackageReference "swift-collections-benchmark" */;
+			productName = CollectionsBenchmark;
+		};
+		5D9C087E29722CA100736500 /* CollectionsBenchmark */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D9C086D29722A2300736500 /* XCRemoteSwiftPackageReference "swift-collections-benchmark" */;
+			productName = CollectionsBenchmark;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18D775B522AD944300AE281E /* Project object */;
 }

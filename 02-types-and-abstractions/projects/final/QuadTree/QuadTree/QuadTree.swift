@@ -114,8 +114,11 @@ struct QuadTree: Sendable {
   private var root: Node
   private(set) var count = 0
 
-  init(region: CGRect) {
+  init(region: CGRect, points: [CGPoint] = []) {
     root = Node(region: region)
+    for point in points {
+      insert(point)
+    }
   }
 
   @discardableResult
