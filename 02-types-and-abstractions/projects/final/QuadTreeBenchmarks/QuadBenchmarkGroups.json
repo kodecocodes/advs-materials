@@ -1,0 +1,20 @@
+{
+  "kind": "group",
+  "title": "All results",
+  "directory": "Results",
+  "contents": [
+    { "kind": "chart",
+      "title": "QuadTree: finding points",
+      "tasks": [
+        "QuadTree find",
+        "Array<CGPoint> filter",
+      ] },
+    { "kind": "chart",
+      "title": "QuadTree: insert",
+      "tasks": [
+        "QuadTree insert",
+        "Array<CGPoint> append",
+        "Array<CGPoint> append (reserveCapacity)"
+      ] }
+  ]
+}
