@@ -1,22 +1,22 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2022 Kodeco LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 import Combine
 
-class ArticlesViewModel: ObservableObject {
+@MainActor
+@Observable class ArticlesViewModel {
   let networker: Networker
 
   init(networker: Networker) {
     self.networker = networker
   }
 
-  @Published private(set) var articles: [Article] = []
-  @Published private(set) var savedArticles: [Article] = []
+  private(set) var articles: [Article] = []
+  private(set) var savedArticles: [Article] = []
 
-  @Sendable @MainActor
   func fetchArticles() async {
   }
 
