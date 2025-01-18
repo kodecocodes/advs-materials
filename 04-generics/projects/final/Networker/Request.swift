@@ -1,5 +1,5 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2022 Kodeco LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.kodeco.com/books/expert-swift
 
@@ -22,11 +22,22 @@ protocol Request<Output> {
   func decode(_ data: Data) throws -> Output
 }
 
-struct ArticleRequest: Request {
-  typealias Output = [Article]
+extension Request where Output: Decodable {
+  func decode(_ data: Data) throws -> Output {
+    let decoder = JSONDecoder()
+    return try decoder.decode(Output.self, from: data)
+  }
+}
 
+extension Request where Output == Data {
+  func decode(_ data: Data) throws -> Output {
+    return data
+  }
+}
+
+struct ArticleRequest: Request {
   var url: URL {
-    let baseURL = "https://api.raywenderlich.com/api"
+    let baseURL = "https://api.kodeco.com/api"
     let path = "/contents?filter[content_types][]=article"
     return URL(string: baseURL + path)!
   }
@@ -41,13 +52,6 @@ struct ArticleRequest: Request {
   }
 }
 
-extension Request where Output: Decodable {
-  func decode(_ data: Data) throws -> Output {
-    let decoder = JSONDecoder()
-    return try decoder.decode(Output.self, from: data)
-  }
-}
-
 struct ImageRequest: Request {
   let url: URL
   var method: HTTPMethod { .get }
@@ -56,9 +60,11 @@ struct ImageRequest: Request {
     if let image = UIImage(data: data) {
       return image
     } else {
-      throw DecodingError.typeMismatch(UIImage.self, DecodingError.Context(
-        codingPath: [],
-        debugDescription: "No image in data."))
+      throw DecodingError.typeMismatch(
+        UIImage.self,
+        DecodingError.Context(
+          codingPath: [],
+          debugDescription: "No image in data."))
     }
   }
 }

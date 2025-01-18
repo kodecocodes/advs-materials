@@ -9,7 +9,7 @@ import UIKit
 struct Article: Identifiable {
   let name: String
   let description: String
-  let image: URL
+  let image: URL?
   let id: String
   var downloadedImage: UIImage?
 }

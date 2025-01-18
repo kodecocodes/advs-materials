@@ -1,5 +1,5 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2022 Kodeco LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.kodeco.com/books/expert-swift
 
@@ -35,8 +35,8 @@ struct ArticleRow_Previews: PreviewProvider {
   static let article = Article(
     name: "Protocols by Tutorials",
     description: "Learn all about protocols.",
-    // swiftlint:disable:next force_unwrapping
     image: URL(string: "https://google.com")!,
+    // swiftlint:disable:next force_unwrapping
     id: "0")
 
   static var previews: some View {

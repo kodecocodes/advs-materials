@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,9 +16,9 @@
 		F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8932599D1EA00110F28 /* ArticleRow.swift */; };
 		F550BB162599D46600720FAD /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB152599D46600720FAD /* ArticlesView.swift */; };
 		F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB192599D5AB00720FAD /* ArticlesViewModel.swift */; };
-		F5B3FA8428C7806700E894BA /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3FA8328C7806700E894BA /* UserDefaults.swift */; };
 		F5B80A82259C69F60081C076 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A81259C69F60081C076 /* Request.swift */; };
 		F5B80A8A259C6BEC0081C076 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A89259C6BEC0081C076 /* Networker.swift */; };
+		F5F0ABF02D3BE268001181CA /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0ABEF2D3BE264001181CA /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +33,9 @@
 		F541D8932599D1EA00110F28 /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
 		F550BB152599D46600720FAD /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
 		F550BB192599D5AB00720FAD /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
-		F5B3FA8328C7806700E894BA /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F5B80A81259C69F60081C076 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		F5B80A89259C6BEC0081C076 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		F5F0ABEF2D3BE264001181CA /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +79,7 @@
 				F541D8862599CA8700110F28 /* Article.swift */,
 				F5B80A81259C69F60081C076 /* Request.swift */,
 				F5B80A89259C6BEC0081C076 /* Networker.swift */,
-				F5B3FA8328C7806700E894BA /* UserDefaults.swift */,
+				F5F0ABEF2D3BE264001181CA /* UserDefaults.swift */,
 			);
 			path = Networker;
 			sourceTree = "<group>";
@@ -146,8 +146,9 @@
 		18D775B522AD944300AE281E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
 					18D775BC22AD944300AE281E = {
@@ -189,6 +190,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		181FE31D248EA6C900A180EA /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -217,7 +219,7 @@
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
 				F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */,
 				F5B80A8A259C6BEC0081C076 /* Networker.swift in Sources */,
-				F5B3FA8428C7806700E894BA /* UserDefaults.swift in Sources */,
+				F5F0ABF02D3BE268001181CA /* UserDefaults.swift in Sources */,
 				F5B80A82259C69F60081C076 /* Request.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */,
@@ -275,6 +277,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -296,6 +299,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -336,6 +340,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -350,6 +355,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -360,17 +366,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Networker/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 55C8REN3Y5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Networker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -381,17 +387,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Networker/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 55C8REN3Y5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Networker/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
