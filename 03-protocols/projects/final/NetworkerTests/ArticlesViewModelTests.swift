@@ -7,7 +7,7 @@ import XCTest
 import Combine
 @testable import Networker
 
-class MockNetworker: Networking {
+struct MockNetworker: Networking {
   weak var delegate: NetworkingDelegate?
   
   func fetch(_ request: Request) async throws -> Data {
@@ -28,13 +28,18 @@ class MockNetworker: Networking {
   }
 }
 
-class ArticlesViewModelTests: XCTestCase {
+@MainActor
+class ArticlesViewModelTests: XCTestCase, Sendable {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var viewModel: ArticlesViewModel!
 
-  override func setUpWithError() throws {
-    try super.setUpWithError()
+  override func setUp() async throws {
+    try await super.setUp()
     viewModel = ArticlesViewModel(networker: MockNetworker())
+  }
+
+  override func tearDown() async throws {
+    try await super.tearDown()
   }
 
   func testArticlesAreFetchedCorrectly() async {

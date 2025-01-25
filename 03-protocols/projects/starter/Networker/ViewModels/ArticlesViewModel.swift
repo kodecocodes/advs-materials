@@ -6,15 +6,14 @@
 import SwiftUI
 import Combine
 
-class ArticlesViewModel: ObservableObject {
-  @Published private(set) var articles: [Article] = []
+@MainActor
+@Observable class ArticlesViewModel {
+  private(set) var articles: [Article] = []
 
-  @Sendable @MainActor
   func fetchArticles() async {
     articles = [ArticleRow_Previews.article]
   }
 
-  @Sendable @MainActor
   func fetchImage(for article: Article) async {
   }
 }

@@ -7,12 +7,17 @@ import XCTest
 import Combine
 @testable import Networker
 
-class ArticlesViewModelTests: XCTestCase {
+@MainActor
+class ArticlesViewModelTests: XCTestCase, Sendable {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var viewModel: ArticlesViewModel!
 
-  override func setUpWithError() throws {
-    try super.setUpWithError()
+  override func setUp() async throws {
+    try await super.setUp()
+  }
+
+  override func tearDown() async throws {
+    try await super.tearDown()
   }
 
   func testArticlesAreFetchedCorrectly() async {

@@ -1,5 +1,5 @@
 /// Sample code from the book, Expert Swift,
-/// published at kodeco.com, Copyright (c) 2022 Kodeco LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
 /// Visit https://www.kodeco.com/books/expert-swift
 
@@ -9,7 +9,7 @@ import UIKit
 struct Article: Identifiable {
   let name: String
   let description: String
-  let image: URL
+  let image: URL?
   let id: String
   var downloadedImage: UIImage?
 }
