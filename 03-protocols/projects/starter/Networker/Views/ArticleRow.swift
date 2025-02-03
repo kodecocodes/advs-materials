@@ -31,18 +31,6 @@ struct ArticleRow: View {
   }
 }
 
-struct ArticleRow_Previews: PreviewProvider {
-  static let article = Article(
-    name: "Protocols by Tutorials",
-    description: "Learn all about protocols.",
-    // swiftlint:disable:next force_unwrapping
-    image: URL(string: "https://google.com")!,
-    id: "0")
-
-  static var previews: some View {
-    Group {
-      ArticleRow(article: article, image: .constant(nil))
-        .previewLayout(.fixed(width: 300, height: 100))
-    }
-  }
+#Preview {
+  ArticleRow(article: Article.preview, image: .constant(nil))
 }

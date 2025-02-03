@@ -34,3 +34,12 @@ struct ArticleData: Codable {
     case article = "attributes"
   }
 }
+
+extension Article {
+  static let preview = Article(
+    name: "Protocols by Tutorials",
+    description: "Learn all about protocols.",
+    // swiftlint:disable:next force_unwrapping
+    image: URL(string: "https://google.com")!,
+    id: "0")
+}

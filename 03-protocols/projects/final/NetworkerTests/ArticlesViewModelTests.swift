@@ -21,7 +21,7 @@ struct MockNetworker: Networking {
         downloadedImage: nil)
       let articleData = ArticleData(article: article)
       let articles = Articles(data: [articleData])
-      return try! JSONEncoder().encode(articles)
+      return try JSONEncoder().encode(articles)
     default:
       return Data()
     }

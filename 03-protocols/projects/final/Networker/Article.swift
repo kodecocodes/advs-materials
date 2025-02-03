@@ -35,6 +35,15 @@ struct ArticleData: Codable {
   }
 }
 
+extension Article {
+  static let preview = Article(
+    name: "Protocols by Tutorials",
+    description: "Learn all about protocols.",
+    // swiftlint:disable:next force_unwrapping
+    image: URL(string: "https://google.com")!,
+    id: "0")
+}
+
 extension Array: URLSessionDecodable where Element == Article {
   init(from output: Data) throws {
     let decoder = JSONDecoder()
