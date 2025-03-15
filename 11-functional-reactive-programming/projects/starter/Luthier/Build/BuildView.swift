@@ -43,7 +43,7 @@ struct BuildView: View {
         }
       }
       .animation(.none)
-      .pickerStyle(MenuPickerStyle())
+      .pickerStyle(.menu)
     }
     .frame(maxWidth: .infinity)
     .padding()
