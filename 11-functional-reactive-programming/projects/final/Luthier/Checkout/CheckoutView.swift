@@ -96,7 +96,7 @@ struct CheckoutView: View {
                   Text($0.symbol).tag($0)
                 }
               }
-              .pickerStyle(SegmentedPickerStyle())
+              .pickerStyle(.segmented)
             }
 
             TextRow("Base price",
