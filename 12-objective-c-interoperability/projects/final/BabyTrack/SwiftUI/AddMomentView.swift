@@ -44,22 +44,26 @@ struct AddMomentView: UIViewControllerRepresentable {
 
       result.itemProvider
         .loadObject(ofClass: UIImage.self) { [weak self] obj, err in
-        defer { self?.parent.isPresented = false }
+        
+        let image = obj as? UIImage
+        let error = err
 
-        guard let image = obj as? UIImage,
-              let parent = self?.parent else { return }
+        Task { @MainActor in
+          defer { self?.parent.isPresented = false }
 
-        if let err = err {
-          print("Error in picked image: \(err)")
-          return
-        }
+          guard let image,
+                let parent = self?.parent else { return }
 
-        guard let attachmentId = parent.feed.storeImage(image) else {
-          print("Failed storing, no UUID")
-          return
-        }
+          if let error {
+            print("Error in picked image: \(error)")
+            return
+          }
 
-        DispatchQueue.main.async {
+          guard let attachmentId = parent.feed.storeImage(image) else {
+            print("Failed storing, no UUID")
+            return
+          }
+
           parent.feed.addMoment(with: attachmentId)
         }
       }
