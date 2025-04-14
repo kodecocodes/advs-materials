@@ -20,10 +20,10 @@ final class LifeSimulation {
 
   /// Support automatic simulation halting.  This will catch a patterns with
   /// a periodicity of two.
-  var previous = RingMemory<Bitmap<Bool>>(capacity: 2)
+  @ObservationIgnored var previous = RingMemory<Bitmap<Bool>>(capacity: 2)
 
   /// Subscriptions set to keep the timer.
-  var subscriptions: Set<AnyCancellable> = []
+  @ObservationIgnored var subscriptions: Set<AnyCancellable> = []
 
   /// Define the colors for the cells.
   static var none = ColorPixel(red: 0xda, green: 0xda, blue: 0xda)
