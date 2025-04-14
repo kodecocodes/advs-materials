@@ -7,16 +7,16 @@ import SwiftUI
 import Combine
 
 /// Model object for Conway's Game of Life
-final class LifeSimulation: ObservableObject {
-
+@Observable
+final class LifeSimulation {
   /// Controls if the simulation is running.
-  @Published var isRunning: Bool = false
+  var isRunning: Bool = false
 
   /// Track the generation (tick) of the simulation.
-  @Published var generation = 0
+  var generation = 0
 
   /// The cellular automata being simulated.  Use a 2D Bitmap
-  @Published var cells: Bitmap<Bool>
+  var cells: Bitmap<Bool>
 
   /// Support automatic simulation halting.  This will catch a patterns with
   /// a periodicity of two.

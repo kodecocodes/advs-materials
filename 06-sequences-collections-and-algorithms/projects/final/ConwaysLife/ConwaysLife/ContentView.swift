@@ -7,7 +7,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-  @StateObject var simulation = LifeSimulation(size: 40)
+  var simulation = LifeSimulation(size: 40)
 
   var body: some View {
     NavigationView {
