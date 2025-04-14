@@ -3,37 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F4AF25190F2A00BB00F1 /* AppMain.swift */; };
-		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
-		5D2E995A2589C6AF00C5D1FA /* LifeSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E99552589C6AF00C5D1FA /* LifeSimulation.swift */; };
-		5D2E995B2589C6AF00C5D1FA /* Bitmap+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E99562589C6AF00C5D1FA /* Bitmap+Collection.swift */; };
-		5D2E995C2589C6AF00C5D1FA /* RingMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E99572589C6AF00C5D1FA /* RingMemory.swift */; };
-		5D2E995D2589C6AF00C5D1FA /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E99582589C6AF00C5D1FA /* Bitmap.swift */; };
-		5D2E995E2589C6AF00C5D1FA /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E99592589C6AF00C5D1FA /* LifeView.swift */; };
-		5D2E99622589CC1000C5D1FA /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E99612589CC1000C5D1FA /* LICENSE */; };
+		5D7DAFDD2DACA4EB000B1493 /* RingMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFDC2DACA4EB000B1493 /* RingMemory.swift */; };
+		5D7DAFDE2DACA4EB000B1493 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFD62DACA4EB000B1493 /* AppMain.swift */; };
+		5D7DAFDF2DACA4EB000B1493 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFD92DACA4EB000B1493 /* ContentView.swift */; };
+		5D7DAFE02DACA4EB000B1493 /* LifeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFDB2DACA4EB000B1493 /* LifeView.swift */; };
+		5D7DAFE12DACA4EB000B1493 /* Bitmap+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFD82DACA4EB000B1493 /* Bitmap+Collection.swift */; };
+		5D7DAFE22DACA4EB000B1493 /* LifeSimulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFDA2DACA4EB000B1493 /* LifeSimulation.swift */; };
+		5D7DAFE32DACA4EB000B1493 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7DAFD72DACA4EB000B1493 /* Bitmap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1839F4AF25190F2A00BB00F1 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		18D775BD22AD944300AE281E /* ConwaysLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConwaysLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D775C422AD944300AE281E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5D2E99552589C6AF00C5D1FA /* LifeSimulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeSimulation.swift; sourceTree = "<group>"; };
-		5D2E99562589C6AF00C5D1FA /* Bitmap+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bitmap+Collection.swift"; sourceTree = "<group>"; };
-		5D2E99572589C6AF00C5D1FA /* RingMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingMemory.swift; sourceTree = "<group>"; };
-		5D2E99582589C6AF00C5D1FA /* Bitmap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
-		5D2E99592589C6AF00C5D1FA /* LifeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
-		5D2E99612589CC1000C5D1FA /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		5D7DAFD62DACA4EB000B1493 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
+		5D7DAFD72DACA4EB000B1493 /* Bitmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bitmap.swift; sourceTree = "<group>"; };
+		5D7DAFD82DACA4EB000B1493 /* Bitmap+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bitmap+Collection.swift"; sourceTree = "<group>"; };
+		5D7DAFD92DACA4EB000B1493 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5D7DAFDA2DACA4EB000B1493 /* LifeSimulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSimulation.swift; sourceTree = "<group>"; };
+		5D7DAFDB2DACA4EB000B1493 /* LifeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeView.swift; sourceTree = "<group>"; };
+		5D7DAFDC2DACA4EB000B1493 /* RingMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingMemory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +48,6 @@
 		18D775B422AD944300AE281E = {
 			isa = PBXGroup;
 			children = (
-				5D2E99612589CC1000C5D1FA /* LICENSE */,
 				18D775BF22AD944300AE281E /* ConwaysLife */,
 				18D775BE22AD944300AE281E /* Products */,
 			);
@@ -69,13 +66,13 @@
 		18D775BF22AD944300AE281E /* ConwaysLife */ = {
 			isa = PBXGroup;
 			children = (
-				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
-				18D775C422AD944300AE281E /* ContentView.swift */,
-				5D2E99582589C6AF00C5D1FA /* Bitmap.swift */,
-				5D2E99562589C6AF00C5D1FA /* Bitmap+Collection.swift */,
-				5D2E99552589C6AF00C5D1FA /* LifeSimulation.swift */,
-				5D2E99592589C6AF00C5D1FA /* LifeView.swift */,
-				5D2E99572589C6AF00C5D1FA /* RingMemory.swift */,
+				5D7DAFD62DACA4EB000B1493 /* AppMain.swift */,
+				5D7DAFD72DACA4EB000B1493 /* Bitmap.swift */,
+				5D7DAFD82DACA4EB000B1493 /* Bitmap+Collection.swift */,
+				5D7DAFD92DACA4EB000B1493 /* ContentView.swift */,
+				5D7DAFDA2DACA4EB000B1493 /* LifeSimulation.swift */,
+				5D7DAFDB2DACA4EB000B1493 /* LifeView.swift */,
+				5D7DAFDC2DACA4EB000B1493 /* RingMemory.swift */,
 				18D775C622AD944400AE281E /* Assets.xcassets */,
 				18D775DA22AD963800AE281E /* LaunchScreen.storyboard */,
 				18D775CE22AD944400AE281E /* Info.plist */,
@@ -99,7 +96,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18D775D122AD944400AE281E /* Build configuration list for PBXNativeTarget "ConwaysLife" */;
 			buildPhases = (
-				181FE31D248EA6C900A180EA /* SwiftLint */,
 				18D775B922AD944300AE281E /* Sources */,
 				18D775BA22AD944300AE281E /* Frameworks */,
 				18D775BB22AD944300AE281E /* Resources */,
@@ -119,17 +115,18 @@
 		18D775B522AD944300AE281E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = "Ray Wenderlich";
+				LastUpgradeCheck = 1630;
+				ORGANIZATIONNAME = Kodeco;
 				TargetAttributes = {
 					18D775BC22AD944300AE281E = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1630;
 					};
 				};
 			};
 			buildConfigurationList = 18D775B822AD944300AE281E /* Build configuration list for PBXProject "ConwaysLife" */;
-			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -137,6 +134,7 @@
 				Base,
 			);
 			mainGroup = 18D775B422AD944300AE281E;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 18D775BE22AD944300AE281E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,46 +151,24 @@
 			files = (
 				18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */,
 				18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */,
-				5D2E99622589CC1000C5D1FA /* LICENSE in Resources */,
 				18D775C722AD944400AE281E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		181FE31D248EA6C900A180EA /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		18D775B922AD944300AE281E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
-				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
-				5D2E995C2589C6AF00C5D1FA /* RingMemory.swift in Sources */,
-				5D2E995B2589C6AF00C5D1FA /* Bitmap+Collection.swift in Sources */,
-				5D2E995E2589C6AF00C5D1FA /* LifeView.swift in Sources */,
-				5D2E995D2589C6AF00C5D1FA /* Bitmap.swift in Sources */,
-				5D2E995A2589C6AF00C5D1FA /* LifeSimulation.swift in Sources */,
+				5D7DAFDD2DACA4EB000B1493 /* RingMemory.swift in Sources */,
+				5D7DAFDE2DACA4EB000B1493 /* AppMain.swift in Sources */,
+				5D7DAFDF2DACA4EB000B1493 /* ContentView.swift in Sources */,
+				5D7DAFE02DACA4EB000B1493 /* LifeView.swift in Sources */,
+				5D7DAFE12DACA4EB000B1493 /* Bitmap+Collection.swift in Sources */,
+				5D7DAFE22DACA4EB000B1493 /* LifeSimulation.swift in Sources */,
+				5D7DAFE32DACA4EB000B1493 /* Bitmap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,8 +221,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y2JLK838WQ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -306,8 +284,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y2JLK838WQ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -330,17 +310,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "ConwaysLife/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ConwaysLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.ConwaysLife;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodeco.ConwaysLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -350,16 +332,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "ConwaysLife/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ConwaysLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.ConwaysLife;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kodeco.ConwaysLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

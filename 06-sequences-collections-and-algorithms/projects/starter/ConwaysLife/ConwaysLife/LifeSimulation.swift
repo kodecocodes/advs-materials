@@ -7,23 +7,23 @@ import SwiftUI
 import Combine
 
 /// Model object for Conway's Game of Life
-final class LifeSimulation: ObservableObject {
-
+@Observable
+final class LifeSimulation {
   /// Controls if the simulation is running.
-  @Published var isRunning: Bool = false
+  var isRunning: Bool = false
 
   /// Track the generation (tick) of the simulation.
-  @Published var generation = 0
+  var generation = 0
 
   /// The cellular automata being simulated.  Use a 2D Bitmap
-  @Published var cells: Bitmap<Bool>
+  var cells: Bitmap<Bool>
 
   /// Support automatic simulation halting.  This will catch a patterns with
   /// a periodicity of two.
-  var previous = RingMemory<Bitmap<Bool>>(capacity: 2)
+  @ObservationIgnored var previous = RingMemory<Bitmap<Bool>>(capacity: 2)
 
   /// Subscriptions set to keep the timer.
-  var subscriptions: Set<AnyCancellable> = []
+  @ObservationIgnored var subscriptions: Set<AnyCancellable> = []
 
   /// Define the colors for the cells.
   static var none = ColorPixel(red: 0xda, green: 0xda, blue: 0xda)
@@ -35,18 +35,13 @@ final class LifeSimulation: ObservableObject {
     isRunning = false
     cells = Bitmap(width: size, height: size, fill: false)
   }
-
-  /// Advance one generation in the simulation.
-  func evolve() {
-  }
-
-  /// Turn cells into a displayable, color bitmap.
+  
   var cellImage: UIImage {
-    UIImage()
+    UIImage() // TODO: implement
   }
-
-  /// Set positions to live cells.
+  
   func setLive(row: Int, column: Int) {
+    // TODO: implement
   }
 
   /// Clear all of the cells, stop the simulation and forget everything.

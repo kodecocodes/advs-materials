@@ -15,7 +15,7 @@ struct SizeKey: PreferenceKey {
 
 /// A view display the a simulation of a life simulation.
 struct LifeView: View {
-  @ObservedObject var model: LifeSimulation
+  var model: LifeSimulation
   @State private var imageSize: CGSize?
 
   /// Drag gesture that lets you draw cells
