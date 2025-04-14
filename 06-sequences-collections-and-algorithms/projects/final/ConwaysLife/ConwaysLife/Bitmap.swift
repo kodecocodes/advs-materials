@@ -103,7 +103,7 @@ extension Bitmap where Pixel: PixelProtocol {
 
   /// A CoreGraphics version of the image.
   var cgImage: CGImage? {
-    let data = Data(bytes: pixels, count: height * bytesPerRow) as CFData
+    let data = pixels.withUnsafeBytes { Data($0) as CFData }
 
     guard let provider = CGDataProvider(data: data) else {
       return nil
