@@ -21,7 +21,7 @@ extension Sequence {
 }
 print(words.countingDown())
 
-// 3. Create a method `primes(to value: Int) -> AnySequence<Int>` that creates a sequence of prime numbers upto but not including `value`.  Brute force prime finding is fine. For example, `primes(through: 32)` will return `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]`.
+// 3. Create a method `primes(to value: Int) -> AnySequence<Int>` that creates a sequence of prime numbers up to and possibly including `value`.  Brute force prime finding is fine. For example, `primes(through: 32)` will return `[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]`.
 
 func primes(through value: Int) -> AnySequence<Int> {
   AnySequence(
