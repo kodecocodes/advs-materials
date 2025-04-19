@@ -26,8 +26,8 @@ final class LifeSimulation {
   @ObservationIgnored var subscriptions: Set<AnyCancellable> = []
 
   /// Define the colors for the cells.
-  static var none = ColorPixel(red: 0xda, green: 0xda, blue: 0xda)
-  static var live = ColorPixel(red: 0x21, green: 0x96, blue: 0xf3)
+  static let none = ColorPixel(red: 0xda, green: 0xda, blue: 0xda)
+  static let live = ColorPixel(red: 0x21, green: 0x96, blue: 0xf3)
 
   /// Create a simulation for a given width and height of cells.  Begin with the simulation
   /// paused.

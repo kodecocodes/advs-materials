@@ -7,7 +7,7 @@ import SwiftUI
 
 /// PreferenceKey used to determine the size of the layed out image.
 struct SizeKey: PreferenceKey {
-  static var defaultValue: CGSize?
+  static let defaultValue: CGSize? = nil
   static func reduce(value: inout CGSize?, nextValue: () -> CGSize?) {
     value = value ?? nextValue()
   }
@@ -47,7 +47,9 @@ struct LifeView: View {
         })
         .gesture(drag)
         .onPreferenceChange(SizeKey.self) { key in
-          imageSize = key // report the size of the image layed out.
+          Task { @MainActor in
+            imageSize = key // report the size of the image layed out.
+          }
         }
       Spacer()
       HStack {
