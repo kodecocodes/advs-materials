@@ -104,7 +104,7 @@ let firstThreeLazy = FizzBuzz()
   .filter { $0.isMultiple(of: 2) }
   .prefix(3)
 
-print(Array(firstThreeLazy))
+Array(firstThreeLazy)
 
 // MARK: - Making an algorithm generic
 
