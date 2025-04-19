@@ -33,12 +33,12 @@ struct FizzBuzz: Collection {
 
 // Actually not needed because FizzBuzz is RandomAccessCollection and
 // the index is Strideable (Int).
-extension FizzBuzz: BidirectionalCollection {
-  func index(before i: Index) -> Index {
-    print("Calling \(#function) with \(i)")
-    return i - 1
-  }
-}
+//extension FizzBuzz: BidirectionalCollection {
+//  func index(before i: Index) -> Index {
+//    print("Calling \(#function) with \(i)")
+//    return i - 1
+//  }
+//}
 
 /*
 // MARK: -
