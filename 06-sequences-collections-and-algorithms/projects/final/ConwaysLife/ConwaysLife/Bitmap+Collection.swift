@@ -9,10 +9,10 @@ extension Bitmap: RandomAccessCollection, MutableCollection {
   /// where row is considered before column.
   @usableFromInline
   struct Index: Comparable {
+    var row, column: Int
     @inlinable static func < (lhs: Index, rhs: Index) -> Bool {
       (lhs.row, lhs.column) < (rhs.row, lhs.column)
     }
-    var row, column: Int
   }
 
   /// Start of the Bitmap is the upper-left corner.
