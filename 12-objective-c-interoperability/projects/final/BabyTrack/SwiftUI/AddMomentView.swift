@@ -1,7 +1,7 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 import PhotosUI
@@ -44,22 +44,26 @@ struct AddMomentView: UIViewControllerRepresentable {
 
       result.itemProvider
         .loadObject(ofClass: UIImage.self) { [weak self] obj, err in
-        defer { self?.parent.isPresented = false }
+        
+        let image = obj as? UIImage
+        let error = err
 
-        guard let image = obj as? UIImage,
-              let parent = self?.parent else { return }
+        Task { @MainActor in
+          defer { self?.parent.isPresented = false }
 
-        if let err = err {
-          print("Error in picked image: \(err)")
-          return
-        }
+          guard let image,
+                let parent = self?.parent else { return }
 
-        guard let attachmentId = parent.feed.storeImage(image) else {
-          print("Failed storing, no UUID")
-          return
-        }
+          if let error {
+            print("Error in picked image: \(error)")
+            return
+          }
 
-        DispatchQueue.main.async {
+          guard let attachmentId = parent.feed.storeImage(image) else {
+            print("Failed storing, no UUID")
+            return
+          }
+
           parent.feed.addMoment(with: attachmentId)
         }
       }

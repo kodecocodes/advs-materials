@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2025 Kodeco Inc.
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -34,11 +34,13 @@ import SwiftUI
 import Combine
 
 struct CheckoutView: View {
-  @ObservedObject var viewModel: CheckoutViewModel
+  @StateObject var viewModel: CheckoutViewModel
   @Environment(\.presentationMode) var presentationMode
 
   init(info: CheckoutInfo) {
-    self.viewModel = CheckoutViewModel(info: info)
+    _viewModel = StateObject(
+      wrappedValue: CheckoutViewModel(info: info)
+    )
   }
   
   var body: some View {
