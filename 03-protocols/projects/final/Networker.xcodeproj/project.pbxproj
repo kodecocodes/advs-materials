@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,15 +12,13 @@
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
 		18D775D822AD963800AE281E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D775DA22AD963800AE281E /* LaunchScreen.storyboard */; };
+		843DD478291560C80006A532 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD477291560C80006A532 /* Request.swift */; };
 		F541D8872599CA8700110F28 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8862599CA8700110F28 /* Article.swift */; };
 		F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F541D8932599D1EA00110F28 /* ArticleRow.swift */; };
+		F5490F0C2D44F0380025AA17 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5490F0B2D44F0360025AA17 /* Networker.swift */; };
+		F5490F0E2D44F2760025AA17 /* URLSessionDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5490F0D2D44F2710025AA17 /* URLSessionDecodable.swift */; };
 		F550BB162599D46600720FAD /* ArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB152599D46600720FAD /* ArticlesView.swift */; };
 		F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550BB192599D5AB00720FAD /* ArticlesViewModel.swift */; };
-		F5B80A82259C69F60081C076 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A81259C69F60081C076 /* Request.swift */; };
-		F5B80A86259C6AC70081C076 /* ArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A85259C6AC70081C076 /* ArticleRequest.swift */; };
-		F5B80A8A259C6BEC0081C076 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A89259C6BEC0081C076 /* Networker.swift */; };
-		F5B80A8E259C70FD0081C076 /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A8D259C70FC0081C076 /* ImageRequest.swift */; };
-		F5B80A92259C74CE0081C076 /* URLSessionDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B80A91259C74CE0081C076 /* URLSessionDecodable.swift */; };
 		F5E691FB259B2622003F67B0 /* ArticlesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E691FA259B2622003F67B0 /* ArticlesViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,15 +40,13 @@
 		18D775C922AD944400AE281E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18D775CE22AD944400AE281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18D775DE22AD96B400AE281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		843DD477291560C80006A532 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		F541D8862599CA8700110F28 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		F541D8932599D1EA00110F28 /* ArticleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRow.swift; sourceTree = "<group>"; };
+		F5490F0B2D44F0360025AA17 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		F5490F0D2D44F2710025AA17 /* URLSessionDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDecodable.swift; sourceTree = "<group>"; };
 		F550BB152599D46600720FAD /* ArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesView.swift; sourceTree = "<group>"; };
 		F550BB192599D5AB00720FAD /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
-		F5B80A81259C69F60081C076 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		F5B80A85259C6AC70081C076 /* ArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRequest.swift; sourceTree = "<group>"; };
-		F5B80A89259C6BEC0081C076 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
-		F5B80A8D259C70FC0081C076 /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
-		F5B80A91259C74CE0081C076 /* URLSessionDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDecodable.swift; sourceTree = "<group>"; };
 		F5E691F8259B2622003F67B0 /* NetworkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E691FA259B2622003F67B0 /* ArticlesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModelTests.swift; sourceTree = "<group>"; };
 		F5E691FC259B2622003F67B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +93,8 @@
 		18D775BF22AD944300AE281E /* Networker */ = {
 			isa = PBXGroup;
 			children = (
+				F5490F0D2D44F2710025AA17 /* URLSessionDecodable.swift */,
+				F5490F0B2D44F0360025AA17 /* Networker.swift */,
 				18D775CE22AD944400AE281E /* Info.plist */,
 				18D775C822AD944400AE281E /* Preview Content */,
 				F5B80A78259C670F0081C076 /* Supporting Files */,
@@ -104,11 +102,7 @@
 				F541D88E2599D1C400110F28 /* Views */,
 				1839F4AF25190F2A00BB00F1 /* AppMain.swift */,
 				F541D8862599CA8700110F28 /* Article.swift */,
-				F5B80A81259C69F60081C076 /* Request.swift */,
-				F5B80A85259C6AC70081C076 /* ArticleRequest.swift */,
-				F5B80A89259C6BEC0081C076 /* Networker.swift */,
-				F5B80A8D259C70FC0081C076 /* ImageRequest.swift */,
-				F5B80A91259C74CE0081C076 /* URLSessionDecodable.swift */,
+				843DD477291560C80006A532 /* Request.swift */,
 			);
 			path = Networker;
 			sourceTree = "<group>";
@@ -202,8 +196,9 @@
 		18D775B522AD944300AE281E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
 					18D775BC22AD944300AE281E = {
@@ -257,6 +252,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		181FE31D248EA6C900A180EA /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -283,14 +279,12 @@
 				F541D8872599CA8700110F28 /* Article.swift in Sources */,
 				F550BB162599D46600720FAD /* ArticlesView.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
+				F5490F0C2D44F0380025AA17 /* Networker.swift in Sources */,
 				F550BB1A2599D5AB00720FAD /* ArticlesViewModel.swift in Sources */,
-				F5B80A86259C6AC70081C076 /* ArticleRequest.swift in Sources */,
-				F5B80A8A259C6BEC0081C076 /* Networker.swift in Sources */,
-				F5B80A82259C69F60081C076 /* Request.swift in Sources */,
-				F5B80A92259C74CE0081C076 /* URLSessionDecodable.swift in Sources */,
+				843DD478291560C80006A532 /* Request.swift in Sources */,
+				F5490F0E2D44F2760025AA17 /* URLSessionDecodable.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				F541D8942599D1EA00110F28 /* ArticleRow.swift in Sources */,
-				F5B80A8E259C70FD0081C076 /* ImageRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +355,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -375,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -422,6 +417,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -430,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -449,13 +445,14 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Networker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Networker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -469,13 +466,14 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Networker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Networker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -486,15 +484,15 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NetworkerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.NetworkerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.NetworkerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Networker.app/Networker";
 			};
@@ -506,15 +504,15 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = NetworkerTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.NetworkerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.NetworkerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Networker.app/Networker";
 			};

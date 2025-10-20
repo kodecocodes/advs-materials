@@ -1,20 +1,19 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2022 Kodeco LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 import Combine
 
-class ArticlesViewModel: ObservableObject {
-  @Published private(set) var articles: [Article] = []
+@MainActor
+@Observable class ArticlesViewModel {
+  private(set) var articles: [Article] = []
 
-  private var cancellables: Set<AnyCancellable> = []
-
-  func fetchArticles() {
+  func fetchArticles() async {
     articles = [ArticleRow_Previews.article]
   }
 
-  func fetchImage(for article: Article) {
+  func fetchImage(for article: Article) async {
   }
 }

@@ -1,7 +1,7 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 
@@ -31,18 +31,6 @@ struct ArticleRow: View {
   }
 }
 
-struct ArticleRow_Previews: PreviewProvider {
-  static let article = Article(
-    name: "Protocols by Tutorials",
-    description: "Learn all about protocols.",
-    // swiftlint:disable:next force_unwrapping
-    image: URL(string: "https://google.com")!,
-    id: "0")
-
-  static var previews: some View {
-    Group {
-      ArticleRow(article: article, image: .constant(nil))
-        .previewLayout(.fixed(width: 300, height: 100))
-    }
-  }
+#Preview {
+  ArticleRow(article: Article.preview, image: .constant(nil))
 }

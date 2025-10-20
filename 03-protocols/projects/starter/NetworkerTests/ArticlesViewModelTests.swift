@@ -1,21 +1,25 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2022 Kodeco LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import XCTest
 import Combine
 @testable import Networker
 
-class ArticlesViewModelTests: XCTestCase {
+@MainActor
+class ArticlesViewModelTests: XCTestCase, Sendable {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var viewModel: ArticlesViewModel!
-  var cancellables: Set<AnyCancellable> = []
 
-  override func setUpWithError() throws {
-    try super.setUpWithError()
+  override func setUp() async throws {
+    try await super.setUp()
   }
 
-  func testArticlesAreFetchedCorrectly() {
+  override func tearDown() async throws {
+    try await super.tearDown()
+  }
+
+  func testArticlesAreFetchedCorrectly() async {
   }
 }

@@ -1,7 +1,7 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import Foundation
 import UIKit
@@ -9,7 +9,7 @@ import UIKit
 struct Article: Identifiable {
   let name: String
   let description: String
-  let image: URL
+  let image: URL?
   let id: String
   var downloadedImage: UIImage?
 }
@@ -33,6 +33,15 @@ struct ArticleData: Codable {
   enum CodingKeys: String, CodingKey {
     case article = "attributes"
   }
+}
+
+extension Article {
+  static let preview = Article(
+    name: "Protocols by Tutorials",
+    description: "Learn all about protocols.",
+    // swiftlint:disable:next force_unwrapping
+    image: URL(string: "https://google.com")!,
+    id: "0")
 }
 
 extension Array: URLSessionDecodable where Element == Article {

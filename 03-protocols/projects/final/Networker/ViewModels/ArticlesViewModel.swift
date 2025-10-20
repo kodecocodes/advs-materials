@@ -1,55 +1,58 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2022 Kodeco LLC.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 import Combine
 
-class ArticlesViewModel: ObservableObject {
+@MainActor
+@Observable class ArticlesViewModel {
+  private(set) var articles: [Article] = []
+
   private var networker: Networking
-  @Published private(set) var articles: [Article] = []
-  private var cancellables: Set<AnyCancellable> = []
 
   init(networker: Networking) {
     self.networker = networker
     self.networker.delegate = self
   }
 
-  func fetchArticles() {
-    let request = ArticleRequest()
-    networker.fetch(request)
-      .tryMap([Article].init)
-      .replaceError(with: [])
-      .assign(to: \.articles, on: self)
-      .store(in: &cancellables)
+  func fetchArticles() async {
+    do {
+      let request = ArticleRequest()
+      let data = try await networker.fetch(request)
+      articles = try [Article](from: data)
+    } catch {
+      articles = []
+    }
   }
 
-  func fetchImage(for article: Article) {
+  func fetchImage(for article: Article) async {
     guard article.downloadedImage == nil,
-      let articleIndex = articles.firstIndex(where: { $0.id == article.id })
+      let articleIndex = articles.firstIndex(where: { $0.id == article.id }),
+      let imageURL = article.image
     else {
-      print("Already downloaded")
       return
     }
 
-    let request = ImageRequest(url: article.image)
-    networker.fetch(request)
-      .map(UIImage.init)
-      .replaceError(with: nil)
-      .sink { [weak self] image in
-        self?.articles[articleIndex].downloadedImage = image
-      }
-      .store(in: &cancellables)
+    let request = ImageRequest(url: imageURL)
+    guard let data = try? await networker.fetch(request) else {
+      return
+    }
+    articles[articleIndex].downloadedImage = UIImage(data: data)
   }
 }
 
 extension ArticlesViewModel: NetworkingDelegate {
-  func headers(for networking: Networking) -> [String: String] {
+  nonisolated func headers(for networking: Networking) -> [String: String] {
     return ["Content-Type": "application/vnd.api+json; charset=utf-8"]
   }
 
-  func networking(_ networking: Networking, transformPublisher publisher: AnyPublisher<Data, URLError>) -> AnyPublisher<Data, URLError> {
-    publisher.receive(on: DispatchQueue.main).eraseToAnyPublisher()
+  nonisolated func networking(
+    _ networking: Networking,
+    didReceive response: URLResponse
+  ) {
+    print("Received response:")
+    print(response)
   }
 }
