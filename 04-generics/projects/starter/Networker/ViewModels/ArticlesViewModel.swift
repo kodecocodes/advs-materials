@@ -1,55 +1,25 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import SwiftUI
 import Combine
 
-class ArticlesViewModel: ObservableObject {
-  private var networker: Networking
-  @Published private(set) var articles: [Article] = []
-  private var cancellables: Set<AnyCancellable> = []
+@MainActor
+@Observable class ArticlesViewModel {
+  let networker: Networker
 
-  init(networker: Networking) {
+  init(networker: Networker) {
     self.networker = networker
-    self.networker.delegate = self
   }
 
-  func fetchArticles() {
-    let request = ArticleRequest()
-    networker.fetch(request)
-      .tryMap([Article].init)
-      .replaceError(with: [])
-      .assign(to: \.articles, on: self)
-      .store(in: &cancellables)
+  private(set) var articles: [Article] = []
+  private(set) var savedArticles: [Article] = []
+
+  func fetchArticles() async {
   }
 
-  func fetchImage(for article: Article) {
-    guard article.downloadedImage == nil,
-      let articleIndex = articles.firstIndex(where: { $0.id == article.id })
-    else {
-      print("Already downloaded")
-      return
-    }
-
-    let request = ImageRequest(url: article.image)
-    networker.fetch(request)
-      .map(UIImage.init)
-      .replaceError(with: nil)
-      .sink { [weak self] image in
-        self?.articles[articleIndex].downloadedImage = image
-      }
-      .store(in: &cancellables)
-  }
-}
-
-extension ArticlesViewModel: NetworkingDelegate {
-  func headers(for networking: Networking) -> [String: String] {
-    return ["Content-Type": "application/vnd.api+json; charset=utf-8"]
-  }
-
-  func networking(_ networking: Networking, transformPublisher publisher: AnyPublisher<Data, URLError>) -> AnyPublisher<Data, URLError> {
-    publisher.receive(on: DispatchQueue.main).eraseToAnyPublisher()
+  func readLater(_ article: Article) {
   }
 }

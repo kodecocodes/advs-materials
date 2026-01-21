@@ -1,9 +1,10 @@
 /// Sample code from the book, Expert Swift,
-/// published at raywenderlich.com, Copyright (c) 2021 Razeware LLC.
+/// published at kodeco.com, Copyright (c) 2025 Kodeco Inc.
 /// See LICENSE for details. Thank you for supporting our work!
-/// Visit https://www.raywenderlich.com/books/expert-swift
+/// Visit https://www.kodeco.com/books/expert-swift
 
 import Foundation
+import UIKit
 
 enum HTTPMethod: String {
   case get = "GET"
@@ -11,9 +12,4 @@ enum HTTPMethod: String {
   case put = "PUT"
   case update = "UPDATE"
   case delete = "DELETE"
-}
-
-protocol Request {
-  var url: URL { get }
-  var method: HTTPMethod { get }
 }
